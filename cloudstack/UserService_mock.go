@@ -148,6 +148,27 @@ func (mr *MockUserServiceIfaceMockRecorder) GetUserByID(id interface{}, opts ...
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserByID", reflect.TypeOf((*MockUserServiceIface)(nil).GetUserByID), varargs...)
 }
 
+// GetUserByUsername mocks base method.
+func (m *MockUserServiceIface) GetUserByUsername(username string, opts ...OptionFunc) (*User, int, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{username}
+	for _, a := range opts {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetUserByUsername", varargs...)
+	ret0, _ := ret[0].(*User)
+	ret1, _ := ret[1].(int)
+	ret2, _ := ret[2].(error)
+	return ret0, ret1, ret2
+}
+
+// GetUserByID indicates an expected call of GetUserByID.
+func (mr *MockUserServiceIfaceMockRecorder) GetUserByUsername(username interface{}, opts ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{username}, opts...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserByUsername", reflect.TypeOf((*MockUserServiceIface)(nil).GetUserByUsername), varargs...)
+}
+
 // GetVirtualMachineUserData mocks base method.
 func (m *MockUserServiceIface) GetVirtualMachineUserData(p *GetVirtualMachineUserDataParams) (*GetVirtualMachineUserDataResponse, error) {
 	m.ctrl.T.Helper()
