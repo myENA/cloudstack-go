@@ -1,4 +1,4 @@
-module github.com/apache/cloudstack-go/v2
+module github.com/apache/cloudstack-go/v3
 
 go 1.13
 
