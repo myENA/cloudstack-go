@@ -1,4 +1,4 @@
-module github.com/myENA/cloudstack-go/v3
+module github.com/myENA/cloudstack-go
 
 go 1.17
 
