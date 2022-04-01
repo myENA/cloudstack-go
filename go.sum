@@ -1,3 +1,5 @@
+github.com/apache/cloudstack-go/v2 v2.12.0 h1:IqJjFt1/bc29+8OZtzMijZGgHfUUNZ8R4Zjx091iFnU=
+github.com/apache/cloudstack-go/v2 v2.12.0/go.mod h1:2mPSVR6kkM3u1i9L3mmR+Du1f+QBwFKYOSI2XQEyhj4=
 github.com/golang/mock v1.6.0 h1:ErTB+efbowRARo13NNdxyJji2egdxLGQhRaY+DUumQc=
 github.com/golang/mock v1.6.0/go.mod h1:p6yTPP+5HYm5mzsMV8JkE6ZKdX+/wYM6Hr+LicevLPs=
 github.com/yuin/goldmark v1.3.5/go.mod h1:mwnBkeHKe2W/ZEtQ+71ViKU8L12m81fl3OWwC1Zlc8k=
