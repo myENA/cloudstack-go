@@ -162,7 +162,7 @@ func (m *MockUserServiceIface) GetUserByUsername(username string, opts ...Option
 	return ret0, ret1, ret2
 }
 
-// GetUserByID indicates an expected call of GetUserByID.
+// GetUserByUsername indicates an expected call of GetUserByUsername.
 func (mr *MockUserServiceIfaceMockRecorder) GetUserByUsername(username interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{username}, opts...)
