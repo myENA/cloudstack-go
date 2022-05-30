@@ -43,7 +43,7 @@ type UserServiceIface interface {
 	ListUsers(p *ListUsersParams) (*ListUsersResponse, error)
 	NewListUsersParams() *ListUsersParams
 	GetUserByID(id string, opts ...OptionFunc) (*User, int, error)
-	GetUserByUsername(username string, opts ...OptionFunc) (*User, int, error)
+	GetUserByUsername(username string, domainid string, opts ...OptionFunc) (*User, int, error)
 	LockUser(p *LockUserParams) (*LockUserResponse, error)
 	NewLockUserParams(id string) *LockUserParams
 	RegisterUserKeys(p *RegisterUserKeysParams) (*RegisterUserKeysResponse, error)
@@ -981,11 +981,12 @@ func (s *UserService) GetUserByID(id string, opts ...OptionFunc) (*User, int, er
 	return nil, l.Count, fmt.Errorf("There is more then one result for User UUID: %s!", id)
 }
 
-func (s *UserService) GetUserByUsername(username string, opts ...OptionFunc) (*User, int, error) {
+func (s *UserService) GetUserByUsername(username string, domainid string, opts ...OptionFunc) (*User, int, error) {
 	p := &ListUsersParams{}
 	p.p = make(map[string]interface{})
 
 	p.p["username"] = username
+	p.p["domainid"] = domainid
 
 	for _, fn := range append(s.cs.options, opts...) {
 		if err := fn(s.cs, p); err != nil {
