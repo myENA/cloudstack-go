@@ -149,7 +149,7 @@ func (mr *MockUserServiceIfaceMockRecorder) GetUserByID(id interface{}, opts ...
 }
 
 // GetUserByUsername mocks base method.
-func (m *MockUserServiceIface) GetUserByUsername(username string, opts ...OptionFunc) (*User, int, error) {
+func (m *MockUserServiceIface) GetUserByUsername(username string, domainid string, opts ...OptionFunc) (*User, int, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{username}
 	for _, a := range opts {
@@ -163,7 +163,7 @@ func (m *MockUserServiceIface) GetUserByUsername(username string, opts ...Option
 }
 
 // GetUserByUsername indicates an expected call of GetUserByUsername.
-func (mr *MockUserServiceIfaceMockRecorder) GetUserByUsername(username interface{}, opts ...interface{}) *gomock.Call {
+func (mr *MockUserServiceIfaceMockRecorder) GetUserByUsername(username interface{}, domainid interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{username}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserByUsername", reflect.TypeOf((*MockUserServiceIface)(nil).GetUserByUsername), varargs...)
