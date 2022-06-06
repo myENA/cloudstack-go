@@ -43,6 +43,7 @@ type UserServiceIface interface {
 	ListUsers(P *ListUsersParams) (*ListUsersResponse, error)
 	NewListUsersParams() *ListUsersParams
 	GetUserByID(id string, opts ...OptionFunc) (*User, int, error)
+	GetUserByUsernameAndDomain(username string, domainid string, opts ...OptionFunc) (*User, int, error)
 	LockUser(P *LockUserParams) (*LockUserResponse, error)
 	NewLockUserParams(id string) *LockUserParams
 	RegisterUserKeys(P *RegisterUserKeysParams) (*RegisterUserKeysResponse, error)
@@ -978,6 +979,39 @@ func (s *UserService) GetUserByID(id string, opts ...OptionFunc) (*User, int, er
 		return l.Users[0], l.Count, nil
 	}
 	return nil, l.Count, fmt.Errorf("There is more then one result for User UUID: %s!", id)
+}
+
+func (s *UserService) GetUserByUsernameAndDomain(username string, domainid string, opts ...OptionFunc) (*User, int, error) {
+	P := &ListUsersParams{}
+	P.P = make(map[string]interface{})
+
+	P.P["username"] = username
+	P.P["domainid"] = domainid
+
+	for _, fn := range append(s.cs.options, opts...) {
+		if err := fn(s.cs, P); err != nil {
+			return nil, -1, err
+		}
+	}
+
+	l, err := s.ListUsers(P)
+	if err != nil {
+		if strings.Contains(err.Error(), fmt.Sprintf(
+			"Invalid parameter username value=%s due to incorrect long value format, "+
+				"or entity does not exist", username)) {
+			return nil, 0, fmt.Errorf("No match found for %s: %+v", username, l)
+		}
+		return nil, -1, err
+	}
+
+	if l.Count == 0 {
+		return nil, l.Count, fmt.Errorf("No match found for %s: %+v", username, l)
+	}
+
+	if l.Count == 1 {
+		return l.Users[0], l.Count, nil
+	}
+	return nil, l.Count, fmt.Errorf("There is more then one result for Username: %s!", username)
 }
 
 // Lists user accounts
