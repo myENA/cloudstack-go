@@ -28,135 +28,135 @@ import (
 )
 
 type UCSServiceIface interface {
-	AddUcsManager(p *AddUcsManagerParams) (*AddUcsManagerResponse, error)
+	AddUcsManager(P *AddUcsManagerParams) (*AddUcsManagerResponse, error)
 	NewAddUcsManagerParams(password string, url string, username string, zoneid string) *AddUcsManagerParams
-	AssociateUcsProfileToBlade(p *AssociateUcsProfileToBladeParams) (*AssociateUcsProfileToBladeResponse, error)
+	AssociateUcsProfileToBlade(P *AssociateUcsProfileToBladeParams) (*AssociateUcsProfileToBladeResponse, error)
 	NewAssociateUcsProfileToBladeParams(bladeid string, profiledn string, ucsmanagerid string) *AssociateUcsProfileToBladeParams
-	DeleteUcsManager(p *DeleteUcsManagerParams) (*DeleteUcsManagerResponse, error)
+	DeleteUcsManager(P *DeleteUcsManagerParams) (*DeleteUcsManagerResponse, error)
 	NewDeleteUcsManagerParams(ucsmanagerid string) *DeleteUcsManagerParams
-	ListUcsBlades(p *ListUcsBladesParams) (*ListUcsBladesResponse, error)
+	ListUcsBlades(P *ListUcsBladesParams) (*ListUcsBladesResponse, error)
 	NewListUcsBladesParams(ucsmanagerid string) *ListUcsBladesParams
-	ListUcsManagers(p *ListUcsManagersParams) (*ListUcsManagersResponse, error)
+	ListUcsManagers(P *ListUcsManagersParams) (*ListUcsManagersResponse, error)
 	NewListUcsManagersParams() *ListUcsManagersParams
 	GetUcsManagerID(keyword string, opts ...OptionFunc) (string, int, error)
 	GetUcsManagerByName(name string, opts ...OptionFunc) (*UcsManager, int, error)
 	GetUcsManagerByID(id string, opts ...OptionFunc) (*UcsManager, int, error)
-	ListUcsProfiles(p *ListUcsProfilesParams) (*ListUcsProfilesResponse, error)
+	ListUcsProfiles(P *ListUcsProfilesParams) (*ListUcsProfilesResponse, error)
 	NewListUcsProfilesParams(ucsmanagerid string) *ListUcsProfilesParams
 }
 
 type AddUcsManagerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddUcsManagerParams) toURLValues() url.Values {
+func (P *AddUcsManagerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *AddUcsManagerParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddUcsManagerParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *AddUcsManagerParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddUcsManagerParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *AddUcsManagerParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddUcsManagerParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *AddUcsManagerParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddUcsManagerParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *AddUcsManagerParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddUcsManagerParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddUcsManagerParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddUcsManagerParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddUcsManagerParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddUcsManagerParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddUcsManagerParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddUcsManagerParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
-func (p *AddUcsManagerParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddUcsManagerParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *AddUcsManagerParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddUcsManagerParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddUcsManagerParams instance,
 // as then you are sure you have configured all required params
 func (s *UCSService) NewAddUcsManagerParams(password string, url string, username string, zoneid string) *AddUcsManagerParams {
-	p := &AddUcsManagerParams{}
-	p.p = make(map[string]interface{})
-	p.p["password"] = password
-	p.p["url"] = url
-	p.p["username"] = username
-	p.p["zoneid"] = zoneid
-	return p
+	P := &AddUcsManagerParams{}
+	P.P = make(map[string]interface{})
+	P.P["password"] = password
+	P.P["url"] = url
+	P.P["username"] = username
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Adds a Ucs manager
@@ -184,80 +184,80 @@ type AddUcsManagerResponse struct {
 }
 
 type AssociateUcsProfileToBladeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AssociateUcsProfileToBladeParams) toURLValues() url.Values {
+func (P *AssociateUcsProfileToBladeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["bladeid"]; found {
+	if v, found := P.P["bladeid"]; found {
 		u.Set("bladeid", v.(string))
 	}
-	if v, found := p.p["profiledn"]; found {
+	if v, found := P.P["profiledn"]; found {
 		u.Set("profiledn", v.(string))
 	}
-	if v, found := p.p["ucsmanagerid"]; found {
+	if v, found := P.P["ucsmanagerid"]; found {
 		u.Set("ucsmanagerid", v.(string))
 	}
 	return u
 }
 
-func (p *AssociateUcsProfileToBladeParams) SetBladeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateUcsProfileToBladeParams) SetBladeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bladeid"] = v
+	P.P["bladeid"] = v
 }
 
-func (p *AssociateUcsProfileToBladeParams) GetBladeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateUcsProfileToBladeParams) GetBladeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bladeid"].(string)
+	value, ok := P.P["bladeid"].(string)
 	return value, ok
 }
 
-func (p *AssociateUcsProfileToBladeParams) SetProfiledn(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateUcsProfileToBladeParams) SetProfiledn(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["profiledn"] = v
+	P.P["profiledn"] = v
 }
 
-func (p *AssociateUcsProfileToBladeParams) GetProfiledn() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateUcsProfileToBladeParams) GetProfiledn() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["profiledn"].(string)
+	value, ok := P.P["profiledn"].(string)
 	return value, ok
 }
 
-func (p *AssociateUcsProfileToBladeParams) SetUcsmanagerid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateUcsProfileToBladeParams) SetUcsmanagerid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ucsmanagerid"] = v
+	P.P["ucsmanagerid"] = v
 }
 
-func (p *AssociateUcsProfileToBladeParams) GetUcsmanagerid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateUcsProfileToBladeParams) GetUcsmanagerid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ucsmanagerid"].(string)
+	value, ok := P.P["ucsmanagerid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AssociateUcsProfileToBladeParams instance,
 // as then you are sure you have configured all required params
 func (s *UCSService) NewAssociateUcsProfileToBladeParams(bladeid string, profiledn string, ucsmanagerid string) *AssociateUcsProfileToBladeParams {
-	p := &AssociateUcsProfileToBladeParams{}
-	p.p = make(map[string]interface{})
-	p.p["bladeid"] = bladeid
-	p.p["profiledn"] = profiledn
-	p.p["ucsmanagerid"] = ucsmanagerid
-	return p
+	P := &AssociateUcsProfileToBladeParams{}
+	P.P = make(map[string]interface{})
+	P.P["bladeid"] = bladeid
+	P.P["profiledn"] = profiledn
+	P.P["ucsmanagerid"] = ucsmanagerid
+	return P
 }
 
 // associate a profile to a blade
@@ -306,42 +306,42 @@ type AssociateUcsProfileToBladeResponse struct {
 }
 
 type DeleteUcsManagerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteUcsManagerParams) toURLValues() url.Values {
+func (P *DeleteUcsManagerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["ucsmanagerid"]; found {
+	if v, found := P.P["ucsmanagerid"]; found {
 		u.Set("ucsmanagerid", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteUcsManagerParams) SetUcsmanagerid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteUcsManagerParams) SetUcsmanagerid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ucsmanagerid"] = v
+	P.P["ucsmanagerid"] = v
 }
 
-func (p *DeleteUcsManagerParams) GetUcsmanagerid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteUcsManagerParams) GetUcsmanagerid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ucsmanagerid"].(string)
+	value, ok := P.P["ucsmanagerid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteUcsManagerParams instance,
 // as then you are sure you have configured all required params
 func (s *UCSService) NewDeleteUcsManagerParams(ucsmanagerid string) *DeleteUcsManagerParams {
-	p := &DeleteUcsManagerParams{}
-	p.p = make(map[string]interface{})
-	p.p["ucsmanagerid"] = ucsmanagerid
-	return p
+	P := &DeleteUcsManagerParams{}
+	P.P = make(map[string]interface{})
+	P.P["ucsmanagerid"] = ucsmanagerid
+	return P
 }
 
 // Delete a Ucs manager
@@ -394,98 +394,98 @@ func (r *DeleteUcsManagerResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListUcsBladesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListUcsBladesParams) toURLValues() url.Values {
+func (P *ListUcsBladesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["ucsmanagerid"]; found {
+	if v, found := P.P["ucsmanagerid"]; found {
 		u.Set("ucsmanagerid", v.(string))
 	}
 	return u
 }
 
-func (p *ListUcsBladesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsBladesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListUcsBladesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsBladesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListUcsBladesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsBladesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListUcsBladesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsBladesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListUcsBladesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsBladesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListUcsBladesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsBladesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListUcsBladesParams) SetUcsmanagerid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsBladesParams) SetUcsmanagerid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ucsmanagerid"] = v
+	P.P["ucsmanagerid"] = v
 }
 
-func (p *ListUcsBladesParams) GetUcsmanagerid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsBladesParams) GetUcsmanagerid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ucsmanagerid"].(string)
+	value, ok := P.P["ucsmanagerid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListUcsBladesParams instance,
 // as then you are sure you have configured all required params
 func (s *UCSService) NewListUcsBladesParams(ucsmanagerid string) *ListUcsBladesParams {
-	p := &ListUcsBladesParams{}
-	p.p = make(map[string]interface{})
-	p.p["ucsmanagerid"] = ucsmanagerid
-	return p
+	P := &ListUcsBladesParams{}
+	P.P = make(map[string]interface{})
+	P.P["ucsmanagerid"] = ucsmanagerid
+	return P
 }
 
 // List ucs blades
@@ -519,131 +519,131 @@ type UcsBlade struct {
 }
 
 type ListUcsManagersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListUcsManagersParams) toURLValues() url.Values {
+func (P *ListUcsManagersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListUcsManagersParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsManagersParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListUcsManagersParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsManagersParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListUcsManagersParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsManagersParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListUcsManagersParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsManagersParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListUcsManagersParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsManagersParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListUcsManagersParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsManagersParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListUcsManagersParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsManagersParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListUcsManagersParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsManagersParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListUcsManagersParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsManagersParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListUcsManagersParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsManagersParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListUcsManagersParams instance,
 // as then you are sure you have configured all required params
 func (s *UCSService) NewListUcsManagersParams() *ListUcsManagersParams {
-	p := &ListUcsManagersParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListUcsManagersParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *UCSService) GetUcsManagerID(keyword string, opts ...OptionFunc) (string, int, error) {
-	p := &ListUcsManagersParams{}
-	p.p = make(map[string]interface{})
+	P := &ListUcsManagersParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["keyword"] = keyword
+	P.P["keyword"] = keyword
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListUcsManagers(p)
+	l, err := s.ListUcsManagers(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -682,18 +682,18 @@ func (s *UCSService) GetUcsManagerByName(name string, opts ...OptionFunc) (*UcsM
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *UCSService) GetUcsManagerByID(id string, opts ...OptionFunc) (*UcsManager, int, error) {
-	p := &ListUcsManagersParams{}
-	p.p = make(map[string]interface{})
+	P := &ListUcsManagersParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListUcsManagers(p)
+	l, err := s.ListUcsManagers(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -743,98 +743,98 @@ type UcsManager struct {
 }
 
 type ListUcsProfilesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListUcsProfilesParams) toURLValues() url.Values {
+func (P *ListUcsProfilesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["ucsmanagerid"]; found {
+	if v, found := P.P["ucsmanagerid"]; found {
 		u.Set("ucsmanagerid", v.(string))
 	}
 	return u
 }
 
-func (p *ListUcsProfilesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsProfilesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListUcsProfilesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsProfilesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListUcsProfilesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsProfilesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListUcsProfilesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsProfilesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListUcsProfilesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsProfilesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListUcsProfilesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsProfilesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListUcsProfilesParams) SetUcsmanagerid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsProfilesParams) SetUcsmanagerid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ucsmanagerid"] = v
+	P.P["ucsmanagerid"] = v
 }
 
-func (p *ListUcsProfilesParams) GetUcsmanagerid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListUcsProfilesParams) GetUcsmanagerid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ucsmanagerid"].(string)
+	value, ok := P.P["ucsmanagerid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListUcsProfilesParams instance,
 // as then you are sure you have configured all required params
 func (s *UCSService) NewListUcsProfilesParams(ucsmanagerid string) *ListUcsProfilesParams {
-	p := &ListUcsProfilesParams{}
-	p.p = make(map[string]interface{})
-	p.p["ucsmanagerid"] = ucsmanagerid
-	return p
+	P := &ListUcsProfilesParams{}
+	P.P = make(map[string]interface{})
+	P.P["ucsmanagerid"] = ucsmanagerid
+	return P
 }
 
 // List profile in ucs manager

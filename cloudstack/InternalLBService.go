@@ -28,81 +28,81 @@ import (
 )
 
 type InternalLBServiceIface interface {
-	ConfigureInternalLoadBalancerElement(p *ConfigureInternalLoadBalancerElementParams) (*InternalLoadBalancerElementResponse, error)
+	ConfigureInternalLoadBalancerElement(P *ConfigureInternalLoadBalancerElementParams) (*InternalLoadBalancerElementResponse, error)
 	NewConfigureInternalLoadBalancerElementParams(enabled bool, id string) *ConfigureInternalLoadBalancerElementParams
-	CreateInternalLoadBalancerElement(p *CreateInternalLoadBalancerElementParams) (*CreateInternalLoadBalancerElementResponse, error)
+	CreateInternalLoadBalancerElement(P *CreateInternalLoadBalancerElementParams) (*CreateInternalLoadBalancerElementResponse, error)
 	NewCreateInternalLoadBalancerElementParams(nspid string) *CreateInternalLoadBalancerElementParams
-	ListInternalLoadBalancerElements(p *ListInternalLoadBalancerElementsParams) (*ListInternalLoadBalancerElementsResponse, error)
+	ListInternalLoadBalancerElements(P *ListInternalLoadBalancerElementsParams) (*ListInternalLoadBalancerElementsResponse, error)
 	NewListInternalLoadBalancerElementsParams() *ListInternalLoadBalancerElementsParams
 	GetInternalLoadBalancerElementByID(id string, opts ...OptionFunc) (*InternalLoadBalancerElement, int, error)
-	ListInternalLoadBalancerVMs(p *ListInternalLoadBalancerVMsParams) (*ListInternalLoadBalancerVMsResponse, error)
+	ListInternalLoadBalancerVMs(P *ListInternalLoadBalancerVMsParams) (*ListInternalLoadBalancerVMsResponse, error)
 	NewListInternalLoadBalancerVMsParams() *ListInternalLoadBalancerVMsParams
 	GetInternalLoadBalancerVMID(name string, opts ...OptionFunc) (string, int, error)
 	GetInternalLoadBalancerVMByName(name string, opts ...OptionFunc) (*InternalLoadBalancerVM, int, error)
 	GetInternalLoadBalancerVMByID(id string, opts ...OptionFunc) (*InternalLoadBalancerVM, int, error)
-	StartInternalLoadBalancerVM(p *StartInternalLoadBalancerVMParams) (*StartInternalLoadBalancerVMResponse, error)
+	StartInternalLoadBalancerVM(P *StartInternalLoadBalancerVMParams) (*StartInternalLoadBalancerVMResponse, error)
 	NewStartInternalLoadBalancerVMParams(id string) *StartInternalLoadBalancerVMParams
-	StopInternalLoadBalancerVM(p *StopInternalLoadBalancerVMParams) (*StopInternalLoadBalancerVMResponse, error)
+	StopInternalLoadBalancerVM(P *StopInternalLoadBalancerVMParams) (*StopInternalLoadBalancerVMResponse, error)
 	NewStopInternalLoadBalancerVMParams(id string) *StopInternalLoadBalancerVMParams
 }
 
 type ConfigureInternalLoadBalancerElementParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ConfigureInternalLoadBalancerElementParams) toURLValues() url.Values {
+func (P *ConfigureInternalLoadBalancerElementParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["enabled"]; found {
+	if v, found := P.P["enabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("enabled", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *ConfigureInternalLoadBalancerElementParams) SetEnabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureInternalLoadBalancerElementParams) SetEnabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enabled"] = v
+	P.P["enabled"] = v
 }
 
-func (p *ConfigureInternalLoadBalancerElementParams) GetEnabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureInternalLoadBalancerElementParams) GetEnabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enabled"].(bool)
+	value, ok := P.P["enabled"].(bool)
 	return value, ok
 }
 
-func (p *ConfigureInternalLoadBalancerElementParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureInternalLoadBalancerElementParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ConfigureInternalLoadBalancerElementParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureInternalLoadBalancerElementParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ConfigureInternalLoadBalancerElementParams instance,
 // as then you are sure you have configured all required params
 func (s *InternalLBService) NewConfigureInternalLoadBalancerElementParams(enabled bool, id string) *ConfigureInternalLoadBalancerElementParams {
-	p := &ConfigureInternalLoadBalancerElementParams{}
-	p.p = make(map[string]interface{})
-	p.p["enabled"] = enabled
-	p.p["id"] = id
-	return p
+	P := &ConfigureInternalLoadBalancerElementParams{}
+	P.P = make(map[string]interface{})
+	P.P["enabled"] = enabled
+	P.P["id"] = id
+	return P
 }
 
 // Configures an Internal Load Balancer element.
@@ -149,42 +149,42 @@ type InternalLoadBalancerElementResponse struct {
 }
 
 type CreateInternalLoadBalancerElementParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateInternalLoadBalancerElementParams) toURLValues() url.Values {
+func (P *CreateInternalLoadBalancerElementParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["nspid"]; found {
+	if v, found := P.P["nspid"]; found {
 		u.Set("nspid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateInternalLoadBalancerElementParams) SetNspid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateInternalLoadBalancerElementParams) SetNspid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["nspid"] = v
+	P.P["nspid"] = v
 }
 
-func (p *CreateInternalLoadBalancerElementParams) GetNspid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateInternalLoadBalancerElementParams) GetNspid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["nspid"].(string)
+	value, ok := P.P["nspid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateInternalLoadBalancerElementParams instance,
 // as then you are sure you have configured all required params
 func (s *InternalLBService) NewCreateInternalLoadBalancerElementParams(nspid string) *CreateInternalLoadBalancerElementParams {
-	p := &CreateInternalLoadBalancerElementParams{}
-	p.p = make(map[string]interface{})
-	p.p["nspid"] = nspid
-	return p
+	P := &CreateInternalLoadBalancerElementParams{}
+	P.P = make(map[string]interface{})
+	P.P["nspid"] = nspid
+	return P
 }
 
 // Create an Internal Load Balancer element.
@@ -231,150 +231,150 @@ type CreateInternalLoadBalancerElementResponse struct {
 }
 
 type ListInternalLoadBalancerElementsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListInternalLoadBalancerElementsParams) toURLValues() url.Values {
+func (P *ListInternalLoadBalancerElementsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["enabled"]; found {
+	if v, found := P.P["enabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("enabled", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["nspid"]; found {
+	if v, found := P.P["nspid"]; found {
 		u.Set("nspid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListInternalLoadBalancerElementsParams) SetEnabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) SetEnabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enabled"] = v
+	P.P["enabled"] = v
 }
 
-func (p *ListInternalLoadBalancerElementsParams) GetEnabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) GetEnabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enabled"].(bool)
+	value, ok := P.P["enabled"].(bool)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerElementsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListInternalLoadBalancerElementsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerElementsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListInternalLoadBalancerElementsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerElementsParams) SetNspid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) SetNspid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["nspid"] = v
+	P.P["nspid"] = v
 }
 
-func (p *ListInternalLoadBalancerElementsParams) GetNspid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) GetNspid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["nspid"].(string)
+	value, ok := P.P["nspid"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerElementsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListInternalLoadBalancerElementsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerElementsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListInternalLoadBalancerElementsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerElementsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListInternalLoadBalancerElementsParams instance,
 // as then you are sure you have configured all required params
 func (s *InternalLBService) NewListInternalLoadBalancerElementsParams() *ListInternalLoadBalancerElementsParams {
-	p := &ListInternalLoadBalancerElementsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListInternalLoadBalancerElementsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *InternalLBService) GetInternalLoadBalancerElementByID(id string, opts ...OptionFunc) (*InternalLoadBalancerElement, int, error) {
-	p := &ListInternalLoadBalancerElementsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListInternalLoadBalancerElementsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListInternalLoadBalancerElements(p)
+	l, err := s.ListInternalLoadBalancerElements(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -423,369 +423,369 @@ type InternalLoadBalancerElement struct {
 }
 
 type ListInternalLoadBalancerVMsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListInternalLoadBalancerVMsParams) toURLValues() url.Values {
+func (P *ListInternalLoadBalancerVMsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fetchhealthcheckresults"]; found {
+	if v, found := P.P["fetchhealthcheckresults"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fetchhealthcheckresults", vv)
 	}
-	if v, found := p.p["forvpc"]; found {
+	if v, found := P.P["forvpc"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forvpc", vv)
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetFetchhealthcheckresults(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetFetchhealthcheckresults(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fetchhealthcheckresults"] = v
+	P.P["fetchhealthcheckresults"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetFetchhealthcheckresults() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetFetchhealthcheckresults() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fetchhealthcheckresults"].(bool)
+	value, ok := P.P["fetchhealthcheckresults"].(bool)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetForvpc(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetForvpc(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forvpc"] = v
+	P.P["forvpc"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetForvpc() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetForvpc() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forvpc"].(bool)
+	value, ok := P.P["forvpc"].(bool)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
-func (p *ListInternalLoadBalancerVMsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListInternalLoadBalancerVMsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListInternalLoadBalancerVMsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListInternalLoadBalancerVMsParams instance,
 // as then you are sure you have configured all required params
 func (s *InternalLBService) NewListInternalLoadBalancerVMsParams() *ListInternalLoadBalancerVMsParams {
-	p := &ListInternalLoadBalancerVMsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListInternalLoadBalancerVMsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *InternalLBService) GetInternalLoadBalancerVMID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListInternalLoadBalancerVMsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListInternalLoadBalancerVMsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListInternalLoadBalancerVMs(p)
+	l, err := s.ListInternalLoadBalancerVMs(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -824,18 +824,18 @@ func (s *InternalLBService) GetInternalLoadBalancerVMByName(name string, opts ..
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *InternalLBService) GetInternalLoadBalancerVMByID(id string, opts ...OptionFunc) (*InternalLoadBalancerVM, int, error) {
-	p := &ListInternalLoadBalancerVMsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListInternalLoadBalancerVMsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListInternalLoadBalancerVMs(p)
+	l, err := s.ListInternalLoadBalancerVMs(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -940,42 +940,42 @@ type InternalLoadBalancerVMHealthcheckresults struct {
 }
 
 type StartInternalLoadBalancerVMParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *StartInternalLoadBalancerVMParams) toURLValues() url.Values {
+func (P *StartInternalLoadBalancerVMParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *StartInternalLoadBalancerVMParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StartInternalLoadBalancerVMParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *StartInternalLoadBalancerVMParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StartInternalLoadBalancerVMParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new StartInternalLoadBalancerVMParams instance,
 // as then you are sure you have configured all required params
 func (s *InternalLBService) NewStartInternalLoadBalancerVMParams(id string) *StartInternalLoadBalancerVMParams {
-	p := &StartInternalLoadBalancerVMParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &StartInternalLoadBalancerVMParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Starts an existing internal lb vm.
@@ -1078,61 +1078,61 @@ type StartInternalLoadBalancerVMResponseHealthcheckresults struct {
 }
 
 type StopInternalLoadBalancerVMParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *StopInternalLoadBalancerVMParams) toURLValues() url.Values {
+func (P *StopInternalLoadBalancerVMParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["forced"]; found {
+	if v, found := P.P["forced"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forced", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *StopInternalLoadBalancerVMParams) SetForced(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopInternalLoadBalancerVMParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forced"] = v
+	P.P["forced"] = v
 }
 
-func (p *StopInternalLoadBalancerVMParams) GetForced() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopInternalLoadBalancerVMParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forced"].(bool)
+	value, ok := P.P["forced"].(bool)
 	return value, ok
 }
 
-func (p *StopInternalLoadBalancerVMParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopInternalLoadBalancerVMParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *StopInternalLoadBalancerVMParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopInternalLoadBalancerVMParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new StopInternalLoadBalancerVMParams instance,
 // as then you are sure you have configured all required params
 func (s *InternalLBService) NewStopInternalLoadBalancerVMParams(id string) *StopInternalLoadBalancerVMParams {
-	p := &StopInternalLoadBalancerVMParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &StopInternalLoadBalancerVMParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Stops an Internal LB vm.

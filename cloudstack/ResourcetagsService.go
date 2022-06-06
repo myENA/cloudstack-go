@@ -28,37 +28,37 @@ import (
 )
 
 type ResourcetagsServiceIface interface {
-	CreateTags(p *CreateTagsParams) (*CreateTagsResponse, error)
+	CreateTags(P *CreateTagsParams) (*CreateTagsResponse, error)
 	NewCreateTagsParams(resourceids []string, resourcetype string, tags map[string]string) *CreateTagsParams
-	DeleteTags(p *DeleteTagsParams) (*DeleteTagsResponse, error)
+	DeleteTags(P *DeleteTagsParams) (*DeleteTagsResponse, error)
 	NewDeleteTagsParams(resourceids []string, resourcetype string) *DeleteTagsParams
-	ListStorageTags(p *ListStorageTagsParams) (*ListStorageTagsResponse, error)
+	ListStorageTags(P *ListStorageTagsParams) (*ListStorageTagsResponse, error)
 	NewListStorageTagsParams() *ListStorageTagsParams
 	GetStorageTagID(keyword string, opts ...OptionFunc) (string, int, error)
-	ListTags(p *ListTagsParams) (*ListTagsResponse, error)
+	ListTags(P *ListTagsParams) (*ListTagsResponse, error)
 	NewListTagsParams() *ListTagsParams
 }
 
 type CreateTagsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateTagsParams) toURLValues() url.Values {
+func (P *CreateTagsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customer"]; found {
+	if v, found := P.P["customer"]; found {
 		u.Set("customer", v.(string))
 	}
-	if v, found := p.p["resourceids"]; found {
+	if v, found := P.P["resourceids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("resourceids", vv)
 	}
-	if v, found := p.p["resourcetype"]; found {
+	if v, found := P.P["resourcetype"]; found {
 		u.Set("resourcetype", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
@@ -68,75 +68,75 @@ func (p *CreateTagsParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *CreateTagsParams) SetCustomer(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTagsParams) SetCustomer(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customer"] = v
+	P.P["customer"] = v
 }
 
-func (p *CreateTagsParams) GetCustomer() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTagsParams) GetCustomer() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customer"].(string)
+	value, ok := P.P["customer"].(string)
 	return value, ok
 }
 
-func (p *CreateTagsParams) SetResourceids(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTagsParams) SetResourceids(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourceids"] = v
+	P.P["resourceids"] = v
 }
 
-func (p *CreateTagsParams) GetResourceids() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTagsParams) GetResourceids() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourceids"].([]string)
+	value, ok := P.P["resourceids"].([]string)
 	return value, ok
 }
 
-func (p *CreateTagsParams) SetResourcetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTagsParams) SetResourcetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourcetype"] = v
+	P.P["resourcetype"] = v
 }
 
-func (p *CreateTagsParams) GetResourcetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTagsParams) GetResourcetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourcetype"].(string)
+	value, ok := P.P["resourcetype"].(string)
 	return value, ok
 }
 
-func (p *CreateTagsParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTagsParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *CreateTagsParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTagsParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateTagsParams instance,
 // as then you are sure you have configured all required params
 func (s *ResourcetagsService) NewCreateTagsParams(resourceids []string, resourcetype string, tags map[string]string) *CreateTagsParams {
-	p := &CreateTagsParams{}
-	p.p = make(map[string]interface{})
-	p.p["resourceids"] = resourceids
-	p.p["resourcetype"] = resourcetype
-	p.p["tags"] = tags
-	return p
+	P := &CreateTagsParams{}
+	P.P = make(map[string]interface{})
+	P.P["resourceids"] = resourceids
+	P.P["resourcetype"] = resourcetype
+	P.P["tags"] = tags
+	return P
 }
 
 // Creates resource tag(s)
@@ -177,22 +177,22 @@ type CreateTagsResponse struct {
 }
 
 type DeleteTagsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteTagsParams) toURLValues() url.Values {
+func (P *DeleteTagsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["resourceids"]; found {
+	if v, found := P.P["resourceids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("resourceids", vv)
 	}
-	if v, found := p.p["resourcetype"]; found {
+	if v, found := P.P["resourcetype"]; found {
 		u.Set("resourcetype", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
@@ -202,59 +202,59 @@ func (p *DeleteTagsParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *DeleteTagsParams) SetResourceids(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTagsParams) SetResourceids(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourceids"] = v
+	P.P["resourceids"] = v
 }
 
-func (p *DeleteTagsParams) GetResourceids() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTagsParams) GetResourceids() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourceids"].([]string)
+	value, ok := P.P["resourceids"].([]string)
 	return value, ok
 }
 
-func (p *DeleteTagsParams) SetResourcetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTagsParams) SetResourcetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourcetype"] = v
+	P.P["resourcetype"] = v
 }
 
-func (p *DeleteTagsParams) GetResourcetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTagsParams) GetResourcetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourcetype"].(string)
+	value, ok := P.P["resourcetype"].(string)
 	return value, ok
 }
 
-func (p *DeleteTagsParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTagsParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *DeleteTagsParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTagsParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteTagsParams instance,
 // as then you are sure you have configured all required params
 func (s *ResourcetagsService) NewDeleteTagsParams(resourceids []string, resourcetype string) *DeleteTagsParams {
-	p := &DeleteTagsParams{}
-	p.p = make(map[string]interface{})
-	p.p["resourceids"] = resourceids
-	p.p["resourcetype"] = resourcetype
-	return p
+	P := &DeleteTagsParams{}
+	P.P = make(map[string]interface{})
+	P.P["resourceids"] = resourceids
+	P.P["resourcetype"] = resourcetype
+	return P
 }
 
 // Deleting resource tag(s)
@@ -295,95 +295,95 @@ type DeleteTagsResponse struct {
 }
 
 type ListStorageTagsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListStorageTagsParams) toURLValues() url.Values {
+func (P *ListStorageTagsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListStorageTagsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageTagsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListStorageTagsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageTagsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListStorageTagsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageTagsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListStorageTagsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageTagsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListStorageTagsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageTagsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListStorageTagsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageTagsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListStorageTagsParams instance,
 // as then you are sure you have configured all required params
 func (s *ResourcetagsService) NewListStorageTagsParams() *ListStorageTagsParams {
-	p := &ListStorageTagsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListStorageTagsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ResourcetagsService) GetStorageTagID(keyword string, opts ...OptionFunc) (string, int, error) {
-	p := &ListStorageTagsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListStorageTagsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["keyword"] = keyword
+	P.P["keyword"] = keyword
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListStorageTags(p)
+	l, err := s.ListStorageTags(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -435,261 +435,261 @@ type StorageTag struct {
 }
 
 type ListTagsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListTagsParams) toURLValues() url.Values {
+func (P *ListTagsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["customer"]; found {
+	if v, found := P.P["customer"]; found {
 		u.Set("customer", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["key"]; found {
+	if v, found := P.P["key"]; found {
 		u.Set("key", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["resourceid"]; found {
+	if v, found := P.P["resourceid"]; found {
 		u.Set("resourceid", v.(string))
 	}
-	if v, found := p.p["resourcetype"]; found {
+	if v, found := P.P["resourcetype"]; found {
 		u.Set("resourcetype", v.(string))
 	}
-	if v, found := p.p["value"]; found {
+	if v, found := P.P["value"]; found {
 		u.Set("value", v.(string))
 	}
 	return u
 }
 
-func (p *ListTagsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListTagsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetCustomer(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetCustomer(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customer"] = v
+	P.P["customer"] = v
 }
 
-func (p *ListTagsParams) GetCustomer() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetCustomer() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customer"].(string)
+	value, ok := P.P["customer"].(string)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListTagsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListTagsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetKey(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetKey(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["key"] = v
+	P.P["key"] = v
 }
 
-func (p *ListTagsParams) GetKey() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetKey() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["key"].(string)
+	value, ok := P.P["key"].(string)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListTagsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListTagsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListTagsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListTagsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListTagsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetResourceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetResourceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourceid"] = v
+	P.P["resourceid"] = v
 }
 
-func (p *ListTagsParams) GetResourceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetResourceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourceid"].(string)
+	value, ok := P.P["resourceid"].(string)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetResourcetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetResourcetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourcetype"] = v
+	P.P["resourcetype"] = v
 }
 
-func (p *ListTagsParams) GetResourcetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetResourcetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourcetype"].(string)
+	value, ok := P.P["resourcetype"].(string)
 	return value, ok
 }
 
-func (p *ListTagsParams) SetValue(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) SetValue(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["value"] = v
+	P.P["value"] = v
 }
 
-func (p *ListTagsParams) GetValue() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTagsParams) GetValue() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["value"].(string)
+	value, ok := P.P["value"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListTagsParams instance,
 // as then you are sure you have configured all required params
 func (s *ResourcetagsService) NewListTagsParams() *ListTagsParams {
-	p := &ListTagsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListTagsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // List resource tag(s)

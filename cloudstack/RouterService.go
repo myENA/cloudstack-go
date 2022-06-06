@@ -28,86 +28,86 @@ import (
 )
 
 type RouterServiceIface interface {
-	ChangeServiceForRouter(p *ChangeServiceForRouterParams) (*ChangeServiceForRouterResponse, error)
+	ChangeServiceForRouter(P *ChangeServiceForRouterParams) (*ChangeServiceForRouterResponse, error)
 	NewChangeServiceForRouterParams(id string, serviceofferingid string) *ChangeServiceForRouterParams
-	ConfigureVirtualRouterElement(p *ConfigureVirtualRouterElementParams) (*VirtualRouterElementResponse, error)
+	ConfigureVirtualRouterElement(P *ConfigureVirtualRouterElementParams) (*VirtualRouterElementResponse, error)
 	NewConfigureVirtualRouterElementParams(enabled bool, id string) *ConfigureVirtualRouterElementParams
-	CreateVirtualRouterElement(p *CreateVirtualRouterElementParams) (*CreateVirtualRouterElementResponse, error)
+	CreateVirtualRouterElement(P *CreateVirtualRouterElementParams) (*CreateVirtualRouterElementResponse, error)
 	NewCreateVirtualRouterElementParams(nspid string) *CreateVirtualRouterElementParams
-	DestroyRouter(p *DestroyRouterParams) (*DestroyRouterResponse, error)
+	DestroyRouter(P *DestroyRouterParams) (*DestroyRouterResponse, error)
 	NewDestroyRouterParams(id string) *DestroyRouterParams
-	ListRouters(p *ListRoutersParams) (*ListRoutersResponse, error)
+	ListRouters(P *ListRoutersParams) (*ListRoutersResponse, error)
 	NewListRoutersParams() *ListRoutersParams
 	GetRouterID(name string, opts ...OptionFunc) (string, int, error)
 	GetRouterByName(name string, opts ...OptionFunc) (*Router, int, error)
 	GetRouterByID(id string, opts ...OptionFunc) (*Router, int, error)
-	ListVirtualRouterElements(p *ListVirtualRouterElementsParams) (*ListVirtualRouterElementsResponse, error)
+	ListVirtualRouterElements(P *ListVirtualRouterElementsParams) (*ListVirtualRouterElementsResponse, error)
 	NewListVirtualRouterElementsParams() *ListVirtualRouterElementsParams
 	GetVirtualRouterElementByID(id string, opts ...OptionFunc) (*VirtualRouterElement, int, error)
-	RebootRouter(p *RebootRouterParams) (*RebootRouterResponse, error)
+	RebootRouter(P *RebootRouterParams) (*RebootRouterResponse, error)
 	NewRebootRouterParams(id string) *RebootRouterParams
-	StartRouter(p *StartRouterParams) (*StartRouterResponse, error)
+	StartRouter(P *StartRouterParams) (*StartRouterResponse, error)
 	NewStartRouterParams(id string) *StartRouterParams
-	StopRouter(p *StopRouterParams) (*StopRouterResponse, error)
+	StopRouter(P *StopRouterParams) (*StopRouterResponse, error)
 	NewStopRouterParams(id string) *StopRouterParams
 }
 
 type ChangeServiceForRouterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ChangeServiceForRouterParams) toURLValues() url.Values {
+func (P *ChangeServiceForRouterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["serviceofferingid"]; found {
+	if v, found := P.P["serviceofferingid"]; found {
 		u.Set("serviceofferingid", v.(string))
 	}
 	return u
 }
 
-func (p *ChangeServiceForRouterParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeServiceForRouterParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ChangeServiceForRouterParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeServiceForRouterParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ChangeServiceForRouterParams) SetServiceofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeServiceForRouterParams) SetServiceofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["serviceofferingid"] = v
+	P.P["serviceofferingid"] = v
 }
 
-func (p *ChangeServiceForRouterParams) GetServiceofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeServiceForRouterParams) GetServiceofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["serviceofferingid"].(string)
+	value, ok := P.P["serviceofferingid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ChangeServiceForRouterParams instance,
 // as then you are sure you have configured all required params
 func (s *RouterService) NewChangeServiceForRouterParams(id string, serviceofferingid string) *ChangeServiceForRouterParams {
-	p := &ChangeServiceForRouterParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["serviceofferingid"] = serviceofferingid
-	return p
+	P := &ChangeServiceForRouterParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["serviceofferingid"] = serviceofferingid
+	return P
 }
 
 // Upgrades domain router to a new service offering
@@ -190,62 +190,62 @@ type ChangeServiceForRouterResponseHealthcheckresults struct {
 }
 
 type ConfigureVirtualRouterElementParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ConfigureVirtualRouterElementParams) toURLValues() url.Values {
+func (P *ConfigureVirtualRouterElementParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["enabled"]; found {
+	if v, found := P.P["enabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("enabled", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *ConfigureVirtualRouterElementParams) SetEnabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureVirtualRouterElementParams) SetEnabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enabled"] = v
+	P.P["enabled"] = v
 }
 
-func (p *ConfigureVirtualRouterElementParams) GetEnabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureVirtualRouterElementParams) GetEnabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enabled"].(bool)
+	value, ok := P.P["enabled"].(bool)
 	return value, ok
 }
 
-func (p *ConfigureVirtualRouterElementParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureVirtualRouterElementParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ConfigureVirtualRouterElementParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureVirtualRouterElementParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ConfigureVirtualRouterElementParams instance,
 // as then you are sure you have configured all required params
 func (s *RouterService) NewConfigureVirtualRouterElementParams(enabled bool, id string) *ConfigureVirtualRouterElementParams {
-	p := &ConfigureVirtualRouterElementParams{}
-	p.p = make(map[string]interface{})
-	p.p["enabled"] = enabled
-	p.p["id"] = id
-	return p
+	P := &ConfigureVirtualRouterElementParams{}
+	P.P = make(map[string]interface{})
+	P.P["enabled"] = enabled
+	P.P["id"] = id
+	return P
 }
 
 // Configures a virtual router element.
@@ -297,60 +297,60 @@ type VirtualRouterElementResponse struct {
 }
 
 type CreateVirtualRouterElementParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateVirtualRouterElementParams) toURLValues() url.Values {
+func (P *CreateVirtualRouterElementParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["nspid"]; found {
+	if v, found := P.P["nspid"]; found {
 		u.Set("nspid", v.(string))
 	}
-	if v, found := p.p["providertype"]; found {
+	if v, found := P.P["providertype"]; found {
 		u.Set("providertype", v.(string))
 	}
 	return u
 }
 
-func (p *CreateVirtualRouterElementParams) SetNspid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVirtualRouterElementParams) SetNspid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["nspid"] = v
+	P.P["nspid"] = v
 }
 
-func (p *CreateVirtualRouterElementParams) GetNspid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVirtualRouterElementParams) GetNspid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["nspid"].(string)
+	value, ok := P.P["nspid"].(string)
 	return value, ok
 }
 
-func (p *CreateVirtualRouterElementParams) SetProvidertype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVirtualRouterElementParams) SetProvidertype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["providertype"] = v
+	P.P["providertype"] = v
 }
 
-func (p *CreateVirtualRouterElementParams) GetProvidertype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVirtualRouterElementParams) GetProvidertype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["providertype"].(string)
+	value, ok := P.P["providertype"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateVirtualRouterElementParams instance,
 // as then you are sure you have configured all required params
 func (s *RouterService) NewCreateVirtualRouterElementParams(nspid string) *CreateVirtualRouterElementParams {
-	p := &CreateVirtualRouterElementParams{}
-	p.p = make(map[string]interface{})
-	p.p["nspid"] = nspid
-	return p
+	P := &CreateVirtualRouterElementParams{}
+	P.P = make(map[string]interface{})
+	P.P["nspid"] = nspid
+	return P
 }
 
 // Create a virtual router element.
@@ -402,42 +402,42 @@ type CreateVirtualRouterElementResponse struct {
 }
 
 type DestroyRouterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DestroyRouterParams) toURLValues() url.Values {
+func (P *DestroyRouterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DestroyRouterParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DestroyRouterParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DestroyRouterParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DestroyRouterParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DestroyRouterParams instance,
 // as then you are sure you have configured all required params
 func (s *RouterService) NewDestroyRouterParams(id string) *DestroyRouterParams {
-	p := &DestroyRouterParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DestroyRouterParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Destroys a router.
@@ -540,424 +540,424 @@ type DestroyRouterResponseHealthcheckresults struct {
 }
 
 type ListRoutersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListRoutersParams) toURLValues() url.Values {
+func (P *ListRoutersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fetchhealthcheckresults"]; found {
+	if v, found := P.P["fetchhealthcheckresults"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fetchhealthcheckresults", vv)
 	}
-	if v, found := p.p["forvpc"]; found {
+	if v, found := P.P["forvpc"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forvpc", vv)
 	}
-	if v, found := p.p["healthchecksfailed"]; found {
+	if v, found := P.P["healthchecksfailed"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("healthchecksfailed", vv)
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["version"]; found {
+	if v, found := P.P["version"]; found {
 		u.Set("version", v.(string))
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListRoutersParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListRoutersParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *ListRoutersParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListRoutersParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetFetchhealthcheckresults(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetFetchhealthcheckresults(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fetchhealthcheckresults"] = v
+	P.P["fetchhealthcheckresults"] = v
 }
 
-func (p *ListRoutersParams) GetFetchhealthcheckresults() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetFetchhealthcheckresults() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fetchhealthcheckresults"].(bool)
+	value, ok := P.P["fetchhealthcheckresults"].(bool)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetForvpc(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetForvpc(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forvpc"] = v
+	P.P["forvpc"] = v
 }
 
-func (p *ListRoutersParams) GetForvpc() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetForvpc() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forvpc"].(bool)
+	value, ok := P.P["forvpc"].(bool)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetHealthchecksfailed(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetHealthchecksfailed(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["healthchecksfailed"] = v
+	P.P["healthchecksfailed"] = v
 }
 
-func (p *ListRoutersParams) GetHealthchecksfailed() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetHealthchecksfailed() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["healthchecksfailed"].(bool)
+	value, ok := P.P["healthchecksfailed"].(bool)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *ListRoutersParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListRoutersParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListRoutersParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListRoutersParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListRoutersParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListRoutersParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListRoutersParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListRoutersParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListRoutersParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListRoutersParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListRoutersParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListRoutersParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetVersion(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetVersion(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["version"] = v
+	P.P["version"] = v
 }
 
-func (p *ListRoutersParams) GetVersion() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetVersion() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["version"].(string)
+	value, ok := P.P["version"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *ListRoutersParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
-func (p *ListRoutersParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListRoutersParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRoutersParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListRoutersParams instance,
 // as then you are sure you have configured all required params
 func (s *RouterService) NewListRoutersParams() *ListRoutersParams {
-	p := &ListRoutersParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListRoutersParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *RouterService) GetRouterID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListRoutersParams{}
-	p.p = make(map[string]interface{})
+	P := &ListRoutersParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListRouters(p)
+	l, err := s.ListRouters(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -996,18 +996,18 @@ func (s *RouterService) GetRouterByName(name string, opts ...OptionFunc) (*Route
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *RouterService) GetRouterByID(id string, opts ...OptionFunc) (*Router, int, error) {
-	p := &ListRoutersParams{}
-	p.p = make(map[string]interface{})
+	P := &ListRoutersParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListRouters(p)
+	l, err := s.ListRouters(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1112,150 +1112,150 @@ type RouterHealthcheckresults struct {
 }
 
 type ListVirtualRouterElementsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListVirtualRouterElementsParams) toURLValues() url.Values {
+func (P *ListVirtualRouterElementsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["enabled"]; found {
+	if v, found := P.P["enabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("enabled", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["nspid"]; found {
+	if v, found := P.P["nspid"]; found {
 		u.Set("nspid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListVirtualRouterElementsParams) SetEnabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) SetEnabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enabled"] = v
+	P.P["enabled"] = v
 }
 
-func (p *ListVirtualRouterElementsParams) GetEnabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) GetEnabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enabled"].(bool)
+	value, ok := P.P["enabled"].(bool)
 	return value, ok
 }
 
-func (p *ListVirtualRouterElementsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListVirtualRouterElementsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListVirtualRouterElementsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListVirtualRouterElementsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListVirtualRouterElementsParams) SetNspid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) SetNspid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["nspid"] = v
+	P.P["nspid"] = v
 }
 
-func (p *ListVirtualRouterElementsParams) GetNspid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) GetNspid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["nspid"].(string)
+	value, ok := P.P["nspid"].(string)
 	return value, ok
 }
 
-func (p *ListVirtualRouterElementsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListVirtualRouterElementsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListVirtualRouterElementsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListVirtualRouterElementsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVirtualRouterElementsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListVirtualRouterElementsParams instance,
 // as then you are sure you have configured all required params
 func (s *RouterService) NewListVirtualRouterElementsParams() *ListVirtualRouterElementsParams {
-	p := &ListVirtualRouterElementsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListVirtualRouterElementsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *RouterService) GetVirtualRouterElementByID(id string, opts ...OptionFunc) (*VirtualRouterElement, int, error) {
-	p := &ListVirtualRouterElementsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVirtualRouterElementsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListVirtualRouterElements(p)
+	l, err := s.ListVirtualRouterElements(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1309,61 +1309,61 @@ type VirtualRouterElement struct {
 }
 
 type RebootRouterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RebootRouterParams) toURLValues() url.Values {
+func (P *RebootRouterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["forced"]; found {
+	if v, found := P.P["forced"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forced", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *RebootRouterParams) SetForced(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RebootRouterParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forced"] = v
+	P.P["forced"] = v
 }
 
-func (p *RebootRouterParams) GetForced() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RebootRouterParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forced"].(bool)
+	value, ok := P.P["forced"].(bool)
 	return value, ok
 }
 
-func (p *RebootRouterParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RebootRouterParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *RebootRouterParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RebootRouterParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new RebootRouterParams instance,
 // as then you are sure you have configured all required params
 func (s *RouterService) NewRebootRouterParams(id string) *RebootRouterParams {
-	p := &RebootRouterParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &RebootRouterParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Starts a router.
@@ -1466,42 +1466,42 @@ type RebootRouterResponseHealthcheckresults struct {
 }
 
 type StartRouterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *StartRouterParams) toURLValues() url.Values {
+func (P *StartRouterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *StartRouterParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StartRouterParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *StartRouterParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StartRouterParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new StartRouterParams instance,
 // as then you are sure you have configured all required params
 func (s *RouterService) NewStartRouterParams(id string) *StartRouterParams {
-	p := &StartRouterParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &StartRouterParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Starts a router.
@@ -1604,61 +1604,61 @@ type StartRouterResponseHealthcheckresults struct {
 }
 
 type StopRouterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *StopRouterParams) toURLValues() url.Values {
+func (P *StopRouterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["forced"]; found {
+	if v, found := P.P["forced"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forced", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *StopRouterParams) SetForced(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopRouterParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forced"] = v
+	P.P["forced"] = v
 }
 
-func (p *StopRouterParams) GetForced() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopRouterParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forced"].(bool)
+	value, ok := P.P["forced"].(bool)
 	return value, ok
 }
 
-func (p *StopRouterParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopRouterParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *StopRouterParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopRouterParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new StopRouterParams instance,
 // as then you are sure you have configured all required params
 func (s *RouterService) NewStopRouterParams(id string) *StopRouterParams {
-	p := &StopRouterParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &StopRouterParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Stops a router.

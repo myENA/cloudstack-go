@@ -26,71 +26,71 @@ import (
 )
 
 type NicServiceIface interface {
-	AddIpToNic(p *AddIpToNicParams) (*AddIpToNicResponse, error)
+	AddIpToNic(P *AddIpToNicParams) (*AddIpToNicResponse, error)
 	NewAddIpToNicParams(nicid string) *AddIpToNicParams
-	ListNics(p *ListNicsParams) (*ListNicsResponse, error)
+	ListNics(P *ListNicsParams) (*ListNicsResponse, error)
 	NewListNicsParams(virtualmachineid string) *ListNicsParams
-	RemoveIpFromNic(p *RemoveIpFromNicParams) (*RemoveIpFromNicResponse, error)
+	RemoveIpFromNic(P *RemoveIpFromNicParams) (*RemoveIpFromNicResponse, error)
 	NewRemoveIpFromNicParams(id string) *RemoveIpFromNicParams
-	UpdateVmNicIp(p *UpdateVmNicIpParams) (*UpdateVmNicIpResponse, error)
+	UpdateVmNicIp(P *UpdateVmNicIpParams) (*UpdateVmNicIpResponse, error)
 	NewUpdateVmNicIpParams(nicid string) *UpdateVmNicIpParams
 }
 
 type AddIpToNicParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddIpToNicParams) toURLValues() url.Values {
+func (P *AddIpToNicParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["ipaddress"]; found {
+	if v, found := P.P["ipaddress"]; found {
 		u.Set("ipaddress", v.(string))
 	}
-	if v, found := p.p["nicid"]; found {
+	if v, found := P.P["nicid"]; found {
 		u.Set("nicid", v.(string))
 	}
 	return u
 }
 
-func (p *AddIpToNicParams) SetIpaddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddIpToNicParams) SetIpaddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddress"] = v
+	P.P["ipaddress"] = v
 }
 
-func (p *AddIpToNicParams) GetIpaddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddIpToNicParams) GetIpaddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddress"].(string)
+	value, ok := P.P["ipaddress"].(string)
 	return value, ok
 }
 
-func (p *AddIpToNicParams) SetNicid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddIpToNicParams) SetNicid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["nicid"] = v
+	P.P["nicid"] = v
 }
 
-func (p *AddIpToNicParams) GetNicid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddIpToNicParams) GetNicid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["nicid"].(string)
+	value, ok := P.P["nicid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddIpToNicParams instance,
 // as then you are sure you have configured all required params
 func (s *NicService) NewAddIpToNicParams(nicid string) *AddIpToNicParams {
-	p := &AddIpToNicParams{}
-	p.p = make(map[string]interface{})
-	p.p["nicid"] = nicid
-	return p
+	P := &AddIpToNicParams{}
+	P.P = make(map[string]interface{})
+	P.P["nicid"] = nicid
+	return P
 }
 
 // Assigns secondary IP to NIC
@@ -143,153 +143,153 @@ type AddIpToNicResponse struct {
 }
 
 type ListNicsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListNicsParams) toURLValues() url.Values {
+func (P *ListNicsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["nicid"]; found {
+	if v, found := P.P["nicid"]; found {
 		u.Set("nicid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
 	return u
 }
 
-func (p *ListNicsParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListNicsParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListNicsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListNicsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListNicsParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListNicsParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListNicsParams) SetNicid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) SetNicid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["nicid"] = v
+	P.P["nicid"] = v
 }
 
-func (p *ListNicsParams) GetNicid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) GetNicid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["nicid"].(string)
+	value, ok := P.P["nicid"].(string)
 	return value, ok
 }
 
-func (p *ListNicsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListNicsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListNicsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListNicsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListNicsParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *ListNicsParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNicsParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListNicsParams instance,
 // as then you are sure you have configured all required params
 func (s *NicService) NewListNicsParams(virtualmachineid string) *ListNicsParams {
-	p := &ListNicsParams{}
-	p.p = make(map[string]interface{})
-	p.p["virtualmachineid"] = virtualmachineid
-	return p
+	P := &ListNicsParams{}
+	P.P = make(map[string]interface{})
+	P.P["virtualmachineid"] = virtualmachineid
+	return P
 }
 
 // list the vm nics  IP to NIC
@@ -347,42 +347,42 @@ type Nic struct {
 }
 
 type RemoveIpFromNicParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RemoveIpFromNicParams) toURLValues() url.Values {
+func (P *RemoveIpFromNicParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *RemoveIpFromNicParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveIpFromNicParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *RemoveIpFromNicParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveIpFromNicParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new RemoveIpFromNicParams instance,
 // as then you are sure you have configured all required params
 func (s *NicService) NewRemoveIpFromNicParams(id string) *RemoveIpFromNicParams {
-	p := &RemoveIpFromNicParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &RemoveIpFromNicParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Removes secondary IP from the NIC.
@@ -423,60 +423,60 @@ type RemoveIpFromNicResponse struct {
 }
 
 type UpdateVmNicIpParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateVmNicIpParams) toURLValues() url.Values {
+func (P *UpdateVmNicIpParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["ipaddress"]; found {
+	if v, found := P.P["ipaddress"]; found {
 		u.Set("ipaddress", v.(string))
 	}
-	if v, found := p.p["nicid"]; found {
+	if v, found := P.P["nicid"]; found {
 		u.Set("nicid", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateVmNicIpParams) SetIpaddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVmNicIpParams) SetIpaddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddress"] = v
+	P.P["ipaddress"] = v
 }
 
-func (p *UpdateVmNicIpParams) GetIpaddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVmNicIpParams) GetIpaddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddress"].(string)
+	value, ok := P.P["ipaddress"].(string)
 	return value, ok
 }
 
-func (p *UpdateVmNicIpParams) SetNicid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVmNicIpParams) SetNicid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["nicid"] = v
+	P.P["nicid"] = v
 }
 
-func (p *UpdateVmNicIpParams) GetNicid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVmNicIpParams) GetNicid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["nicid"].(string)
+	value, ok := P.P["nicid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateVmNicIpParams instance,
 // as then you are sure you have configured all required params
 func (s *NicService) NewUpdateVmNicIpParams(nicid string) *UpdateVmNicIpParams {
-	p := &UpdateVmNicIpParams{}
-	p.p = make(map[string]interface{})
-	p.p["nicid"] = nicid
-	return p
+	P := &UpdateVmNicIpParams{}
+	P.P = make(map[string]interface{})
+	P.P["nicid"] = nicid
+	return P
 }
 
 // Update the default Ip of a VM Nic

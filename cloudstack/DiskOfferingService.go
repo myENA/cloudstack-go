@@ -28,585 +28,585 @@ import (
 )
 
 type DiskOfferingServiceIface interface {
-	CreateDiskOffering(p *CreateDiskOfferingParams) (*CreateDiskOfferingResponse, error)
+	CreateDiskOffering(P *CreateDiskOfferingParams) (*CreateDiskOfferingResponse, error)
 	NewCreateDiskOfferingParams(displaytext string, name string) *CreateDiskOfferingParams
-	DeleteDiskOffering(p *DeleteDiskOfferingParams) (*DeleteDiskOfferingResponse, error)
+	DeleteDiskOffering(P *DeleteDiskOfferingParams) (*DeleteDiskOfferingResponse, error)
 	NewDeleteDiskOfferingParams(id string) *DeleteDiskOfferingParams
-	ListDiskOfferings(p *ListDiskOfferingsParams) (*ListDiskOfferingsResponse, error)
+	ListDiskOfferings(P *ListDiskOfferingsParams) (*ListDiskOfferingsResponse, error)
 	NewListDiskOfferingsParams() *ListDiskOfferingsParams
 	GetDiskOfferingID(name string, opts ...OptionFunc) (string, int, error)
 	GetDiskOfferingByName(name string, opts ...OptionFunc) (*DiskOffering, int, error)
 	GetDiskOfferingByID(id string, opts ...OptionFunc) (*DiskOffering, int, error)
-	UpdateDiskOffering(p *UpdateDiskOfferingParams) (*UpdateDiskOfferingResponse, error)
+	UpdateDiskOffering(P *UpdateDiskOfferingParams) (*UpdateDiskOfferingResponse, error)
 	NewUpdateDiskOfferingParams(id string) *UpdateDiskOfferingParams
 }
 
 type CreateDiskOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateDiskOfferingParams) toURLValues() url.Values {
+func (P *CreateDiskOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["bytesreadrate"]; found {
+	if v, found := P.P["bytesreadrate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("bytesreadrate", vv)
 	}
-	if v, found := p.p["bytesreadratemax"]; found {
+	if v, found := P.P["bytesreadratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("bytesreadratemax", vv)
 	}
-	if v, found := p.p["bytesreadratemaxlength"]; found {
+	if v, found := P.P["bytesreadratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("bytesreadratemaxlength", vv)
 	}
-	if v, found := p.p["byteswriterate"]; found {
+	if v, found := P.P["byteswriterate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("byteswriterate", vv)
 	}
-	if v, found := p.p["byteswriteratemax"]; found {
+	if v, found := P.P["byteswriteratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("byteswriteratemax", vv)
 	}
-	if v, found := p.p["byteswriteratemaxlength"]; found {
+	if v, found := P.P["byteswriteratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("byteswriteratemaxlength", vv)
 	}
-	if v, found := p.p["cachemode"]; found {
+	if v, found := P.P["cachemode"]; found {
 		u.Set("cachemode", v.(string))
 	}
-	if v, found := p.p["customized"]; found {
+	if v, found := P.P["customized"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("customized", vv)
 	}
-	if v, found := p.p["customizediops"]; found {
+	if v, found := P.P["customizediops"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("customizediops", vv)
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].%s", i, k), m[k])
 		}
 	}
-	if v, found := p.p["disksize"]; found {
+	if v, found := P.P["disksize"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("disksize", vv)
 	}
-	if v, found := p.p["displayoffering"]; found {
+	if v, found := P.P["displayoffering"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("displayoffering", vv)
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("domainid", vv)
 	}
-	if v, found := p.p["hypervisorsnapshotreserve"]; found {
+	if v, found := P.P["hypervisorsnapshotreserve"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("hypervisorsnapshotreserve", vv)
 	}
-	if v, found := p.p["iopsreadrate"]; found {
+	if v, found := P.P["iopsreadrate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopsreadrate", vv)
 	}
-	if v, found := p.p["iopsreadratemax"]; found {
+	if v, found := P.P["iopsreadratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopsreadratemax", vv)
 	}
-	if v, found := p.p["iopsreadratemaxlength"]; found {
+	if v, found := P.P["iopsreadratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopsreadratemaxlength", vv)
 	}
-	if v, found := p.p["iopswriterate"]; found {
+	if v, found := P.P["iopswriterate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopswriterate", vv)
 	}
-	if v, found := p.p["iopswriteratemax"]; found {
+	if v, found := P.P["iopswriteratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopswriteratemax", vv)
 	}
-	if v, found := p.p["iopswriteratemaxlength"]; found {
+	if v, found := P.P["iopswriteratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopswriteratemaxlength", vv)
 	}
-	if v, found := p.p["maxiops"]; found {
+	if v, found := P.P["maxiops"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("maxiops", vv)
 	}
-	if v, found := p.p["miniops"]; found {
+	if v, found := P.P["miniops"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("miniops", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["provisioningtype"]; found {
+	if v, found := P.P["provisioningtype"]; found {
 		u.Set("provisioningtype", v.(string))
 	}
-	if v, found := p.p["storagepolicy"]; found {
+	if v, found := P.P["storagepolicy"]; found {
 		u.Set("storagepolicy", v.(string))
 	}
-	if v, found := p.p["storagetype"]; found {
+	if v, found := P.P["storagetype"]; found {
 		u.Set("storagetype", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		u.Set("tags", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("zoneid", vv)
 	}
 	return u
 }
 
-func (p *CreateDiskOfferingParams) SetBytesreadrate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetBytesreadrate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bytesreadrate"] = v
+	P.P["bytesreadrate"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetBytesreadrate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetBytesreadrate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bytesreadrate"].(int64)
+	value, ok := P.P["bytesreadrate"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetBytesreadratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetBytesreadratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bytesreadratemax"] = v
+	P.P["bytesreadratemax"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetBytesreadratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetBytesreadratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bytesreadratemax"].(int64)
+	value, ok := P.P["bytesreadratemax"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetBytesreadratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetBytesreadratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bytesreadratemaxlength"] = v
+	P.P["bytesreadratemaxlength"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetBytesreadratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetBytesreadratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bytesreadratemaxlength"].(int64)
+	value, ok := P.P["bytesreadratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetByteswriterate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetByteswriterate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["byteswriterate"] = v
+	P.P["byteswriterate"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetByteswriterate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetByteswriterate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["byteswriterate"].(int64)
+	value, ok := P.P["byteswriterate"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetByteswriteratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetByteswriteratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["byteswriteratemax"] = v
+	P.P["byteswriteratemax"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetByteswriteratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetByteswriteratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["byteswriteratemax"].(int64)
+	value, ok := P.P["byteswriteratemax"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetByteswriteratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetByteswriteratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["byteswriteratemaxlength"] = v
+	P.P["byteswriteratemaxlength"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetByteswriteratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetByteswriteratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["byteswriteratemaxlength"].(int64)
+	value, ok := P.P["byteswriteratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetCachemode(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetCachemode(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cachemode"] = v
+	P.P["cachemode"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetCachemode() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetCachemode() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cachemode"].(string)
+	value, ok := P.P["cachemode"].(string)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetCustomized(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetCustomized(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customized"] = v
+	P.P["customized"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetCustomized() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetCustomized() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customized"].(bool)
+	value, ok := P.P["customized"].(bool)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetCustomizediops(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetCustomizediops(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customizediops"] = v
+	P.P["customizediops"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetCustomizediops() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetCustomizediops() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customizediops"].(bool)
+	value, ok := P.P["customizediops"].(bool)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetDisksize(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetDisksize(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["disksize"] = v
+	P.P["disksize"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetDisksize() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetDisksize() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["disksize"].(int64)
+	value, ok := P.P["disksize"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetDisplayoffering(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetDisplayoffering(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displayoffering"] = v
+	P.P["displayoffering"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetDisplayoffering() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetDisplayoffering() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displayoffering"].(bool)
+	value, ok := P.P["displayoffering"].(bool)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetDomainid(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetDomainid(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetDomainid() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetDomainid() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].([]string)
+	value, ok := P.P["domainid"].([]string)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetHypervisorsnapshotreserve(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetHypervisorsnapshotreserve(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisorsnapshotreserve"] = v
+	P.P["hypervisorsnapshotreserve"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetHypervisorsnapshotreserve() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetHypervisorsnapshotreserve() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisorsnapshotreserve"].(int)
+	value, ok := P.P["hypervisorsnapshotreserve"].(int)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetIopsreadrate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetIopsreadrate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopsreadrate"] = v
+	P.P["iopsreadrate"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetIopsreadrate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetIopsreadrate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopsreadrate"].(int64)
+	value, ok := P.P["iopsreadrate"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetIopsreadratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetIopsreadratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopsreadratemax"] = v
+	P.P["iopsreadratemax"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetIopsreadratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetIopsreadratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopsreadratemax"].(int64)
+	value, ok := P.P["iopsreadratemax"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetIopsreadratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetIopsreadratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopsreadratemaxlength"] = v
+	P.P["iopsreadratemaxlength"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetIopsreadratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetIopsreadratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopsreadratemaxlength"].(int64)
+	value, ok := P.P["iopsreadratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetIopswriterate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetIopswriterate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopswriterate"] = v
+	P.P["iopswriterate"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetIopswriterate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetIopswriterate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopswriterate"].(int64)
+	value, ok := P.P["iopswriterate"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetIopswriteratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetIopswriteratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopswriteratemax"] = v
+	P.P["iopswriteratemax"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetIopswriteratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetIopswriteratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopswriteratemax"].(int64)
+	value, ok := P.P["iopswriteratemax"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetIopswriteratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetIopswriteratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopswriteratemaxlength"] = v
+	P.P["iopswriteratemaxlength"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetIopswriteratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetIopswriteratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopswriteratemaxlength"].(int64)
+	value, ok := P.P["iopswriteratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetMaxiops(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetMaxiops(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["maxiops"] = v
+	P.P["maxiops"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetMaxiops() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetMaxiops() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["maxiops"].(int64)
+	value, ok := P.P["maxiops"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetMiniops(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetMiniops(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["miniops"] = v
+	P.P["miniops"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetMiniops() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetMiniops() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["miniops"].(int64)
+	value, ok := P.P["miniops"].(int64)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetProvisioningtype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetProvisioningtype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["provisioningtype"] = v
+	P.P["provisioningtype"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetProvisioningtype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetProvisioningtype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["provisioningtype"].(string)
+	value, ok := P.P["provisioningtype"].(string)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetStoragepolicy(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetStoragepolicy(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["storagepolicy"] = v
+	P.P["storagepolicy"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetStoragepolicy() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetStoragepolicy() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["storagepolicy"].(string)
+	value, ok := P.P["storagepolicy"].(string)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetStoragetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetStoragetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["storagetype"] = v
+	P.P["storagetype"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetStoragetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetStoragetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["storagetype"].(string)
+	value, ok := P.P["storagetype"].(string)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetTags(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetTags(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetTags() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetTags() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(string)
+	value, ok := P.P["tags"].(string)
 	return value, ok
 }
 
-func (p *CreateDiskOfferingParams) SetZoneid(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) SetZoneid(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreateDiskOfferingParams) GetZoneid() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDiskOfferingParams) GetZoneid() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].([]string)
+	value, ok := P.P["zoneid"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateDiskOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *DiskOfferingService) NewCreateDiskOfferingParams(displaytext string, name string) *CreateDiskOfferingParams {
-	p := &CreateDiskOfferingParams{}
-	p.p = make(map[string]interface{})
-	p.p["displaytext"] = displaytext
-	p.p["name"] = name
-	return p
+	P := &CreateDiskOfferingParams{}
+	P.P = make(map[string]interface{})
+	P.P["displaytext"] = displaytext
+	P.P["name"] = name
+	return P
 }
 
 // Creates a disk offering.
@@ -663,42 +663,42 @@ type CreateDiskOfferingResponse struct {
 }
 
 type DeleteDiskOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteDiskOfferingParams) toURLValues() url.Values {
+func (P *DeleteDiskOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteDiskOfferingParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteDiskOfferingParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteDiskOfferingParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteDiskOfferingParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteDiskOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *DiskOfferingService) NewDeleteDiskOfferingParams(id string) *DeleteDiskOfferingParams {
-	p := &DeleteDiskOfferingParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteDiskOfferingParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a disk offering.
@@ -751,205 +751,205 @@ func (r *DeleteDiskOfferingResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListDiskOfferingsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListDiskOfferingsParams) toURLValues() url.Values {
+func (P *ListDiskOfferingsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListDiskOfferingsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListDiskOfferingsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListDiskOfferingsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListDiskOfferingsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListDiskOfferingsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListDiskOfferingsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListDiskOfferingsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListDiskOfferingsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListDiskOfferingsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListDiskOfferingsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListDiskOfferingsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListDiskOfferingsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListDiskOfferingsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListDiskOfferingsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListDiskOfferingsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListDiskOfferingsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListDiskOfferingsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListDiskOfferingsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDiskOfferingsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListDiskOfferingsParams instance,
 // as then you are sure you have configured all required params
 func (s *DiskOfferingService) NewListDiskOfferingsParams() *ListDiskOfferingsParams {
-	p := &ListDiskOfferingsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListDiskOfferingsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *DiskOfferingService) GetDiskOfferingID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListDiskOfferingsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListDiskOfferingsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListDiskOfferings(p)
+	l, err := s.ListDiskOfferings(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -988,18 +988,18 @@ func (s *DiskOfferingService) GetDiskOfferingByName(name string, opts ...OptionF
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *DiskOfferingService) GetDiskOfferingByID(id string, opts ...OptionFunc) (*DiskOffering, int, error) {
-	p := &ListDiskOfferingsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListDiskOfferingsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListDiskOfferings(p)
+	l, err := s.ListDiskOfferings(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1078,416 +1078,416 @@ type DiskOffering struct {
 }
 
 type UpdateDiskOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateDiskOfferingParams) toURLValues() url.Values {
+func (P *UpdateDiskOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["bytesreadrate"]; found {
+	if v, found := P.P["bytesreadrate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("bytesreadrate", vv)
 	}
-	if v, found := p.p["bytesreadratemax"]; found {
+	if v, found := P.P["bytesreadratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("bytesreadratemax", vv)
 	}
-	if v, found := p.p["bytesreadratemaxlength"]; found {
+	if v, found := P.P["bytesreadratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("bytesreadratemaxlength", vv)
 	}
-	if v, found := p.p["byteswriterate"]; found {
+	if v, found := P.P["byteswriterate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("byteswriterate", vv)
 	}
-	if v, found := p.p["byteswriteratemax"]; found {
+	if v, found := P.P["byteswriteratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("byteswriteratemax", vv)
 	}
-	if v, found := p.p["byteswriteratemaxlength"]; found {
+	if v, found := P.P["byteswriteratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("byteswriteratemaxlength", vv)
 	}
-	if v, found := p.p["cachemode"]; found {
+	if v, found := P.P["cachemode"]; found {
 		u.Set("cachemode", v.(string))
 	}
-	if v, found := p.p["displayoffering"]; found {
+	if v, found := P.P["displayoffering"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("displayoffering", vv)
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["iopsreadrate"]; found {
+	if v, found := P.P["iopsreadrate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopsreadrate", vv)
 	}
-	if v, found := p.p["iopsreadratemax"]; found {
+	if v, found := P.P["iopsreadratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopsreadratemax", vv)
 	}
-	if v, found := p.p["iopsreadratemaxlength"]; found {
+	if v, found := P.P["iopsreadratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopsreadratemaxlength", vv)
 	}
-	if v, found := p.p["iopswriterate"]; found {
+	if v, found := P.P["iopswriterate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopswriterate", vv)
 	}
-	if v, found := p.p["iopswriteratemax"]; found {
+	if v, found := P.P["iopswriteratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopswriteratemax", vv)
 	}
-	if v, found := p.p["iopswriteratemaxlength"]; found {
+	if v, found := P.P["iopswriteratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopswriteratemaxlength", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["sortkey"]; found {
+	if v, found := P.P["sortkey"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("sortkey", vv)
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		u.Set("tags", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateDiskOfferingParams) SetBytesreadrate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetBytesreadrate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bytesreadrate"] = v
+	P.P["bytesreadrate"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetBytesreadrate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetBytesreadrate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bytesreadrate"].(int64)
+	value, ok := P.P["bytesreadrate"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetBytesreadratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetBytesreadratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bytesreadratemax"] = v
+	P.P["bytesreadratemax"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetBytesreadratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetBytesreadratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bytesreadratemax"].(int64)
+	value, ok := P.P["bytesreadratemax"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetBytesreadratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetBytesreadratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bytesreadratemaxlength"] = v
+	P.P["bytesreadratemaxlength"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetBytesreadratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetBytesreadratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bytesreadratemaxlength"].(int64)
+	value, ok := P.P["bytesreadratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetByteswriterate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetByteswriterate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["byteswriterate"] = v
+	P.P["byteswriterate"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetByteswriterate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetByteswriterate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["byteswriterate"].(int64)
+	value, ok := P.P["byteswriterate"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetByteswriteratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetByteswriteratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["byteswriteratemax"] = v
+	P.P["byteswriteratemax"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetByteswriteratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetByteswriteratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["byteswriteratemax"].(int64)
+	value, ok := P.P["byteswriteratemax"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetByteswriteratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetByteswriteratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["byteswriteratemaxlength"] = v
+	P.P["byteswriteratemaxlength"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetByteswriteratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetByteswriteratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["byteswriteratemaxlength"].(int64)
+	value, ok := P.P["byteswriteratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetCachemode(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetCachemode(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cachemode"] = v
+	P.P["cachemode"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetCachemode() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetCachemode() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cachemode"].(string)
+	value, ok := P.P["cachemode"].(string)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetDisplayoffering(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetDisplayoffering(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displayoffering"] = v
+	P.P["displayoffering"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetDisplayoffering() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetDisplayoffering() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displayoffering"].(bool)
+	value, ok := P.P["displayoffering"].(bool)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetIopsreadrate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetIopsreadrate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopsreadrate"] = v
+	P.P["iopsreadrate"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetIopsreadrate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetIopsreadrate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopsreadrate"].(int64)
+	value, ok := P.P["iopsreadrate"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetIopsreadratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetIopsreadratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopsreadratemax"] = v
+	P.P["iopsreadratemax"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetIopsreadratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetIopsreadratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopsreadratemax"].(int64)
+	value, ok := P.P["iopsreadratemax"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetIopsreadratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetIopsreadratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopsreadratemaxlength"] = v
+	P.P["iopsreadratemaxlength"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetIopsreadratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetIopsreadratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopsreadratemaxlength"].(int64)
+	value, ok := P.P["iopsreadratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetIopswriterate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetIopswriterate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopswriterate"] = v
+	P.P["iopswriterate"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetIopswriterate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetIopswriterate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopswriterate"].(int64)
+	value, ok := P.P["iopswriterate"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetIopswriteratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetIopswriteratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopswriteratemax"] = v
+	P.P["iopswriteratemax"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetIopswriteratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetIopswriteratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopswriteratemax"].(int64)
+	value, ok := P.P["iopswriteratemax"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetIopswriteratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetIopswriteratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopswriteratemaxlength"] = v
+	P.P["iopswriteratemaxlength"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetIopswriteratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetIopswriteratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopswriteratemaxlength"].(int64)
+	value, ok := P.P["iopswriteratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetSortkey(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetSortkey(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sortkey"] = v
+	P.P["sortkey"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetSortkey() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetSortkey() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sortkey"].(int)
+	value, ok := P.P["sortkey"].(int)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetTags(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetTags(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetTags() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetTags() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(string)
+	value, ok := P.P["tags"].(string)
 	return value, ok
 }
 
-func (p *UpdateDiskOfferingParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *UpdateDiskOfferingParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDiskOfferingParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateDiskOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *DiskOfferingService) NewUpdateDiskOfferingParams(id string) *UpdateDiskOfferingParams {
-	p := &UpdateDiskOfferingParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateDiskOfferingParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a disk offering.

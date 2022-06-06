@@ -28,70 +28,70 @@ import (
 )
 
 type OvsElementServiceIface interface {
-	ConfigureOvsElement(p *ConfigureOvsElementParams) (*OvsElementResponse, error)
+	ConfigureOvsElement(P *ConfigureOvsElementParams) (*OvsElementResponse, error)
 	NewConfigureOvsElementParams(enabled bool, id string) *ConfigureOvsElementParams
-	ListOvsElements(p *ListOvsElementsParams) (*ListOvsElementsResponse, error)
+	ListOvsElements(P *ListOvsElementsParams) (*ListOvsElementsResponse, error)
 	NewListOvsElementsParams() *ListOvsElementsParams
 	GetOvsElementByID(id string, opts ...OptionFunc) (*OvsElement, int, error)
 }
 
 type ConfigureOvsElementParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ConfigureOvsElementParams) toURLValues() url.Values {
+func (P *ConfigureOvsElementParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["enabled"]; found {
+	if v, found := P.P["enabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("enabled", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *ConfigureOvsElementParams) SetEnabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOvsElementParams) SetEnabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enabled"] = v
+	P.P["enabled"] = v
 }
 
-func (p *ConfigureOvsElementParams) GetEnabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOvsElementParams) GetEnabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enabled"].(bool)
+	value, ok := P.P["enabled"].(bool)
 	return value, ok
 }
 
-func (p *ConfigureOvsElementParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOvsElementParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ConfigureOvsElementParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOvsElementParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ConfigureOvsElementParams instance,
 // as then you are sure you have configured all required params
 func (s *OvsElementService) NewConfigureOvsElementParams(enabled bool, id string) *ConfigureOvsElementParams {
-	p := &ConfigureOvsElementParams{}
-	p.p = make(map[string]interface{})
-	p.p["enabled"] = enabled
-	p.p["id"] = id
-	return p
+	P := &ConfigureOvsElementParams{}
+	P.P = make(map[string]interface{})
+	P.P["enabled"] = enabled
+	P.P["id"] = id
+	return P
 }
 
 // Configures an ovs element.
@@ -143,150 +143,150 @@ type OvsElementResponse struct {
 }
 
 type ListOvsElementsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListOvsElementsParams) toURLValues() url.Values {
+func (P *ListOvsElementsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["enabled"]; found {
+	if v, found := P.P["enabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("enabled", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["nspid"]; found {
+	if v, found := P.P["nspid"]; found {
 		u.Set("nspid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListOvsElementsParams) SetEnabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) SetEnabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enabled"] = v
+	P.P["enabled"] = v
 }
 
-func (p *ListOvsElementsParams) GetEnabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) GetEnabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enabled"].(bool)
+	value, ok := P.P["enabled"].(bool)
 	return value, ok
 }
 
-func (p *ListOvsElementsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListOvsElementsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListOvsElementsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListOvsElementsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListOvsElementsParams) SetNspid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) SetNspid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["nspid"] = v
+	P.P["nspid"] = v
 }
 
-func (p *ListOvsElementsParams) GetNspid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) GetNspid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["nspid"].(string)
+	value, ok := P.P["nspid"].(string)
 	return value, ok
 }
 
-func (p *ListOvsElementsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListOvsElementsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListOvsElementsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListOvsElementsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOvsElementsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListOvsElementsParams instance,
 // as then you are sure you have configured all required params
 func (s *OvsElementService) NewListOvsElementsParams() *ListOvsElementsParams {
-	p := &ListOvsElementsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListOvsElementsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *OvsElementService) GetOvsElementByID(id string, opts ...OptionFunc) (*OvsElement, int, error) {
-	p := &ListOvsElementsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListOvsElementsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListOvsElements(p)
+	l, err := s.ListOvsElements(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+

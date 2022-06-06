@@ -28,218 +28,218 @@ import (
 )
 
 type AddressServiceIface interface {
-	AssociateIpAddress(p *AssociateIpAddressParams) (*AssociateIpAddressResponse, error)
+	AssociateIpAddress(P *AssociateIpAddressParams) (*AssociateIpAddressResponse, error)
 	NewAssociateIpAddressParams() *AssociateIpAddressParams
-	DisassociateIpAddress(p *DisassociateIpAddressParams) (*DisassociateIpAddressResponse, error)
+	DisassociateIpAddress(P *DisassociateIpAddressParams) (*DisassociateIpAddressResponse, error)
 	NewDisassociateIpAddressParams(id string) *DisassociateIpAddressParams
-	ListPublicIpAddresses(p *ListPublicIpAddressesParams) (*ListPublicIpAddressesResponse, error)
+	ListPublicIpAddresses(P *ListPublicIpAddressesParams) (*ListPublicIpAddressesResponse, error)
 	NewListPublicIpAddressesParams() *ListPublicIpAddressesParams
 	GetPublicIpAddressByID(id string, opts ...OptionFunc) (*PublicIpAddress, int, error)
-	UpdateIpAddress(p *UpdateIpAddressParams) (*UpdateIpAddressResponse, error)
+	UpdateIpAddress(P *UpdateIpAddressParams) (*UpdateIpAddressResponse, error)
 	NewUpdateIpAddressParams(id string) *UpdateIpAddressParams
 }
 
 type AssociateIpAddressParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AssociateIpAddressParams) toURLValues() url.Values {
+func (P *AssociateIpAddressParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["ipaddress"]; found {
+	if v, found := P.P["ipaddress"]; found {
 		u.Set("ipaddress", v.(string))
 	}
-	if v, found := p.p["isportable"]; found {
+	if v, found := P.P["isportable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isportable", vv)
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["regionid"]; found {
+	if v, found := P.P["regionid"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("regionid", vv)
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *AssociateIpAddressParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *AssociateIpAddressParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *AssociateIpAddressParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *AssociateIpAddressParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *AssociateIpAddressParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *AssociateIpAddressParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *AssociateIpAddressParams) SetIpaddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) SetIpaddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddress"] = v
+	P.P["ipaddress"] = v
 }
 
-func (p *AssociateIpAddressParams) GetIpaddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) GetIpaddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddress"].(string)
+	value, ok := P.P["ipaddress"].(string)
 	return value, ok
 }
 
-func (p *AssociateIpAddressParams) SetIsportable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) SetIsportable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isportable"] = v
+	P.P["isportable"] = v
 }
 
-func (p *AssociateIpAddressParams) GetIsportable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) GetIsportable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isportable"].(bool)
+	value, ok := P.P["isportable"].(bool)
 	return value, ok
 }
 
-func (p *AssociateIpAddressParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *AssociateIpAddressParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *AssociateIpAddressParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *AssociateIpAddressParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *AssociateIpAddressParams) SetRegionid(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) SetRegionid(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["regionid"] = v
+	P.P["regionid"] = v
 }
 
-func (p *AssociateIpAddressParams) GetRegionid() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) GetRegionid() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["regionid"].(int)
+	value, ok := P.P["regionid"].(int)
 	return value, ok
 }
 
-func (p *AssociateIpAddressParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *AssociateIpAddressParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
-func (p *AssociateIpAddressParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *AssociateIpAddressParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssociateIpAddressParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AssociateIpAddressParams instance,
 // as then you are sure you have configured all required params
 func (s *AddressService) NewAssociateIpAddressParams() *AssociateIpAddressParams {
-	p := &AssociateIpAddressParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &AssociateIpAddressParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Acquires and associates a public IP to an account.
@@ -316,42 +316,42 @@ type AssociateIpAddressResponse struct {
 }
 
 type DisassociateIpAddressParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DisassociateIpAddressParams) toURLValues() url.Values {
+func (P *DisassociateIpAddressParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DisassociateIpAddressParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisassociateIpAddressParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DisassociateIpAddressParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisassociateIpAddressParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DisassociateIpAddressParams instance,
 // as then you are sure you have configured all required params
 func (s *AddressService) NewDisassociateIpAddressParams(id string) *DisassociateIpAddressParams {
-	p := &DisassociateIpAddressParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DisassociateIpAddressParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Disassociates an IP address from the account.
@@ -392,485 +392,485 @@ type DisassociateIpAddressResponse struct {
 }
 
 type ListPublicIpAddressesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListPublicIpAddressesParams) toURLValues() url.Values {
+func (P *ListPublicIpAddressesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["allocatedonly"]; found {
+	if v, found := P.P["allocatedonly"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("allocatedonly", vv)
 	}
-	if v, found := p.p["associatednetworkid"]; found {
+	if v, found := P.P["associatednetworkid"]; found {
 		u.Set("associatednetworkid", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["forloadbalancing"]; found {
+	if v, found := P.P["forloadbalancing"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forloadbalancing", vv)
 	}
-	if v, found := p.p["forvirtualnetwork"]; found {
+	if v, found := P.P["forvirtualnetwork"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forvirtualnetwork", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["ipaddress"]; found {
+	if v, found := P.P["ipaddress"]; found {
 		u.Set("ipaddress", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["issourcenat"]; found {
+	if v, found := P.P["issourcenat"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("issourcenat", vv)
 	}
-	if v, found := p.p["isstaticnat"]; found {
+	if v, found := P.P["isstaticnat"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isstaticnat", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["vlanid"]; found {
+	if v, found := P.P["vlanid"]; found {
 		u.Set("vlanid", v.(string))
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListPublicIpAddressesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetAllocatedonly(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetAllocatedonly(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocatedonly"] = v
+	P.P["allocatedonly"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetAllocatedonly() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetAllocatedonly() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocatedonly"].(bool)
+	value, ok := P.P["allocatedonly"].(bool)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetAssociatednetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetAssociatednetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["associatednetworkid"] = v
+	P.P["associatednetworkid"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetAssociatednetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetAssociatednetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["associatednetworkid"].(string)
+	value, ok := P.P["associatednetworkid"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetForloadbalancing(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetForloadbalancing(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forloadbalancing"] = v
+	P.P["forloadbalancing"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetForloadbalancing() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetForloadbalancing() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forloadbalancing"].(bool)
+	value, ok := P.P["forloadbalancing"].(bool)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetForvirtualnetwork(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetForvirtualnetwork(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forvirtualnetwork"] = v
+	P.P["forvirtualnetwork"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetForvirtualnetwork() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetForvirtualnetwork() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forvirtualnetwork"].(bool)
+	value, ok := P.P["forvirtualnetwork"].(bool)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetIpaddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetIpaddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddress"] = v
+	P.P["ipaddress"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetIpaddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetIpaddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddress"].(string)
+	value, ok := P.P["ipaddress"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetIssourcenat(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetIssourcenat(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["issourcenat"] = v
+	P.P["issourcenat"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetIssourcenat() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetIssourcenat() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["issourcenat"].(bool)
+	value, ok := P.P["issourcenat"].(bool)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetIsstaticnat(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetIsstaticnat(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isstaticnat"] = v
+	P.P["isstaticnat"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetIsstaticnat() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetIsstaticnat() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isstaticnat"].(bool)
+	value, ok := P.P["isstaticnat"].(bool)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetVlanid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetVlanid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlanid"] = v
+	P.P["vlanid"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetVlanid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetVlanid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlanid"].(string)
+	value, ok := P.P["vlanid"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
-func (p *ListPublicIpAddressesParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListPublicIpAddressesParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPublicIpAddressesParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListPublicIpAddressesParams instance,
 // as then you are sure you have configured all required params
 func (s *AddressService) NewListPublicIpAddressesParams() *ListPublicIpAddressesParams {
-	p := &ListPublicIpAddressesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListPublicIpAddressesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *AddressService) GetPublicIpAddressByID(id string, opts ...OptionFunc) (*PublicIpAddress, int, error) {
-	p := &ListPublicIpAddressesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListPublicIpAddressesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListPublicIpAddresses(p)
+	l, err := s.ListPublicIpAddresses(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -949,79 +949,79 @@ type PublicIpAddress struct {
 }
 
 type UpdateIpAddressParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateIpAddressParams) toURLValues() url.Values {
+func (P *UpdateIpAddressParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateIpAddressParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIpAddressParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateIpAddressParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIpAddressParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateIpAddressParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIpAddressParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateIpAddressParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIpAddressParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateIpAddressParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIpAddressParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateIpAddressParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIpAddressParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateIpAddressParams instance,
 // as then you are sure you have configured all required params
 func (s *AddressService) NewUpdateIpAddressParams(id string) *UpdateIpAddressParams {
-	p := &UpdateIpAddressParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateIpAddressParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates an IP address

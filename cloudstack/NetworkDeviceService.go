@@ -27,72 +27,72 @@ import (
 )
 
 type NetworkDeviceServiceIface interface {
-	AddNetworkDevice(p *AddNetworkDeviceParams) (*AddNetworkDeviceResponse, error)
+	AddNetworkDevice(P *AddNetworkDeviceParams) (*AddNetworkDeviceResponse, error)
 	NewAddNetworkDeviceParams() *AddNetworkDeviceParams
-	DeleteNetworkDevice(p *DeleteNetworkDeviceParams) (*DeleteNetworkDeviceResponse, error)
+	DeleteNetworkDevice(P *DeleteNetworkDeviceParams) (*DeleteNetworkDeviceResponse, error)
 	NewDeleteNetworkDeviceParams(id string) *DeleteNetworkDeviceParams
-	ListNetworkDevice(p *ListNetworkDeviceParams) (*ListNetworkDeviceResponse, error)
+	ListNetworkDevice(P *ListNetworkDeviceParams) (*ListNetworkDeviceResponse, error)
 	NewListNetworkDeviceParams() *ListNetworkDeviceParams
 }
 
 type AddNetworkDeviceParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddNetworkDeviceParams) toURLValues() url.Values {
+func (P *AddNetworkDeviceParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["networkdeviceparameterlist"]; found {
+	if v, found := P.P["networkdeviceparameterlist"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("networkdeviceparameterlist[%d].key", i), k)
 			u.Set(fmt.Sprintf("networkdeviceparameterlist[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["networkdevicetype"]; found {
+	if v, found := P.P["networkdevicetype"]; found {
 		u.Set("networkdevicetype", v.(string))
 	}
 	return u
 }
 
-func (p *AddNetworkDeviceParams) SetNetworkdeviceparameterlist(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkDeviceParams) SetNetworkdeviceparameterlist(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdeviceparameterlist"] = v
+	P.P["networkdeviceparameterlist"] = v
 }
 
-func (p *AddNetworkDeviceParams) GetNetworkdeviceparameterlist() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkDeviceParams) GetNetworkdeviceparameterlist() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdeviceparameterlist"].(map[string]string)
+	value, ok := P.P["networkdeviceparameterlist"].(map[string]string)
 	return value, ok
 }
 
-func (p *AddNetworkDeviceParams) SetNetworkdevicetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkDeviceParams) SetNetworkdevicetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdevicetype"] = v
+	P.P["networkdevicetype"] = v
 }
 
-func (p *AddNetworkDeviceParams) GetNetworkdevicetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkDeviceParams) GetNetworkdevicetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdevicetype"].(string)
+	value, ok := P.P["networkdevicetype"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddNetworkDeviceParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkDeviceService) NewAddNetworkDeviceParams() *AddNetworkDeviceParams {
-	p := &AddNetworkDeviceParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &AddNetworkDeviceParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Adds a network device of one of the following types: ExternalDhcp, ExternalFirewall, ExternalLoadBalancer, PxeServer
@@ -117,42 +117,42 @@ type AddNetworkDeviceResponse struct {
 }
 
 type DeleteNetworkDeviceParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteNetworkDeviceParams) toURLValues() url.Values {
+func (P *DeleteNetworkDeviceParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteNetworkDeviceParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkDeviceParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteNetworkDeviceParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkDeviceParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteNetworkDeviceParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkDeviceService) NewDeleteNetworkDeviceParams(id string) *DeleteNetworkDeviceParams {
-	p := &DeleteNetworkDeviceParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteNetworkDeviceParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes network device.
@@ -205,119 +205,119 @@ func (r *DeleteNetworkDeviceResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListNetworkDeviceParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListNetworkDeviceParams) toURLValues() url.Values {
+func (P *ListNetworkDeviceParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["networkdeviceparameterlist"]; found {
+	if v, found := P.P["networkdeviceparameterlist"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("networkdeviceparameterlist[%d].key", i), k)
 			u.Set(fmt.Sprintf("networkdeviceparameterlist[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["networkdevicetype"]; found {
+	if v, found := P.P["networkdevicetype"]; found {
 		u.Set("networkdevicetype", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListNetworkDeviceParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkDeviceParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListNetworkDeviceParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkDeviceParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkDeviceParams) SetNetworkdeviceparameterlist(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkDeviceParams) SetNetworkdeviceparameterlist(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdeviceparameterlist"] = v
+	P.P["networkdeviceparameterlist"] = v
 }
 
-func (p *ListNetworkDeviceParams) GetNetworkdeviceparameterlist() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkDeviceParams) GetNetworkdeviceparameterlist() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdeviceparameterlist"].(map[string]string)
+	value, ok := P.P["networkdeviceparameterlist"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListNetworkDeviceParams) SetNetworkdevicetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkDeviceParams) SetNetworkdevicetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdevicetype"] = v
+	P.P["networkdevicetype"] = v
 }
 
-func (p *ListNetworkDeviceParams) GetNetworkdevicetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkDeviceParams) GetNetworkdevicetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdevicetype"].(string)
+	value, ok := P.P["networkdevicetype"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkDeviceParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkDeviceParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListNetworkDeviceParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkDeviceParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListNetworkDeviceParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkDeviceParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListNetworkDeviceParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkDeviceParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListNetworkDeviceParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkDeviceService) NewListNetworkDeviceParams() *ListNetworkDeviceParams {
-	p := &ListNetworkDeviceParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListNetworkDeviceParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // List network devices

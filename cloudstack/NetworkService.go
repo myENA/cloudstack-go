@@ -28,169 +28,169 @@ import (
 )
 
 type NetworkServiceIface interface {
-	AddNetworkServiceProvider(p *AddNetworkServiceProviderParams) (*AddNetworkServiceProviderResponse, error)
+	AddNetworkServiceProvider(P *AddNetworkServiceProviderParams) (*AddNetworkServiceProviderResponse, error)
 	NewAddNetworkServiceProviderParams(name string, physicalnetworkid string) *AddNetworkServiceProviderParams
-	AddOpenDaylightController(p *AddOpenDaylightControllerParams) (*AddOpenDaylightControllerResponse, error)
+	AddOpenDaylightController(P *AddOpenDaylightControllerParams) (*AddOpenDaylightControllerResponse, error)
 	NewAddOpenDaylightControllerParams(password string, physicalnetworkid string, url string, username string) *AddOpenDaylightControllerParams
-	CreateNetwork(p *CreateNetworkParams) (*CreateNetworkResponse, error)
+	CreateNetwork(P *CreateNetworkParams) (*CreateNetworkResponse, error)
 	NewCreateNetworkParams(displaytext string, name string, networkofferingid string, zoneid string) *CreateNetworkParams
-	CreatePhysicalNetwork(p *CreatePhysicalNetworkParams) (*CreatePhysicalNetworkResponse, error)
+	CreatePhysicalNetwork(P *CreatePhysicalNetworkParams) (*CreatePhysicalNetworkResponse, error)
 	NewCreatePhysicalNetworkParams(name string, zoneid string) *CreatePhysicalNetworkParams
-	CreateServiceInstance(p *CreateServiceInstanceParams) (*CreateServiceInstanceResponse, error)
+	CreateServiceInstance(P *CreateServiceInstanceParams) (*CreateServiceInstanceResponse, error)
 	NewCreateServiceInstanceParams(leftnetworkid string, name string, rightnetworkid string, serviceofferingid string, templateid string, zoneid string) *CreateServiceInstanceParams
-	CreateStorageNetworkIpRange(p *CreateStorageNetworkIpRangeParams) (*CreateStorageNetworkIpRangeResponse, error)
+	CreateStorageNetworkIpRange(P *CreateStorageNetworkIpRangeParams) (*CreateStorageNetworkIpRangeResponse, error)
 	NewCreateStorageNetworkIpRangeParams(gateway string, netmask string, podid string, startip string) *CreateStorageNetworkIpRangeParams
-	DedicatePublicIpRange(p *DedicatePublicIpRangeParams) (*DedicatePublicIpRangeResponse, error)
+	DedicatePublicIpRange(P *DedicatePublicIpRangeParams) (*DedicatePublicIpRangeResponse, error)
 	NewDedicatePublicIpRangeParams(domainid string, id string) *DedicatePublicIpRangeParams
-	DeleteNetwork(p *DeleteNetworkParams) (*DeleteNetworkResponse, error)
+	DeleteNetwork(P *DeleteNetworkParams) (*DeleteNetworkResponse, error)
 	NewDeleteNetworkParams(id string) *DeleteNetworkParams
-	DeleteNetworkServiceProvider(p *DeleteNetworkServiceProviderParams) (*DeleteNetworkServiceProviderResponse, error)
+	DeleteNetworkServiceProvider(P *DeleteNetworkServiceProviderParams) (*DeleteNetworkServiceProviderResponse, error)
 	NewDeleteNetworkServiceProviderParams(id string) *DeleteNetworkServiceProviderParams
-	DeleteOpenDaylightController(p *DeleteOpenDaylightControllerParams) (*DeleteOpenDaylightControllerResponse, error)
+	DeleteOpenDaylightController(P *DeleteOpenDaylightControllerParams) (*DeleteOpenDaylightControllerResponse, error)
 	NewDeleteOpenDaylightControllerParams(id string) *DeleteOpenDaylightControllerParams
-	DeletePhysicalNetwork(p *DeletePhysicalNetworkParams) (*DeletePhysicalNetworkResponse, error)
+	DeletePhysicalNetwork(P *DeletePhysicalNetworkParams) (*DeletePhysicalNetworkResponse, error)
 	NewDeletePhysicalNetworkParams(id string) *DeletePhysicalNetworkParams
-	DeleteStorageNetworkIpRange(p *DeleteStorageNetworkIpRangeParams) (*DeleteStorageNetworkIpRangeResponse, error)
+	DeleteStorageNetworkIpRange(P *DeleteStorageNetworkIpRangeParams) (*DeleteStorageNetworkIpRangeResponse, error)
 	NewDeleteStorageNetworkIpRangeParams(id string) *DeleteStorageNetworkIpRangeParams
-	ListNetscalerLoadBalancerNetworks(p *ListNetscalerLoadBalancerNetworksParams) (*ListNetscalerLoadBalancerNetworksResponse, error)
+	ListNetscalerLoadBalancerNetworks(P *ListNetscalerLoadBalancerNetworksParams) (*ListNetscalerLoadBalancerNetworksResponse, error)
 	NewListNetscalerLoadBalancerNetworksParams(lbdeviceid string) *ListNetscalerLoadBalancerNetworksParams
 	GetNetscalerLoadBalancerNetworkID(keyword string, lbdeviceid string, opts ...OptionFunc) (string, int, error)
-	ListNetworkIsolationMethods(p *ListNetworkIsolationMethodsParams) (*ListNetworkIsolationMethodsResponse, error)
+	ListNetworkIsolationMethods(P *ListNetworkIsolationMethodsParams) (*ListNetworkIsolationMethodsResponse, error)
 	NewListNetworkIsolationMethodsParams() *ListNetworkIsolationMethodsParams
-	ListNetworkServiceProviders(p *ListNetworkServiceProvidersParams) (*ListNetworkServiceProvidersResponse, error)
+	ListNetworkServiceProviders(P *ListNetworkServiceProvidersParams) (*ListNetworkServiceProvidersResponse, error)
 	NewListNetworkServiceProvidersParams() *ListNetworkServiceProvidersParams
 	GetNetworkServiceProviderID(name string, opts ...OptionFunc) (string, int, error)
-	ListNetworks(p *ListNetworksParams) (*ListNetworksResponse, error)
+	ListNetworks(P *ListNetworksParams) (*ListNetworksResponse, error)
 	NewListNetworksParams() *ListNetworksParams
 	GetNetworkID(keyword string, opts ...OptionFunc) (string, int, error)
 	GetNetworkByName(name string, opts ...OptionFunc) (*Network, int, error)
 	GetNetworkByID(id string, opts ...OptionFunc) (*Network, int, error)
-	ListNiciraNvpDeviceNetworks(p *ListNiciraNvpDeviceNetworksParams) (*ListNiciraNvpDeviceNetworksResponse, error)
+	ListNiciraNvpDeviceNetworks(P *ListNiciraNvpDeviceNetworksParams) (*ListNiciraNvpDeviceNetworksResponse, error)
 	NewListNiciraNvpDeviceNetworksParams(nvpdeviceid string) *ListNiciraNvpDeviceNetworksParams
 	GetNiciraNvpDeviceNetworkID(keyword string, nvpdeviceid string, opts ...OptionFunc) (string, int, error)
-	ListOpenDaylightControllers(p *ListOpenDaylightControllersParams) (*ListOpenDaylightControllersResponse, error)
+	ListOpenDaylightControllers(P *ListOpenDaylightControllersParams) (*ListOpenDaylightControllersResponse, error)
 	NewListOpenDaylightControllersParams() *ListOpenDaylightControllersParams
 	GetOpenDaylightControllerByID(id string, opts ...OptionFunc) (*OpenDaylightController, int, error)
-	ListPaloAltoFirewallNetworks(p *ListPaloAltoFirewallNetworksParams) (*ListPaloAltoFirewallNetworksResponse, error)
+	ListPaloAltoFirewallNetworks(P *ListPaloAltoFirewallNetworksParams) (*ListPaloAltoFirewallNetworksResponse, error)
 	NewListPaloAltoFirewallNetworksParams(lbdeviceid string) *ListPaloAltoFirewallNetworksParams
 	GetPaloAltoFirewallNetworkID(keyword string, lbdeviceid string, opts ...OptionFunc) (string, int, error)
-	ListPhysicalNetworks(p *ListPhysicalNetworksParams) (*ListPhysicalNetworksResponse, error)
+	ListPhysicalNetworks(P *ListPhysicalNetworksParams) (*ListPhysicalNetworksResponse, error)
 	NewListPhysicalNetworksParams() *ListPhysicalNetworksParams
 	GetPhysicalNetworkID(name string, opts ...OptionFunc) (string, int, error)
 	GetPhysicalNetworkByName(name string, opts ...OptionFunc) (*PhysicalNetwork, int, error)
 	GetPhysicalNetworkByID(id string, opts ...OptionFunc) (*PhysicalNetwork, int, error)
-	ListStorageNetworkIpRange(p *ListStorageNetworkIpRangeParams) (*ListStorageNetworkIpRangeResponse, error)
+	ListStorageNetworkIpRange(P *ListStorageNetworkIpRangeParams) (*ListStorageNetworkIpRangeResponse, error)
 	NewListStorageNetworkIpRangeParams() *ListStorageNetworkIpRangeParams
 	GetStorageNetworkIpRangeByID(id string, opts ...OptionFunc) (*StorageNetworkIpRange, int, error)
-	ListSupportedNetworkServices(p *ListSupportedNetworkServicesParams) (*ListSupportedNetworkServicesResponse, error)
+	ListSupportedNetworkServices(P *ListSupportedNetworkServicesParams) (*ListSupportedNetworkServicesResponse, error)
 	NewListSupportedNetworkServicesParams() *ListSupportedNetworkServicesParams
-	ReleasePublicIpRange(p *ReleasePublicIpRangeParams) (*ReleasePublicIpRangeResponse, error)
+	ReleasePublicIpRange(P *ReleasePublicIpRangeParams) (*ReleasePublicIpRangeResponse, error)
 	NewReleasePublicIpRangeParams(id string) *ReleasePublicIpRangeParams
-	RestartNetwork(p *RestartNetworkParams) (*RestartNetworkResponse, error)
+	RestartNetwork(P *RestartNetworkParams) (*RestartNetworkResponse, error)
 	NewRestartNetworkParams(id string) *RestartNetworkParams
-	UpdateNetwork(p *UpdateNetworkParams) (*UpdateNetworkResponse, error)
+	UpdateNetwork(P *UpdateNetworkParams) (*UpdateNetworkResponse, error)
 	NewUpdateNetworkParams(id string) *UpdateNetworkParams
-	UpdateNetworkServiceProvider(p *UpdateNetworkServiceProviderParams) (*UpdateNetworkServiceProviderResponse, error)
+	UpdateNetworkServiceProvider(P *UpdateNetworkServiceProviderParams) (*UpdateNetworkServiceProviderResponse, error)
 	NewUpdateNetworkServiceProviderParams(id string) *UpdateNetworkServiceProviderParams
-	UpdatePhysicalNetwork(p *UpdatePhysicalNetworkParams) (*UpdatePhysicalNetworkResponse, error)
+	UpdatePhysicalNetwork(P *UpdatePhysicalNetworkParams) (*UpdatePhysicalNetworkResponse, error)
 	NewUpdatePhysicalNetworkParams(id string) *UpdatePhysicalNetworkParams
-	UpdateStorageNetworkIpRange(p *UpdateStorageNetworkIpRangeParams) (*UpdateStorageNetworkIpRangeResponse, error)
+	UpdateStorageNetworkIpRange(P *UpdateStorageNetworkIpRangeParams) (*UpdateStorageNetworkIpRangeResponse, error)
 	NewUpdateStorageNetworkIpRangeParams(id string) *UpdateStorageNetworkIpRangeParams
 }
 
 type AddNetworkServiceProviderParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddNetworkServiceProviderParams) toURLValues() url.Values {
+func (P *AddNetworkServiceProviderParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["destinationphysicalnetworkid"]; found {
+	if v, found := P.P["destinationphysicalnetworkid"]; found {
 		u.Set("destinationphysicalnetworkid", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["servicelist"]; found {
+	if v, found := P.P["servicelist"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("servicelist", vv)
 	}
 	return u
 }
 
-func (p *AddNetworkServiceProviderParams) SetDestinationphysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkServiceProviderParams) SetDestinationphysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["destinationphysicalnetworkid"] = v
+	P.P["destinationphysicalnetworkid"] = v
 }
 
-func (p *AddNetworkServiceProviderParams) GetDestinationphysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkServiceProviderParams) GetDestinationphysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["destinationphysicalnetworkid"].(string)
+	value, ok := P.P["destinationphysicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *AddNetworkServiceProviderParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkServiceProviderParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *AddNetworkServiceProviderParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkServiceProviderParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *AddNetworkServiceProviderParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkServiceProviderParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *AddNetworkServiceProviderParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkServiceProviderParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *AddNetworkServiceProviderParams) SetServicelist(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkServiceProviderParams) SetServicelist(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["servicelist"] = v
+	P.P["servicelist"] = v
 }
 
-func (p *AddNetworkServiceProviderParams) GetServicelist() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetworkServiceProviderParams) GetServicelist() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["servicelist"].([]string)
+	value, ok := P.P["servicelist"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddNetworkServiceProviderParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewAddNetworkServiceProviderParams(name string, physicalnetworkid string) *AddNetworkServiceProviderParams {
-	p := &AddNetworkServiceProviderParams{}
-	p.p = make(map[string]interface{})
-	p.p["name"] = name
-	p.p["physicalnetworkid"] = physicalnetworkid
-	return p
+	P := &AddNetworkServiceProviderParams{}
+	P.P = make(map[string]interface{})
+	P.P["name"] = name
+	P.P["physicalnetworkid"] = physicalnetworkid
+	return P
 }
 
 // Adds a network serviceProvider to a physical network
@@ -241,99 +241,99 @@ type AddNetworkServiceProviderResponse struct {
 }
 
 type AddOpenDaylightControllerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddOpenDaylightControllerParams) toURLValues() url.Values {
+func (P *AddOpenDaylightControllerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *AddOpenDaylightControllerParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddOpenDaylightControllerParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *AddOpenDaylightControllerParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddOpenDaylightControllerParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *AddOpenDaylightControllerParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddOpenDaylightControllerParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *AddOpenDaylightControllerParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddOpenDaylightControllerParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *AddOpenDaylightControllerParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddOpenDaylightControllerParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddOpenDaylightControllerParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddOpenDaylightControllerParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddOpenDaylightControllerParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddOpenDaylightControllerParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddOpenDaylightControllerParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddOpenDaylightControllerParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddOpenDaylightControllerParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewAddOpenDaylightControllerParams(password string, physicalnetworkid string, url string, username string) *AddOpenDaylightControllerParams {
-	p := &AddOpenDaylightControllerParams{}
-	p.p = make(map[string]interface{})
-	p.p["password"] = password
-	p.p["physicalnetworkid"] = physicalnetworkid
-	p.p["url"] = url
-	p.p["username"] = username
-	return p
+	P := &AddOpenDaylightControllerParams{}
+	P.P = make(map[string]interface{})
+	P.P["password"] = password
+	P.P["physicalnetworkid"] = physicalnetworkid
+	P.P["url"] = url
+	P.P["username"] = username
+	return P
 }
 
 // Adds an OpenDyalight controler
@@ -382,571 +382,571 @@ type AddOpenDaylightControllerResponse struct {
 }
 
 type CreateNetworkParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateNetworkParams) toURLValues() url.Values {
+func (P *CreateNetworkParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["aclid"]; found {
+	if v, found := P.P["aclid"]; found {
 		u.Set("aclid", v.(string))
 	}
-	if v, found := p.p["acltype"]; found {
+	if v, found := P.P["acltype"]; found {
 		u.Set("acltype", v.(string))
 	}
-	if v, found := p.p["bypassvlanoverlapcheck"]; found {
+	if v, found := P.P["bypassvlanoverlapcheck"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("bypassvlanoverlapcheck", vv)
 	}
-	if v, found := p.p["displaynetwork"]; found {
+	if v, found := P.P["displaynetwork"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("displaynetwork", vv)
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["endip"]; found {
+	if v, found := P.P["endip"]; found {
 		u.Set("endip", v.(string))
 	}
-	if v, found := p.p["endipv6"]; found {
+	if v, found := P.P["endipv6"]; found {
 		u.Set("endipv6", v.(string))
 	}
-	if v, found := p.p["externalid"]; found {
+	if v, found := P.P["externalid"]; found {
 		u.Set("externalid", v.(string))
 	}
-	if v, found := p.p["gateway"]; found {
+	if v, found := P.P["gateway"]; found {
 		u.Set("gateway", v.(string))
 	}
-	if v, found := p.p["hideipaddressusage"]; found {
+	if v, found := P.P["hideipaddressusage"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("hideipaddressusage", vv)
 	}
-	if v, found := p.p["ip6cidr"]; found {
+	if v, found := P.P["ip6cidr"]; found {
 		u.Set("ip6cidr", v.(string))
 	}
-	if v, found := p.p["ip6gateway"]; found {
+	if v, found := P.P["ip6gateway"]; found {
 		u.Set("ip6gateway", v.(string))
 	}
-	if v, found := p.p["isolatedpvlan"]; found {
+	if v, found := P.P["isolatedpvlan"]; found {
 		u.Set("isolatedpvlan", v.(string))
 	}
-	if v, found := p.p["isolatedpvlantype"]; found {
+	if v, found := P.P["isolatedpvlantype"]; found {
 		u.Set("isolatedpvlantype", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["netmask"]; found {
+	if v, found := P.P["netmask"]; found {
 		u.Set("netmask", v.(string))
 	}
-	if v, found := p.p["networkdomain"]; found {
+	if v, found := P.P["networkdomain"]; found {
 		u.Set("networkdomain", v.(string))
 	}
-	if v, found := p.p["networkofferingid"]; found {
+	if v, found := P.P["networkofferingid"]; found {
 		u.Set("networkofferingid", v.(string))
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["routerip"]; found {
+	if v, found := P.P["routerip"]; found {
 		u.Set("routerip", v.(string))
 	}
-	if v, found := p.p["routeripv6"]; found {
+	if v, found := P.P["routeripv6"]; found {
 		u.Set("routeripv6", v.(string))
 	}
-	if v, found := p.p["startip"]; found {
+	if v, found := P.P["startip"]; found {
 		u.Set("startip", v.(string))
 	}
-	if v, found := p.p["startipv6"]; found {
+	if v, found := P.P["startipv6"]; found {
 		u.Set("startipv6", v.(string))
 	}
-	if v, found := p.p["subdomainaccess"]; found {
+	if v, found := P.P["subdomainaccess"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("subdomainaccess", vv)
 	}
-	if v, found := p.p["vlan"]; found {
+	if v, found := P.P["vlan"]; found {
 		u.Set("vlan", v.(string))
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateNetworkParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *CreateNetworkParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetAclid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetAclid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["aclid"] = v
+	P.P["aclid"] = v
 }
 
-func (p *CreateNetworkParams) GetAclid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetAclid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["aclid"].(string)
+	value, ok := P.P["aclid"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetAcltype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetAcltype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["acltype"] = v
+	P.P["acltype"] = v
 }
 
-func (p *CreateNetworkParams) GetAcltype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetAcltype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["acltype"].(string)
+	value, ok := P.P["acltype"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetBypassvlanoverlapcheck(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetBypassvlanoverlapcheck(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bypassvlanoverlapcheck"] = v
+	P.P["bypassvlanoverlapcheck"] = v
 }
 
-func (p *CreateNetworkParams) GetBypassvlanoverlapcheck() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetBypassvlanoverlapcheck() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bypassvlanoverlapcheck"].(bool)
+	value, ok := P.P["bypassvlanoverlapcheck"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetDisplaynetwork(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetDisplaynetwork(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaynetwork"] = v
+	P.P["displaynetwork"] = v
 }
 
-func (p *CreateNetworkParams) GetDisplaynetwork() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetDisplaynetwork() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaynetwork"].(bool)
+	value, ok := P.P["displaynetwork"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *CreateNetworkParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateNetworkParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetEndip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetEndip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endip"] = v
+	P.P["endip"] = v
 }
 
-func (p *CreateNetworkParams) GetEndip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetEndip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endip"].(string)
+	value, ok := P.P["endip"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetEndipv6(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetEndipv6(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endipv6"] = v
+	P.P["endipv6"] = v
 }
 
-func (p *CreateNetworkParams) GetEndipv6() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetEndipv6() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endipv6"].(string)
+	value, ok := P.P["endipv6"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetExternalid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetExternalid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["externalid"] = v
+	P.P["externalid"] = v
 }
 
-func (p *CreateNetworkParams) GetExternalid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetExternalid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["externalid"].(string)
+	value, ok := P.P["externalid"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetGateway(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetGateway(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gateway"] = v
+	P.P["gateway"] = v
 }
 
-func (p *CreateNetworkParams) GetGateway() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetGateway() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gateway"].(string)
+	value, ok := P.P["gateway"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetHideipaddressusage(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetHideipaddressusage(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hideipaddressusage"] = v
+	P.P["hideipaddressusage"] = v
 }
 
-func (p *CreateNetworkParams) GetHideipaddressusage() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetHideipaddressusage() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hideipaddressusage"].(bool)
+	value, ok := P.P["hideipaddressusage"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetIp6cidr(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetIp6cidr(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ip6cidr"] = v
+	P.P["ip6cidr"] = v
 }
 
-func (p *CreateNetworkParams) GetIp6cidr() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetIp6cidr() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ip6cidr"].(string)
+	value, ok := P.P["ip6cidr"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetIp6gateway(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetIp6gateway(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ip6gateway"] = v
+	P.P["ip6gateway"] = v
 }
 
-func (p *CreateNetworkParams) GetIp6gateway() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetIp6gateway() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ip6gateway"].(string)
+	value, ok := P.P["ip6gateway"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetIsolatedpvlan(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetIsolatedpvlan(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isolatedpvlan"] = v
+	P.P["isolatedpvlan"] = v
 }
 
-func (p *CreateNetworkParams) GetIsolatedpvlan() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetIsolatedpvlan() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isolatedpvlan"].(string)
+	value, ok := P.P["isolatedpvlan"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetIsolatedpvlantype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetIsolatedpvlantype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isolatedpvlantype"] = v
+	P.P["isolatedpvlantype"] = v
 }
 
-func (p *CreateNetworkParams) GetIsolatedpvlantype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetIsolatedpvlantype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isolatedpvlantype"].(string)
+	value, ok := P.P["isolatedpvlantype"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateNetworkParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetNetmask(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetNetmask(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["netmask"] = v
+	P.P["netmask"] = v
 }
 
-func (p *CreateNetworkParams) GetNetmask() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetNetmask() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["netmask"].(string)
+	value, ok := P.P["netmask"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetNetworkdomain(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetNetworkdomain(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdomain"] = v
+	P.P["networkdomain"] = v
 }
 
-func (p *CreateNetworkParams) GetNetworkdomain() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetNetworkdomain() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdomain"].(string)
+	value, ok := P.P["networkdomain"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetNetworkofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetNetworkofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkofferingid"] = v
+	P.P["networkofferingid"] = v
 }
 
-func (p *CreateNetworkParams) GetNetworkofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetNetworkofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkofferingid"].(string)
+	value, ok := P.P["networkofferingid"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *CreateNetworkParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *CreateNetworkParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetRouterip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetRouterip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["routerip"] = v
+	P.P["routerip"] = v
 }
 
-func (p *CreateNetworkParams) GetRouterip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetRouterip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["routerip"].(string)
+	value, ok := P.P["routerip"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetRouteripv6(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetRouteripv6(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["routeripv6"] = v
+	P.P["routeripv6"] = v
 }
 
-func (p *CreateNetworkParams) GetRouteripv6() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetRouteripv6() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["routeripv6"].(string)
+	value, ok := P.P["routeripv6"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetStartip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetStartip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startip"] = v
+	P.P["startip"] = v
 }
 
-func (p *CreateNetworkParams) GetStartip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetStartip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startip"].(string)
+	value, ok := P.P["startip"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetStartipv6(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetStartipv6(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startipv6"] = v
+	P.P["startipv6"] = v
 }
 
-func (p *CreateNetworkParams) GetStartipv6() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetStartipv6() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startipv6"].(string)
+	value, ok := P.P["startipv6"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetSubdomainaccess(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetSubdomainaccess(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["subdomainaccess"] = v
+	P.P["subdomainaccess"] = v
 }
 
-func (p *CreateNetworkParams) GetSubdomainaccess() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetSubdomainaccess() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["subdomainaccess"].(bool)
+	value, ok := P.P["subdomainaccess"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetVlan(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetVlan(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlan"] = v
+	P.P["vlan"] = v
 }
 
-func (p *CreateNetworkParams) GetVlan() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetVlan() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlan"].(string)
+	value, ok := P.P["vlan"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *CreateNetworkParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreateNetworkParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateNetworkParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewCreateNetworkParams(displaytext string, name string, networkofferingid string, zoneid string) *CreateNetworkParams {
-	p := &CreateNetworkParams{}
-	p.p = make(map[string]interface{})
-	p.p["displaytext"] = displaytext
-	p.p["name"] = name
-	p.p["networkofferingid"] = networkofferingid
-	p.p["zoneid"] = zoneid
-	return p
+	P := &CreateNetworkParams{}
+	P.P = make(map[string]interface{})
+	P.P["displaytext"] = displaytext
+	P.P["name"] = name
+	P.P["networkofferingid"] = networkofferingid
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Creates a network
@@ -1054,171 +1054,171 @@ type CreateNetworkResponseServiceCapability struct {
 }
 
 type CreatePhysicalNetworkParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreatePhysicalNetworkParams) toURLValues() url.Values {
+func (P *CreatePhysicalNetworkParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["broadcastdomainrange"]; found {
+	if v, found := P.P["broadcastdomainrange"]; found {
 		u.Set("broadcastdomainrange", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["isolationmethods"]; found {
+	if v, found := P.P["isolationmethods"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("isolationmethods", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkspeed"]; found {
+	if v, found := P.P["networkspeed"]; found {
 		u.Set("networkspeed", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("tags", vv)
 	}
-	if v, found := p.p["vlan"]; found {
+	if v, found := P.P["vlan"]; found {
 		u.Set("vlan", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *CreatePhysicalNetworkParams) SetBroadcastdomainrange(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) SetBroadcastdomainrange(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["broadcastdomainrange"] = v
+	P.P["broadcastdomainrange"] = v
 }
 
-func (p *CreatePhysicalNetworkParams) GetBroadcastdomainrange() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) GetBroadcastdomainrange() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["broadcastdomainrange"].(string)
+	value, ok := P.P["broadcastdomainrange"].(string)
 	return value, ok
 }
 
-func (p *CreatePhysicalNetworkParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreatePhysicalNetworkParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreatePhysicalNetworkParams) SetIsolationmethods(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) SetIsolationmethods(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isolationmethods"] = v
+	P.P["isolationmethods"] = v
 }
 
-func (p *CreatePhysicalNetworkParams) GetIsolationmethods() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) GetIsolationmethods() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isolationmethods"].([]string)
+	value, ok := P.P["isolationmethods"].([]string)
 	return value, ok
 }
 
-func (p *CreatePhysicalNetworkParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreatePhysicalNetworkParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreatePhysicalNetworkParams) SetNetworkspeed(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) SetNetworkspeed(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkspeed"] = v
+	P.P["networkspeed"] = v
 }
 
-func (p *CreatePhysicalNetworkParams) GetNetworkspeed() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) GetNetworkspeed() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkspeed"].(string)
+	value, ok := P.P["networkspeed"].(string)
 	return value, ok
 }
 
-func (p *CreatePhysicalNetworkParams) SetTags(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) SetTags(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *CreatePhysicalNetworkParams) GetTags() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) GetTags() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].([]string)
+	value, ok := P.P["tags"].([]string)
 	return value, ok
 }
 
-func (p *CreatePhysicalNetworkParams) SetVlan(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) SetVlan(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlan"] = v
+	P.P["vlan"] = v
 }
 
-func (p *CreatePhysicalNetworkParams) GetVlan() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) GetVlan() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlan"].(string)
+	value, ok := P.P["vlan"].(string)
 	return value, ok
 }
 
-func (p *CreatePhysicalNetworkParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreatePhysicalNetworkParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePhysicalNetworkParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreatePhysicalNetworkParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewCreatePhysicalNetworkParams(name string, zoneid string) *CreatePhysicalNetworkParams {
-	p := &CreatePhysicalNetworkParams{}
-	p.p = make(map[string]interface{})
-	p.p["name"] = name
-	p.p["zoneid"] = zoneid
-	return p
+	P := &CreatePhysicalNetworkParams{}
+	P.P = make(map[string]interface{})
+	P.P["name"] = name
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Creates a physical network
@@ -1273,191 +1273,191 @@ type CreatePhysicalNetworkResponse struct {
 }
 
 type CreateServiceInstanceParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateServiceInstanceParams) toURLValues() url.Values {
+func (P *CreateServiceInstanceParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["leftnetworkid"]; found {
+	if v, found := P.P["leftnetworkid"]; found {
 		u.Set("leftnetworkid", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["rightnetworkid"]; found {
+	if v, found := P.P["rightnetworkid"]; found {
 		u.Set("rightnetworkid", v.(string))
 	}
-	if v, found := p.p["serviceofferingid"]; found {
+	if v, found := P.P["serviceofferingid"]; found {
 		u.Set("serviceofferingid", v.(string))
 	}
-	if v, found := p.p["templateid"]; found {
+	if v, found := P.P["templateid"]; found {
 		u.Set("templateid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateServiceInstanceParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *CreateServiceInstanceParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceInstanceParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateServiceInstanceParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceInstanceParams) SetLeftnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) SetLeftnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["leftnetworkid"] = v
+	P.P["leftnetworkid"] = v
 }
 
-func (p *CreateServiceInstanceParams) GetLeftnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) GetLeftnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["leftnetworkid"].(string)
+	value, ok := P.P["leftnetworkid"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceInstanceParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateServiceInstanceParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceInstanceParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *CreateServiceInstanceParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceInstanceParams) SetRightnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) SetRightnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["rightnetworkid"] = v
+	P.P["rightnetworkid"] = v
 }
 
-func (p *CreateServiceInstanceParams) GetRightnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) GetRightnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["rightnetworkid"].(string)
+	value, ok := P.P["rightnetworkid"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceInstanceParams) SetServiceofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) SetServiceofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["serviceofferingid"] = v
+	P.P["serviceofferingid"] = v
 }
 
-func (p *CreateServiceInstanceParams) GetServiceofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) GetServiceofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["serviceofferingid"].(string)
+	value, ok := P.P["serviceofferingid"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceInstanceParams) SetTemplateid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) SetTemplateid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["templateid"] = v
+	P.P["templateid"] = v
 }
 
-func (p *CreateServiceInstanceParams) GetTemplateid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) GetTemplateid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["templateid"].(string)
+	value, ok := P.P["templateid"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceInstanceParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreateServiceInstanceParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceInstanceParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateServiceInstanceParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewCreateServiceInstanceParams(leftnetworkid string, name string, rightnetworkid string, serviceofferingid string, templateid string, zoneid string) *CreateServiceInstanceParams {
-	p := &CreateServiceInstanceParams{}
-	p.p = make(map[string]interface{})
-	p.p["leftnetworkid"] = leftnetworkid
-	p.p["name"] = name
-	p.p["rightnetworkid"] = rightnetworkid
-	p.p["serviceofferingid"] = serviceofferingid
-	p.p["templateid"] = templateid
-	p.p["zoneid"] = zoneid
-	return p
+	P := &CreateServiceInstanceParams{}
+	P.P = make(map[string]interface{})
+	P.P["leftnetworkid"] = leftnetworkid
+	P.P["name"] = name
+	P.P["rightnetworkid"] = rightnetworkid
+	P.P["serviceofferingid"] = serviceofferingid
+	P.P["templateid"] = templateid
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Creates a system virtual-machine that implements network services
@@ -1509,136 +1509,136 @@ type CreateServiceInstanceResponse struct {
 }
 
 type CreateStorageNetworkIpRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateStorageNetworkIpRangeParams) toURLValues() url.Values {
+func (P *CreateStorageNetworkIpRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["endip"]; found {
+	if v, found := P.P["endip"]; found {
 		u.Set("endip", v.(string))
 	}
-	if v, found := p.p["gateway"]; found {
+	if v, found := P.P["gateway"]; found {
 		u.Set("gateway", v.(string))
 	}
-	if v, found := p.p["netmask"]; found {
+	if v, found := P.P["netmask"]; found {
 		u.Set("netmask", v.(string))
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["startip"]; found {
+	if v, found := P.P["startip"]; found {
 		u.Set("startip", v.(string))
 	}
-	if v, found := p.p["vlan"]; found {
+	if v, found := P.P["vlan"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("vlan", vv)
 	}
 	return u
 }
 
-func (p *CreateStorageNetworkIpRangeParams) SetEndip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) SetEndip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endip"] = v
+	P.P["endip"] = v
 }
 
-func (p *CreateStorageNetworkIpRangeParams) GetEndip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) GetEndip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endip"].(string)
+	value, ok := P.P["endip"].(string)
 	return value, ok
 }
 
-func (p *CreateStorageNetworkIpRangeParams) SetGateway(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) SetGateway(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gateway"] = v
+	P.P["gateway"] = v
 }
 
-func (p *CreateStorageNetworkIpRangeParams) GetGateway() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) GetGateway() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gateway"].(string)
+	value, ok := P.P["gateway"].(string)
 	return value, ok
 }
 
-func (p *CreateStorageNetworkIpRangeParams) SetNetmask(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) SetNetmask(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["netmask"] = v
+	P.P["netmask"] = v
 }
 
-func (p *CreateStorageNetworkIpRangeParams) GetNetmask() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) GetNetmask() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["netmask"].(string)
+	value, ok := P.P["netmask"].(string)
 	return value, ok
 }
 
-func (p *CreateStorageNetworkIpRangeParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *CreateStorageNetworkIpRangeParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *CreateStorageNetworkIpRangeParams) SetStartip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) SetStartip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startip"] = v
+	P.P["startip"] = v
 }
 
-func (p *CreateStorageNetworkIpRangeParams) GetStartip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) GetStartip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startip"].(string)
+	value, ok := P.P["startip"].(string)
 	return value, ok
 }
 
-func (p *CreateStorageNetworkIpRangeParams) SetVlan(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) SetVlan(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlan"] = v
+	P.P["vlan"] = v
 }
 
-func (p *CreateStorageNetworkIpRangeParams) GetVlan() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStorageNetworkIpRangeParams) GetVlan() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlan"].(int)
+	value, ok := P.P["vlan"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateStorageNetworkIpRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewCreateStorageNetworkIpRangeParams(gateway string, netmask string, podid string, startip string) *CreateStorageNetworkIpRangeParams {
-	p := &CreateStorageNetworkIpRangeParams{}
-	p.p = make(map[string]interface{})
-	p.p["gateway"] = gateway
-	p.p["netmask"] = netmask
-	p.p["podid"] = podid
-	p.p["startip"] = startip
-	return p
+	P := &CreateStorageNetworkIpRangeParams{}
+	P.P = make(map[string]interface{})
+	P.P["gateway"] = gateway
+	P.P["netmask"] = netmask
+	P.P["podid"] = podid
+	P.P["startip"] = startip
+	return P
 }
 
 // Creates a Storage network IP range.
@@ -1691,97 +1691,97 @@ type CreateStorageNetworkIpRangeResponse struct {
 }
 
 type DedicatePublicIpRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DedicatePublicIpRangeParams) toURLValues() url.Values {
+func (P *DedicatePublicIpRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
 	return u
 }
 
-func (p *DedicatePublicIpRangeParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePublicIpRangeParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *DedicatePublicIpRangeParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePublicIpRangeParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *DedicatePublicIpRangeParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePublicIpRangeParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *DedicatePublicIpRangeParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePublicIpRangeParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *DedicatePublicIpRangeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePublicIpRangeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DedicatePublicIpRangeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePublicIpRangeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *DedicatePublicIpRangeParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePublicIpRangeParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *DedicatePublicIpRangeParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePublicIpRangeParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DedicatePublicIpRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewDedicatePublicIpRangeParams(domainid string, id string) *DedicatePublicIpRangeParams {
-	p := &DedicatePublicIpRangeParams{}
-	p.p = make(map[string]interface{})
-	p.p["domainid"] = domainid
-	p.p["id"] = id
-	return p
+	P := &DedicatePublicIpRangeParams{}
+	P.P = make(map[string]interface{})
+	P.P["domainid"] = domainid
+	P.P["id"] = id
+	return P
 }
 
 // Dedicates a Public IP range to an account
@@ -1828,61 +1828,61 @@ type DedicatePublicIpRangeResponse struct {
 }
 
 type DeleteNetworkParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteNetworkParams) toURLValues() url.Values {
+func (P *DeleteNetworkParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["forced"]; found {
+	if v, found := P.P["forced"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forced", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteNetworkParams) SetForced(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forced"] = v
+	P.P["forced"] = v
 }
 
-func (p *DeleteNetworkParams) GetForced() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forced"].(bool)
+	value, ok := P.P["forced"].(bool)
 	return value, ok
 }
 
-func (p *DeleteNetworkParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteNetworkParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteNetworkParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewDeleteNetworkParams(id string) *DeleteNetworkParams {
-	p := &DeleteNetworkParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteNetworkParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a network
@@ -1923,42 +1923,42 @@ type DeleteNetworkResponse struct {
 }
 
 type DeleteNetworkServiceProviderParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteNetworkServiceProviderParams) toURLValues() url.Values {
+func (P *DeleteNetworkServiceProviderParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteNetworkServiceProviderParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkServiceProviderParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteNetworkServiceProviderParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkServiceProviderParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteNetworkServiceProviderParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewDeleteNetworkServiceProviderParams(id string) *DeleteNetworkServiceProviderParams {
-	p := &DeleteNetworkServiceProviderParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteNetworkServiceProviderParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a Network Service Provider.
@@ -1999,42 +1999,42 @@ type DeleteNetworkServiceProviderResponse struct {
 }
 
 type DeleteOpenDaylightControllerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteOpenDaylightControllerParams) toURLValues() url.Values {
+func (P *DeleteOpenDaylightControllerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteOpenDaylightControllerParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteOpenDaylightControllerParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteOpenDaylightControllerParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteOpenDaylightControllerParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteOpenDaylightControllerParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewDeleteOpenDaylightControllerParams(id string) *DeleteOpenDaylightControllerParams {
-	p := &DeleteOpenDaylightControllerParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteOpenDaylightControllerParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Removes an OpenDyalight controler
@@ -2083,42 +2083,42 @@ type DeleteOpenDaylightControllerResponse struct {
 }
 
 type DeletePhysicalNetworkParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeletePhysicalNetworkParams) toURLValues() url.Values {
+func (P *DeletePhysicalNetworkParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeletePhysicalNetworkParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePhysicalNetworkParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeletePhysicalNetworkParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePhysicalNetworkParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeletePhysicalNetworkParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewDeletePhysicalNetworkParams(id string) *DeletePhysicalNetworkParams {
-	p := &DeletePhysicalNetworkParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeletePhysicalNetworkParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a Physical Network.
@@ -2159,42 +2159,42 @@ type DeletePhysicalNetworkResponse struct {
 }
 
 type DeleteStorageNetworkIpRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteStorageNetworkIpRangeParams) toURLValues() url.Values {
+func (P *DeleteStorageNetworkIpRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteStorageNetworkIpRangeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteStorageNetworkIpRangeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteStorageNetworkIpRangeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteStorageNetworkIpRangeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteStorageNetworkIpRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewDeleteStorageNetworkIpRangeParams(id string) *DeleteStorageNetworkIpRangeParams {
-	p := &DeleteStorageNetworkIpRangeParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteStorageNetworkIpRangeParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a storage network IP Range.
@@ -2235,115 +2235,115 @@ type DeleteStorageNetworkIpRangeResponse struct {
 }
 
 type ListNetscalerLoadBalancerNetworksParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListNetscalerLoadBalancerNetworksParams) toURLValues() url.Values {
+func (P *ListNetscalerLoadBalancerNetworksParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["lbdeviceid"]; found {
+	if v, found := P.P["lbdeviceid"]; found {
 		u.Set("lbdeviceid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListNetscalerLoadBalancerNetworksParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancerNetworksParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListNetscalerLoadBalancerNetworksParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancerNetworksParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListNetscalerLoadBalancerNetworksParams) SetLbdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancerNetworksParams) SetLbdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbdeviceid"] = v
+	P.P["lbdeviceid"] = v
 }
 
-func (p *ListNetscalerLoadBalancerNetworksParams) GetLbdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancerNetworksParams) GetLbdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbdeviceid"].(string)
+	value, ok := P.P["lbdeviceid"].(string)
 	return value, ok
 }
 
-func (p *ListNetscalerLoadBalancerNetworksParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancerNetworksParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListNetscalerLoadBalancerNetworksParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancerNetworksParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListNetscalerLoadBalancerNetworksParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancerNetworksParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListNetscalerLoadBalancerNetworksParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancerNetworksParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListNetscalerLoadBalancerNetworksParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewListNetscalerLoadBalancerNetworksParams(lbdeviceid string) *ListNetscalerLoadBalancerNetworksParams {
-	p := &ListNetscalerLoadBalancerNetworksParams{}
-	p.p = make(map[string]interface{})
-	p.p["lbdeviceid"] = lbdeviceid
-	return p
+	P := &ListNetscalerLoadBalancerNetworksParams{}
+	P.P = make(map[string]interface{})
+	P.P["lbdeviceid"] = lbdeviceid
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkService) GetNetscalerLoadBalancerNetworkID(keyword string, lbdeviceid string, opts ...OptionFunc) (string, int, error) {
-	p := &ListNetscalerLoadBalancerNetworksParams{}
-	p.p = make(map[string]interface{})
+	P := &ListNetscalerLoadBalancerNetworksParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["keyword"] = keyword
-	p.p["lbdeviceid"] = lbdeviceid
+	P.P["keyword"] = keyword
+	P.P["lbdeviceid"] = lbdeviceid
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListNetscalerLoadBalancerNetworks(p)
+	l, err := s.ListNetscalerLoadBalancerNetworks(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -2472,79 +2472,79 @@ type NetscalerLoadBalancerNetworkServiceCapability struct {
 }
 
 type ListNetworkIsolationMethodsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListNetworkIsolationMethodsParams) toURLValues() url.Values {
+func (P *ListNetworkIsolationMethodsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListNetworkIsolationMethodsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkIsolationMethodsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListNetworkIsolationMethodsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkIsolationMethodsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkIsolationMethodsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkIsolationMethodsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListNetworkIsolationMethodsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkIsolationMethodsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListNetworkIsolationMethodsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkIsolationMethodsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListNetworkIsolationMethodsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkIsolationMethodsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListNetworkIsolationMethodsParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewListNetworkIsolationMethodsParams() *ListNetworkIsolationMethodsParams {
-	p := &ListNetworkIsolationMethodsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListNetworkIsolationMethodsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists supported methods of network isolation
@@ -2574,149 +2574,149 @@ type NetworkIsolationMethod struct {
 }
 
 type ListNetworkServiceProvidersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListNetworkServiceProvidersParams) toURLValues() url.Values {
+func (P *ListNetworkServiceProvidersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
 	return u
 }
 
-func (p *ListNetworkServiceProvidersParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListNetworkServiceProvidersParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkServiceProvidersParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListNetworkServiceProvidersParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkServiceProvidersParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListNetworkServiceProvidersParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListNetworkServiceProvidersParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListNetworkServiceProvidersParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListNetworkServiceProvidersParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *ListNetworkServiceProvidersParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkServiceProvidersParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListNetworkServiceProvidersParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkServiceProvidersParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListNetworkServiceProvidersParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewListNetworkServiceProvidersParams() *ListNetworkServiceProvidersParams {
-	p := &ListNetworkServiceProvidersParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListNetworkServiceProvidersParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkService) GetNetworkServiceProviderID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListNetworkServiceProvidersParams{}
-	p.p = make(map[string]interface{})
+	P := &ListNetworkServiceProvidersParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListNetworkServiceProviders(p)
+	l, err := s.ListNetworkServiceProviders(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -2772,505 +2772,505 @@ type NetworkServiceProvider struct {
 }
 
 type ListNetworksParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListNetworksParams) toURLValues() url.Values {
+func (P *ListNetworksParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["acltype"]; found {
+	if v, found := P.P["acltype"]; found {
 		u.Set("acltype", v.(string))
 	}
-	if v, found := p.p["canusefordeploy"]; found {
+	if v, found := P.P["canusefordeploy"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("canusefordeploy", vv)
 	}
-	if v, found := p.p["displaynetwork"]; found {
+	if v, found := P.P["displaynetwork"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("displaynetwork", vv)
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["forvpc"]; found {
+	if v, found := P.P["forvpc"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forvpc", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["issystem"]; found {
+	if v, found := P.P["issystem"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("issystem", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["networkofferingid"]; found {
+	if v, found := P.P["networkofferingid"]; found {
 		u.Set("networkofferingid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["restartrequired"]; found {
+	if v, found := P.P["restartrequired"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("restartrequired", vv)
 	}
-	if v, found := p.p["showicon"]; found {
+	if v, found := P.P["showicon"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showicon", vv)
 	}
-	if v, found := p.p["specifyipranges"]; found {
+	if v, found := P.P["specifyipranges"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("specifyipranges", vv)
 	}
-	if v, found := p.p["supportedservices"]; found {
+	if v, found := P.P["supportedservices"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("supportedservices", vv)
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["traffictype"]; found {
+	if v, found := P.P["traffictype"]; found {
 		u.Set("traffictype", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListNetworksParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListNetworksParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetAcltype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetAcltype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["acltype"] = v
+	P.P["acltype"] = v
 }
 
-func (p *ListNetworksParams) GetAcltype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetAcltype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["acltype"].(string)
+	value, ok := P.P["acltype"].(string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetCanusefordeploy(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetCanusefordeploy(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["canusefordeploy"] = v
+	P.P["canusefordeploy"] = v
 }
 
-func (p *ListNetworksParams) GetCanusefordeploy() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetCanusefordeploy() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["canusefordeploy"].(bool)
+	value, ok := P.P["canusefordeploy"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetDisplaynetwork(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetDisplaynetwork(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaynetwork"] = v
+	P.P["displaynetwork"] = v
 }
 
-func (p *ListNetworksParams) GetDisplaynetwork() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetDisplaynetwork() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaynetwork"].(bool)
+	value, ok := P.P["displaynetwork"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListNetworksParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetForvpc(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetForvpc(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forvpc"] = v
+	P.P["forvpc"] = v
 }
 
-func (p *ListNetworksParams) GetForvpc() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetForvpc() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forvpc"].(bool)
+	value, ok := P.P["forvpc"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListNetworksParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListNetworksParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetIssystem(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetIssystem(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["issystem"] = v
+	P.P["issystem"] = v
 }
 
-func (p *ListNetworksParams) GetIssystem() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetIssystem() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["issystem"].(bool)
+	value, ok := P.P["issystem"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListNetworksParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListNetworksParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetNetworkofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetNetworkofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkofferingid"] = v
+	P.P["networkofferingid"] = v
 }
 
-func (p *ListNetworksParams) GetNetworkofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetNetworkofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkofferingid"].(string)
+	value, ok := P.P["networkofferingid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListNetworksParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListNetworksParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *ListNetworksParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListNetworksParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetRestartrequired(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetRestartrequired(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["restartrequired"] = v
+	P.P["restartrequired"] = v
 }
 
-func (p *ListNetworksParams) GetRestartrequired() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetRestartrequired() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["restartrequired"].(bool)
+	value, ok := P.P["restartrequired"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetShowicon(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetShowicon(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showicon"] = v
+	P.P["showicon"] = v
 }
 
-func (p *ListNetworksParams) GetShowicon() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetShowicon() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showicon"].(bool)
+	value, ok := P.P["showicon"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetSpecifyipranges(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetSpecifyipranges(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["specifyipranges"] = v
+	P.P["specifyipranges"] = v
 }
 
-func (p *ListNetworksParams) GetSpecifyipranges() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetSpecifyipranges() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["specifyipranges"].(bool)
+	value, ok := P.P["specifyipranges"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetSupportedservices(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetSupportedservices(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["supportedservices"] = v
+	P.P["supportedservices"] = v
 }
 
-func (p *ListNetworksParams) GetSupportedservices() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetSupportedservices() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["supportedservices"].([]string)
+	value, ok := P.P["supportedservices"].([]string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListNetworksParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetTraffictype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetTraffictype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["traffictype"] = v
+	P.P["traffictype"] = v
 }
 
-func (p *ListNetworksParams) GetTraffictype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetTraffictype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["traffictype"].(string)
+	value, ok := P.P["traffictype"].(string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *ListNetworksParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *ListNetworksParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworksParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListNetworksParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworksParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListNetworksParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewListNetworksParams() *ListNetworksParams {
-	p := &ListNetworksParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListNetworksParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkService) GetNetworkID(keyword string, opts ...OptionFunc) (string, int, error) {
-	p := &ListNetworksParams{}
-	p.p = make(map[string]interface{})
+	P := &ListNetworksParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["keyword"] = keyword
+	P.P["keyword"] = keyword
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListNetworks(p)
+	l, err := s.ListNetworks(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -3309,18 +3309,18 @@ func (s *NetworkService) GetNetworkByName(name string, opts ...OptionFunc) (*Net
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkService) GetNetworkByID(id string, opts ...OptionFunc) (*Network, int, error) {
-	p := &ListNetworksParams{}
-	p.p = make(map[string]interface{})
+	P := &ListNetworksParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListNetworks(p)
+	l, err := s.ListNetworks(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -3446,115 +3446,115 @@ type NetworkServiceInternalCapability struct {
 }
 
 type ListNiciraNvpDeviceNetworksParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListNiciraNvpDeviceNetworksParams) toURLValues() url.Values {
+func (P *ListNiciraNvpDeviceNetworksParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["nvpdeviceid"]; found {
+	if v, found := P.P["nvpdeviceid"]; found {
 		u.Set("nvpdeviceid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListNiciraNvpDeviceNetworksParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNiciraNvpDeviceNetworksParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListNiciraNvpDeviceNetworksParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNiciraNvpDeviceNetworksParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListNiciraNvpDeviceNetworksParams) SetNvpdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNiciraNvpDeviceNetworksParams) SetNvpdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["nvpdeviceid"] = v
+	P.P["nvpdeviceid"] = v
 }
 
-func (p *ListNiciraNvpDeviceNetworksParams) GetNvpdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNiciraNvpDeviceNetworksParams) GetNvpdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["nvpdeviceid"].(string)
+	value, ok := P.P["nvpdeviceid"].(string)
 	return value, ok
 }
 
-func (p *ListNiciraNvpDeviceNetworksParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNiciraNvpDeviceNetworksParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListNiciraNvpDeviceNetworksParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNiciraNvpDeviceNetworksParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListNiciraNvpDeviceNetworksParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNiciraNvpDeviceNetworksParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListNiciraNvpDeviceNetworksParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNiciraNvpDeviceNetworksParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListNiciraNvpDeviceNetworksParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewListNiciraNvpDeviceNetworksParams(nvpdeviceid string) *ListNiciraNvpDeviceNetworksParams {
-	p := &ListNiciraNvpDeviceNetworksParams{}
-	p.p = make(map[string]interface{})
-	p.p["nvpdeviceid"] = nvpdeviceid
-	return p
+	P := &ListNiciraNvpDeviceNetworksParams{}
+	P.P = make(map[string]interface{})
+	P.P["nvpdeviceid"] = nvpdeviceid
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkService) GetNiciraNvpDeviceNetworkID(keyword string, nvpdeviceid string, opts ...OptionFunc) (string, int, error) {
-	p := &ListNiciraNvpDeviceNetworksParams{}
-	p.p = make(map[string]interface{})
+	P := &ListNiciraNvpDeviceNetworksParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["keyword"] = keyword
-	p.p["nvpdeviceid"] = nvpdeviceid
+	P.P["keyword"] = keyword
+	P.P["nvpdeviceid"] = nvpdeviceid
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListNiciraNvpDeviceNetworks(p)
+	l, err := s.ListNiciraNvpDeviceNetworks(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -3683,75 +3683,75 @@ type NiciraNvpDeviceNetworkServiceCapability struct {
 }
 
 type ListOpenDaylightControllersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListOpenDaylightControllersParams) toURLValues() url.Values {
+func (P *ListOpenDaylightControllersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
 	return u
 }
 
-func (p *ListOpenDaylightControllersParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOpenDaylightControllersParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListOpenDaylightControllersParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOpenDaylightControllersParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListOpenDaylightControllersParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOpenDaylightControllersParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *ListOpenDaylightControllersParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOpenDaylightControllersParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListOpenDaylightControllersParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewListOpenDaylightControllersParams() *ListOpenDaylightControllersParams {
-	p := &ListOpenDaylightControllersParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListOpenDaylightControllersParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkService) GetOpenDaylightControllerByID(id string, opts ...OptionFunc) (*OpenDaylightController, int, error) {
-	p := &ListOpenDaylightControllersParams{}
-	p.p = make(map[string]interface{})
+	P := &ListOpenDaylightControllersParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListOpenDaylightControllers(p)
+	l, err := s.ListOpenDaylightControllers(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -3802,115 +3802,115 @@ type OpenDaylightController struct {
 }
 
 type ListPaloAltoFirewallNetworksParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListPaloAltoFirewallNetworksParams) toURLValues() url.Values {
+func (P *ListPaloAltoFirewallNetworksParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["lbdeviceid"]; found {
+	if v, found := P.P["lbdeviceid"]; found {
 		u.Set("lbdeviceid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListPaloAltoFirewallNetworksParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallNetworksParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListPaloAltoFirewallNetworksParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallNetworksParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListPaloAltoFirewallNetworksParams) SetLbdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallNetworksParams) SetLbdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbdeviceid"] = v
+	P.P["lbdeviceid"] = v
 }
 
-func (p *ListPaloAltoFirewallNetworksParams) GetLbdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallNetworksParams) GetLbdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbdeviceid"].(string)
+	value, ok := P.P["lbdeviceid"].(string)
 	return value, ok
 }
 
-func (p *ListPaloAltoFirewallNetworksParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallNetworksParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListPaloAltoFirewallNetworksParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallNetworksParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListPaloAltoFirewallNetworksParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallNetworksParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListPaloAltoFirewallNetworksParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallNetworksParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListPaloAltoFirewallNetworksParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewListPaloAltoFirewallNetworksParams(lbdeviceid string) *ListPaloAltoFirewallNetworksParams {
-	p := &ListPaloAltoFirewallNetworksParams{}
-	p.p = make(map[string]interface{})
-	p.p["lbdeviceid"] = lbdeviceid
-	return p
+	P := &ListPaloAltoFirewallNetworksParams{}
+	P.P = make(map[string]interface{})
+	P.P["lbdeviceid"] = lbdeviceid
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkService) GetPaloAltoFirewallNetworkID(keyword string, lbdeviceid string, opts ...OptionFunc) (string, int, error) {
-	p := &ListPaloAltoFirewallNetworksParams{}
-	p.p = make(map[string]interface{})
+	P := &ListPaloAltoFirewallNetworksParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["keyword"] = keyword
-	p.p["lbdeviceid"] = lbdeviceid
+	P.P["keyword"] = keyword
+	P.P["lbdeviceid"] = lbdeviceid
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListPaloAltoFirewallNetworks(p)
+	l, err := s.ListPaloAltoFirewallNetworks(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -4039,149 +4039,149 @@ type PaloAltoFirewallNetworkServiceCapability struct {
 }
 
 type ListPhysicalNetworksParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListPhysicalNetworksParams) toURLValues() url.Values {
+func (P *ListPhysicalNetworksParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListPhysicalNetworksParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListPhysicalNetworksParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListPhysicalNetworksParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListPhysicalNetworksParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListPhysicalNetworksParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListPhysicalNetworksParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListPhysicalNetworksParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListPhysicalNetworksParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListPhysicalNetworksParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListPhysicalNetworksParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListPhysicalNetworksParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListPhysicalNetworksParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPhysicalNetworksParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListPhysicalNetworksParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewListPhysicalNetworksParams() *ListPhysicalNetworksParams {
-	p := &ListPhysicalNetworksParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListPhysicalNetworksParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkService) GetPhysicalNetworkID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListPhysicalNetworksParams{}
-	p.p = make(map[string]interface{})
+	P := &ListPhysicalNetworksParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListPhysicalNetworks(p)
+	l, err := s.ListPhysicalNetworks(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -4220,18 +4220,18 @@ func (s *NetworkService) GetPhysicalNetworkByName(name string, opts ...OptionFun
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkService) GetPhysicalNetworkByID(id string, opts ...OptionFunc) (*PhysicalNetwork, int, error) {
-	p := &ListPhysicalNetworksParams{}
-	p.p = make(map[string]interface{})
+	P := &ListPhysicalNetworksParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListPhysicalNetworks(p)
+	l, err := s.ListPhysicalNetworks(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -4288,149 +4288,149 @@ type PhysicalNetwork struct {
 }
 
 type ListStorageNetworkIpRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListStorageNetworkIpRangeParams) toURLValues() url.Values {
+func (P *ListStorageNetworkIpRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListStorageNetworkIpRangeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListStorageNetworkIpRangeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListStorageNetworkIpRangeParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListStorageNetworkIpRangeParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListStorageNetworkIpRangeParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListStorageNetworkIpRangeParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListStorageNetworkIpRangeParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListStorageNetworkIpRangeParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListStorageNetworkIpRangeParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListStorageNetworkIpRangeParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *ListStorageNetworkIpRangeParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListStorageNetworkIpRangeParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageNetworkIpRangeParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListStorageNetworkIpRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewListStorageNetworkIpRangeParams() *ListStorageNetworkIpRangeParams {
-	p := &ListStorageNetworkIpRangeParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListStorageNetworkIpRangeParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkService) GetStorageNetworkIpRangeByID(id string, opts ...OptionFunc) (*StorageNetworkIpRange, int, error) {
-	p := &ListStorageNetworkIpRangeParams{}
-	p.p = make(map[string]interface{})
+	P := &ListStorageNetworkIpRangeParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListStorageNetworkIpRange(p)
+	l, err := s.ListStorageNetworkIpRange(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -4485,115 +4485,115 @@ type StorageNetworkIpRange struct {
 }
 
 type ListSupportedNetworkServicesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListSupportedNetworkServicesParams) toURLValues() url.Values {
+func (P *ListSupportedNetworkServicesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["provider"]; found {
+	if v, found := P.P["provider"]; found {
 		u.Set("provider", v.(string))
 	}
-	if v, found := p.p["service"]; found {
+	if v, found := P.P["service"]; found {
 		u.Set("service", v.(string))
 	}
 	return u
 }
 
-func (p *ListSupportedNetworkServicesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSupportedNetworkServicesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListSupportedNetworkServicesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSupportedNetworkServicesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListSupportedNetworkServicesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSupportedNetworkServicesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListSupportedNetworkServicesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSupportedNetworkServicesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListSupportedNetworkServicesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSupportedNetworkServicesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListSupportedNetworkServicesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSupportedNetworkServicesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListSupportedNetworkServicesParams) SetProvider(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSupportedNetworkServicesParams) SetProvider(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["provider"] = v
+	P.P["provider"] = v
 }
 
-func (p *ListSupportedNetworkServicesParams) GetProvider() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSupportedNetworkServicesParams) GetProvider() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["provider"].(string)
+	value, ok := P.P["provider"].(string)
 	return value, ok
 }
 
-func (p *ListSupportedNetworkServicesParams) SetService(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSupportedNetworkServicesParams) SetService(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["service"] = v
+	P.P["service"] = v
 }
 
-func (p *ListSupportedNetworkServicesParams) GetService() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSupportedNetworkServicesParams) GetService() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["service"].(string)
+	value, ok := P.P["service"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListSupportedNetworkServicesParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewListSupportedNetworkServicesParams() *ListSupportedNetworkServicesParams {
-	p := &ListSupportedNetworkServicesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListSupportedNetworkServicesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists all network services provided by CloudStack or for the given Provider.
@@ -4641,42 +4641,42 @@ type SupportedNetworkServiceCapability struct {
 }
 
 type ReleasePublicIpRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ReleasePublicIpRangeParams) toURLValues() url.Values {
+func (P *ReleasePublicIpRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *ReleasePublicIpRangeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleasePublicIpRangeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ReleasePublicIpRangeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleasePublicIpRangeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ReleasePublicIpRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewReleasePublicIpRangeParams(id string) *ReleasePublicIpRangeParams {
-	p := &ReleasePublicIpRangeParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &ReleasePublicIpRangeParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Releases a Public IP range back to the system pool
@@ -4729,80 +4729,80 @@ func (r *ReleasePublicIpRangeResponse) UnmarshalJSON(b []byte) error {
 }
 
 type RestartNetworkParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RestartNetworkParams) toURLValues() url.Values {
+func (P *RestartNetworkParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["cleanup"]; found {
+	if v, found := P.P["cleanup"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("cleanup", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["makeredundant"]; found {
+	if v, found := P.P["makeredundant"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("makeredundant", vv)
 	}
 	return u
 }
 
-func (p *RestartNetworkParams) SetCleanup(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartNetworkParams) SetCleanup(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cleanup"] = v
+	P.P["cleanup"] = v
 }
 
-func (p *RestartNetworkParams) GetCleanup() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartNetworkParams) GetCleanup() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cleanup"].(bool)
+	value, ok := P.P["cleanup"].(bool)
 	return value, ok
 }
 
-func (p *RestartNetworkParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartNetworkParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *RestartNetworkParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartNetworkParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *RestartNetworkParams) SetMakeredundant(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartNetworkParams) SetMakeredundant(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["makeredundant"] = v
+	P.P["makeredundant"] = v
 }
 
-func (p *RestartNetworkParams) GetMakeredundant() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartNetworkParams) GetMakeredundant() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["makeredundant"].(bool)
+	value, ok := P.P["makeredundant"].(bool)
 	return value, ok
 }
 
 // You should always use this function to get a new RestartNetworkParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewRestartNetworkParams(id string) *RestartNetworkParams {
-	p := &RestartNetworkParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &RestartNetworkParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Restarts the network; includes 1) restarting network elements - virtual routers, DHCP servers 2) reapplying all public IPs 3) reapplying loadBalancing/portForwarding rules
@@ -4843,245 +4843,245 @@ type RestartNetworkResponse struct {
 }
 
 type UpdateNetworkParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateNetworkParams) toURLValues() url.Values {
+func (P *UpdateNetworkParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["changecidr"]; found {
+	if v, found := P.P["changecidr"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("changecidr", vv)
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["displaynetwork"]; found {
+	if v, found := P.P["displaynetwork"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("displaynetwork", vv)
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["forced"]; found {
+	if v, found := P.P["forced"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forced", vv)
 	}
-	if v, found := p.p["guestvmcidr"]; found {
+	if v, found := P.P["guestvmcidr"]; found {
 		u.Set("guestvmcidr", v.(string))
 	}
-	if v, found := p.p["hideipaddressusage"]; found {
+	if v, found := P.P["hideipaddressusage"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("hideipaddressusage", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkdomain"]; found {
+	if v, found := P.P["networkdomain"]; found {
 		u.Set("networkdomain", v.(string))
 	}
-	if v, found := p.p["networkofferingid"]; found {
+	if v, found := P.P["networkofferingid"]; found {
 		u.Set("networkofferingid", v.(string))
 	}
-	if v, found := p.p["updateinsequence"]; found {
+	if v, found := P.P["updateinsequence"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("updateinsequence", vv)
 	}
 	return u
 }
 
-func (p *UpdateNetworkParams) SetChangecidr(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetChangecidr(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["changecidr"] = v
+	P.P["changecidr"] = v
 }
 
-func (p *UpdateNetworkParams) GetChangecidr() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetChangecidr() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["changecidr"].(bool)
+	value, ok := P.P["changecidr"].(bool)
 	return value, ok
 }
 
-func (p *UpdateNetworkParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateNetworkParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkParams) SetDisplaynetwork(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetDisplaynetwork(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaynetwork"] = v
+	P.P["displaynetwork"] = v
 }
 
-func (p *UpdateNetworkParams) GetDisplaynetwork() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetDisplaynetwork() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaynetwork"].(bool)
+	value, ok := P.P["displaynetwork"].(bool)
 	return value, ok
 }
 
-func (p *UpdateNetworkParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *UpdateNetworkParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkParams) SetForced(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forced"] = v
+	P.P["forced"] = v
 }
 
-func (p *UpdateNetworkParams) GetForced() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forced"].(bool)
+	value, ok := P.P["forced"].(bool)
 	return value, ok
 }
 
-func (p *UpdateNetworkParams) SetGuestvmcidr(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetGuestvmcidr(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["guestvmcidr"] = v
+	P.P["guestvmcidr"] = v
 }
 
-func (p *UpdateNetworkParams) GetGuestvmcidr() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetGuestvmcidr() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["guestvmcidr"].(string)
+	value, ok := P.P["guestvmcidr"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkParams) SetHideipaddressusage(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetHideipaddressusage(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hideipaddressusage"] = v
+	P.P["hideipaddressusage"] = v
 }
 
-func (p *UpdateNetworkParams) GetHideipaddressusage() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetHideipaddressusage() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hideipaddressusage"].(bool)
+	value, ok := P.P["hideipaddressusage"].(bool)
 	return value, ok
 }
 
-func (p *UpdateNetworkParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateNetworkParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateNetworkParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkParams) SetNetworkdomain(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetNetworkdomain(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdomain"] = v
+	P.P["networkdomain"] = v
 }
 
-func (p *UpdateNetworkParams) GetNetworkdomain() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetNetworkdomain() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdomain"].(string)
+	value, ok := P.P["networkdomain"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkParams) SetNetworkofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetNetworkofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkofferingid"] = v
+	P.P["networkofferingid"] = v
 }
 
-func (p *UpdateNetworkParams) GetNetworkofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetNetworkofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkofferingid"].(string)
+	value, ok := P.P["networkofferingid"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkParams) SetUpdateinsequence(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) SetUpdateinsequence(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["updateinsequence"] = v
+	P.P["updateinsequence"] = v
 }
 
-func (p *UpdateNetworkParams) GetUpdateinsequence() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkParams) GetUpdateinsequence() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["updateinsequence"].(bool)
+	value, ok := P.P["updateinsequence"].(bool)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateNetworkParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewUpdateNetworkParams(id string) *UpdateNetworkParams {
-	p := &UpdateNetworkParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateNetworkParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a network
@@ -5205,79 +5205,79 @@ type UpdateNetworkResponseServiceCapability struct {
 }
 
 type UpdateNetworkServiceProviderParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateNetworkServiceProviderParams) toURLValues() url.Values {
+func (P *UpdateNetworkServiceProviderParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["servicelist"]; found {
+	if v, found := P.P["servicelist"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("servicelist", vv)
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateNetworkServiceProviderParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkServiceProviderParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateNetworkServiceProviderParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkServiceProviderParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkServiceProviderParams) SetServicelist(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkServiceProviderParams) SetServicelist(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["servicelist"] = v
+	P.P["servicelist"] = v
 }
 
-func (p *UpdateNetworkServiceProviderParams) GetServicelist() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkServiceProviderParams) GetServicelist() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["servicelist"].([]string)
+	value, ok := P.P["servicelist"].([]string)
 	return value, ok
 }
 
-func (p *UpdateNetworkServiceProviderParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkServiceProviderParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *UpdateNetworkServiceProviderParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkServiceProviderParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateNetworkServiceProviderParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewUpdateNetworkServiceProviderParams(id string) *UpdateNetworkServiceProviderParams {
-	p := &UpdateNetworkServiceProviderParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateNetworkServiceProviderParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a network serviceProvider of a physical network
@@ -5328,115 +5328,115 @@ type UpdateNetworkServiceProviderResponse struct {
 }
 
 type UpdatePhysicalNetworkParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdatePhysicalNetworkParams) toURLValues() url.Values {
+func (P *UpdatePhysicalNetworkParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["networkspeed"]; found {
+	if v, found := P.P["networkspeed"]; found {
 		u.Set("networkspeed", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("tags", vv)
 	}
-	if v, found := p.p["vlan"]; found {
+	if v, found := P.P["vlan"]; found {
 		u.Set("vlan", v.(string))
 	}
 	return u
 }
 
-func (p *UpdatePhysicalNetworkParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePhysicalNetworkParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdatePhysicalNetworkParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePhysicalNetworkParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdatePhysicalNetworkParams) SetNetworkspeed(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePhysicalNetworkParams) SetNetworkspeed(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkspeed"] = v
+	P.P["networkspeed"] = v
 }
 
-func (p *UpdatePhysicalNetworkParams) GetNetworkspeed() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePhysicalNetworkParams) GetNetworkspeed() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkspeed"].(string)
+	value, ok := P.P["networkspeed"].(string)
 	return value, ok
 }
 
-func (p *UpdatePhysicalNetworkParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePhysicalNetworkParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *UpdatePhysicalNetworkParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePhysicalNetworkParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *UpdatePhysicalNetworkParams) SetTags(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePhysicalNetworkParams) SetTags(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *UpdatePhysicalNetworkParams) GetTags() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePhysicalNetworkParams) GetTags() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].([]string)
+	value, ok := P.P["tags"].([]string)
 	return value, ok
 }
 
-func (p *UpdatePhysicalNetworkParams) SetVlan(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePhysicalNetworkParams) SetVlan(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlan"] = v
+	P.P["vlan"] = v
 }
 
-func (p *UpdatePhysicalNetworkParams) GetVlan() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePhysicalNetworkParams) GetVlan() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlan"].(string)
+	value, ok := P.P["vlan"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdatePhysicalNetworkParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewUpdatePhysicalNetworkParams(id string) *UpdatePhysicalNetworkParams {
-	p := &UpdatePhysicalNetworkParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdatePhysicalNetworkParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a physical network
@@ -5491,115 +5491,115 @@ type UpdatePhysicalNetworkResponse struct {
 }
 
 type UpdateStorageNetworkIpRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateStorageNetworkIpRangeParams) toURLValues() url.Values {
+func (P *UpdateStorageNetworkIpRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["endip"]; found {
+	if v, found := P.P["endip"]; found {
 		u.Set("endip", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["netmask"]; found {
+	if v, found := P.P["netmask"]; found {
 		u.Set("netmask", v.(string))
 	}
-	if v, found := p.p["startip"]; found {
+	if v, found := P.P["startip"]; found {
 		u.Set("startip", v.(string))
 	}
-	if v, found := p.p["vlan"]; found {
+	if v, found := P.P["vlan"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("vlan", vv)
 	}
 	return u
 }
 
-func (p *UpdateStorageNetworkIpRangeParams) SetEndip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateStorageNetworkIpRangeParams) SetEndip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endip"] = v
+	P.P["endip"] = v
 }
 
-func (p *UpdateStorageNetworkIpRangeParams) GetEndip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateStorageNetworkIpRangeParams) GetEndip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endip"].(string)
+	value, ok := P.P["endip"].(string)
 	return value, ok
 }
 
-func (p *UpdateStorageNetworkIpRangeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateStorageNetworkIpRangeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateStorageNetworkIpRangeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateStorageNetworkIpRangeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateStorageNetworkIpRangeParams) SetNetmask(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateStorageNetworkIpRangeParams) SetNetmask(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["netmask"] = v
+	P.P["netmask"] = v
 }
 
-func (p *UpdateStorageNetworkIpRangeParams) GetNetmask() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateStorageNetworkIpRangeParams) GetNetmask() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["netmask"].(string)
+	value, ok := P.P["netmask"].(string)
 	return value, ok
 }
 
-func (p *UpdateStorageNetworkIpRangeParams) SetStartip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateStorageNetworkIpRangeParams) SetStartip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startip"] = v
+	P.P["startip"] = v
 }
 
-func (p *UpdateStorageNetworkIpRangeParams) GetStartip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateStorageNetworkIpRangeParams) GetStartip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startip"].(string)
+	value, ok := P.P["startip"].(string)
 	return value, ok
 }
 
-func (p *UpdateStorageNetworkIpRangeParams) SetVlan(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateStorageNetworkIpRangeParams) SetVlan(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlan"] = v
+	P.P["vlan"] = v
 }
 
-func (p *UpdateStorageNetworkIpRangeParams) GetVlan() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateStorageNetworkIpRangeParams) GetVlan() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlan"].(int)
+	value, ok := P.P["vlan"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateStorageNetworkIpRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkService) NewUpdateStorageNetworkIpRangeParams(id string) *UpdateStorageNetworkIpRangeParams {
-	p := &UpdateStorageNetworkIpRangeParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateStorageNetworkIpRangeParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Update a Storage network IP range, only allowed when no IPs in this range have been allocated.

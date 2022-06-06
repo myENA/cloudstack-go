@@ -28,280 +28,280 @@ import (
 )
 
 type HostServiceIface interface {
-	AddBaremetalHost(p *AddBaremetalHostParams) (*AddBaremetalHostResponse, error)
+	AddBaremetalHost(P *AddBaremetalHostParams) (*AddBaremetalHostResponse, error)
 	NewAddBaremetalHostParams(hypervisor string, podid string, url string, zoneid string) *AddBaremetalHostParams
-	AddGloboDnsHost(p *AddGloboDnsHostParams) (*AddGloboDnsHostResponse, error)
+	AddGloboDnsHost(P *AddGloboDnsHostParams) (*AddGloboDnsHostResponse, error)
 	NewAddGloboDnsHostParams(password string, physicalnetworkid string, url string, username string) *AddGloboDnsHostParams
-	AddHost(p *AddHostParams) (*AddHostResponse, error)
+	AddHost(P *AddHostParams) (*AddHostResponse, error)
 	NewAddHostParams(hypervisor string, podid string, url string, zoneid string) *AddHostParams
-	AddSecondaryStorage(p *AddSecondaryStorageParams) (*AddSecondaryStorageResponse, error)
+	AddSecondaryStorage(P *AddSecondaryStorageParams) (*AddSecondaryStorageResponse, error)
 	NewAddSecondaryStorageParams(url string) *AddSecondaryStorageParams
-	CancelHostMaintenance(p *CancelHostMaintenanceParams) (*CancelHostMaintenanceResponse, error)
+	CancelHostMaintenance(P *CancelHostMaintenanceParams) (*CancelHostMaintenanceResponse, error)
 	NewCancelHostMaintenanceParams(id string) *CancelHostMaintenanceParams
-	ConfigureHAForHost(p *ConfigureHAForHostParams) (*HAForHostResponse, error)
+	ConfigureHAForHost(P *ConfigureHAForHostParams) (*HAForHostResponse, error)
 	NewConfigureHAForHostParams(hostid string, provider string) *ConfigureHAForHostParams
-	EnableHAForHost(p *EnableHAForHostParams) (*EnableHAForHostResponse, error)
+	EnableHAForHost(P *EnableHAForHostParams) (*EnableHAForHostResponse, error)
 	NewEnableHAForHostParams(hostid string) *EnableHAForHostParams
-	DedicateHost(p *DedicateHostParams) (*DedicateHostResponse, error)
+	DedicateHost(P *DedicateHostParams) (*DedicateHostResponse, error)
 	NewDedicateHostParams(domainid string, hostid string) *DedicateHostParams
-	DeleteHost(p *DeleteHostParams) (*DeleteHostResponse, error)
+	DeleteHost(P *DeleteHostParams) (*DeleteHostResponse, error)
 	NewDeleteHostParams(id string) *DeleteHostParams
-	DisableOutOfBandManagementForHost(p *DisableOutOfBandManagementForHostParams) (*DisableOutOfBandManagementForHostResponse, error)
+	DisableOutOfBandManagementForHost(P *DisableOutOfBandManagementForHostParams) (*DisableOutOfBandManagementForHostResponse, error)
 	NewDisableOutOfBandManagementForHostParams(hostid string) *DisableOutOfBandManagementForHostParams
-	EnableOutOfBandManagementForHost(p *EnableOutOfBandManagementForHostParams) (*EnableOutOfBandManagementForHostResponse, error)
+	EnableOutOfBandManagementForHost(P *EnableOutOfBandManagementForHostParams) (*EnableOutOfBandManagementForHostResponse, error)
 	NewEnableOutOfBandManagementForHostParams(hostid string) *EnableOutOfBandManagementForHostParams
-	FindHostsForMigration(p *FindHostsForMigrationParams) (*FindHostsForMigrationResponse, error)
+	FindHostsForMigration(P *FindHostsForMigrationParams) (*FindHostsForMigrationResponse, error)
 	NewFindHostsForMigrationParams(virtualmachineid string) *FindHostsForMigrationParams
-	ListDedicatedHosts(p *ListDedicatedHostsParams) (*ListDedicatedHostsResponse, error)
+	ListDedicatedHosts(P *ListDedicatedHostsParams) (*ListDedicatedHostsResponse, error)
 	NewListDedicatedHostsParams() *ListDedicatedHostsParams
-	ListHostTags(p *ListHostTagsParams) (*ListHostTagsResponse, error)
+	ListHostTags(P *ListHostTagsParams) (*ListHostTagsResponse, error)
 	NewListHostTagsParams() *ListHostTagsParams
 	GetHostTagID(keyword string, opts ...OptionFunc) (string, int, error)
-	ListHosts(p *ListHostsParams) (*ListHostsResponse, error)
+	ListHosts(P *ListHostsParams) (*ListHostsResponse, error)
 	NewListHostsParams() *ListHostsParams
 	GetHostID(name string, opts ...OptionFunc) (string, int, error)
 	GetHostByName(name string, opts ...OptionFunc) (*Host, int, error)
 	GetHostByID(id string, opts ...OptionFunc) (*Host, int, error)
-	ListHostsMetrics(p *ListHostsMetricsParams) (*ListHostsMetricsResponse, error)
+	ListHostsMetrics(P *ListHostsMetricsParams) (*ListHostsMetricsResponse, error)
 	NewListHostsMetricsParams() *ListHostsMetricsParams
 	GetHostsMetricID(name string, opts ...OptionFunc) (string, int, error)
 	GetHostsMetricByName(name string, opts ...OptionFunc) (*HostsMetric, int, error)
 	GetHostsMetricByID(id string, opts ...OptionFunc) (*HostsMetric, int, error)
-	PrepareHostForMaintenance(p *PrepareHostForMaintenanceParams) (*PrepareHostForMaintenanceResponse, error)
+	PrepareHostForMaintenance(P *PrepareHostForMaintenanceParams) (*PrepareHostForMaintenanceResponse, error)
 	NewPrepareHostForMaintenanceParams(id string) *PrepareHostForMaintenanceParams
-	ReconnectHost(p *ReconnectHostParams) (*ReconnectHostResponse, error)
+	ReconnectHost(P *ReconnectHostParams) (*ReconnectHostResponse, error)
 	NewReconnectHostParams(id string) *ReconnectHostParams
-	ReleaseDedicatedHost(p *ReleaseDedicatedHostParams) (*ReleaseDedicatedHostResponse, error)
+	ReleaseDedicatedHost(P *ReleaseDedicatedHostParams) (*ReleaseDedicatedHostResponse, error)
 	NewReleaseDedicatedHostParams(hostid string) *ReleaseDedicatedHostParams
-	ReleaseHostReservation(p *ReleaseHostReservationParams) (*ReleaseHostReservationResponse, error)
+	ReleaseHostReservation(P *ReleaseHostReservationParams) (*ReleaseHostReservationResponse, error)
 	NewReleaseHostReservationParams(id string) *ReleaseHostReservationParams
-	UpdateHost(p *UpdateHostParams) (*UpdateHostResponse, error)
+	UpdateHost(P *UpdateHostParams) (*UpdateHostResponse, error)
 	NewUpdateHostParams(id string) *UpdateHostParams
-	UpdateHostPassword(p *UpdateHostPasswordParams) (*UpdateHostPasswordResponse, error)
+	UpdateHostPassword(P *UpdateHostPasswordParams) (*UpdateHostPasswordResponse, error)
 	NewUpdateHostPasswordParams(password string, username string) *UpdateHostPasswordParams
 }
 
 type AddBaremetalHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddBaremetalHostParams) toURLValues() url.Values {
+func (P *AddBaremetalHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
-	if v, found := p.p["clustername"]; found {
+	if v, found := P.P["clustername"]; found {
 		u.Set("clustername", v.(string))
 	}
-	if v, found := p.p["hosttags"]; found {
+	if v, found := P.P["hosttags"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("hosttags", vv)
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["ipaddress"]; found {
+	if v, found := P.P["ipaddress"]; found {
 		u.Set("ipaddress", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *AddBaremetalHostParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *AddBaremetalHostParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *AddBaremetalHostParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *AddBaremetalHostParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
-func (p *AddBaremetalHostParams) SetClustername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) SetClustername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clustername"] = v
+	P.P["clustername"] = v
 }
 
-func (p *AddBaremetalHostParams) GetClustername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) GetClustername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clustername"].(string)
+	value, ok := P.P["clustername"].(string)
 	return value, ok
 }
 
-func (p *AddBaremetalHostParams) SetHosttags(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) SetHosttags(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hosttags"] = v
+	P.P["hosttags"] = v
 }
 
-func (p *AddBaremetalHostParams) GetHosttags() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) GetHosttags() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hosttags"].([]string)
+	value, ok := P.P["hosttags"].([]string)
 	return value, ok
 }
 
-func (p *AddBaremetalHostParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *AddBaremetalHostParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *AddBaremetalHostParams) SetIpaddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) SetIpaddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddress"] = v
+	P.P["ipaddress"] = v
 }
 
-func (p *AddBaremetalHostParams) GetIpaddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) GetIpaddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddress"].(string)
+	value, ok := P.P["ipaddress"].(string)
 	return value, ok
 }
 
-func (p *AddBaremetalHostParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *AddBaremetalHostParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *AddBaremetalHostParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *AddBaremetalHostParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *AddBaremetalHostParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddBaremetalHostParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddBaremetalHostParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddBaremetalHostParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
-func (p *AddBaremetalHostParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *AddBaremetalHostParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBaremetalHostParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddBaremetalHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewAddBaremetalHostParams(hypervisor string, podid string, url string, zoneid string) *AddBaremetalHostParams {
-	p := &AddBaremetalHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["hypervisor"] = hypervisor
-	p.p["podid"] = podid
-	p.p["url"] = url
-	p.p["zoneid"] = zoneid
-	return p
+	P := &AddBaremetalHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["hypervisor"] = hypervisor
+	P.P["podid"] = podid
+	P.P["url"] = url
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // add a baremetal host
@@ -400,99 +400,99 @@ type AddBaremetalHostResponseGpugroupVgpu struct {
 }
 
 type AddGloboDnsHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddGloboDnsHostParams) toURLValues() url.Values {
+func (P *AddGloboDnsHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *AddGloboDnsHostParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGloboDnsHostParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *AddGloboDnsHostParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGloboDnsHostParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *AddGloboDnsHostParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGloboDnsHostParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *AddGloboDnsHostParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGloboDnsHostParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *AddGloboDnsHostParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGloboDnsHostParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddGloboDnsHostParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGloboDnsHostParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddGloboDnsHostParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGloboDnsHostParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddGloboDnsHostParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGloboDnsHostParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddGloboDnsHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewAddGloboDnsHostParams(password string, physicalnetworkid string, url string, username string) *AddGloboDnsHostParams {
-	p := &AddGloboDnsHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["password"] = password
-	p.p["physicalnetworkid"] = physicalnetworkid
-	p.p["url"] = url
-	p.p["username"] = username
-	return p
+	P := &AddGloboDnsHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["password"] = password
+	P.P["physicalnetworkid"] = physicalnetworkid
+	P.P["url"] = url
+	P.P["username"] = username
+	return P
 }
 
 // Adds the GloboDNS external host
@@ -533,208 +533,208 @@ type AddGloboDnsHostResponse struct {
 }
 
 type AddHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddHostParams) toURLValues() url.Values {
+func (P *AddHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
-	if v, found := p.p["clustername"]; found {
+	if v, found := P.P["clustername"]; found {
 		u.Set("clustername", v.(string))
 	}
-	if v, found := p.p["hosttags"]; found {
+	if v, found := P.P["hosttags"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("hosttags", vv)
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *AddHostParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *AddHostParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *AddHostParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *AddHostParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
-func (p *AddHostParams) SetClustername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) SetClustername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clustername"] = v
+	P.P["clustername"] = v
 }
 
-func (p *AddHostParams) GetClustername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) GetClustername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clustername"].(string)
+	value, ok := P.P["clustername"].(string)
 	return value, ok
 }
 
-func (p *AddHostParams) SetHosttags(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) SetHosttags(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hosttags"] = v
+	P.P["hosttags"] = v
 }
 
-func (p *AddHostParams) GetHosttags() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) GetHosttags() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hosttags"].([]string)
+	value, ok := P.P["hosttags"].([]string)
 	return value, ok
 }
 
-func (p *AddHostParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *AddHostParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *AddHostParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *AddHostParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *AddHostParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *AddHostParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *AddHostParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddHostParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddHostParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddHostParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
-func (p *AddHostParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *AddHostParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddHostParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewAddHostParams(hypervisor string, podid string, url string, zoneid string) *AddHostParams {
-	p := &AddHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["hypervisor"] = hypervisor
-	p.p["podid"] = podid
-	p.p["url"] = url
-	p.p["zoneid"] = zoneid
-	return p
+	P := &AddHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["hypervisor"] = hypervisor
+	P.P["podid"] = podid
+	P.P["url"] = url
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Adds a new host.
@@ -833,60 +833,60 @@ type AddHostResponseGpugroupVgpu struct {
 }
 
 type AddSecondaryStorageParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddSecondaryStorageParams) toURLValues() url.Values {
+func (P *AddSecondaryStorageParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *AddSecondaryStorageParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSecondaryStorageParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddSecondaryStorageParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSecondaryStorageParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddSecondaryStorageParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSecondaryStorageParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *AddSecondaryStorageParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSecondaryStorageParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddSecondaryStorageParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewAddSecondaryStorageParams(url string) *AddSecondaryStorageParams {
-	p := &AddSecondaryStorageParams{}
-	p.p = make(map[string]interface{})
-	p.p["url"] = url
-	return p
+	P := &AddSecondaryStorageParams{}
+	P.P = make(map[string]interface{})
+	P.P["url"] = url
+	return P
 }
 
 // Adds secondary storage.
@@ -922,42 +922,42 @@ type AddSecondaryStorageResponse struct {
 }
 
 type CancelHostMaintenanceParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CancelHostMaintenanceParams) toURLValues() url.Values {
+func (P *CancelHostMaintenanceParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *CancelHostMaintenanceParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CancelHostMaintenanceParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *CancelHostMaintenanceParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CancelHostMaintenanceParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CancelHostMaintenanceParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewCancelHostMaintenanceParams(id string) *CancelHostMaintenanceParams {
-	p := &CancelHostMaintenanceParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &CancelHostMaintenanceParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Cancels host maintenance.
@@ -1076,61 +1076,61 @@ type CancelHostMaintenanceResponseGpugroupVgpu struct {
 }
 
 type ConfigureHAForHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ConfigureHAForHostParams) toURLValues() url.Values {
+func (P *ConfigureHAForHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
-	if v, found := p.p["provider"]; found {
+	if v, found := P.P["provider"]; found {
 		u.Set("provider", v.(string))
 	}
 	return u
 }
 
-func (p *ConfigureHAForHostParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureHAForHostParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *ConfigureHAForHostParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureHAForHostParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
-func (p *ConfigureHAForHostParams) SetProvider(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureHAForHostParams) SetProvider(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["provider"] = v
+	P.P["provider"] = v
 }
 
-func (p *ConfigureHAForHostParams) GetProvider() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureHAForHostParams) GetProvider() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["provider"].(string)
+	value, ok := P.P["provider"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ConfigureHAForHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewConfigureHAForHostParams(hostid string, provider string) *ConfigureHAForHostParams {
-	p := &ConfigureHAForHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["hostid"] = hostid
-	p.p["provider"] = provider
-	return p
+	P := &ConfigureHAForHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["hostid"] = hostid
+	P.P["provider"] = provider
+	return P
 }
 
 // Configures HA for a host
@@ -1179,42 +1179,42 @@ type HAForHostResponse struct {
 }
 
 type EnableHAForHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *EnableHAForHostParams) toURLValues() url.Values {
+func (P *EnableHAForHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
 	return u
 }
 
-func (p *EnableHAForHostParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableHAForHostParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *EnableHAForHostParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableHAForHostParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new EnableHAForHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewEnableHAForHostParams(hostid string) *EnableHAForHostParams {
-	p := &EnableHAForHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["hostid"] = hostid
-	return p
+	P := &EnableHAForHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["hostid"] = hostid
+	return P
 }
 
 // Enables HA for a host
@@ -1263,79 +1263,79 @@ type EnableHAForHostResponse struct {
 }
 
 type DedicateHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DedicateHostParams) toURLValues() url.Values {
+func (P *DedicateHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
 	return u
 }
 
-func (p *DedicateHostParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateHostParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *DedicateHostParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateHostParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *DedicateHostParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateHostParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *DedicateHostParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateHostParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *DedicateHostParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateHostParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *DedicateHostParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateHostParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DedicateHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewDedicateHostParams(domainid string, hostid string) *DedicateHostParams {
-	p := &DedicateHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["domainid"] = domainid
-	p.p["hostid"] = hostid
-	return p
+	P := &DedicateHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["domainid"] = domainid
+	P.P["hostid"] = hostid
+	return P
 }
 
 // Dedicates a host.
@@ -1385,80 +1385,80 @@ type DedicateHostResponse struct {
 }
 
 type DeleteHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteHostParams) toURLValues() url.Values {
+func (P *DeleteHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["forced"]; found {
+	if v, found := P.P["forced"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forced", vv)
 	}
-	if v, found := p.p["forcedestroylocalstorage"]; found {
+	if v, found := P.P["forcedestroylocalstorage"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forcedestroylocalstorage", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteHostParams) SetForced(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteHostParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forced"] = v
+	P.P["forced"] = v
 }
 
-func (p *DeleteHostParams) GetForced() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteHostParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forced"].(bool)
+	value, ok := P.P["forced"].(bool)
 	return value, ok
 }
 
-func (p *DeleteHostParams) SetForcedestroylocalstorage(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteHostParams) SetForcedestroylocalstorage(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forcedestroylocalstorage"] = v
+	P.P["forcedestroylocalstorage"] = v
 }
 
-func (p *DeleteHostParams) GetForcedestroylocalstorage() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteHostParams) GetForcedestroylocalstorage() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forcedestroylocalstorage"].(bool)
+	value, ok := P.P["forcedestroylocalstorage"].(bool)
 	return value, ok
 }
 
-func (p *DeleteHostParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteHostParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteHostParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteHostParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewDeleteHostParams(id string) *DeleteHostParams {
-	p := &DeleteHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a host.
@@ -1511,42 +1511,42 @@ func (r *DeleteHostResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DisableOutOfBandManagementForHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DisableOutOfBandManagementForHostParams) toURLValues() url.Values {
+func (P *DisableOutOfBandManagementForHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
 	return u
 }
 
-func (p *DisableOutOfBandManagementForHostParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisableOutOfBandManagementForHostParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *DisableOutOfBandManagementForHostParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisableOutOfBandManagementForHostParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DisableOutOfBandManagementForHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewDisableOutOfBandManagementForHostParams(hostid string) *DisableOutOfBandManagementForHostParams {
-	p := &DisableOutOfBandManagementForHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["hostid"] = hostid
-	return p
+	P := &DisableOutOfBandManagementForHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["hostid"] = hostid
+	return P
 }
 
 // Disables out-of-band management for a host
@@ -1601,42 +1601,42 @@ type DisableOutOfBandManagementForHostResponse struct {
 }
 
 type EnableOutOfBandManagementForHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *EnableOutOfBandManagementForHostParams) toURLValues() url.Values {
+func (P *EnableOutOfBandManagementForHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
 	return u
 }
 
-func (p *EnableOutOfBandManagementForHostParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableOutOfBandManagementForHostParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *EnableOutOfBandManagementForHostParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableOutOfBandManagementForHostParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new EnableOutOfBandManagementForHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewEnableOutOfBandManagementForHostParams(hostid string) *EnableOutOfBandManagementForHostParams {
-	p := &EnableOutOfBandManagementForHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["hostid"] = hostid
-	return p
+	P := &EnableOutOfBandManagementForHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["hostid"] = hostid
+	return P
 }
 
 // Enables out-of-band management for a host
@@ -1691,98 +1691,98 @@ type EnableOutOfBandManagementForHostResponse struct {
 }
 
 type FindHostsForMigrationParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *FindHostsForMigrationParams) toURLValues() url.Values {
+func (P *FindHostsForMigrationParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
 	return u
 }
 
-func (p *FindHostsForMigrationParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *FindHostsForMigrationParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *FindHostsForMigrationParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *FindHostsForMigrationParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *FindHostsForMigrationParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *FindHostsForMigrationParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *FindHostsForMigrationParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *FindHostsForMigrationParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *FindHostsForMigrationParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *FindHostsForMigrationParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *FindHostsForMigrationParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *FindHostsForMigrationParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *FindHostsForMigrationParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *FindHostsForMigrationParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *FindHostsForMigrationParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *FindHostsForMigrationParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new FindHostsForMigrationParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewFindHostsForMigrationParams(virtualmachineid string) *FindHostsForMigrationParams {
-	p := &FindHostsForMigrationParams{}
-	p.p = make(map[string]interface{})
-	p.p["virtualmachineid"] = virtualmachineid
-	return p
+	P := &FindHostsForMigrationParams{}
+	P.P = make(map[string]interface{})
+	P.P["virtualmachineid"] = virtualmachineid
+	return P
 }
 
 // Find hosts suitable for migrating a virtual machine.
@@ -1856,151 +1856,151 @@ type FindHostsForMigrationResponse struct {
 }
 
 type ListDedicatedHostsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListDedicatedHostsParams) toURLValues() url.Values {
+func (P *ListDedicatedHostsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["affinitygroupid"]; found {
+	if v, found := P.P["affinitygroupid"]; found {
 		u.Set("affinitygroupid", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListDedicatedHostsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListDedicatedHostsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedHostsParams) SetAffinitygroupid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) SetAffinitygroupid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["affinitygroupid"] = v
+	P.P["affinitygroupid"] = v
 }
 
-func (p *ListDedicatedHostsParams) GetAffinitygroupid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) GetAffinitygroupid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["affinitygroupid"].(string)
+	value, ok := P.P["affinitygroupid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedHostsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListDedicatedHostsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedHostsParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *ListDedicatedHostsParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedHostsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListDedicatedHostsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedHostsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListDedicatedHostsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListDedicatedHostsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListDedicatedHostsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedHostsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListDedicatedHostsParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewListDedicatedHostsParams() *ListDedicatedHostsParams {
-	p := &ListDedicatedHostsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListDedicatedHostsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists dedicated hosts.
@@ -2035,95 +2035,95 @@ type DedicatedHost struct {
 }
 
 type ListHostTagsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListHostTagsParams) toURLValues() url.Values {
+func (P *ListHostTagsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListHostTagsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostTagsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListHostTagsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostTagsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListHostTagsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostTagsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListHostTagsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostTagsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListHostTagsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostTagsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListHostTagsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostTagsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListHostTagsParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewListHostTagsParams() *ListHostTagsParams {
-	p := &ListHostTagsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListHostTagsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *HostService) GetHostTagID(keyword string, opts ...OptionFunc) (string, int, error) {
-	p := &ListHostTagsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListHostTagsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["keyword"] = keyword
+	P.P["keyword"] = keyword
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListHostTags(p)
+	l, err := s.ListHostTags(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -2175,350 +2175,350 @@ type HostTag struct {
 }
 
 type ListHostsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListHostsParams) toURLValues() url.Values {
+func (P *ListHostsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("details", vv)
 	}
-	if v, found := p.p["hahost"]; found {
+	if v, found := P.P["hahost"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("hahost", vv)
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["outofbandmanagementenabled"]; found {
+	if v, found := P.P["outofbandmanagementenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("outofbandmanagementenabled", vv)
 	}
-	if v, found := p.p["outofbandmanagementpowerstate"]; found {
+	if v, found := P.P["outofbandmanagementpowerstate"]; found {
 		u.Set("outofbandmanagementpowerstate", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["resourcestate"]; found {
+	if v, found := P.P["resourcestate"]; found {
 		u.Set("resourcestate", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListHostsParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *ListHostsParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetDetails(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetDetails(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *ListHostsParams) GetDetails() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetDetails() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].([]string)
+	value, ok := P.P["details"].([]string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetHahost(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetHahost(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hahost"] = v
+	P.P["hahost"] = v
 }
 
-func (p *ListHostsParams) GetHahost() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetHahost() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hahost"].(bool)
+	value, ok := P.P["hahost"].(bool)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *ListHostsParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListHostsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListHostsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListHostsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetOutofbandmanagementenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetOutofbandmanagementenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["outofbandmanagementenabled"] = v
+	P.P["outofbandmanagementenabled"] = v
 }
 
-func (p *ListHostsParams) GetOutofbandmanagementenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetOutofbandmanagementenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["outofbandmanagementenabled"].(bool)
+	value, ok := P.P["outofbandmanagementenabled"].(bool)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetOutofbandmanagementpowerstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetOutofbandmanagementpowerstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["outofbandmanagementpowerstate"] = v
+	P.P["outofbandmanagementpowerstate"] = v
 }
 
-func (p *ListHostsParams) GetOutofbandmanagementpowerstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetOutofbandmanagementpowerstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["outofbandmanagementpowerstate"].(string)
+	value, ok := P.P["outofbandmanagementpowerstate"].(string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListHostsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListHostsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListHostsParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetResourcestate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetResourcestate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourcestate"] = v
+	P.P["resourcestate"] = v
 }
 
-func (p *ListHostsParams) GetResourcestate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetResourcestate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourcestate"].(string)
+	value, ok := P.P["resourcestate"].(string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListHostsParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *ListHostsParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *ListHostsParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
-func (p *ListHostsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListHostsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListHostsParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewListHostsParams() *ListHostsParams {
-	p := &ListHostsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListHostsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *HostService) GetHostID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListHostsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListHostsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListHosts(p)
+	l, err := s.ListHosts(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -2557,18 +2557,18 @@ func (s *HostService) GetHostByName(name string, opts ...OptionFunc) (*Host, int
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *HostService) GetHostByID(id string, opts ...OptionFunc) (*Host, int, error) {
-	p := &ListHostsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListHostsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListHosts(p)
+	l, err := s.ListHosts(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -2689,350 +2689,350 @@ type HostGpugroupVgpu struct {
 }
 
 type ListHostsMetricsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListHostsMetricsParams) toURLValues() url.Values {
+func (P *ListHostsMetricsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("details", vv)
 	}
-	if v, found := p.p["hahost"]; found {
+	if v, found := P.P["hahost"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("hahost", vv)
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["outofbandmanagementenabled"]; found {
+	if v, found := P.P["outofbandmanagementenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("outofbandmanagementenabled", vv)
 	}
-	if v, found := p.p["outofbandmanagementpowerstate"]; found {
+	if v, found := P.P["outofbandmanagementpowerstate"]; found {
 		u.Set("outofbandmanagementpowerstate", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["resourcestate"]; found {
+	if v, found := P.P["resourcestate"]; found {
 		u.Set("resourcestate", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListHostsMetricsParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *ListHostsMetricsParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetDetails(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetDetails(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *ListHostsMetricsParams) GetDetails() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetDetails() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].([]string)
+	value, ok := P.P["details"].([]string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetHahost(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetHahost(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hahost"] = v
+	P.P["hahost"] = v
 }
 
-func (p *ListHostsMetricsParams) GetHahost() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetHahost() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hahost"].(bool)
+	value, ok := P.P["hahost"].(bool)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *ListHostsMetricsParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListHostsMetricsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListHostsMetricsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListHostsMetricsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetOutofbandmanagementenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetOutofbandmanagementenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["outofbandmanagementenabled"] = v
+	P.P["outofbandmanagementenabled"] = v
 }
 
-func (p *ListHostsMetricsParams) GetOutofbandmanagementenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetOutofbandmanagementenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["outofbandmanagementenabled"].(bool)
+	value, ok := P.P["outofbandmanagementenabled"].(bool)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetOutofbandmanagementpowerstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetOutofbandmanagementpowerstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["outofbandmanagementpowerstate"] = v
+	P.P["outofbandmanagementpowerstate"] = v
 }
 
-func (p *ListHostsMetricsParams) GetOutofbandmanagementpowerstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetOutofbandmanagementpowerstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["outofbandmanagementpowerstate"].(string)
+	value, ok := P.P["outofbandmanagementpowerstate"].(string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListHostsMetricsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListHostsMetricsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListHostsMetricsParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetResourcestate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetResourcestate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourcestate"] = v
+	P.P["resourcestate"] = v
 }
 
-func (p *ListHostsMetricsParams) GetResourcestate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetResourcestate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourcestate"].(string)
+	value, ok := P.P["resourcestate"].(string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListHostsMetricsParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *ListHostsMetricsParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *ListHostsMetricsParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
-func (p *ListHostsMetricsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListHostsMetricsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListHostsMetricsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListHostsMetricsParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewListHostsMetricsParams() *ListHostsMetricsParams {
-	p := &ListHostsMetricsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListHostsMetricsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *HostService) GetHostsMetricID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListHostsMetricsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListHostsMetricsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListHostsMetrics(p)
+	l, err := s.ListHostsMetrics(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -3071,18 +3071,18 @@ func (s *HostService) GetHostsMetricByName(name string, opts ...OptionFunc) (*Ho
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *HostService) GetHostsMetricByID(id string, opts ...OptionFunc) (*HostsMetric, int, error) {
-	p := &ListHostsMetricsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListHostsMetricsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListHostsMetrics(p)
+	l, err := s.ListHostsMetrics(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -3221,42 +3221,42 @@ type HostsMetricGpugroupVgpu struct {
 }
 
 type PrepareHostForMaintenanceParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *PrepareHostForMaintenanceParams) toURLValues() url.Values {
+func (P *PrepareHostForMaintenanceParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *PrepareHostForMaintenanceParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *PrepareHostForMaintenanceParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *PrepareHostForMaintenanceParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *PrepareHostForMaintenanceParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new PrepareHostForMaintenanceParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewPrepareHostForMaintenanceParams(id string) *PrepareHostForMaintenanceParams {
-	p := &PrepareHostForMaintenanceParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &PrepareHostForMaintenanceParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Prepares a host for maintenance.
@@ -3375,42 +3375,42 @@ type PrepareHostForMaintenanceResponseGpugroupVgpu struct {
 }
 
 type ReconnectHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ReconnectHostParams) toURLValues() url.Values {
+func (P *ReconnectHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *ReconnectHostParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReconnectHostParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ReconnectHostParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReconnectHostParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ReconnectHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewReconnectHostParams(id string) *ReconnectHostParams {
-	p := &ReconnectHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &ReconnectHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Reconnects a host.
@@ -3529,42 +3529,42 @@ type ReconnectHostResponseGpugroupVgpu struct {
 }
 
 type ReleaseDedicatedHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ReleaseDedicatedHostParams) toURLValues() url.Values {
+func (P *ReleaseDedicatedHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
 	return u
 }
 
-func (p *ReleaseDedicatedHostParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseDedicatedHostParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *ReleaseDedicatedHostParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseDedicatedHostParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ReleaseDedicatedHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewReleaseDedicatedHostParams(hostid string) *ReleaseDedicatedHostParams {
-	p := &ReleaseDedicatedHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["hostid"] = hostid
-	return p
+	P := &ReleaseDedicatedHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["hostid"] = hostid
+	return P
 }
 
 // Release the dedication for host
@@ -3605,42 +3605,42 @@ type ReleaseDedicatedHostResponse struct {
 }
 
 type ReleaseHostReservationParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ReleaseHostReservationParams) toURLValues() url.Values {
+func (P *ReleaseHostReservationParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *ReleaseHostReservationParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseHostReservationParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ReleaseHostReservationParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseHostReservationParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ReleaseHostReservationParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewReleaseHostReservationParams(id string) *ReleaseHostReservationParams {
-	p := &ReleaseHostReservationParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &ReleaseHostReservationParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Releases host reservation.
@@ -3681,151 +3681,151 @@ type ReleaseHostReservationResponse struct {
 }
 
 type UpdateHostParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateHostParams) toURLValues() url.Values {
+func (P *UpdateHostParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["annotation"]; found {
+	if v, found := P.P["annotation"]; found {
 		u.Set("annotation", v.(string))
 	}
-	if v, found := p.p["hosttags"]; found {
+	if v, found := P.P["hosttags"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("hosttags", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["oscategoryid"]; found {
+	if v, found := P.P["oscategoryid"]; found {
 		u.Set("oscategoryid", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateHostParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *UpdateHostParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *UpdateHostParams) SetAnnotation(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) SetAnnotation(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["annotation"] = v
+	P.P["annotation"] = v
 }
 
-func (p *UpdateHostParams) GetAnnotation() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) GetAnnotation() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["annotation"].(string)
+	value, ok := P.P["annotation"].(string)
 	return value, ok
 }
 
-func (p *UpdateHostParams) SetHosttags(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) SetHosttags(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hosttags"] = v
+	P.P["hosttags"] = v
 }
 
-func (p *UpdateHostParams) GetHosttags() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) GetHosttags() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hosttags"].([]string)
+	value, ok := P.P["hosttags"].([]string)
 	return value, ok
 }
 
-func (p *UpdateHostParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateHostParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateHostParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateHostParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateHostParams) SetOscategoryid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) SetOscategoryid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["oscategoryid"] = v
+	P.P["oscategoryid"] = v
 }
 
-func (p *UpdateHostParams) GetOscategoryid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) GetOscategoryid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["oscategoryid"].(string)
+	value, ok := P.P["oscategoryid"].(string)
 	return value, ok
 }
 
-func (p *UpdateHostParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *UpdateHostParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateHostParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewUpdateHostParams(id string) *UpdateHostParams {
-	p := &UpdateHostParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateHostParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a host.
@@ -3924,116 +3924,116 @@ type UpdateHostResponseGpugroupVgpu struct {
 }
 
 type UpdateHostPasswordParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateHostPasswordParams) toURLValues() url.Values {
+func (P *UpdateHostPasswordParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["update_passwd_on_host"]; found {
+	if v, found := P.P["update_passwd_on_host"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("update_passwd_on_host", vv)
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateHostPasswordParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostPasswordParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *UpdateHostPasswordParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostPasswordParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
-func (p *UpdateHostPasswordParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostPasswordParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *UpdateHostPasswordParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostPasswordParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
-func (p *UpdateHostPasswordParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostPasswordParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *UpdateHostPasswordParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostPasswordParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *UpdateHostPasswordParams) SetUpdate_passwd_on_host(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostPasswordParams) SetUpdate_passwd_on_host(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["update_passwd_on_host"] = v
+	P.P["update_passwd_on_host"] = v
 }
 
-func (p *UpdateHostPasswordParams) GetUpdate_passwd_on_host() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostPasswordParams) GetUpdate_passwd_on_host() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["update_passwd_on_host"].(bool)
+	value, ok := P.P["update_passwd_on_host"].(bool)
 	return value, ok
 }
 
-func (p *UpdateHostPasswordParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostPasswordParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *UpdateHostPasswordParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateHostPasswordParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateHostPasswordParams instance,
 // as then you are sure you have configured all required params
 func (s *HostService) NewUpdateHostPasswordParams(password string, username string) *UpdateHostPasswordParams {
-	p := &UpdateHostPasswordParams{}
-	p.p = make(map[string]interface{})
-	p.p["password"] = password
-	p.p["username"] = username
-	return p
+	P := &UpdateHostPasswordParams{}
+	P.P = make(map[string]interface{})
+	P.P["password"] = password
+	P.P["username"] = username
+	return P
 }
 
 // Update password of a host/pool on management server.

@@ -28,143 +28,143 @@ import (
 )
 
 type ImageStoreServiceIface interface {
-	AddImageStore(p *AddImageStoreParams) (*AddImageStoreResponse, error)
+	AddImageStore(P *AddImageStoreParams) (*AddImageStoreResponse, error)
 	NewAddImageStoreParams(provider string) *AddImageStoreParams
-	AddImageStoreS3(p *AddImageStoreS3Params) (*AddImageStoreS3Response, error)
+	AddImageStoreS3(P *AddImageStoreS3Params) (*AddImageStoreS3Response, error)
 	NewAddImageStoreS3Params(accesskey string, bucket string, endpoint string, secretkey string) *AddImageStoreS3Params
-	CreateSecondaryStagingStore(p *CreateSecondaryStagingStoreParams) (*CreateSecondaryStagingStoreResponse, error)
+	CreateSecondaryStagingStore(P *CreateSecondaryStagingStoreParams) (*CreateSecondaryStagingStoreResponse, error)
 	NewCreateSecondaryStagingStoreParams(url string) *CreateSecondaryStagingStoreParams
-	DeleteImageStore(p *DeleteImageStoreParams) (*DeleteImageStoreResponse, error)
+	DeleteImageStore(P *DeleteImageStoreParams) (*DeleteImageStoreResponse, error)
 	NewDeleteImageStoreParams(id string) *DeleteImageStoreParams
-	DeleteSecondaryStagingStore(p *DeleteSecondaryStagingStoreParams) (*DeleteSecondaryStagingStoreResponse, error)
+	DeleteSecondaryStagingStore(P *DeleteSecondaryStagingStoreParams) (*DeleteSecondaryStagingStoreResponse, error)
 	NewDeleteSecondaryStagingStoreParams(id string) *DeleteSecondaryStagingStoreParams
-	ListImageStores(p *ListImageStoresParams) (*ListImageStoresResponse, error)
+	ListImageStores(P *ListImageStoresParams) (*ListImageStoresResponse, error)
 	NewListImageStoresParams() *ListImageStoresParams
 	GetImageStoreID(name string, opts ...OptionFunc) (string, int, error)
 	GetImageStoreByName(name string, opts ...OptionFunc) (*ImageStore, int, error)
 	GetImageStoreByID(id string, opts ...OptionFunc) (*ImageStore, int, error)
-	ListSecondaryStagingStores(p *ListSecondaryStagingStoresParams) (*ListSecondaryStagingStoresResponse, error)
+	ListSecondaryStagingStores(P *ListSecondaryStagingStoresParams) (*ListSecondaryStagingStoresResponse, error)
 	NewListSecondaryStagingStoresParams() *ListSecondaryStagingStoresParams
 	GetSecondaryStagingStoreID(name string, opts ...OptionFunc) (string, int, error)
 	GetSecondaryStagingStoreByName(name string, opts ...OptionFunc) (*SecondaryStagingStore, int, error)
 	GetSecondaryStagingStoreByID(id string, opts ...OptionFunc) (*SecondaryStagingStore, int, error)
-	UpdateCloudToUseObjectStore(p *UpdateCloudToUseObjectStoreParams) (*UpdateCloudToUseObjectStoreResponse, error)
+	UpdateCloudToUseObjectStore(P *UpdateCloudToUseObjectStoreParams) (*UpdateCloudToUseObjectStoreResponse, error)
 	NewUpdateCloudToUseObjectStoreParams(provider string) *UpdateCloudToUseObjectStoreParams
 }
 
 type AddImageStoreParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddImageStoreParams) toURLValues() url.Values {
+func (P *AddImageStoreParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].key", i), k)
 			u.Set(fmt.Sprintf("details[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["provider"]; found {
+	if v, found := P.P["provider"]; found {
 		u.Set("provider", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *AddImageStoreParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *AddImageStoreParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *AddImageStoreParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *AddImageStoreParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *AddImageStoreParams) SetProvider(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreParams) SetProvider(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["provider"] = v
+	P.P["provider"] = v
 }
 
-func (p *AddImageStoreParams) GetProvider() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreParams) GetProvider() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["provider"].(string)
+	value, ok := P.P["provider"].(string)
 	return value, ok
 }
 
-func (p *AddImageStoreParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddImageStoreParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddImageStoreParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *AddImageStoreParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddImageStoreParams instance,
 // as then you are sure you have configured all required params
 func (s *ImageStoreService) NewAddImageStoreParams(provider string) *AddImageStoreParams {
-	p := &AddImageStoreParams{}
-	p.p = make(map[string]interface{})
-	p.p["provider"] = provider
-	return p
+	P := &AddImageStoreParams{}
+	P.P = make(map[string]interface{})
+	P.P["provider"] = provider
+	return P
 }
 
 // Adds backup image store.
@@ -204,231 +204,231 @@ type AddImageStoreResponse struct {
 }
 
 type AddImageStoreS3Params struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddImageStoreS3Params) toURLValues() url.Values {
+func (P *AddImageStoreS3Params) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["accesskey"]; found {
+	if v, found := P.P["accesskey"]; found {
 		u.Set("accesskey", v.(string))
 	}
-	if v, found := p.p["bucket"]; found {
+	if v, found := P.P["bucket"]; found {
 		u.Set("bucket", v.(string))
 	}
-	if v, found := p.p["connectiontimeout"]; found {
+	if v, found := P.P["connectiontimeout"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("connectiontimeout", vv)
 	}
-	if v, found := p.p["connectionttl"]; found {
+	if v, found := P.P["connectionttl"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("connectionttl", vv)
 	}
-	if v, found := p.p["endpoint"]; found {
+	if v, found := P.P["endpoint"]; found {
 		u.Set("endpoint", v.(string))
 	}
-	if v, found := p.p["maxerrorretry"]; found {
+	if v, found := P.P["maxerrorretry"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("maxerrorretry", vv)
 	}
-	if v, found := p.p["s3signer"]; found {
+	if v, found := P.P["s3signer"]; found {
 		u.Set("s3signer", v.(string))
 	}
-	if v, found := p.p["secretkey"]; found {
+	if v, found := P.P["secretkey"]; found {
 		u.Set("secretkey", v.(string))
 	}
-	if v, found := p.p["sockettimeout"]; found {
+	if v, found := P.P["sockettimeout"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("sockettimeout", vv)
 	}
-	if v, found := p.p["usehttps"]; found {
+	if v, found := P.P["usehttps"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("usehttps", vv)
 	}
-	if v, found := p.p["usetcpkeepalive"]; found {
+	if v, found := P.P["usetcpkeepalive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("usetcpkeepalive", vv)
 	}
 	return u
 }
 
-func (p *AddImageStoreS3Params) SetAccesskey(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) SetAccesskey(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accesskey"] = v
+	P.P["accesskey"] = v
 }
 
-func (p *AddImageStoreS3Params) GetAccesskey() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) GetAccesskey() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accesskey"].(string)
+	value, ok := P.P["accesskey"].(string)
 	return value, ok
 }
 
-func (p *AddImageStoreS3Params) SetBucket(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) SetBucket(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bucket"] = v
+	P.P["bucket"] = v
 }
 
-func (p *AddImageStoreS3Params) GetBucket() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) GetBucket() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bucket"].(string)
+	value, ok := P.P["bucket"].(string)
 	return value, ok
 }
 
-func (p *AddImageStoreS3Params) SetConnectiontimeout(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) SetConnectiontimeout(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["connectiontimeout"] = v
+	P.P["connectiontimeout"] = v
 }
 
-func (p *AddImageStoreS3Params) GetConnectiontimeout() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) GetConnectiontimeout() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["connectiontimeout"].(int)
+	value, ok := P.P["connectiontimeout"].(int)
 	return value, ok
 }
 
-func (p *AddImageStoreS3Params) SetConnectionttl(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) SetConnectionttl(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["connectionttl"] = v
+	P.P["connectionttl"] = v
 }
 
-func (p *AddImageStoreS3Params) GetConnectionttl() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) GetConnectionttl() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["connectionttl"].(int)
+	value, ok := P.P["connectionttl"].(int)
 	return value, ok
 }
 
-func (p *AddImageStoreS3Params) SetEndpoint(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) SetEndpoint(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endpoint"] = v
+	P.P["endpoint"] = v
 }
 
-func (p *AddImageStoreS3Params) GetEndpoint() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) GetEndpoint() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endpoint"].(string)
+	value, ok := P.P["endpoint"].(string)
 	return value, ok
 }
 
-func (p *AddImageStoreS3Params) SetMaxerrorretry(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) SetMaxerrorretry(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["maxerrorretry"] = v
+	P.P["maxerrorretry"] = v
 }
 
-func (p *AddImageStoreS3Params) GetMaxerrorretry() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) GetMaxerrorretry() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["maxerrorretry"].(int)
+	value, ok := P.P["maxerrorretry"].(int)
 	return value, ok
 }
 
-func (p *AddImageStoreS3Params) SetS3signer(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) SetS3signer(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["s3signer"] = v
+	P.P["s3signer"] = v
 }
 
-func (p *AddImageStoreS3Params) GetS3signer() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) GetS3signer() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["s3signer"].(string)
+	value, ok := P.P["s3signer"].(string)
 	return value, ok
 }
 
-func (p *AddImageStoreS3Params) SetSecretkey(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) SetSecretkey(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["secretkey"] = v
+	P.P["secretkey"] = v
 }
 
-func (p *AddImageStoreS3Params) GetSecretkey() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) GetSecretkey() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["secretkey"].(string)
+	value, ok := P.P["secretkey"].(string)
 	return value, ok
 }
 
-func (p *AddImageStoreS3Params) SetSockettimeout(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) SetSockettimeout(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sockettimeout"] = v
+	P.P["sockettimeout"] = v
 }
 
-func (p *AddImageStoreS3Params) GetSockettimeout() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) GetSockettimeout() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sockettimeout"].(int)
+	value, ok := P.P["sockettimeout"].(int)
 	return value, ok
 }
 
-func (p *AddImageStoreS3Params) SetUsehttps(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) SetUsehttps(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["usehttps"] = v
+	P.P["usehttps"] = v
 }
 
-func (p *AddImageStoreS3Params) GetUsehttps() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) GetUsehttps() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["usehttps"].(bool)
+	value, ok := P.P["usehttps"].(bool)
 	return value, ok
 }
 
-func (p *AddImageStoreS3Params) SetUsetcpkeepalive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) SetUsetcpkeepalive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["usetcpkeepalive"] = v
+	P.P["usetcpkeepalive"] = v
 }
 
-func (p *AddImageStoreS3Params) GetUsetcpkeepalive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddImageStoreS3Params) GetUsetcpkeepalive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["usetcpkeepalive"].(bool)
+	value, ok := P.P["usetcpkeepalive"].(bool)
 	return value, ok
 }
 
 // You should always use this function to get a new AddImageStoreS3Params instance,
 // as then you are sure you have configured all required params
 func (s *ImageStoreService) NewAddImageStoreS3Params(accesskey string, bucket string, endpoint string, secretkey string) *AddImageStoreS3Params {
-	p := &AddImageStoreS3Params{}
-	p.p = make(map[string]interface{})
-	p.p["accesskey"] = accesskey
-	p.p["bucket"] = bucket
-	p.p["endpoint"] = endpoint
-	p.p["secretkey"] = secretkey
-	return p
+	P := &AddImageStoreS3Params{}
+	P.P = make(map[string]interface{})
+	P.P["accesskey"] = accesskey
+	P.P["bucket"] = bucket
+	P.P["endpoint"] = endpoint
+	P.P["secretkey"] = secretkey
+	return P
 }
 
 // Adds S3 Image Store
@@ -464,118 +464,118 @@ type AddImageStoreS3Response struct {
 }
 
 type CreateSecondaryStagingStoreParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateSecondaryStagingStoreParams) toURLValues() url.Values {
+func (P *CreateSecondaryStagingStoreParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].key", i), k)
 			u.Set(fmt.Sprintf("details[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["provider"]; found {
+	if v, found := P.P["provider"]; found {
 		u.Set("provider", v.(string))
 	}
-	if v, found := p.p["scope"]; found {
+	if v, found := P.P["scope"]; found {
 		u.Set("scope", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateSecondaryStagingStoreParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSecondaryStagingStoreParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *CreateSecondaryStagingStoreParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSecondaryStagingStoreParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *CreateSecondaryStagingStoreParams) SetProvider(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSecondaryStagingStoreParams) SetProvider(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["provider"] = v
+	P.P["provider"] = v
 }
 
-func (p *CreateSecondaryStagingStoreParams) GetProvider() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSecondaryStagingStoreParams) GetProvider() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["provider"].(string)
+	value, ok := P.P["provider"].(string)
 	return value, ok
 }
 
-func (p *CreateSecondaryStagingStoreParams) SetScope(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSecondaryStagingStoreParams) SetScope(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["scope"] = v
+	P.P["scope"] = v
 }
 
-func (p *CreateSecondaryStagingStoreParams) GetScope() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSecondaryStagingStoreParams) GetScope() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["scope"].(string)
+	value, ok := P.P["scope"].(string)
 	return value, ok
 }
 
-func (p *CreateSecondaryStagingStoreParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSecondaryStagingStoreParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *CreateSecondaryStagingStoreParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSecondaryStagingStoreParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *CreateSecondaryStagingStoreParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSecondaryStagingStoreParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreateSecondaryStagingStoreParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSecondaryStagingStoreParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateSecondaryStagingStoreParams instance,
 // as then you are sure you have configured all required params
 func (s *ImageStoreService) NewCreateSecondaryStagingStoreParams(url string) *CreateSecondaryStagingStoreParams {
-	p := &CreateSecondaryStagingStoreParams{}
-	p.p = make(map[string]interface{})
-	p.p["url"] = url
-	return p
+	P := &CreateSecondaryStagingStoreParams{}
+	P.P = make(map[string]interface{})
+	P.P["url"] = url
+	return P
 }
 
 // create secondary staging store.
@@ -611,42 +611,42 @@ type CreateSecondaryStagingStoreResponse struct {
 }
 
 type DeleteImageStoreParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteImageStoreParams) toURLValues() url.Values {
+func (P *DeleteImageStoreParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteImageStoreParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteImageStoreParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteImageStoreParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteImageStoreParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteImageStoreParams instance,
 // as then you are sure you have configured all required params
 func (s *ImageStoreService) NewDeleteImageStoreParams(id string) *DeleteImageStoreParams {
-	p := &DeleteImageStoreParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteImageStoreParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes an image store or Secondary Storage.
@@ -699,42 +699,42 @@ func (r *DeleteImageStoreResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DeleteSecondaryStagingStoreParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteSecondaryStagingStoreParams) toURLValues() url.Values {
+func (P *DeleteSecondaryStagingStoreParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteSecondaryStagingStoreParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteSecondaryStagingStoreParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteSecondaryStagingStoreParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteSecondaryStagingStoreParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteSecondaryStagingStoreParams instance,
 // as then you are sure you have configured all required params
 func (s *ImageStoreService) NewDeleteSecondaryStagingStoreParams(id string) *DeleteSecondaryStagingStoreParams {
-	p := &DeleteSecondaryStagingStoreParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteSecondaryStagingStoreParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a secondary staging store .
@@ -787,204 +787,204 @@ func (r *DeleteSecondaryStagingStoreResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListImageStoresParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListImageStoresParams) toURLValues() url.Values {
+func (P *ListImageStoresParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["protocol"]; found {
+	if v, found := P.P["protocol"]; found {
 		u.Set("protocol", v.(string))
 	}
-	if v, found := p.p["provider"]; found {
+	if v, found := P.P["provider"]; found {
 		u.Set("provider", v.(string))
 	}
-	if v, found := p.p["readonly"]; found {
+	if v, found := P.P["readonly"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("readonly", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListImageStoresParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListImageStoresParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListImageStoresParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListImageStoresParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListImageStoresParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListImageStoresParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListImageStoresParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListImageStoresParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListImageStoresParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListImageStoresParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListImageStoresParams) SetProtocol(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) SetProtocol(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["protocol"] = v
+	P.P["protocol"] = v
 }
 
-func (p *ListImageStoresParams) GetProtocol() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) GetProtocol() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["protocol"].(string)
+	value, ok := P.P["protocol"].(string)
 	return value, ok
 }
 
-func (p *ListImageStoresParams) SetProvider(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) SetProvider(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["provider"] = v
+	P.P["provider"] = v
 }
 
-func (p *ListImageStoresParams) GetProvider() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) GetProvider() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["provider"].(string)
+	value, ok := P.P["provider"].(string)
 	return value, ok
 }
 
-func (p *ListImageStoresParams) SetReadonly(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) SetReadonly(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["readonly"] = v
+	P.P["readonly"] = v
 }
 
-func (p *ListImageStoresParams) GetReadonly() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) GetReadonly() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["readonly"].(bool)
+	value, ok := P.P["readonly"].(bool)
 	return value, ok
 }
 
-func (p *ListImageStoresParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListImageStoresParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListImageStoresParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListImageStoresParams instance,
 // as then you are sure you have configured all required params
 func (s *ImageStoreService) NewListImageStoresParams() *ListImageStoresParams {
-	p := &ListImageStoresParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListImageStoresParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ImageStoreService) GetImageStoreID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListImageStoresParams{}
-	p.p = make(map[string]interface{})
+	P := &ListImageStoresParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListImageStores(p)
+	l, err := s.ListImageStores(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1023,18 +1023,18 @@ func (s *ImageStoreService) GetImageStoreByName(name string, opts ...OptionFunc)
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ImageStoreService) GetImageStoreByID(id string, opts ...OptionFunc) (*ImageStore, int, error) {
-	p := &ListImageStoresParams{}
-	p.p = make(map[string]interface{})
+	P := &ListImageStoresParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListImageStores(p)
+	l, err := s.ListImageStores(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1092,185 +1092,185 @@ type ImageStore struct {
 }
 
 type ListSecondaryStagingStoresParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListSecondaryStagingStoresParams) toURLValues() url.Values {
+func (P *ListSecondaryStagingStoresParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["protocol"]; found {
+	if v, found := P.P["protocol"]; found {
 		u.Set("protocol", v.(string))
 	}
-	if v, found := p.p["provider"]; found {
+	if v, found := P.P["provider"]; found {
 		u.Set("provider", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListSecondaryStagingStoresParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListSecondaryStagingStoresParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListSecondaryStagingStoresParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListSecondaryStagingStoresParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListSecondaryStagingStoresParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListSecondaryStagingStoresParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListSecondaryStagingStoresParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListSecondaryStagingStoresParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListSecondaryStagingStoresParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListSecondaryStagingStoresParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListSecondaryStagingStoresParams) SetProtocol(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) SetProtocol(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["protocol"] = v
+	P.P["protocol"] = v
 }
 
-func (p *ListSecondaryStagingStoresParams) GetProtocol() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) GetProtocol() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["protocol"].(string)
+	value, ok := P.P["protocol"].(string)
 	return value, ok
 }
 
-func (p *ListSecondaryStagingStoresParams) SetProvider(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) SetProvider(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["provider"] = v
+	P.P["provider"] = v
 }
 
-func (p *ListSecondaryStagingStoresParams) GetProvider() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) GetProvider() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["provider"].(string)
+	value, ok := P.P["provider"].(string)
 	return value, ok
 }
 
-func (p *ListSecondaryStagingStoresParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListSecondaryStagingStoresParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSecondaryStagingStoresParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListSecondaryStagingStoresParams instance,
 // as then you are sure you have configured all required params
 func (s *ImageStoreService) NewListSecondaryStagingStoresParams() *ListSecondaryStagingStoresParams {
-	p := &ListSecondaryStagingStoresParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListSecondaryStagingStoresParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ImageStoreService) GetSecondaryStagingStoreID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListSecondaryStagingStoresParams{}
-	p.p = make(map[string]interface{})
+	P := &ListSecondaryStagingStoresParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListSecondaryStagingStores(p)
+	l, err := s.ListSecondaryStagingStores(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1309,18 +1309,18 @@ func (s *ImageStoreService) GetSecondaryStagingStoreByName(name string, opts ...
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ImageStoreService) GetSecondaryStagingStoreByID(id string, opts ...OptionFunc) (*SecondaryStagingStore, int, error) {
-	p := &ListSecondaryStagingStoresParams{}
-	p.p = make(map[string]interface{})
+	P := &ListSecondaryStagingStoresParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListSecondaryStagingStores(p)
+	l, err := s.ListSecondaryStagingStores(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1378,100 +1378,100 @@ type SecondaryStagingStore struct {
 }
 
 type UpdateCloudToUseObjectStoreParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateCloudToUseObjectStoreParams) toURLValues() url.Values {
+func (P *UpdateCloudToUseObjectStoreParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].key", i), k)
 			u.Set(fmt.Sprintf("details[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["provider"]; found {
+	if v, found := P.P["provider"]; found {
 		u.Set("provider", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateCloudToUseObjectStoreParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateCloudToUseObjectStoreParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *UpdateCloudToUseObjectStoreParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateCloudToUseObjectStoreParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *UpdateCloudToUseObjectStoreParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateCloudToUseObjectStoreParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateCloudToUseObjectStoreParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateCloudToUseObjectStoreParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateCloudToUseObjectStoreParams) SetProvider(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateCloudToUseObjectStoreParams) SetProvider(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["provider"] = v
+	P.P["provider"] = v
 }
 
-func (p *UpdateCloudToUseObjectStoreParams) GetProvider() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateCloudToUseObjectStoreParams) GetProvider() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["provider"].(string)
+	value, ok := P.P["provider"].(string)
 	return value, ok
 }
 
-func (p *UpdateCloudToUseObjectStoreParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateCloudToUseObjectStoreParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *UpdateCloudToUseObjectStoreParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateCloudToUseObjectStoreParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateCloudToUseObjectStoreParams instance,
 // as then you are sure you have configured all required params
 func (s *ImageStoreService) NewUpdateCloudToUseObjectStoreParams(provider string) *UpdateCloudToUseObjectStoreParams {
-	p := &UpdateCloudToUseObjectStoreParams{}
-	p.p = make(map[string]interface{})
-	p.p["provider"] = provider
-	return p
+	P := &UpdateCloudToUseObjectStoreParams{}
+	P.P = make(map[string]interface{})
+	P.P["provider"] = provider
+	return P
 }
 
 // Migrate current NFS secondary storages to use object store.

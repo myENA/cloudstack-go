@@ -26,92 +26,92 @@ import (
 )
 
 type RegionServiceIface interface {
-	AddRegion(p *AddRegionParams) (*AddRegionResponse, error)
+	AddRegion(P *AddRegionParams) (*AddRegionResponse, error)
 	NewAddRegionParams(endpoint string, id int, name string) *AddRegionParams
-	ListRegions(p *ListRegionsParams) (*ListRegionsResponse, error)
+	ListRegions(P *ListRegionsParams) (*ListRegionsResponse, error)
 	NewListRegionsParams() *ListRegionsParams
-	RemoveRegion(p *RemoveRegionParams) (*RemoveRegionResponse, error)
+	RemoveRegion(P *RemoveRegionParams) (*RemoveRegionResponse, error)
 	NewRemoveRegionParams(id int) *RemoveRegionParams
-	UpdateRegion(p *UpdateRegionParams) (*UpdateRegionResponse, error)
+	UpdateRegion(P *UpdateRegionParams) (*UpdateRegionResponse, error)
 	NewUpdateRegionParams(id int) *UpdateRegionParams
 }
 
 type AddRegionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddRegionParams) toURLValues() url.Values {
+func (P *AddRegionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["endpoint"]; found {
+	if v, found := P.P["endpoint"]; found {
 		u.Set("endpoint", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("id", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
 	return u
 }
 
-func (p *AddRegionParams) SetEndpoint(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddRegionParams) SetEndpoint(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endpoint"] = v
+	P.P["endpoint"] = v
 }
 
-func (p *AddRegionParams) GetEndpoint() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddRegionParams) GetEndpoint() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endpoint"].(string)
+	value, ok := P.P["endpoint"].(string)
 	return value, ok
 }
 
-func (p *AddRegionParams) SetId(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddRegionParams) SetId(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *AddRegionParams) GetId() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddRegionParams) GetId() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(int)
+	value, ok := P.P["id"].(int)
 	return value, ok
 }
 
-func (p *AddRegionParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddRegionParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *AddRegionParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddRegionParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddRegionParams instance,
 // as then you are sure you have configured all required params
 func (s *RegionService) NewAddRegionParams(endpoint string, id int, name string) *AddRegionParams {
-	p := &AddRegionParams{}
-	p.p = make(map[string]interface{})
-	p.p["endpoint"] = endpoint
-	p.p["id"] = id
-	p.p["name"] = name
-	return p
+	P := &AddRegionParams{}
+	P.P = make(map[string]interface{})
+	P.P["endpoint"] = endpoint
+	P.P["id"] = id
+	P.P["name"] = name
+	return P
 }
 
 // Adds a Region
@@ -140,116 +140,116 @@ type AddRegionResponse struct {
 }
 
 type ListRegionsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListRegionsParams) toURLValues() url.Values {
+func (P *ListRegionsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("id", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListRegionsParams) SetId(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRegionsParams) SetId(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListRegionsParams) GetId() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRegionsParams) GetId() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(int)
+	value, ok := P.P["id"].(int)
 	return value, ok
 }
 
-func (p *ListRegionsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRegionsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListRegionsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRegionsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListRegionsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRegionsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListRegionsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRegionsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListRegionsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRegionsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListRegionsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRegionsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListRegionsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRegionsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListRegionsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRegionsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListRegionsParams instance,
 // as then you are sure you have configured all required params
 func (s *RegionService) NewListRegionsParams() *ListRegionsParams {
-	p := &ListRegionsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListRegionsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists Regions
@@ -283,43 +283,43 @@ type Region struct {
 }
 
 type RemoveRegionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RemoveRegionParams) toURLValues() url.Values {
+func (P *RemoveRegionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("id", vv)
 	}
 	return u
 }
 
-func (p *RemoveRegionParams) SetId(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveRegionParams) SetId(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *RemoveRegionParams) GetId() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveRegionParams) GetId() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(int)
+	value, ok := P.P["id"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new RemoveRegionParams instance,
 // as then you are sure you have configured all required params
 func (s *RegionService) NewRemoveRegionParams(id int) *RemoveRegionParams {
-	p := &RemoveRegionParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &RemoveRegionParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Removes specified region
@@ -372,79 +372,79 @@ func (r *RemoveRegionResponse) UnmarshalJSON(b []byte) error {
 }
 
 type UpdateRegionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateRegionParams) toURLValues() url.Values {
+func (P *UpdateRegionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["endpoint"]; found {
+	if v, found := P.P["endpoint"]; found {
 		u.Set("endpoint", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("id", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateRegionParams) SetEndpoint(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRegionParams) SetEndpoint(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endpoint"] = v
+	P.P["endpoint"] = v
 }
 
-func (p *UpdateRegionParams) GetEndpoint() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRegionParams) GetEndpoint() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endpoint"].(string)
+	value, ok := P.P["endpoint"].(string)
 	return value, ok
 }
 
-func (p *UpdateRegionParams) SetId(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRegionParams) SetId(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateRegionParams) GetId() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRegionParams) GetId() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(int)
+	value, ok := P.P["id"].(int)
 	return value, ok
 }
 
-func (p *UpdateRegionParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRegionParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateRegionParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRegionParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateRegionParams instance,
 // as then you are sure you have configured all required params
 func (s *RegionService) NewUpdateRegionParams(id int) *UpdateRegionParams {
-	p := &UpdateRegionParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateRegionParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a region

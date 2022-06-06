@@ -28,251 +28,251 @@ import (
 )
 
 type VPCServiceIface interface {
-	CreatePrivateGateway(p *CreatePrivateGatewayParams) (*CreatePrivateGatewayResponse, error)
+	CreatePrivateGateway(P *CreatePrivateGatewayParams) (*CreatePrivateGatewayResponse, error)
 	NewCreatePrivateGatewayParams(gateway string, ipaddress string, netmask string, vlan string, vpcid string) *CreatePrivateGatewayParams
-	CreateStaticRoute(p *CreateStaticRouteParams) (*CreateStaticRouteResponse, error)
+	CreateStaticRoute(P *CreateStaticRouteParams) (*CreateStaticRouteResponse, error)
 	NewCreateStaticRouteParams(cidr string, gatewayid string) *CreateStaticRouteParams
-	CreateVPC(p *CreateVPCParams) (*CreateVPCResponse, error)
+	CreateVPC(P *CreateVPCParams) (*CreateVPCResponse, error)
 	NewCreateVPCParams(cidr string, displaytext string, name string, vpcofferingid string, zoneid string) *CreateVPCParams
-	CreateVPCOffering(p *CreateVPCOfferingParams) (*CreateVPCOfferingResponse, error)
+	CreateVPCOffering(P *CreateVPCOfferingParams) (*CreateVPCOfferingResponse, error)
 	NewCreateVPCOfferingParams(displaytext string, name string, supportedservices []string) *CreateVPCOfferingParams
-	DeletePrivateGateway(p *DeletePrivateGatewayParams) (*DeletePrivateGatewayResponse, error)
+	DeletePrivateGateway(P *DeletePrivateGatewayParams) (*DeletePrivateGatewayResponse, error)
 	NewDeletePrivateGatewayParams(id string) *DeletePrivateGatewayParams
-	DeleteStaticRoute(p *DeleteStaticRouteParams) (*DeleteStaticRouteResponse, error)
+	DeleteStaticRoute(P *DeleteStaticRouteParams) (*DeleteStaticRouteResponse, error)
 	NewDeleteStaticRouteParams(id string) *DeleteStaticRouteParams
-	DeleteVPC(p *DeleteVPCParams) (*DeleteVPCResponse, error)
+	DeleteVPC(P *DeleteVPCParams) (*DeleteVPCResponse, error)
 	NewDeleteVPCParams(id string) *DeleteVPCParams
-	DeleteVPCOffering(p *DeleteVPCOfferingParams) (*DeleteVPCOfferingResponse, error)
+	DeleteVPCOffering(P *DeleteVPCOfferingParams) (*DeleteVPCOfferingResponse, error)
 	NewDeleteVPCOfferingParams(id string) *DeleteVPCOfferingParams
-	ListPrivateGateways(p *ListPrivateGatewaysParams) (*ListPrivateGatewaysResponse, error)
+	ListPrivateGateways(P *ListPrivateGatewaysParams) (*ListPrivateGatewaysResponse, error)
 	NewListPrivateGatewaysParams() *ListPrivateGatewaysParams
 	GetPrivateGatewayByID(id string, opts ...OptionFunc) (*PrivateGateway, int, error)
-	ListStaticRoutes(p *ListStaticRoutesParams) (*ListStaticRoutesResponse, error)
+	ListStaticRoutes(P *ListStaticRoutesParams) (*ListStaticRoutesResponse, error)
 	NewListStaticRoutesParams() *ListStaticRoutesParams
 	GetStaticRouteByID(id string, opts ...OptionFunc) (*StaticRoute, int, error)
-	ListVPCOfferings(p *ListVPCOfferingsParams) (*ListVPCOfferingsResponse, error)
+	ListVPCOfferings(P *ListVPCOfferingsParams) (*ListVPCOfferingsResponse, error)
 	NewListVPCOfferingsParams() *ListVPCOfferingsParams
 	GetVPCOfferingID(name string, opts ...OptionFunc) (string, int, error)
 	GetVPCOfferingByName(name string, opts ...OptionFunc) (*VPCOffering, int, error)
 	GetVPCOfferingByID(id string, opts ...OptionFunc) (*VPCOffering, int, error)
-	ListVPCs(p *ListVPCsParams) (*ListVPCsResponse, error)
+	ListVPCs(P *ListVPCsParams) (*ListVPCsResponse, error)
 	NewListVPCsParams() *ListVPCsParams
 	GetVPCID(name string, opts ...OptionFunc) (string, int, error)
 	GetVPCByName(name string, opts ...OptionFunc) (*VPC, int, error)
 	GetVPCByID(id string, opts ...OptionFunc) (*VPC, int, error)
-	RestartVPC(p *RestartVPCParams) (*RestartVPCResponse, error)
+	RestartVPC(P *RestartVPCParams) (*RestartVPCResponse, error)
 	NewRestartVPCParams(id string) *RestartVPCParams
-	UpdateVPC(p *UpdateVPCParams) (*UpdateVPCResponse, error)
+	UpdateVPC(P *UpdateVPCParams) (*UpdateVPCResponse, error)
 	NewUpdateVPCParams(id string) *UpdateVPCParams
-	UpdateVPCOffering(p *UpdateVPCOfferingParams) (*UpdateVPCOfferingResponse, error)
+	UpdateVPCOffering(P *UpdateVPCOfferingParams) (*UpdateVPCOfferingResponse, error)
 	NewUpdateVPCOfferingParams(id string) *UpdateVPCOfferingParams
 }
 
 type CreatePrivateGatewayParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreatePrivateGatewayParams) toURLValues() url.Values {
+func (P *CreatePrivateGatewayParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["aclid"]; found {
+	if v, found := P.P["aclid"]; found {
 		u.Set("aclid", v.(string))
 	}
-	if v, found := p.p["bypassvlanoverlapcheck"]; found {
+	if v, found := P.P["bypassvlanoverlapcheck"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("bypassvlanoverlapcheck", vv)
 	}
-	if v, found := p.p["gateway"]; found {
+	if v, found := P.P["gateway"]; found {
 		u.Set("gateway", v.(string))
 	}
-	if v, found := p.p["ipaddress"]; found {
+	if v, found := P.P["ipaddress"]; found {
 		u.Set("ipaddress", v.(string))
 	}
-	if v, found := p.p["netmask"]; found {
+	if v, found := P.P["netmask"]; found {
 		u.Set("netmask", v.(string))
 	}
-	if v, found := p.p["networkofferingid"]; found {
+	if v, found := P.P["networkofferingid"]; found {
 		u.Set("networkofferingid", v.(string))
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["sourcenatsupported"]; found {
+	if v, found := P.P["sourcenatsupported"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("sourcenatsupported", vv)
 	}
-	if v, found := p.p["vlan"]; found {
+	if v, found := P.P["vlan"]; found {
 		u.Set("vlan", v.(string))
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
 	return u
 }
 
-func (p *CreatePrivateGatewayParams) SetAclid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) SetAclid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["aclid"] = v
+	P.P["aclid"] = v
 }
 
-func (p *CreatePrivateGatewayParams) GetAclid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) GetAclid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["aclid"].(string)
+	value, ok := P.P["aclid"].(string)
 	return value, ok
 }
 
-func (p *CreatePrivateGatewayParams) SetBypassvlanoverlapcheck(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) SetBypassvlanoverlapcheck(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bypassvlanoverlapcheck"] = v
+	P.P["bypassvlanoverlapcheck"] = v
 }
 
-func (p *CreatePrivateGatewayParams) GetBypassvlanoverlapcheck() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) GetBypassvlanoverlapcheck() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bypassvlanoverlapcheck"].(bool)
+	value, ok := P.P["bypassvlanoverlapcheck"].(bool)
 	return value, ok
 }
 
-func (p *CreatePrivateGatewayParams) SetGateway(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) SetGateway(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gateway"] = v
+	P.P["gateway"] = v
 }
 
-func (p *CreatePrivateGatewayParams) GetGateway() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) GetGateway() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gateway"].(string)
+	value, ok := P.P["gateway"].(string)
 	return value, ok
 }
 
-func (p *CreatePrivateGatewayParams) SetIpaddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) SetIpaddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddress"] = v
+	P.P["ipaddress"] = v
 }
 
-func (p *CreatePrivateGatewayParams) GetIpaddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) GetIpaddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddress"].(string)
+	value, ok := P.P["ipaddress"].(string)
 	return value, ok
 }
 
-func (p *CreatePrivateGatewayParams) SetNetmask(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) SetNetmask(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["netmask"] = v
+	P.P["netmask"] = v
 }
 
-func (p *CreatePrivateGatewayParams) GetNetmask() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) GetNetmask() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["netmask"].(string)
+	value, ok := P.P["netmask"].(string)
 	return value, ok
 }
 
-func (p *CreatePrivateGatewayParams) SetNetworkofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) SetNetworkofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkofferingid"] = v
+	P.P["networkofferingid"] = v
 }
 
-func (p *CreatePrivateGatewayParams) GetNetworkofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) GetNetworkofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkofferingid"].(string)
+	value, ok := P.P["networkofferingid"].(string)
 	return value, ok
 }
 
-func (p *CreatePrivateGatewayParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *CreatePrivateGatewayParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *CreatePrivateGatewayParams) SetSourcenatsupported(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) SetSourcenatsupported(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sourcenatsupported"] = v
+	P.P["sourcenatsupported"] = v
 }
 
-func (p *CreatePrivateGatewayParams) GetSourcenatsupported() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) GetSourcenatsupported() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sourcenatsupported"].(bool)
+	value, ok := P.P["sourcenatsupported"].(bool)
 	return value, ok
 }
 
-func (p *CreatePrivateGatewayParams) SetVlan(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) SetVlan(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlan"] = v
+	P.P["vlan"] = v
 }
 
-func (p *CreatePrivateGatewayParams) GetVlan() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) GetVlan() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlan"].(string)
+	value, ok := P.P["vlan"].(string)
 	return value, ok
 }
 
-func (p *CreatePrivateGatewayParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *CreatePrivateGatewayParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePrivateGatewayParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreatePrivateGatewayParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewCreatePrivateGatewayParams(gateway string, ipaddress string, netmask string, vlan string, vpcid string) *CreatePrivateGatewayParams {
-	p := &CreatePrivateGatewayParams{}
-	p.p = make(map[string]interface{})
-	p.p["gateway"] = gateway
-	p.p["ipaddress"] = ipaddress
-	p.p["netmask"] = netmask
-	p.p["vlan"] = vlan
-	p.p["vpcid"] = vpcid
-	return p
+	P := &CreatePrivateGatewayParams{}
+	P.P = make(map[string]interface{})
+	P.P["gateway"] = gateway
+	P.P["ipaddress"] = ipaddress
+	P.P["netmask"] = netmask
+	P.P["vlan"] = vlan
+	P.P["vpcid"] = vpcid
+	return P
 }
 
 // Creates a private gateway
@@ -335,61 +335,61 @@ type CreatePrivateGatewayResponse struct {
 }
 
 type CreateStaticRouteParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateStaticRouteParams) toURLValues() url.Values {
+func (P *CreateStaticRouteParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["cidr"]; found {
+	if v, found := P.P["cidr"]; found {
 		u.Set("cidr", v.(string))
 	}
-	if v, found := p.p["gatewayid"]; found {
+	if v, found := P.P["gatewayid"]; found {
 		u.Set("gatewayid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateStaticRouteParams) SetCidr(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStaticRouteParams) SetCidr(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cidr"] = v
+	P.P["cidr"] = v
 }
 
-func (p *CreateStaticRouteParams) GetCidr() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStaticRouteParams) GetCidr() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cidr"].(string)
+	value, ok := P.P["cidr"].(string)
 	return value, ok
 }
 
-func (p *CreateStaticRouteParams) SetGatewayid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStaticRouteParams) SetGatewayid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gatewayid"] = v
+	P.P["gatewayid"] = v
 }
 
-func (p *CreateStaticRouteParams) GetGatewayid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateStaticRouteParams) GetGatewayid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gatewayid"].(string)
+	value, ok := P.P["gatewayid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateStaticRouteParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewCreateStaticRouteParams(cidr string, gatewayid string) *CreateStaticRouteParams {
-	p := &CreateStaticRouteParams{}
-	p.p = make(map[string]interface{})
-	p.p["cidr"] = cidr
-	p.p["gatewayid"] = gatewayid
-	return p
+	P := &CreateStaticRouteParams{}
+	P.P = make(map[string]interface{})
+	P.P["cidr"] = cidr
+	P.P["gatewayid"] = gatewayid
+	return P
 }
 
 // Creates a static route
@@ -444,228 +444,228 @@ type CreateStaticRouteResponse struct {
 }
 
 type CreateVPCParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateVPCParams) toURLValues() url.Values {
+func (P *CreateVPCParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["cidr"]; found {
+	if v, found := P.P["cidr"]; found {
 		u.Set("cidr", v.(string))
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkdomain"]; found {
+	if v, found := P.P["networkdomain"]; found {
 		u.Set("networkdomain", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["start"]; found {
+	if v, found := P.P["start"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("start", vv)
 	}
-	if v, found := p.p["vpcofferingid"]; found {
+	if v, found := P.P["vpcofferingid"]; found {
 		u.Set("vpcofferingid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateVPCParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *CreateVPCParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *CreateVPCParams) SetCidr(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) SetCidr(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cidr"] = v
+	P.P["cidr"] = v
 }
 
-func (p *CreateVPCParams) GetCidr() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) GetCidr() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cidr"].(string)
+	value, ok := P.P["cidr"].(string)
 	return value, ok
 }
 
-func (p *CreateVPCParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *CreateVPCParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *CreateVPCParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateVPCParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateVPCParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateVPCParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateVPCParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateVPCParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateVPCParams) SetNetworkdomain(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) SetNetworkdomain(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdomain"] = v
+	P.P["networkdomain"] = v
 }
 
-func (p *CreateVPCParams) GetNetworkdomain() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) GetNetworkdomain() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdomain"].(string)
+	value, ok := P.P["networkdomain"].(string)
 	return value, ok
 }
 
-func (p *CreateVPCParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *CreateVPCParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *CreateVPCParams) SetStart(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) SetStart(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["start"] = v
+	P.P["start"] = v
 }
 
-func (p *CreateVPCParams) GetStart() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) GetStart() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["start"].(bool)
+	value, ok := P.P["start"].(bool)
 	return value, ok
 }
 
-func (p *CreateVPCParams) SetVpcofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) SetVpcofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcofferingid"] = v
+	P.P["vpcofferingid"] = v
 }
 
-func (p *CreateVPCParams) GetVpcofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) GetVpcofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcofferingid"].(string)
+	value, ok := P.P["vpcofferingid"].(string)
 	return value, ok
 }
 
-func (p *CreateVPCParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreateVPCParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateVPCParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewCreateVPCParams(cidr string, displaytext string, name string, vpcofferingid string, zoneid string) *CreateVPCParams {
-	p := &CreateVPCParams{}
-	p.p = make(map[string]interface{})
-	p.p["cidr"] = cidr
-	p.p["displaytext"] = displaytext
-	p.p["name"] = name
-	p.p["vpcofferingid"] = vpcofferingid
-	p.p["zoneid"] = zoneid
-	return p
+	P := &CreateVPCParams{}
+	P.P = make(map[string]interface{})
+	P.P["cidr"] = cidr
+	P.P["displaytext"] = displaytext
+	P.P["name"] = name
+	P.P["vpcofferingid"] = vpcofferingid
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Creates a VPC
@@ -757,200 +757,200 @@ type CreateVPCResponseServiceCapability struct {
 }
 
 type CreateVPCOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateVPCOfferingParams) toURLValues() url.Values {
+func (P *CreateVPCOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("domainid", vv)
 	}
-	if v, found := p.p["enable"]; found {
+	if v, found := P.P["enable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("enable", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["servicecapabilitylist"]; found {
+	if v, found := P.P["servicecapabilitylist"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("servicecapabilitylist[%d].key", i), k)
 			u.Set(fmt.Sprintf("servicecapabilitylist[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["serviceofferingid"]; found {
+	if v, found := P.P["serviceofferingid"]; found {
 		u.Set("serviceofferingid", v.(string))
 	}
-	if v, found := p.p["serviceproviderlist"]; found {
+	if v, found := P.P["serviceproviderlist"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("serviceproviderlist[%d].service", i), k)
 			u.Set(fmt.Sprintf("serviceproviderlist[%d].provider", i), m[k])
 		}
 	}
-	if v, found := p.p["supportedservices"]; found {
+	if v, found := P.P["supportedservices"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("supportedservices", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("zoneid", vv)
 	}
 	return u
 }
 
-func (p *CreateVPCOfferingParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *CreateVPCOfferingParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *CreateVPCOfferingParams) SetDomainid(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) SetDomainid(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateVPCOfferingParams) GetDomainid() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) GetDomainid() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].([]string)
+	value, ok := P.P["domainid"].([]string)
 	return value, ok
 }
 
-func (p *CreateVPCOfferingParams) SetEnable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) SetEnable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enable"] = v
+	P.P["enable"] = v
 }
 
-func (p *CreateVPCOfferingParams) GetEnable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) GetEnable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enable"].(bool)
+	value, ok := P.P["enable"].(bool)
 	return value, ok
 }
 
-func (p *CreateVPCOfferingParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateVPCOfferingParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateVPCOfferingParams) SetServicecapabilitylist(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) SetServicecapabilitylist(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["servicecapabilitylist"] = v
+	P.P["servicecapabilitylist"] = v
 }
 
-func (p *CreateVPCOfferingParams) GetServicecapabilitylist() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) GetServicecapabilitylist() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["servicecapabilitylist"].(map[string]string)
+	value, ok := P.P["servicecapabilitylist"].(map[string]string)
 	return value, ok
 }
 
-func (p *CreateVPCOfferingParams) SetServiceofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) SetServiceofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["serviceofferingid"] = v
+	P.P["serviceofferingid"] = v
 }
 
-func (p *CreateVPCOfferingParams) GetServiceofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) GetServiceofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["serviceofferingid"].(string)
+	value, ok := P.P["serviceofferingid"].(string)
 	return value, ok
 }
 
-func (p *CreateVPCOfferingParams) SetServiceproviderlist(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) SetServiceproviderlist(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["serviceproviderlist"] = v
+	P.P["serviceproviderlist"] = v
 }
 
-func (p *CreateVPCOfferingParams) GetServiceproviderlist() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) GetServiceproviderlist() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["serviceproviderlist"].(map[string]string)
+	value, ok := P.P["serviceproviderlist"].(map[string]string)
 	return value, ok
 }
 
-func (p *CreateVPCOfferingParams) SetSupportedservices(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) SetSupportedservices(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["supportedservices"] = v
+	P.P["supportedservices"] = v
 }
 
-func (p *CreateVPCOfferingParams) GetSupportedservices() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) GetSupportedservices() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["supportedservices"].([]string)
+	value, ok := P.P["supportedservices"].([]string)
 	return value, ok
 }
 
-func (p *CreateVPCOfferingParams) SetZoneid(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) SetZoneid(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreateVPCOfferingParams) GetZoneid() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVPCOfferingParams) GetZoneid() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].([]string)
+	value, ok := P.P["zoneid"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateVPCOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewCreateVPCOfferingParams(displaytext string, name string, supportedservices []string) *CreateVPCOfferingParams {
-	p := &CreateVPCOfferingParams{}
-	p.p = make(map[string]interface{})
-	p.p["displaytext"] = displaytext
-	p.p["name"] = name
-	p.p["supportedservices"] = supportedservices
-	return p
+	P := &CreateVPCOfferingParams{}
+	P.P = make(map[string]interface{})
+	P.P["displaytext"] = displaytext
+	P.P["name"] = name
+	P.P["supportedservices"] = supportedservices
+	return P
 }
 
 // Creates VPC offering
@@ -1029,42 +1029,42 @@ type CreateVPCOfferingResponseServiceCapability struct {
 }
 
 type DeletePrivateGatewayParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeletePrivateGatewayParams) toURLValues() url.Values {
+func (P *DeletePrivateGatewayParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeletePrivateGatewayParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePrivateGatewayParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeletePrivateGatewayParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePrivateGatewayParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeletePrivateGatewayParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewDeletePrivateGatewayParams(id string) *DeletePrivateGatewayParams {
-	p := &DeletePrivateGatewayParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeletePrivateGatewayParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a Private gateway
@@ -1105,42 +1105,42 @@ type DeletePrivateGatewayResponse struct {
 }
 
 type DeleteStaticRouteParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteStaticRouteParams) toURLValues() url.Values {
+func (P *DeleteStaticRouteParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteStaticRouteParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteStaticRouteParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteStaticRouteParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteStaticRouteParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteStaticRouteParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewDeleteStaticRouteParams(id string) *DeleteStaticRouteParams {
-	p := &DeleteStaticRouteParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteStaticRouteParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a static route
@@ -1181,42 +1181,42 @@ type DeleteStaticRouteResponse struct {
 }
 
 type DeleteVPCParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteVPCParams) toURLValues() url.Values {
+func (P *DeleteVPCParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteVPCParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVPCParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteVPCParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVPCParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteVPCParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewDeleteVPCParams(id string) *DeleteVPCParams {
-	p := &DeleteVPCParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteVPCParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a VPC
@@ -1257,42 +1257,42 @@ type DeleteVPCResponse struct {
 }
 
 type DeleteVPCOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteVPCOfferingParams) toURLValues() url.Values {
+func (P *DeleteVPCOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteVPCOfferingParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVPCOfferingParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteVPCOfferingParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVPCOfferingParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteVPCOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewDeleteVPCOfferingParams(id string) *DeleteVPCOfferingParams {
-	p := &DeleteVPCOfferingParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteVPCOfferingParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes VPC offering
@@ -1333,277 +1333,277 @@ type DeleteVPCOfferingResponse struct {
 }
 
 type ListPrivateGatewaysParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListPrivateGatewaysParams) toURLValues() url.Values {
+func (P *ListPrivateGatewaysParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["ipaddress"]; found {
+	if v, found := P.P["ipaddress"]; found {
 		u.Set("ipaddress", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["vlan"]; found {
+	if v, found := P.P["vlan"]; found {
 		u.Set("vlan", v.(string))
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
 	return u
 }
 
-func (p *ListPrivateGatewaysParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetIpaddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetIpaddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddress"] = v
+	P.P["ipaddress"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetIpaddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetIpaddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddress"].(string)
+	value, ok := P.P["ipaddress"].(string)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetVlan(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetVlan(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlan"] = v
+	P.P["vlan"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetVlan() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetVlan() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlan"].(string)
+	value, ok := P.P["vlan"].(string)
 	return value, ok
 }
 
-func (p *ListPrivateGatewaysParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *ListPrivateGatewaysParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPrivateGatewaysParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListPrivateGatewaysParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewListPrivateGatewaysParams() *ListPrivateGatewaysParams {
-	p := &ListPrivateGatewaysParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListPrivateGatewaysParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPCService) GetPrivateGatewayByID(id string, opts ...OptionFunc) (*PrivateGateway, int, error) {
-	p := &ListPrivateGatewaysParams{}
-	p.p = make(map[string]interface{})
+	P := &ListPrivateGatewaysParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListPrivateGateways(p)
+	l, err := s.ListPrivateGateways(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1668,281 +1668,281 @@ type PrivateGateway struct {
 }
 
 type ListStaticRoutesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListStaticRoutesParams) toURLValues() url.Values {
+func (P *ListStaticRoutesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["gatewayid"]; found {
+	if v, found := P.P["gatewayid"]; found {
 		u.Set("gatewayid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
 	return u
 }
 
-func (p *ListStaticRoutesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListStaticRoutesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListStaticRoutesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetGatewayid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetGatewayid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gatewayid"] = v
+	P.P["gatewayid"] = v
 }
 
-func (p *ListStaticRoutesParams) GetGatewayid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetGatewayid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gatewayid"].(string)
+	value, ok := P.P["gatewayid"].(string)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListStaticRoutesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListStaticRoutesParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListStaticRoutesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListStaticRoutesParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListStaticRoutesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListStaticRoutesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListStaticRoutesParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListStaticRoutesParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListStaticRoutesParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListStaticRoutesParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *ListStaticRoutesParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStaticRoutesParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListStaticRoutesParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewListStaticRoutesParams() *ListStaticRoutesParams {
-	p := &ListStaticRoutesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListStaticRoutesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPCService) GetStaticRouteByID(id string, opts ...OptionFunc) (*StaticRoute, int, error) {
-	p := &ListStaticRoutesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListStaticRoutesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListStaticRoutes(p)
+	l, err := s.ListStaticRoutes(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1999,223 +1999,223 @@ type StaticRoute struct {
 }
 
 type ListVPCOfferingsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListVPCOfferingsParams) toURLValues() url.Values {
+func (P *ListVPCOfferingsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isdefault"]; found {
+	if v, found := P.P["isdefault"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isdefault", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["supportedservices"]; found {
+	if v, found := P.P["supportedservices"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("supportedservices", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListVPCOfferingsParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *ListVPCOfferingsParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *ListVPCOfferingsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListVPCOfferingsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListVPCOfferingsParams) SetIsdefault(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) SetIsdefault(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isdefault"] = v
+	P.P["isdefault"] = v
 }
 
-func (p *ListVPCOfferingsParams) GetIsdefault() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) GetIsdefault() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isdefault"].(bool)
+	value, ok := P.P["isdefault"].(bool)
 	return value, ok
 }
 
-func (p *ListVPCOfferingsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListVPCOfferingsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListVPCOfferingsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListVPCOfferingsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListVPCOfferingsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListVPCOfferingsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListVPCOfferingsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListVPCOfferingsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListVPCOfferingsParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListVPCOfferingsParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListVPCOfferingsParams) SetSupportedservices(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) SetSupportedservices(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["supportedservices"] = v
+	P.P["supportedservices"] = v
 }
 
-func (p *ListVPCOfferingsParams) GetSupportedservices() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) GetSupportedservices() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["supportedservices"].([]string)
+	value, ok := P.P["supportedservices"].([]string)
 	return value, ok
 }
 
-func (p *ListVPCOfferingsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListVPCOfferingsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCOfferingsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListVPCOfferingsParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewListVPCOfferingsParams() *ListVPCOfferingsParams {
-	p := &ListVPCOfferingsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListVPCOfferingsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPCService) GetVPCOfferingID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListVPCOfferingsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVPCOfferingsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListVPCOfferings(p)
+	l, err := s.ListVPCOfferings(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -2254,18 +2254,18 @@ func (s *VPCService) GetVPCOfferingByName(name string, opts ...OptionFunc) (*VPC
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPCService) GetVPCOfferingByID(id string, opts ...OptionFunc) (*VPCOffering, int, error) {
-	p := &ListVPCOfferingsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVPCOfferingsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListVPCOfferings(p)
+	l, err := s.ListVPCOfferings(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -2346,411 +2346,411 @@ type VPCOfferingServiceCapability struct {
 }
 
 type ListVPCsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListVPCsParams) toURLValues() url.Values {
+func (P *ListVPCsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["cidr"]; found {
+	if v, found := P.P["cidr"]; found {
 		u.Set("cidr", v.(string))
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["restartrequired"]; found {
+	if v, found := P.P["restartrequired"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("restartrequired", vv)
 	}
-	if v, found := p.p["showicon"]; found {
+	if v, found := P.P["showicon"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showicon", vv)
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["supportedservices"]; found {
+	if v, found := P.P["supportedservices"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("supportedservices", vv)
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["vpcofferingid"]; found {
+	if v, found := P.P["vpcofferingid"]; found {
 		u.Set("vpcofferingid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListVPCsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListVPCsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetCidr(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetCidr(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cidr"] = v
+	P.P["cidr"] = v
 }
 
-func (p *ListVPCsParams) GetCidr() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetCidr() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cidr"].(string)
+	value, ok := P.P["cidr"].(string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *ListVPCsParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListVPCsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListVPCsParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListVPCsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListVPCsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListVPCsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListVPCsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListVPCsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListVPCsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListVPCsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListVPCsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetRestartrequired(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetRestartrequired(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["restartrequired"] = v
+	P.P["restartrequired"] = v
 }
 
-func (p *ListVPCsParams) GetRestartrequired() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetRestartrequired() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["restartrequired"].(bool)
+	value, ok := P.P["restartrequired"].(bool)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetShowicon(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetShowicon(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showicon"] = v
+	P.P["showicon"] = v
 }
 
-func (p *ListVPCsParams) GetShowicon() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetShowicon() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showicon"].(bool)
+	value, ok := P.P["showicon"].(bool)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListVPCsParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetSupportedservices(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetSupportedservices(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["supportedservices"] = v
+	P.P["supportedservices"] = v
 }
 
-func (p *ListVPCsParams) GetSupportedservices() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetSupportedservices() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["supportedservices"].([]string)
+	value, ok := P.P["supportedservices"].([]string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListVPCsParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetVpcofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetVpcofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcofferingid"] = v
+	P.P["vpcofferingid"] = v
 }
 
-func (p *ListVPCsParams) GetVpcofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetVpcofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcofferingid"].(string)
+	value, ok := P.P["vpcofferingid"].(string)
 	return value, ok
 }
 
-func (p *ListVPCsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListVPCsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVPCsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListVPCsParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewListVPCsParams() *ListVPCsParams {
-	p := &ListVPCsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListVPCsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPCService) GetVPCID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListVPCsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVPCsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListVPCs(p)
+	l, err := s.ListVPCs(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -2789,18 +2789,18 @@ func (s *VPCService) GetVPCByName(name string, opts ...OptionFunc) (*VPC, int, e
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPCService) GetVPCByID(id string, opts ...OptionFunc) (*VPC, int, error) {
-	p := &ListVPCsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVPCsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListVPCs(p)
+	l, err := s.ListVPCs(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -2894,80 +2894,80 @@ type VPCServiceInternalCapability struct {
 }
 
 type RestartVPCParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RestartVPCParams) toURLValues() url.Values {
+func (P *RestartVPCParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["cleanup"]; found {
+	if v, found := P.P["cleanup"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("cleanup", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["makeredundant"]; found {
+	if v, found := P.P["makeredundant"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("makeredundant", vv)
 	}
 	return u
 }
 
-func (p *RestartVPCParams) SetCleanup(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartVPCParams) SetCleanup(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cleanup"] = v
+	P.P["cleanup"] = v
 }
 
-func (p *RestartVPCParams) GetCleanup() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartVPCParams) GetCleanup() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cleanup"].(bool)
+	value, ok := P.P["cleanup"].(bool)
 	return value, ok
 }
 
-func (p *RestartVPCParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartVPCParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *RestartVPCParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartVPCParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *RestartVPCParams) SetMakeredundant(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartVPCParams) SetMakeredundant(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["makeredundant"] = v
+	P.P["makeredundant"] = v
 }
 
-func (p *RestartVPCParams) GetMakeredundant() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RestartVPCParams) GetMakeredundant() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["makeredundant"].(bool)
+	value, ok := P.P["makeredundant"].(bool)
 	return value, ok
 }
 
 // You should always use this function to get a new RestartVPCParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewRestartVPCParams(id string) *RestartVPCParams {
-	p := &RestartVPCParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &RestartVPCParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Restarts a VPC
@@ -3008,115 +3008,115 @@ type RestartVPCResponse struct {
 }
 
 type UpdateVPCParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateVPCParams) toURLValues() url.Values {
+func (P *UpdateVPCParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateVPCParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateVPCParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateVPCParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *UpdateVPCParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *UpdateVPCParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateVPCParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateVPCParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateVPCParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateVPCParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateVPCParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateVPCParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewUpdateVPCParams(id string) *UpdateVPCParams {
-	p := &UpdateVPCParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateVPCParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a VPC
@@ -3208,151 +3208,151 @@ type UpdateVPCResponseServiceCapability struct {
 }
 
 type UpdateVPCOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateVPCOfferingParams) toURLValues() url.Values {
+func (P *UpdateVPCOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["sortkey"]; found {
+	if v, found := P.P["sortkey"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("sortkey", vv)
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateVPCOfferingParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *UpdateVPCOfferingParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *UpdateVPCOfferingParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *UpdateVPCOfferingParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *UpdateVPCOfferingParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateVPCOfferingParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateVPCOfferingParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateVPCOfferingParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateVPCOfferingParams) SetSortkey(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) SetSortkey(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sortkey"] = v
+	P.P["sortkey"] = v
 }
 
-func (p *UpdateVPCOfferingParams) GetSortkey() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) GetSortkey() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sortkey"].(int)
+	value, ok := P.P["sortkey"].(int)
 	return value, ok
 }
 
-func (p *UpdateVPCOfferingParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *UpdateVPCOfferingParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *UpdateVPCOfferingParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *UpdateVPCOfferingParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVPCOfferingParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateVPCOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *VPCService) NewUpdateVPCOfferingParams(id string) *UpdateVPCOfferingParams {
-	p := &UpdateVPCOfferingParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateVPCOfferingParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates VPC offering

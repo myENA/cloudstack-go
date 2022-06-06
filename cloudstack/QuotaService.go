@@ -25,17 +25,17 @@ import (
 )
 
 type QuotaServiceIface interface {
-	QuotaIsEnabled(p *QuotaIsEnabledParams) (*QuotaIsEnabledResponse, error)
+	QuotaIsEnabled(P *QuotaIsEnabledParams) (*QuotaIsEnabledResponse, error)
 	NewQuotaIsEnabledParams() *QuotaIsEnabledParams
 }
 
 type QuotaIsEnabledParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *QuotaIsEnabledParams) toURLValues() url.Values {
+func (P *QuotaIsEnabledParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
 	return u
@@ -44,9 +44,9 @@ func (p *QuotaIsEnabledParams) toURLValues() url.Values {
 // You should always use this function to get a new QuotaIsEnabledParams instance,
 // as then you are sure you have configured all required params
 func (s *QuotaService) NewQuotaIsEnabledParams() *QuotaIsEnabledParams {
-	p := &QuotaIsEnabledParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &QuotaIsEnabledParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Return true if the plugin is enabled

@@ -26,69 +26,69 @@ import (
 )
 
 type OutofbandManagementServiceIface interface {
-	ChangeOutOfBandManagementPassword(p *ChangeOutOfBandManagementPasswordParams) (*ChangeOutOfBandManagementPasswordResponse, error)
+	ChangeOutOfBandManagementPassword(P *ChangeOutOfBandManagementPasswordParams) (*ChangeOutOfBandManagementPasswordResponse, error)
 	NewChangeOutOfBandManagementPasswordParams(hostid string) *ChangeOutOfBandManagementPasswordParams
-	ConfigureOutOfBandManagement(p *ConfigureOutOfBandManagementParams) (*OutOfBandManagementResponse, error)
+	ConfigureOutOfBandManagement(P *ConfigureOutOfBandManagementParams) (*OutOfBandManagementResponse, error)
 	NewConfigureOutOfBandManagementParams(address string, driver string, hostid string, password string, port string, username string) *ConfigureOutOfBandManagementParams
-	IssueOutOfBandManagementPowerAction(p *IssueOutOfBandManagementPowerActionParams) (*IssueOutOfBandManagementPowerActionResponse, error)
+	IssueOutOfBandManagementPowerAction(P *IssueOutOfBandManagementPowerActionParams) (*IssueOutOfBandManagementPowerActionResponse, error)
 	NewIssueOutOfBandManagementPowerActionParams(action string, hostid string) *IssueOutOfBandManagementPowerActionParams
 }
 
 type ChangeOutOfBandManagementPasswordParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ChangeOutOfBandManagementPasswordParams) toURLValues() url.Values {
+func (P *ChangeOutOfBandManagementPasswordParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
 	return u
 }
 
-func (p *ChangeOutOfBandManagementPasswordParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeOutOfBandManagementPasswordParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *ChangeOutOfBandManagementPasswordParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeOutOfBandManagementPasswordParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
-func (p *ChangeOutOfBandManagementPasswordParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeOutOfBandManagementPasswordParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *ChangeOutOfBandManagementPasswordParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeOutOfBandManagementPasswordParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ChangeOutOfBandManagementPasswordParams instance,
 // as then you are sure you have configured all required params
 func (s *OutofbandManagementService) NewChangeOutOfBandManagementPasswordParams(hostid string) *ChangeOutOfBandManagementPasswordParams {
-	p := &ChangeOutOfBandManagementPasswordParams{}
-	p.p = make(map[string]interface{})
-	p.p["hostid"] = hostid
-	return p
+	P := &ChangeOutOfBandManagementPasswordParams{}
+	P.P = make(map[string]interface{})
+	P.P["hostid"] = hostid
+	return P
 }
 
 // Changes out-of-band management interface password on the host and updates the interface configuration in CloudStack if the operation succeeds, else reverts the old password
@@ -143,137 +143,137 @@ type ChangeOutOfBandManagementPasswordResponse struct {
 }
 
 type ConfigureOutOfBandManagementParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ConfigureOutOfBandManagementParams) toURLValues() url.Values {
+func (P *ConfigureOutOfBandManagementParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["address"]; found {
+	if v, found := P.P["address"]; found {
 		u.Set("address", v.(string))
 	}
-	if v, found := p.p["driver"]; found {
+	if v, found := P.P["driver"]; found {
 		u.Set("driver", v.(string))
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["port"]; found {
+	if v, found := P.P["port"]; found {
 		u.Set("port", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *ConfigureOutOfBandManagementParams) SetAddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) SetAddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["address"] = v
+	P.P["address"] = v
 }
 
-func (p *ConfigureOutOfBandManagementParams) GetAddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) GetAddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["address"].(string)
+	value, ok := P.P["address"].(string)
 	return value, ok
 }
 
-func (p *ConfigureOutOfBandManagementParams) SetDriver(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) SetDriver(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["driver"] = v
+	P.P["driver"] = v
 }
 
-func (p *ConfigureOutOfBandManagementParams) GetDriver() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) GetDriver() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["driver"].(string)
+	value, ok := P.P["driver"].(string)
 	return value, ok
 }
 
-func (p *ConfigureOutOfBandManagementParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *ConfigureOutOfBandManagementParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
-func (p *ConfigureOutOfBandManagementParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *ConfigureOutOfBandManagementParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *ConfigureOutOfBandManagementParams) SetPort(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) SetPort(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["port"] = v
+	P.P["port"] = v
 }
 
-func (p *ConfigureOutOfBandManagementParams) GetPort() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) GetPort() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["port"].(string)
+	value, ok := P.P["port"].(string)
 	return value, ok
 }
 
-func (p *ConfigureOutOfBandManagementParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *ConfigureOutOfBandManagementParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureOutOfBandManagementParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ConfigureOutOfBandManagementParams instance,
 // as then you are sure you have configured all required params
 func (s *OutofbandManagementService) NewConfigureOutOfBandManagementParams(address string, driver string, hostid string, password string, port string, username string) *ConfigureOutOfBandManagementParams {
-	p := &ConfigureOutOfBandManagementParams{}
-	p.p = make(map[string]interface{})
-	p.p["address"] = address
-	p.p["driver"] = driver
-	p.p["hostid"] = hostid
-	p.p["password"] = password
-	p.p["port"] = port
-	p.p["username"] = username
-	return p
+	P := &ConfigureOutOfBandManagementParams{}
+	P.P = make(map[string]interface{})
+	P.P["address"] = address
+	P.P["driver"] = driver
+	P.P["hostid"] = hostid
+	P.P["password"] = password
+	P.P["port"] = port
+	P.P["username"] = username
+	return P
 }
 
 // Configures a host's out-of-band management interface
@@ -308,80 +308,80 @@ type OutOfBandManagementResponse struct {
 }
 
 type IssueOutOfBandManagementPowerActionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *IssueOutOfBandManagementPowerActionParams) toURLValues() url.Values {
+func (P *IssueOutOfBandManagementPowerActionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["action"]; found {
+	if v, found := P.P["action"]; found {
 		u.Set("action", v.(string))
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
-	if v, found := p.p["timeout"]; found {
+	if v, found := P.P["timeout"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("timeout", vv)
 	}
 	return u
 }
 
-func (p *IssueOutOfBandManagementPowerActionParams) SetAction(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *IssueOutOfBandManagementPowerActionParams) SetAction(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["action"] = v
+	P.P["action"] = v
 }
 
-func (p *IssueOutOfBandManagementPowerActionParams) GetAction() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *IssueOutOfBandManagementPowerActionParams) GetAction() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["action"].(string)
+	value, ok := P.P["action"].(string)
 	return value, ok
 }
 
-func (p *IssueOutOfBandManagementPowerActionParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *IssueOutOfBandManagementPowerActionParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *IssueOutOfBandManagementPowerActionParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *IssueOutOfBandManagementPowerActionParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
-func (p *IssueOutOfBandManagementPowerActionParams) SetTimeout(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *IssueOutOfBandManagementPowerActionParams) SetTimeout(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["timeout"] = v
+	P.P["timeout"] = v
 }
 
-func (p *IssueOutOfBandManagementPowerActionParams) GetTimeout() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *IssueOutOfBandManagementPowerActionParams) GetTimeout() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["timeout"].(int64)
+	value, ok := P.P["timeout"].(int64)
 	return value, ok
 }
 
 // You should always use this function to get a new IssueOutOfBandManagementPowerActionParams instance,
 // as then you are sure you have configured all required params
 func (s *OutofbandManagementService) NewIssueOutOfBandManagementPowerActionParams(action string, hostid string) *IssueOutOfBandManagementPowerActionParams {
-	p := &IssueOutOfBandManagementPowerActionParams{}
-	p.p = make(map[string]interface{})
-	p.p["action"] = action
-	p.p["hostid"] = hostid
-	return p
+	P := &IssueOutOfBandManagementPowerActionParams{}
+	P.P = make(map[string]interface{})
+	P.P["action"] = action
+	P.P["hostid"] = hostid
+	return P
 }
 
 // Initiates the specified power action to the host's out-of-band management interface

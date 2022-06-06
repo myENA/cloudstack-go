@@ -27,104 +27,104 @@ import (
 )
 
 type SwiftServiceIface interface {
-	AddSwift(p *AddSwiftParams) (*AddSwiftResponse, error)
+	AddSwift(P *AddSwiftParams) (*AddSwiftResponse, error)
 	NewAddSwiftParams(url string) *AddSwiftParams
-	ListSwifts(p *ListSwiftsParams) (*ListSwiftsResponse, error)
+	ListSwifts(P *ListSwiftsParams) (*ListSwiftsResponse, error)
 	NewListSwiftsParams() *ListSwiftsParams
 	GetSwiftID(keyword string, opts ...OptionFunc) (string, int, error)
 }
 
 type AddSwiftParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddSwiftParams) toURLValues() url.Values {
+func (P *AddSwiftParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["key"]; found {
+	if v, found := P.P["key"]; found {
 		u.Set("key", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *AddSwiftParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSwiftParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *AddSwiftParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSwiftParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *AddSwiftParams) SetKey(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSwiftParams) SetKey(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["key"] = v
+	P.P["key"] = v
 }
 
-func (p *AddSwiftParams) GetKey() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSwiftParams) GetKey() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["key"].(string)
+	value, ok := P.P["key"].(string)
 	return value, ok
 }
 
-func (p *AddSwiftParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSwiftParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddSwiftParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSwiftParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddSwiftParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSwiftParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddSwiftParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddSwiftParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddSwiftParams instance,
 // as then you are sure you have configured all required params
 func (s *SwiftService) NewAddSwiftParams(url string) *AddSwiftParams {
-	p := &AddSwiftParams{}
-	p.p = make(map[string]interface{})
-	p.p["url"] = url
-	return p
+	P := &AddSwiftParams{}
+	P.P = make(map[string]interface{})
+	P.P["url"] = url
+	return P
 }
 
 // Adds Swift.
@@ -160,114 +160,114 @@ type AddSwiftResponse struct {
 }
 
 type ListSwiftsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListSwiftsParams) toURLValues() url.Values {
+func (P *ListSwiftsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("id", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListSwiftsParams) SetId(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSwiftsParams) SetId(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListSwiftsParams) GetId() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSwiftsParams) GetId() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(int64)
+	value, ok := P.P["id"].(int64)
 	return value, ok
 }
 
-func (p *ListSwiftsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSwiftsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListSwiftsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSwiftsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListSwiftsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSwiftsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListSwiftsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSwiftsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListSwiftsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSwiftsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListSwiftsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSwiftsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListSwiftsParams instance,
 // as then you are sure you have configured all required params
 func (s *SwiftService) NewListSwiftsParams() *ListSwiftsParams {
-	p := &ListSwiftsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListSwiftsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *SwiftService) GetSwiftID(keyword string, opts ...OptionFunc) (string, int, error) {
-	p := &ListSwiftsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListSwiftsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["keyword"] = keyword
+	P.P["keyword"] = keyword
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListSwifts(p)
+	l, err := s.ListSwifts(P)
 	if err != nil {
 		return "", -1, err
 	}

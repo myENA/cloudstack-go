@@ -26,121 +26,121 @@ import (
 )
 
 type CertificateServiceIface interface {
-	UploadCustomCertificate(p *UploadCustomCertificateParams) (*UploadCustomCertificateResponse, error)
+	UploadCustomCertificate(P *UploadCustomCertificateParams) (*UploadCustomCertificateResponse, error)
 	NewUploadCustomCertificateParams(certificate string, domainsuffix string) *UploadCustomCertificateParams
 }
 
 type UploadCustomCertificateParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UploadCustomCertificateParams) toURLValues() url.Values {
+func (P *UploadCustomCertificateParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["certificate"]; found {
+	if v, found := P.P["certificate"]; found {
 		u.Set("certificate", v.(string))
 	}
-	if v, found := p.p["domainsuffix"]; found {
+	if v, found := P.P["domainsuffix"]; found {
 		u.Set("domainsuffix", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("id", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["privatekey"]; found {
+	if v, found := P.P["privatekey"]; found {
 		u.Set("privatekey", v.(string))
 	}
 	return u
 }
 
-func (p *UploadCustomCertificateParams) SetCertificate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadCustomCertificateParams) SetCertificate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["certificate"] = v
+	P.P["certificate"] = v
 }
 
-func (p *UploadCustomCertificateParams) GetCertificate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadCustomCertificateParams) GetCertificate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["certificate"].(string)
+	value, ok := P.P["certificate"].(string)
 	return value, ok
 }
 
-func (p *UploadCustomCertificateParams) SetDomainsuffix(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadCustomCertificateParams) SetDomainsuffix(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainsuffix"] = v
+	P.P["domainsuffix"] = v
 }
 
-func (p *UploadCustomCertificateParams) GetDomainsuffix() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadCustomCertificateParams) GetDomainsuffix() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainsuffix"].(string)
+	value, ok := P.P["domainsuffix"].(string)
 	return value, ok
 }
 
-func (p *UploadCustomCertificateParams) SetId(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadCustomCertificateParams) SetId(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UploadCustomCertificateParams) GetId() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadCustomCertificateParams) GetId() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(int)
+	value, ok := P.P["id"].(int)
 	return value, ok
 }
 
-func (p *UploadCustomCertificateParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadCustomCertificateParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UploadCustomCertificateParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadCustomCertificateParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UploadCustomCertificateParams) SetPrivatekey(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadCustomCertificateParams) SetPrivatekey(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["privatekey"] = v
+	P.P["privatekey"] = v
 }
 
-func (p *UploadCustomCertificateParams) GetPrivatekey() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadCustomCertificateParams) GetPrivatekey() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["privatekey"].(string)
+	value, ok := P.P["privatekey"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UploadCustomCertificateParams instance,
 // as then you are sure you have configured all required params
 func (s *CertificateService) NewUploadCustomCertificateParams(certificate string, domainsuffix string) *UploadCustomCertificateParams {
-	p := &UploadCustomCertificateParams{}
-	p.p = make(map[string]interface{})
-	p.p["certificate"] = certificate
-	p.p["domainsuffix"] = domainsuffix
-	return p
+	P := &UploadCustomCertificateParams{}
+	P.P = make(map[string]interface{})
+	P.P["certificate"] = certificate
+	P.P["domainsuffix"] = domainsuffix
+	return P
 }
 
 // Uploads a custom certificate for the console proxy VMs to use for SSL. Can be used to upload a single certificate signed by a known CA. Can also be used, through multiple calls, to upload a chain of certificates from CA to the custom certificate itself.

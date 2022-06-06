@@ -78,156 +78,156 @@ func convertFirewallServiceListResponse(b []byte) ([]byte, error) {
 }
 
 type FirewallServiceIface interface {
-	AddPaloAltoFirewall(p *AddPaloAltoFirewallParams) (*AddPaloAltoFirewallResponse, error)
+	AddPaloAltoFirewall(P *AddPaloAltoFirewallParams) (*AddPaloAltoFirewallResponse, error)
 	NewAddPaloAltoFirewallParams(networkdevicetype string, password string, physicalnetworkid string, url string, username string) *AddPaloAltoFirewallParams
-	ConfigurePaloAltoFirewall(p *ConfigurePaloAltoFirewallParams) (*PaloAltoFirewallResponse, error)
+	ConfigurePaloAltoFirewall(P *ConfigurePaloAltoFirewallParams) (*PaloAltoFirewallResponse, error)
 	NewConfigurePaloAltoFirewallParams(fwdeviceid string) *ConfigurePaloAltoFirewallParams
-	CreateEgressFirewallRule(p *CreateEgressFirewallRuleParams) (*CreateEgressFirewallRuleResponse, error)
+	CreateEgressFirewallRule(P *CreateEgressFirewallRuleParams) (*CreateEgressFirewallRuleResponse, error)
 	NewCreateEgressFirewallRuleParams(networkid string, protocol string) *CreateEgressFirewallRuleParams
-	CreateFirewallRule(p *CreateFirewallRuleParams) (*CreateFirewallRuleResponse, error)
+	CreateFirewallRule(P *CreateFirewallRuleParams) (*CreateFirewallRuleResponse, error)
 	NewCreateFirewallRuleParams(ipaddressid string, protocol string) *CreateFirewallRuleParams
-	CreatePortForwardingRule(p *CreatePortForwardingRuleParams) (*CreatePortForwardingRuleResponse, error)
+	CreatePortForwardingRule(P *CreatePortForwardingRuleParams) (*CreatePortForwardingRuleResponse, error)
 	NewCreatePortForwardingRuleParams(ipaddressid string, privateport int, protocol string, publicport int, virtualmachineid string) *CreatePortForwardingRuleParams
-	DeleteEgressFirewallRule(p *DeleteEgressFirewallRuleParams) (*DeleteEgressFirewallRuleResponse, error)
+	DeleteEgressFirewallRule(P *DeleteEgressFirewallRuleParams) (*DeleteEgressFirewallRuleResponse, error)
 	NewDeleteEgressFirewallRuleParams(id string) *DeleteEgressFirewallRuleParams
-	DeleteFirewallRule(p *DeleteFirewallRuleParams) (*DeleteFirewallRuleResponse, error)
+	DeleteFirewallRule(P *DeleteFirewallRuleParams) (*DeleteFirewallRuleResponse, error)
 	NewDeleteFirewallRuleParams(id string) *DeleteFirewallRuleParams
-	DeletePaloAltoFirewall(p *DeletePaloAltoFirewallParams) (*DeletePaloAltoFirewallResponse, error)
+	DeletePaloAltoFirewall(P *DeletePaloAltoFirewallParams) (*DeletePaloAltoFirewallResponse, error)
 	NewDeletePaloAltoFirewallParams(fwdeviceid string) *DeletePaloAltoFirewallParams
-	DeletePortForwardingRule(p *DeletePortForwardingRuleParams) (*DeletePortForwardingRuleResponse, error)
+	DeletePortForwardingRule(P *DeletePortForwardingRuleParams) (*DeletePortForwardingRuleResponse, error)
 	NewDeletePortForwardingRuleParams(id string) *DeletePortForwardingRuleParams
-	ListEgressFirewallRules(p *ListEgressFirewallRulesParams) (*ListEgressFirewallRulesResponse, error)
+	ListEgressFirewallRules(P *ListEgressFirewallRulesParams) (*ListEgressFirewallRulesResponse, error)
 	NewListEgressFirewallRulesParams() *ListEgressFirewallRulesParams
 	GetEgressFirewallRuleByID(id string, opts ...OptionFunc) (*EgressFirewallRule, int, error)
-	ListFirewallRules(p *ListFirewallRulesParams) (*ListFirewallRulesResponse, error)
+	ListFirewallRules(P *ListFirewallRulesParams) (*ListFirewallRulesResponse, error)
 	NewListFirewallRulesParams() *ListFirewallRulesParams
 	GetFirewallRuleByID(id string, opts ...OptionFunc) (*FirewallRule, int, error)
-	ListPaloAltoFirewalls(p *ListPaloAltoFirewallsParams) (*ListPaloAltoFirewallsResponse, error)
+	ListPaloAltoFirewalls(P *ListPaloAltoFirewallsParams) (*ListPaloAltoFirewallsResponse, error)
 	NewListPaloAltoFirewallsParams() *ListPaloAltoFirewallsParams
-	ListPortForwardingRules(p *ListPortForwardingRulesParams) (*ListPortForwardingRulesResponse, error)
+	ListPortForwardingRules(P *ListPortForwardingRulesParams) (*ListPortForwardingRulesResponse, error)
 	NewListPortForwardingRulesParams() *ListPortForwardingRulesParams
 	GetPortForwardingRuleByID(id string, opts ...OptionFunc) (*PortForwardingRule, int, error)
-	UpdateEgressFirewallRule(p *UpdateEgressFirewallRuleParams) (*UpdateEgressFirewallRuleResponse, error)
+	UpdateEgressFirewallRule(P *UpdateEgressFirewallRuleParams) (*UpdateEgressFirewallRuleResponse, error)
 	NewUpdateEgressFirewallRuleParams(id string) *UpdateEgressFirewallRuleParams
-	UpdateFirewallRule(p *UpdateFirewallRuleParams) (*UpdateFirewallRuleResponse, error)
+	UpdateFirewallRule(P *UpdateFirewallRuleParams) (*UpdateFirewallRuleResponse, error)
 	NewUpdateFirewallRuleParams(id string) *UpdateFirewallRuleParams
-	UpdatePortForwardingRule(p *UpdatePortForwardingRuleParams) (*UpdatePortForwardingRuleResponse, error)
+	UpdatePortForwardingRule(P *UpdatePortForwardingRuleParams) (*UpdatePortForwardingRuleResponse, error)
 	NewUpdatePortForwardingRuleParams(id string) *UpdatePortForwardingRuleParams
 }
 
 type AddPaloAltoFirewallParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddPaloAltoFirewallParams) toURLValues() url.Values {
+func (P *AddPaloAltoFirewallParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["networkdevicetype"]; found {
+	if v, found := P.P["networkdevicetype"]; found {
 		u.Set("networkdevicetype", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *AddPaloAltoFirewallParams) SetNetworkdevicetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddPaloAltoFirewallParams) SetNetworkdevicetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdevicetype"] = v
+	P.P["networkdevicetype"] = v
 }
 
-func (p *AddPaloAltoFirewallParams) GetNetworkdevicetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddPaloAltoFirewallParams) GetNetworkdevicetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdevicetype"].(string)
+	value, ok := P.P["networkdevicetype"].(string)
 	return value, ok
 }
 
-func (p *AddPaloAltoFirewallParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddPaloAltoFirewallParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *AddPaloAltoFirewallParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddPaloAltoFirewallParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *AddPaloAltoFirewallParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddPaloAltoFirewallParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *AddPaloAltoFirewallParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddPaloAltoFirewallParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *AddPaloAltoFirewallParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddPaloAltoFirewallParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddPaloAltoFirewallParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddPaloAltoFirewallParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddPaloAltoFirewallParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddPaloAltoFirewallParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddPaloAltoFirewallParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddPaloAltoFirewallParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddPaloAltoFirewallParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewAddPaloAltoFirewallParams(networkdevicetype string, password string, physicalnetworkid string, url string, username string) *AddPaloAltoFirewallParams {
-	p := &AddPaloAltoFirewallParams{}
-	p.p = make(map[string]interface{})
-	p.p["networkdevicetype"] = networkdevicetype
-	p.p["password"] = password
-	p.p["physicalnetworkid"] = physicalnetworkid
-	p.p["url"] = url
-	p.p["username"] = username
-	return p
+	P := &AddPaloAltoFirewallParams{}
+	P.P = make(map[string]interface{})
+	P.P["networkdevicetype"] = networkdevicetype
+	P.P["password"] = password
+	P.P["physicalnetworkid"] = physicalnetworkid
+	P.P["url"] = url
+	P.P["username"] = username
+	return P
 }
 
 // Adds a Palo Alto firewall device
@@ -292,61 +292,61 @@ type AddPaloAltoFirewallResponse struct {
 }
 
 type ConfigurePaloAltoFirewallParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ConfigurePaloAltoFirewallParams) toURLValues() url.Values {
+func (P *ConfigurePaloAltoFirewallParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["fwdevicecapacity"]; found {
+	if v, found := P.P["fwdevicecapacity"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("fwdevicecapacity", vv)
 	}
-	if v, found := p.p["fwdeviceid"]; found {
+	if v, found := P.P["fwdeviceid"]; found {
 		u.Set("fwdeviceid", v.(string))
 	}
 	return u
 }
 
-func (p *ConfigurePaloAltoFirewallParams) SetFwdevicecapacity(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigurePaloAltoFirewallParams) SetFwdevicecapacity(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fwdevicecapacity"] = v
+	P.P["fwdevicecapacity"] = v
 }
 
-func (p *ConfigurePaloAltoFirewallParams) GetFwdevicecapacity() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigurePaloAltoFirewallParams) GetFwdevicecapacity() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fwdevicecapacity"].(int64)
+	value, ok := P.P["fwdevicecapacity"].(int64)
 	return value, ok
 }
 
-func (p *ConfigurePaloAltoFirewallParams) SetFwdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigurePaloAltoFirewallParams) SetFwdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fwdeviceid"] = v
+	P.P["fwdeviceid"] = v
 }
 
-func (p *ConfigurePaloAltoFirewallParams) GetFwdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigurePaloAltoFirewallParams) GetFwdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fwdeviceid"].(string)
+	value, ok := P.P["fwdeviceid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ConfigurePaloAltoFirewallParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewConfigurePaloAltoFirewallParams(fwdeviceid string) *ConfigurePaloAltoFirewallParams {
-	p := &ConfigurePaloAltoFirewallParams{}
-	p.p = make(map[string]interface{})
-	p.p["fwdeviceid"] = fwdeviceid
-	return p
+	P := &ConfigurePaloAltoFirewallParams{}
+	P.P = make(map[string]interface{})
+	P.P["fwdeviceid"] = fwdeviceid
+	return P
 }
 
 // Configures a Palo Alto firewall device
@@ -411,212 +411,212 @@ type PaloAltoFirewallResponse struct {
 }
 
 type CreateEgressFirewallRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateEgressFirewallRuleParams) toURLValues() url.Values {
+func (P *CreateEgressFirewallRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["cidrlist"]; found {
+	if v, found := P.P["cidrlist"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("cidrlist", vv)
 	}
-	if v, found := p.p["destcidrlist"]; found {
+	if v, found := P.P["destcidrlist"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("destcidrlist", vv)
 	}
-	if v, found := p.p["endport"]; found {
+	if v, found := P.P["endport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("endport", vv)
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["icmpcode"]; found {
+	if v, found := P.P["icmpcode"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("icmpcode", vv)
 	}
-	if v, found := p.p["icmptype"]; found {
+	if v, found := P.P["icmptype"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("icmptype", vv)
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["protocol"]; found {
+	if v, found := P.P["protocol"]; found {
 		u.Set("protocol", v.(string))
 	}
-	if v, found := p.p["startport"]; found {
+	if v, found := P.P["startport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("startport", vv)
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *CreateEgressFirewallRuleParams) SetCidrlist(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) SetCidrlist(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cidrlist"] = v
+	P.P["cidrlist"] = v
 }
 
-func (p *CreateEgressFirewallRuleParams) GetCidrlist() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) GetCidrlist() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cidrlist"].([]string)
+	value, ok := P.P["cidrlist"].([]string)
 	return value, ok
 }
 
-func (p *CreateEgressFirewallRuleParams) SetDestcidrlist(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) SetDestcidrlist(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["destcidrlist"] = v
+	P.P["destcidrlist"] = v
 }
 
-func (p *CreateEgressFirewallRuleParams) GetDestcidrlist() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) GetDestcidrlist() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["destcidrlist"].([]string)
+	value, ok := P.P["destcidrlist"].([]string)
 	return value, ok
 }
 
-func (p *CreateEgressFirewallRuleParams) SetEndport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) SetEndport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endport"] = v
+	P.P["endport"] = v
 }
 
-func (p *CreateEgressFirewallRuleParams) GetEndport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) GetEndport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endport"].(int)
+	value, ok := P.P["endport"].(int)
 	return value, ok
 }
 
-func (p *CreateEgressFirewallRuleParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateEgressFirewallRuleParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateEgressFirewallRuleParams) SetIcmpcode(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) SetIcmpcode(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["icmpcode"] = v
+	P.P["icmpcode"] = v
 }
 
-func (p *CreateEgressFirewallRuleParams) GetIcmpcode() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) GetIcmpcode() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["icmpcode"].(int)
+	value, ok := P.P["icmpcode"].(int)
 	return value, ok
 }
 
-func (p *CreateEgressFirewallRuleParams) SetIcmptype(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) SetIcmptype(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["icmptype"] = v
+	P.P["icmptype"] = v
 }
 
-func (p *CreateEgressFirewallRuleParams) GetIcmptype() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) GetIcmptype() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["icmptype"].(int)
+	value, ok := P.P["icmptype"].(int)
 	return value, ok
 }
 
-func (p *CreateEgressFirewallRuleParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *CreateEgressFirewallRuleParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *CreateEgressFirewallRuleParams) SetProtocol(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) SetProtocol(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["protocol"] = v
+	P.P["protocol"] = v
 }
 
-func (p *CreateEgressFirewallRuleParams) GetProtocol() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) GetProtocol() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["protocol"].(string)
+	value, ok := P.P["protocol"].(string)
 	return value, ok
 }
 
-func (p *CreateEgressFirewallRuleParams) SetStartport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) SetStartport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startport"] = v
+	P.P["startport"] = v
 }
 
-func (p *CreateEgressFirewallRuleParams) GetStartport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) GetStartport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startport"].(int)
+	value, ok := P.P["startport"].(int)
 	return value, ok
 }
 
-func (p *CreateEgressFirewallRuleParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *CreateEgressFirewallRuleParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateEgressFirewallRuleParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateEgressFirewallRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewCreateEgressFirewallRuleParams(networkid string, protocol string) *CreateEgressFirewallRuleParams {
-	p := &CreateEgressFirewallRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["networkid"] = networkid
-	p.p["protocol"] = protocol
-	return p
+	P := &CreateEgressFirewallRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["networkid"] = networkid
+	P.P["protocol"] = protocol
+	return P
 }
 
 // Creates a egress firewall rule for a given network
@@ -679,193 +679,193 @@ type CreateEgressFirewallRuleResponse struct {
 }
 
 type CreateFirewallRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateFirewallRuleParams) toURLValues() url.Values {
+func (P *CreateFirewallRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["cidrlist"]; found {
+	if v, found := P.P["cidrlist"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("cidrlist", vv)
 	}
-	if v, found := p.p["endport"]; found {
+	if v, found := P.P["endport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("endport", vv)
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["icmpcode"]; found {
+	if v, found := P.P["icmpcode"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("icmpcode", vv)
 	}
-	if v, found := p.p["icmptype"]; found {
+	if v, found := P.P["icmptype"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("icmptype", vv)
 	}
-	if v, found := p.p["ipaddressid"]; found {
+	if v, found := P.P["ipaddressid"]; found {
 		u.Set("ipaddressid", v.(string))
 	}
-	if v, found := p.p["protocol"]; found {
+	if v, found := P.P["protocol"]; found {
 		u.Set("protocol", v.(string))
 	}
-	if v, found := p.p["startport"]; found {
+	if v, found := P.P["startport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("startport", vv)
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *CreateFirewallRuleParams) SetCidrlist(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) SetCidrlist(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cidrlist"] = v
+	P.P["cidrlist"] = v
 }
 
-func (p *CreateFirewallRuleParams) GetCidrlist() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) GetCidrlist() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cidrlist"].([]string)
+	value, ok := P.P["cidrlist"].([]string)
 	return value, ok
 }
 
-func (p *CreateFirewallRuleParams) SetEndport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) SetEndport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endport"] = v
+	P.P["endport"] = v
 }
 
-func (p *CreateFirewallRuleParams) GetEndport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) GetEndport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endport"].(int)
+	value, ok := P.P["endport"].(int)
 	return value, ok
 }
 
-func (p *CreateFirewallRuleParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateFirewallRuleParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateFirewallRuleParams) SetIcmpcode(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) SetIcmpcode(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["icmpcode"] = v
+	P.P["icmpcode"] = v
 }
 
-func (p *CreateFirewallRuleParams) GetIcmpcode() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) GetIcmpcode() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["icmpcode"].(int)
+	value, ok := P.P["icmpcode"].(int)
 	return value, ok
 }
 
-func (p *CreateFirewallRuleParams) SetIcmptype(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) SetIcmptype(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["icmptype"] = v
+	P.P["icmptype"] = v
 }
 
-func (p *CreateFirewallRuleParams) GetIcmptype() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) GetIcmptype() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["icmptype"].(int)
+	value, ok := P.P["icmptype"].(int)
 	return value, ok
 }
 
-func (p *CreateFirewallRuleParams) SetIpaddressid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) SetIpaddressid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddressid"] = v
+	P.P["ipaddressid"] = v
 }
 
-func (p *CreateFirewallRuleParams) GetIpaddressid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) GetIpaddressid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddressid"].(string)
+	value, ok := P.P["ipaddressid"].(string)
 	return value, ok
 }
 
-func (p *CreateFirewallRuleParams) SetProtocol(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) SetProtocol(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["protocol"] = v
+	P.P["protocol"] = v
 }
 
-func (p *CreateFirewallRuleParams) GetProtocol() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) GetProtocol() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["protocol"].(string)
+	value, ok := P.P["protocol"].(string)
 	return value, ok
 }
 
-func (p *CreateFirewallRuleParams) SetStartport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) SetStartport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startport"] = v
+	P.P["startport"] = v
 }
 
-func (p *CreateFirewallRuleParams) GetStartport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) GetStartport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startport"].(int)
+	value, ok := P.P["startport"].(int)
 	return value, ok
 }
 
-func (p *CreateFirewallRuleParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *CreateFirewallRuleParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateFirewallRuleParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateFirewallRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewCreateFirewallRuleParams(ipaddressid string, protocol string) *CreateFirewallRuleParams {
-	p := &CreateFirewallRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["ipaddressid"] = ipaddressid
-	p.p["protocol"] = protocol
-	return p
+	P := &CreateFirewallRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["ipaddressid"] = ipaddressid
+	P.P["protocol"] = protocol
+	return P
 }
 
 // Creates a firewall rule for a given IP address
@@ -928,251 +928,251 @@ type CreateFirewallRuleResponse struct {
 }
 
 type CreatePortForwardingRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreatePortForwardingRuleParams) toURLValues() url.Values {
+func (P *CreatePortForwardingRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["cidrlist"]; found {
+	if v, found := P.P["cidrlist"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("cidrlist", vv)
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["ipaddressid"]; found {
+	if v, found := P.P["ipaddressid"]; found {
 		u.Set("ipaddressid", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["openfirewall"]; found {
+	if v, found := P.P["openfirewall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("openfirewall", vv)
 	}
-	if v, found := p.p["privateendport"]; found {
+	if v, found := P.P["privateendport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("privateendport", vv)
 	}
-	if v, found := p.p["privateport"]; found {
+	if v, found := P.P["privateport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("privateport", vv)
 	}
-	if v, found := p.p["protocol"]; found {
+	if v, found := P.P["protocol"]; found {
 		u.Set("protocol", v.(string))
 	}
-	if v, found := p.p["publicendport"]; found {
+	if v, found := P.P["publicendport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("publicendport", vv)
 	}
-	if v, found := p.p["publicport"]; found {
+	if v, found := P.P["publicport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("publicport", vv)
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
-	if v, found := p.p["vmguestip"]; found {
+	if v, found := P.P["vmguestip"]; found {
 		u.Set("vmguestip", v.(string))
 	}
 	return u
 }
 
-func (p *CreatePortForwardingRuleParams) SetCidrlist(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetCidrlist(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cidrlist"] = v
+	P.P["cidrlist"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetCidrlist() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetCidrlist() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cidrlist"].([]string)
+	value, ok := P.P["cidrlist"].([]string)
 	return value, ok
 }
 
-func (p *CreatePortForwardingRuleParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreatePortForwardingRuleParams) SetIpaddressid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetIpaddressid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddressid"] = v
+	P.P["ipaddressid"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetIpaddressid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetIpaddressid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddressid"].(string)
+	value, ok := P.P["ipaddressid"].(string)
 	return value, ok
 }
 
-func (p *CreatePortForwardingRuleParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *CreatePortForwardingRuleParams) SetOpenfirewall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetOpenfirewall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["openfirewall"] = v
+	P.P["openfirewall"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetOpenfirewall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetOpenfirewall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["openfirewall"].(bool)
+	value, ok := P.P["openfirewall"].(bool)
 	return value, ok
 }
 
-func (p *CreatePortForwardingRuleParams) SetPrivateendport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetPrivateendport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["privateendport"] = v
+	P.P["privateendport"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetPrivateendport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetPrivateendport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["privateendport"].(int)
+	value, ok := P.P["privateendport"].(int)
 	return value, ok
 }
 
-func (p *CreatePortForwardingRuleParams) SetPrivateport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetPrivateport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["privateport"] = v
+	P.P["privateport"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetPrivateport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetPrivateport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["privateport"].(int)
+	value, ok := P.P["privateport"].(int)
 	return value, ok
 }
 
-func (p *CreatePortForwardingRuleParams) SetProtocol(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetProtocol(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["protocol"] = v
+	P.P["protocol"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetProtocol() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetProtocol() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["protocol"].(string)
+	value, ok := P.P["protocol"].(string)
 	return value, ok
 }
 
-func (p *CreatePortForwardingRuleParams) SetPublicendport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetPublicendport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["publicendport"] = v
+	P.P["publicendport"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetPublicendport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetPublicendport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["publicendport"].(int)
+	value, ok := P.P["publicendport"].(int)
 	return value, ok
 }
 
-func (p *CreatePortForwardingRuleParams) SetPublicport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetPublicport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["publicport"] = v
+	P.P["publicport"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetPublicport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetPublicport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["publicport"].(int)
+	value, ok := P.P["publicport"].(int)
 	return value, ok
 }
 
-func (p *CreatePortForwardingRuleParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
-func (p *CreatePortForwardingRuleParams) SetVmguestip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) SetVmguestip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vmguestip"] = v
+	P.P["vmguestip"] = v
 }
 
-func (p *CreatePortForwardingRuleParams) GetVmguestip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortForwardingRuleParams) GetVmguestip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vmguestip"].(string)
+	value, ok := P.P["vmguestip"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreatePortForwardingRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewCreatePortForwardingRuleParams(ipaddressid string, privateport int, protocol string, publicport int, virtualmachineid string) *CreatePortForwardingRuleParams {
-	p := &CreatePortForwardingRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["ipaddressid"] = ipaddressid
-	p.p["privateport"] = privateport
-	p.p["protocol"] = protocol
-	p.p["publicport"] = publicport
-	p.p["virtualmachineid"] = virtualmachineid
-	return p
+	P := &CreatePortForwardingRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["ipaddressid"] = ipaddressid
+	P.P["privateport"] = privateport
+	P.P["protocol"] = protocol
+	P.P["publicport"] = publicport
+	P.P["virtualmachineid"] = virtualmachineid
+	return P
 }
 
 // Creates a port forwarding rule
@@ -1238,42 +1238,42 @@ type CreatePortForwardingRuleResponse struct {
 }
 
 type DeleteEgressFirewallRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteEgressFirewallRuleParams) toURLValues() url.Values {
+func (P *DeleteEgressFirewallRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteEgressFirewallRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteEgressFirewallRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteEgressFirewallRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteEgressFirewallRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteEgressFirewallRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewDeleteEgressFirewallRuleParams(id string) *DeleteEgressFirewallRuleParams {
-	p := &DeleteEgressFirewallRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteEgressFirewallRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes an egress firewall rule
@@ -1319,42 +1319,42 @@ type DeleteEgressFirewallRuleResponse struct {
 }
 
 type DeleteFirewallRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteFirewallRuleParams) toURLValues() url.Values {
+func (P *DeleteFirewallRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteFirewallRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteFirewallRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteFirewallRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteFirewallRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteFirewallRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewDeleteFirewallRuleParams(id string) *DeleteFirewallRuleParams {
-	p := &DeleteFirewallRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteFirewallRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a firewall rule
@@ -1400,42 +1400,42 @@ type DeleteFirewallRuleResponse struct {
 }
 
 type DeletePaloAltoFirewallParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeletePaloAltoFirewallParams) toURLValues() url.Values {
+func (P *DeletePaloAltoFirewallParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["fwdeviceid"]; found {
+	if v, found := P.P["fwdeviceid"]; found {
 		u.Set("fwdeviceid", v.(string))
 	}
 	return u
 }
 
-func (p *DeletePaloAltoFirewallParams) SetFwdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePaloAltoFirewallParams) SetFwdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fwdeviceid"] = v
+	P.P["fwdeviceid"] = v
 }
 
-func (p *DeletePaloAltoFirewallParams) GetFwdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePaloAltoFirewallParams) GetFwdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fwdeviceid"].(string)
+	value, ok := P.P["fwdeviceid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeletePaloAltoFirewallParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewDeletePaloAltoFirewallParams(fwdeviceid string) *DeletePaloAltoFirewallParams {
-	p := &DeletePaloAltoFirewallParams{}
-	p.p = make(map[string]interface{})
-	p.p["fwdeviceid"] = fwdeviceid
-	return p
+	P := &DeletePaloAltoFirewallParams{}
+	P.P = make(map[string]interface{})
+	P.P["fwdeviceid"] = fwdeviceid
+	return P
 }
 
 //  delete a Palo Alto firewall device
@@ -1481,42 +1481,42 @@ type DeletePaloAltoFirewallResponse struct {
 }
 
 type DeletePortForwardingRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeletePortForwardingRuleParams) toURLValues() url.Values {
+func (P *DeletePortForwardingRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeletePortForwardingRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePortForwardingRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeletePortForwardingRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePortForwardingRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeletePortForwardingRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewDeletePortForwardingRuleParams(id string) *DeletePortForwardingRuleParams {
-	p := &DeletePortForwardingRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeletePortForwardingRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a port forwarding rule
@@ -1562,56 +1562,56 @@ type DeletePortForwardingRuleResponse struct {
 }
 
 type ListEgressFirewallRulesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListEgressFirewallRulesParams) toURLValues() url.Values {
+func (P *ListEgressFirewallRulesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["ipaddressid"]; found {
+	if v, found := P.P["ipaddressid"]; found {
 		u.Set("ipaddressid", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
@@ -1621,223 +1621,223 @@ func (p *ListEgressFirewallRulesParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *ListEgressFirewallRulesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetIpaddressid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetIpaddressid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddressid"] = v
+	P.P["ipaddressid"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetIpaddressid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetIpaddressid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddressid"].(string)
+	value, ok := P.P["ipaddressid"].(string)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListEgressFirewallRulesParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListEgressFirewallRulesParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEgressFirewallRulesParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListEgressFirewallRulesParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewListEgressFirewallRulesParams() *ListEgressFirewallRulesParams {
-	p := &ListEgressFirewallRulesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListEgressFirewallRulesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *FirewallService) GetEgressFirewallRuleByID(id string, opts ...OptionFunc) (*EgressFirewallRule, int, error) {
-	p := &ListEgressFirewallRulesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListEgressFirewallRulesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListEgressFirewallRules(p)
+	l, err := s.ListEgressFirewallRules(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1902,56 +1902,56 @@ type EgressFirewallRule struct {
 }
 
 type ListFirewallRulesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListFirewallRulesParams) toURLValues() url.Values {
+func (P *ListFirewallRulesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["ipaddressid"]; found {
+	if v, found := P.P["ipaddressid"]; found {
 		u.Set("ipaddressid", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
@@ -1961,223 +1961,223 @@ func (p *ListFirewallRulesParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *ListFirewallRulesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListFirewallRulesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListFirewallRulesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListFirewallRulesParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListFirewallRulesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetIpaddressid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetIpaddressid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddressid"] = v
+	P.P["ipaddressid"] = v
 }
 
-func (p *ListFirewallRulesParams) GetIpaddressid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetIpaddressid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddressid"].(string)
+	value, ok := P.P["ipaddressid"].(string)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListFirewallRulesParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListFirewallRulesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListFirewallRulesParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListFirewallRulesParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListFirewallRulesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListFirewallRulesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListFirewallRulesParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListFirewallRulesParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListFirewallRulesParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListFirewallRulesParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListFirewallRulesParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewListFirewallRulesParams() *ListFirewallRulesParams {
-	p := &ListFirewallRulesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListFirewallRulesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *FirewallService) GetFirewallRuleByID(id string, opts ...OptionFunc) (*FirewallRule, int, error) {
-	p := &ListFirewallRulesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListFirewallRulesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListFirewallRules(p)
+	l, err := s.ListFirewallRules(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -2242,115 +2242,115 @@ type FirewallRule struct {
 }
 
 type ListPaloAltoFirewallsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListPaloAltoFirewallsParams) toURLValues() url.Values {
+func (P *ListPaloAltoFirewallsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["fwdeviceid"]; found {
+	if v, found := P.P["fwdeviceid"]; found {
 		u.Set("fwdeviceid", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
 	return u
 }
 
-func (p *ListPaloAltoFirewallsParams) SetFwdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallsParams) SetFwdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fwdeviceid"] = v
+	P.P["fwdeviceid"] = v
 }
 
-func (p *ListPaloAltoFirewallsParams) GetFwdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallsParams) GetFwdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fwdeviceid"].(string)
+	value, ok := P.P["fwdeviceid"].(string)
 	return value, ok
 }
 
-func (p *ListPaloAltoFirewallsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListPaloAltoFirewallsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListPaloAltoFirewallsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListPaloAltoFirewallsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListPaloAltoFirewallsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListPaloAltoFirewallsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListPaloAltoFirewallsParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallsParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *ListPaloAltoFirewallsParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPaloAltoFirewallsParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListPaloAltoFirewallsParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewListPaloAltoFirewallsParams() *ListPaloAltoFirewallsParams {
-	p := &ListPaloAltoFirewallsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListPaloAltoFirewallsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // lists Palo Alto firewall devices in a physical network
@@ -2400,56 +2400,56 @@ type PaloAltoFirewall struct {
 }
 
 type ListPortForwardingRulesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListPortForwardingRulesParams) toURLValues() url.Values {
+func (P *ListPortForwardingRulesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["ipaddressid"]; found {
+	if v, found := P.P["ipaddressid"]; found {
 		u.Set("ipaddressid", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
@@ -2459,223 +2459,223 @@ func (p *ListPortForwardingRulesParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *ListPortForwardingRulesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetIpaddressid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetIpaddressid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipaddressid"] = v
+	P.P["ipaddressid"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetIpaddressid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetIpaddressid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipaddressid"].(string)
+	value, ok := P.P["ipaddressid"].(string)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListPortForwardingRulesParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListPortForwardingRulesParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortForwardingRulesParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListPortForwardingRulesParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewListPortForwardingRulesParams() *ListPortForwardingRulesParams {
-	p := &ListPortForwardingRulesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListPortForwardingRulesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *FirewallService) GetPortForwardingRuleByID(id string, opts ...OptionFunc) (*PortForwardingRule, int, error) {
-	p := &ListPortForwardingRulesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListPortForwardingRulesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListPortForwardingRules(p)
+	l, err := s.ListPortForwardingRules(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -2743,79 +2743,79 @@ type PortForwardingRule struct {
 }
 
 type UpdateEgressFirewallRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateEgressFirewallRuleParams) toURLValues() url.Values {
+func (P *UpdateEgressFirewallRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateEgressFirewallRuleParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateEgressFirewallRuleParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateEgressFirewallRuleParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateEgressFirewallRuleParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateEgressFirewallRuleParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateEgressFirewallRuleParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateEgressFirewallRuleParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateEgressFirewallRuleParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateEgressFirewallRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateEgressFirewallRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateEgressFirewallRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateEgressFirewallRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateEgressFirewallRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewUpdateEgressFirewallRuleParams(id string) *UpdateEgressFirewallRuleParams {
-	p := &UpdateEgressFirewallRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateEgressFirewallRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates egress firewall rule
@@ -2878,79 +2878,79 @@ type UpdateEgressFirewallRuleResponse struct {
 }
 
 type UpdateFirewallRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateFirewallRuleParams) toURLValues() url.Values {
+func (P *UpdateFirewallRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateFirewallRuleParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateFirewallRuleParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateFirewallRuleParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateFirewallRuleParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateFirewallRuleParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateFirewallRuleParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateFirewallRuleParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateFirewallRuleParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateFirewallRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateFirewallRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateFirewallRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateFirewallRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateFirewallRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewUpdateFirewallRuleParams(id string) *UpdateFirewallRuleParams {
-	p := &UpdateFirewallRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateFirewallRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates firewall rule
@@ -3013,153 +3013,153 @@ type UpdateFirewallRuleResponse struct {
 }
 
 type UpdatePortForwardingRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdatePortForwardingRuleParams) toURLValues() url.Values {
+func (P *UpdatePortForwardingRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["privateendport"]; found {
+	if v, found := P.P["privateendport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("privateendport", vv)
 	}
-	if v, found := p.p["privateport"]; found {
+	if v, found := P.P["privateport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("privateport", vv)
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
-	if v, found := p.p["vmguestip"]; found {
+	if v, found := P.P["vmguestip"]; found {
 		u.Set("vmguestip", v.(string))
 	}
 	return u
 }
 
-func (p *UpdatePortForwardingRuleParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdatePortForwardingRuleParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdatePortForwardingRuleParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdatePortForwardingRuleParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdatePortForwardingRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdatePortForwardingRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdatePortForwardingRuleParams) SetPrivateendport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) SetPrivateendport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["privateendport"] = v
+	P.P["privateendport"] = v
 }
 
-func (p *UpdatePortForwardingRuleParams) GetPrivateendport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) GetPrivateendport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["privateendport"].(int)
+	value, ok := P.P["privateendport"].(int)
 	return value, ok
 }
 
-func (p *UpdatePortForwardingRuleParams) SetPrivateport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) SetPrivateport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["privateport"] = v
+	P.P["privateport"] = v
 }
 
-func (p *UpdatePortForwardingRuleParams) GetPrivateport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) GetPrivateport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["privateport"].(int)
+	value, ok := P.P["privateport"].(int)
 	return value, ok
 }
 
-func (p *UpdatePortForwardingRuleParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *UpdatePortForwardingRuleParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
-func (p *UpdatePortForwardingRuleParams) SetVmguestip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) SetVmguestip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vmguestip"] = v
+	P.P["vmguestip"] = v
 }
 
-func (p *UpdatePortForwardingRuleParams) GetVmguestip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePortForwardingRuleParams) GetVmguestip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vmguestip"].(string)
+	value, ok := P.P["vmguestip"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdatePortForwardingRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *FirewallService) NewUpdatePortForwardingRuleParams(id string) *UpdatePortForwardingRuleParams {
-	p := &UpdatePortForwardingRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdatePortForwardingRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a port forwarding rule. Only the private port and the virtual machine can be updated.

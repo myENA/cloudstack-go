@@ -27,111 +27,111 @@ import (
 )
 
 type BrocadeVCSServiceIface interface {
-	AddBrocadeVcsDevice(p *AddBrocadeVcsDeviceParams) (*AddBrocadeVcsDeviceResponse, error)
+	AddBrocadeVcsDevice(P *AddBrocadeVcsDeviceParams) (*AddBrocadeVcsDeviceResponse, error)
 	NewAddBrocadeVcsDeviceParams(hostname string, password string, physicalnetworkid string, username string) *AddBrocadeVcsDeviceParams
-	DeleteBrocadeVcsDevice(p *DeleteBrocadeVcsDeviceParams) (*DeleteBrocadeVcsDeviceResponse, error)
+	DeleteBrocadeVcsDevice(P *DeleteBrocadeVcsDeviceParams) (*DeleteBrocadeVcsDeviceResponse, error)
 	NewDeleteBrocadeVcsDeviceParams(vcsdeviceid string) *DeleteBrocadeVcsDeviceParams
-	ListBrocadeVcsDeviceNetworks(p *ListBrocadeVcsDeviceNetworksParams) (*ListBrocadeVcsDeviceNetworksResponse, error)
+	ListBrocadeVcsDeviceNetworks(P *ListBrocadeVcsDeviceNetworksParams) (*ListBrocadeVcsDeviceNetworksResponse, error)
 	NewListBrocadeVcsDeviceNetworksParams(vcsdeviceid string) *ListBrocadeVcsDeviceNetworksParams
 	GetBrocadeVcsDeviceNetworkID(keyword string, vcsdeviceid string, opts ...OptionFunc) (string, int, error)
-	ListBrocadeVcsDevices(p *ListBrocadeVcsDevicesParams) (*ListBrocadeVcsDevicesResponse, error)
+	ListBrocadeVcsDevices(P *ListBrocadeVcsDevicesParams) (*ListBrocadeVcsDevicesResponse, error)
 	NewListBrocadeVcsDevicesParams() *ListBrocadeVcsDevicesParams
 }
 
 type AddBrocadeVcsDeviceParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddBrocadeVcsDeviceParams) toURLValues() url.Values {
+func (P *AddBrocadeVcsDeviceParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["hostname"]; found {
+	if v, found := P.P["hostname"]; found {
 		u.Set("hostname", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *AddBrocadeVcsDeviceParams) SetHostname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBrocadeVcsDeviceParams) SetHostname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostname"] = v
+	P.P["hostname"] = v
 }
 
-func (p *AddBrocadeVcsDeviceParams) GetHostname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBrocadeVcsDeviceParams) GetHostname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostname"].(string)
+	value, ok := P.P["hostname"].(string)
 	return value, ok
 }
 
-func (p *AddBrocadeVcsDeviceParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBrocadeVcsDeviceParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *AddBrocadeVcsDeviceParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBrocadeVcsDeviceParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *AddBrocadeVcsDeviceParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBrocadeVcsDeviceParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *AddBrocadeVcsDeviceParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBrocadeVcsDeviceParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *AddBrocadeVcsDeviceParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBrocadeVcsDeviceParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddBrocadeVcsDeviceParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddBrocadeVcsDeviceParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddBrocadeVcsDeviceParams instance,
 // as then you are sure you have configured all required params
 func (s *BrocadeVCSService) NewAddBrocadeVcsDeviceParams(hostname string, password string, physicalnetworkid string, username string) *AddBrocadeVcsDeviceParams {
-	p := &AddBrocadeVcsDeviceParams{}
-	p.p = make(map[string]interface{})
-	p.p["hostname"] = hostname
-	p.p["password"] = password
-	p.p["physicalnetworkid"] = physicalnetworkid
-	p.p["username"] = username
-	return p
+	P := &AddBrocadeVcsDeviceParams{}
+	P.P = make(map[string]interface{})
+	P.P["hostname"] = hostname
+	P.P["password"] = password
+	P.P["physicalnetworkid"] = physicalnetworkid
+	P.P["username"] = username
+	return P
 }
 
 // Adds a Brocade VCS Switch
@@ -180,42 +180,42 @@ type AddBrocadeVcsDeviceResponse struct {
 }
 
 type DeleteBrocadeVcsDeviceParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteBrocadeVcsDeviceParams) toURLValues() url.Values {
+func (P *DeleteBrocadeVcsDeviceParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["vcsdeviceid"]; found {
+	if v, found := P.P["vcsdeviceid"]; found {
 		u.Set("vcsdeviceid", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteBrocadeVcsDeviceParams) SetVcsdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteBrocadeVcsDeviceParams) SetVcsdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vcsdeviceid"] = v
+	P.P["vcsdeviceid"] = v
 }
 
-func (p *DeleteBrocadeVcsDeviceParams) GetVcsdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteBrocadeVcsDeviceParams) GetVcsdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vcsdeviceid"].(string)
+	value, ok := P.P["vcsdeviceid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteBrocadeVcsDeviceParams instance,
 // as then you are sure you have configured all required params
 func (s *BrocadeVCSService) NewDeleteBrocadeVcsDeviceParams(vcsdeviceid string) *DeleteBrocadeVcsDeviceParams {
-	p := &DeleteBrocadeVcsDeviceParams{}
-	p.p = make(map[string]interface{})
-	p.p["vcsdeviceid"] = vcsdeviceid
-	return p
+	P := &DeleteBrocadeVcsDeviceParams{}
+	P.P = make(map[string]interface{})
+	P.P["vcsdeviceid"] = vcsdeviceid
+	return P
 }
 
 //  delete a Brocade VCS Switch
@@ -256,115 +256,115 @@ type DeleteBrocadeVcsDeviceResponse struct {
 }
 
 type ListBrocadeVcsDeviceNetworksParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListBrocadeVcsDeviceNetworksParams) toURLValues() url.Values {
+func (P *ListBrocadeVcsDeviceNetworksParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["vcsdeviceid"]; found {
+	if v, found := P.P["vcsdeviceid"]; found {
 		u.Set("vcsdeviceid", v.(string))
 	}
 	return u
 }
 
-func (p *ListBrocadeVcsDeviceNetworksParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDeviceNetworksParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListBrocadeVcsDeviceNetworksParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDeviceNetworksParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListBrocadeVcsDeviceNetworksParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDeviceNetworksParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListBrocadeVcsDeviceNetworksParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDeviceNetworksParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListBrocadeVcsDeviceNetworksParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDeviceNetworksParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListBrocadeVcsDeviceNetworksParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDeviceNetworksParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListBrocadeVcsDeviceNetworksParams) SetVcsdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDeviceNetworksParams) SetVcsdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vcsdeviceid"] = v
+	P.P["vcsdeviceid"] = v
 }
 
-func (p *ListBrocadeVcsDeviceNetworksParams) GetVcsdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDeviceNetworksParams) GetVcsdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vcsdeviceid"].(string)
+	value, ok := P.P["vcsdeviceid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListBrocadeVcsDeviceNetworksParams instance,
 // as then you are sure you have configured all required params
 func (s *BrocadeVCSService) NewListBrocadeVcsDeviceNetworksParams(vcsdeviceid string) *ListBrocadeVcsDeviceNetworksParams {
-	p := &ListBrocadeVcsDeviceNetworksParams{}
-	p.p = make(map[string]interface{})
-	p.p["vcsdeviceid"] = vcsdeviceid
-	return p
+	P := &ListBrocadeVcsDeviceNetworksParams{}
+	P.P = make(map[string]interface{})
+	P.P["vcsdeviceid"] = vcsdeviceid
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *BrocadeVCSService) GetBrocadeVcsDeviceNetworkID(keyword string, vcsdeviceid string, opts ...OptionFunc) (string, int, error) {
-	p := &ListBrocadeVcsDeviceNetworksParams{}
-	p.p = make(map[string]interface{})
+	P := &ListBrocadeVcsDeviceNetworksParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["keyword"] = keyword
-	p.p["vcsdeviceid"] = vcsdeviceid
+	P.P["keyword"] = keyword
+	P.P["vcsdeviceid"] = vcsdeviceid
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListBrocadeVcsDeviceNetworks(p)
+	l, err := s.ListBrocadeVcsDeviceNetworks(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -493,115 +493,115 @@ type BrocadeVcsDeviceNetworkServiceCapability struct {
 }
 
 type ListBrocadeVcsDevicesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListBrocadeVcsDevicesParams) toURLValues() url.Values {
+func (P *ListBrocadeVcsDevicesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["vcsdeviceid"]; found {
+	if v, found := P.P["vcsdeviceid"]; found {
 		u.Set("vcsdeviceid", v.(string))
 	}
 	return u
 }
 
-func (p *ListBrocadeVcsDevicesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDevicesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListBrocadeVcsDevicesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDevicesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListBrocadeVcsDevicesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDevicesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListBrocadeVcsDevicesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDevicesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListBrocadeVcsDevicesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDevicesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListBrocadeVcsDevicesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDevicesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListBrocadeVcsDevicesParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDevicesParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *ListBrocadeVcsDevicesParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDevicesParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *ListBrocadeVcsDevicesParams) SetVcsdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDevicesParams) SetVcsdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vcsdeviceid"] = v
+	P.P["vcsdeviceid"] = v
 }
 
-func (p *ListBrocadeVcsDevicesParams) GetVcsdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListBrocadeVcsDevicesParams) GetVcsdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vcsdeviceid"].(string)
+	value, ok := P.P["vcsdeviceid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListBrocadeVcsDevicesParams instance,
 // as then you are sure you have configured all required params
 func (s *BrocadeVCSService) NewListBrocadeVcsDevicesParams() *ListBrocadeVcsDevicesParams {
-	p := &ListBrocadeVcsDevicesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListBrocadeVcsDevicesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists Brocade VCS Switches

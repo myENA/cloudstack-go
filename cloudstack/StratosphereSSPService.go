@@ -26,141 +26,141 @@ import (
 )
 
 type StratosphereSSPServiceIface interface {
-	AddStratosphereSsp(p *AddStratosphereSspParams) (*AddStratosphereSspResponse, error)
+	AddStratosphereSsp(P *AddStratosphereSspParams) (*AddStratosphereSspResponse, error)
 	NewAddStratosphereSspParams(name string, url string, zoneid string) *AddStratosphereSspParams
-	DeleteStratosphereSsp(p *DeleteStratosphereSspParams) (*DeleteStratosphereSspResponse, error)
+	DeleteStratosphereSsp(P *DeleteStratosphereSspParams) (*DeleteStratosphereSspResponse, error)
 	NewDeleteStratosphereSspParams(hostid string) *DeleteStratosphereSspParams
 }
 
 type AddStratosphereSspParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddStratosphereSspParams) toURLValues() url.Values {
+func (P *AddStratosphereSspParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["tenantuuid"]; found {
+	if v, found := P.P["tenantuuid"]; found {
 		u.Set("tenantuuid", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *AddStratosphereSspParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *AddStratosphereSspParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *AddStratosphereSspParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *AddStratosphereSspParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *AddStratosphereSspParams) SetTenantuuid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) SetTenantuuid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tenantuuid"] = v
+	P.P["tenantuuid"] = v
 }
 
-func (p *AddStratosphereSspParams) GetTenantuuid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) GetTenantuuid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tenantuuid"].(string)
+	value, ok := P.P["tenantuuid"].(string)
 	return value, ok
 }
 
-func (p *AddStratosphereSspParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddStratosphereSspParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddStratosphereSspParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddStratosphereSspParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
-func (p *AddStratosphereSspParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *AddStratosphereSspParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddStratosphereSspParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddStratosphereSspParams instance,
 // as then you are sure you have configured all required params
 func (s *StratosphereSSPService) NewAddStratosphereSspParams(name string, url string, zoneid string) *AddStratosphereSspParams {
-	p := &AddStratosphereSspParams{}
-	p.p = make(map[string]interface{})
-	p.p["name"] = name
-	p.p["url"] = url
-	p.p["zoneid"] = zoneid
-	return p
+	P := &AddStratosphereSspParams{}
+	P.P = make(map[string]interface{})
+	P.P["name"] = name
+	P.P["url"] = url
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Adds stratosphere ssp server
@@ -188,42 +188,42 @@ type AddStratosphereSspResponse struct {
 }
 
 type DeleteStratosphereSspParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteStratosphereSspParams) toURLValues() url.Values {
+func (P *DeleteStratosphereSspParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteStratosphereSspParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteStratosphereSspParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *DeleteStratosphereSspParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteStratosphereSspParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteStratosphereSspParams instance,
 // as then you are sure you have configured all required params
 func (s *StratosphereSSPService) NewDeleteStratosphereSspParams(hostid string) *DeleteStratosphereSspParams {
-	p := &DeleteStratosphereSspParams{}
-	p.p = make(map[string]interface{})
-	p.p["hostid"] = hostid
-	return p
+	P := &DeleteStratosphereSspParams{}
+	P.P = make(map[string]interface{})
+	P.P["hostid"] = hostid
+	return P
 }
 
 // Removes stratosphere ssp server

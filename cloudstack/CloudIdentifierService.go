@@ -25,47 +25,47 @@ import (
 )
 
 type CloudIdentifierServiceIface interface {
-	GetCloudIdentifier(p *GetCloudIdentifierParams) (*GetCloudIdentifierResponse, error)
+	GetCloudIdentifier(P *GetCloudIdentifierParams) (*GetCloudIdentifierResponse, error)
 	NewGetCloudIdentifierParams(userid string) *GetCloudIdentifierParams
 }
 
 type GetCloudIdentifierParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *GetCloudIdentifierParams) toURLValues() url.Values {
+func (P *GetCloudIdentifierParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["userid"]; found {
+	if v, found := P.P["userid"]; found {
 		u.Set("userid", v.(string))
 	}
 	return u
 }
 
-func (p *GetCloudIdentifierParams) SetUserid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetCloudIdentifierParams) SetUserid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["userid"] = v
+	P.P["userid"] = v
 }
 
-func (p *GetCloudIdentifierParams) GetUserid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetCloudIdentifierParams) GetUserid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["userid"].(string)
+	value, ok := P.P["userid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new GetCloudIdentifierParams instance,
 // as then you are sure you have configured all required params
 func (s *CloudIdentifierService) NewGetCloudIdentifierParams(userid string) *GetCloudIdentifierParams {
-	p := &GetCloudIdentifierParams{}
-	p.p = make(map[string]interface{})
-	p.p["userid"] = userid
-	return p
+	P := &GetCloudIdentifierParams{}
+	P.P = make(map[string]interface{})
+	P.P["userid"] = userid
+	return P
 }
 
 // Retrieves a cloud identifier.

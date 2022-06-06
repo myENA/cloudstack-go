@@ -27,114 +27,114 @@ import (
 )
 
 type ResourcemetadataServiceIface interface {
-	AddResourceDetail(p *AddResourceDetailParams) (*AddResourceDetailResponse, error)
+	AddResourceDetail(P *AddResourceDetailParams) (*AddResourceDetailResponse, error)
 	NewAddResourceDetailParams(details map[string]string, resourceid string, resourcetype string) *AddResourceDetailParams
-	GetVolumeSnapshotDetails(p *GetVolumeSnapshotDetailsParams) (*GetVolumeSnapshotDetailsResponse, error)
+	GetVolumeSnapshotDetails(P *GetVolumeSnapshotDetailsParams) (*GetVolumeSnapshotDetailsResponse, error)
 	NewGetVolumeSnapshotDetailsParams(snapshotid string) *GetVolumeSnapshotDetailsParams
-	ListResourceDetails(p *ListResourceDetailsParams) (*ListResourceDetailsResponse, error)
+	ListResourceDetails(P *ListResourceDetailsParams) (*ListResourceDetailsResponse, error)
 	NewListResourceDetailsParams(resourcetype string) *ListResourceDetailsParams
-	RemoveResourceDetail(p *RemoveResourceDetailParams) (*RemoveResourceDetailResponse, error)
+	RemoveResourceDetail(P *RemoveResourceDetailParams) (*RemoveResourceDetailResponse, error)
 	NewRemoveResourceDetailParams(resourceid string, resourcetype string) *RemoveResourceDetailParams
 }
 
 type AddResourceDetailParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddResourceDetailParams) toURLValues() url.Values {
+func (P *AddResourceDetailParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].key", i), k)
 			u.Set(fmt.Sprintf("details[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["resourceid"]; found {
+	if v, found := P.P["resourceid"]; found {
 		u.Set("resourceid", v.(string))
 	}
-	if v, found := p.p["resourcetype"]; found {
+	if v, found := P.P["resourcetype"]; found {
 		u.Set("resourcetype", v.(string))
 	}
 	return u
 }
 
-func (p *AddResourceDetailParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddResourceDetailParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *AddResourceDetailParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddResourceDetailParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *AddResourceDetailParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddResourceDetailParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *AddResourceDetailParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddResourceDetailParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *AddResourceDetailParams) SetResourceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddResourceDetailParams) SetResourceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourceid"] = v
+	P.P["resourceid"] = v
 }
 
-func (p *AddResourceDetailParams) GetResourceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddResourceDetailParams) GetResourceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourceid"].(string)
+	value, ok := P.P["resourceid"].(string)
 	return value, ok
 }
 
-func (p *AddResourceDetailParams) SetResourcetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddResourceDetailParams) SetResourcetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourcetype"] = v
+	P.P["resourcetype"] = v
 }
 
-func (p *AddResourceDetailParams) GetResourcetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddResourceDetailParams) GetResourcetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourcetype"].(string)
+	value, ok := P.P["resourcetype"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddResourceDetailParams instance,
 // as then you are sure you have configured all required params
 func (s *ResourcemetadataService) NewAddResourceDetailParams(details map[string]string, resourceid string, resourcetype string) *AddResourceDetailParams {
-	p := &AddResourceDetailParams{}
-	p.p = make(map[string]interface{})
-	p.p["details"] = details
-	p.p["resourceid"] = resourceid
-	p.p["resourcetype"] = resourcetype
-	return p
+	P := &AddResourceDetailParams{}
+	P.P = make(map[string]interface{})
+	P.P["details"] = details
+	P.P["resourceid"] = resourceid
+	P.P["resourcetype"] = resourcetype
+	return P
 }
 
 // Adds detail for the Resource.
@@ -175,42 +175,42 @@ type AddResourceDetailResponse struct {
 }
 
 type GetVolumeSnapshotDetailsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *GetVolumeSnapshotDetailsParams) toURLValues() url.Values {
+func (P *GetVolumeSnapshotDetailsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["snapshotid"]; found {
+	if v, found := P.P["snapshotid"]; found {
 		u.Set("snapshotid", v.(string))
 	}
 	return u
 }
 
-func (p *GetVolumeSnapshotDetailsParams) SetSnapshotid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetVolumeSnapshotDetailsParams) SetSnapshotid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["snapshotid"] = v
+	P.P["snapshotid"] = v
 }
 
-func (p *GetVolumeSnapshotDetailsParams) GetSnapshotid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetVolumeSnapshotDetailsParams) GetSnapshotid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["snapshotid"].(string)
+	value, ok := P.P["snapshotid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new GetVolumeSnapshotDetailsParams instance,
 // as then you are sure you have configured all required params
 func (s *ResourcemetadataService) NewGetVolumeSnapshotDetailsParams(snapshotid string) *GetVolumeSnapshotDetailsParams {
-	p := &GetVolumeSnapshotDetailsParams{}
-	p.p = make(map[string]interface{})
-	p.p["snapshotid"] = snapshotid
-	return p
+	P := &GetVolumeSnapshotDetailsParams{}
+	P.P = make(map[string]interface{})
+	P.P["snapshotid"] = snapshotid
+	return P
 }
 
 // Get Volume Snapshot Details
@@ -235,263 +235,263 @@ type GetVolumeSnapshotDetailsResponse struct {
 }
 
 type ListResourceDetailsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListResourceDetailsParams) toURLValues() url.Values {
+func (P *ListResourceDetailsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["key"]; found {
+	if v, found := P.P["key"]; found {
 		u.Set("key", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["resourceid"]; found {
+	if v, found := P.P["resourceid"]; found {
 		u.Set("resourceid", v.(string))
 	}
-	if v, found := p.p["resourcetype"]; found {
+	if v, found := P.P["resourcetype"]; found {
 		u.Set("resourcetype", v.(string))
 	}
-	if v, found := p.p["value"]; found {
+	if v, found := P.P["value"]; found {
 		u.Set("value", v.(string))
 	}
 	return u
 }
 
-func (p *ListResourceDetailsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListResourceDetailsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListResourceDetailsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListResourceDetailsParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListResourceDetailsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetKey(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetKey(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["key"] = v
+	P.P["key"] = v
 }
 
-func (p *ListResourceDetailsParams) GetKey() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetKey() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["key"].(string)
+	value, ok := P.P["key"].(string)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListResourceDetailsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListResourceDetailsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListResourceDetailsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListResourceDetailsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListResourceDetailsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetResourceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetResourceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourceid"] = v
+	P.P["resourceid"] = v
 }
 
-func (p *ListResourceDetailsParams) GetResourceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetResourceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourceid"].(string)
+	value, ok := P.P["resourceid"].(string)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetResourcetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetResourcetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourcetype"] = v
+	P.P["resourcetype"] = v
 }
 
-func (p *ListResourceDetailsParams) GetResourcetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetResourcetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourcetype"].(string)
+	value, ok := P.P["resourcetype"].(string)
 	return value, ok
 }
 
-func (p *ListResourceDetailsParams) SetValue(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) SetValue(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["value"] = v
+	P.P["value"] = v
 }
 
-func (p *ListResourceDetailsParams) GetValue() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListResourceDetailsParams) GetValue() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["value"].(string)
+	value, ok := P.P["value"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListResourceDetailsParams instance,
 // as then you are sure you have configured all required params
 func (s *ResourcemetadataService) NewListResourceDetailsParams(resourcetype string) *ListResourceDetailsParams {
-	p := &ListResourceDetailsParams{}
-	p.p = make(map[string]interface{})
-	p.p["resourcetype"] = resourcetype
-	return p
+	P := &ListResourceDetailsParams{}
+	P.P = make(map[string]interface{})
+	P.P["resourcetype"] = resourcetype
+	return P
 }
 
 // List resource detail(s)
@@ -530,79 +530,79 @@ type ResourceDetail struct {
 }
 
 type RemoveResourceDetailParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RemoveResourceDetailParams) toURLValues() url.Values {
+func (P *RemoveResourceDetailParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["key"]; found {
+	if v, found := P.P["key"]; found {
 		u.Set("key", v.(string))
 	}
-	if v, found := p.p["resourceid"]; found {
+	if v, found := P.P["resourceid"]; found {
 		u.Set("resourceid", v.(string))
 	}
-	if v, found := p.p["resourcetype"]; found {
+	if v, found := P.P["resourcetype"]; found {
 		u.Set("resourcetype", v.(string))
 	}
 	return u
 }
 
-func (p *RemoveResourceDetailParams) SetKey(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveResourceDetailParams) SetKey(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["key"] = v
+	P.P["key"] = v
 }
 
-func (p *RemoveResourceDetailParams) GetKey() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveResourceDetailParams) GetKey() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["key"].(string)
+	value, ok := P.P["key"].(string)
 	return value, ok
 }
 
-func (p *RemoveResourceDetailParams) SetResourceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveResourceDetailParams) SetResourceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourceid"] = v
+	P.P["resourceid"] = v
 }
 
-func (p *RemoveResourceDetailParams) GetResourceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveResourceDetailParams) GetResourceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourceid"].(string)
+	value, ok := P.P["resourceid"].(string)
 	return value, ok
 }
 
-func (p *RemoveResourceDetailParams) SetResourcetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveResourceDetailParams) SetResourcetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["resourcetype"] = v
+	P.P["resourcetype"] = v
 }
 
-func (p *RemoveResourceDetailParams) GetResourcetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveResourceDetailParams) GetResourcetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["resourcetype"].(string)
+	value, ok := P.P["resourcetype"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new RemoveResourceDetailParams instance,
 // as then you are sure you have configured all required params
 func (s *ResourcemetadataService) NewRemoveResourceDetailParams(resourceid string, resourcetype string) *RemoveResourceDetailParams {
-	p := &RemoveResourceDetailParams{}
-	p.p = make(map[string]interface{})
-	p.p["resourceid"] = resourceid
-	p.p["resourcetype"] = resourcetype
-	return p
+	P := &RemoveResourceDetailParams{}
+	P.P = make(map[string]interface{})
+	P.P["resourceid"] = resourceid
+	P.P["resourcetype"] = resourcetype
+	return P
 }
 
 // Removes detail for the Resource.

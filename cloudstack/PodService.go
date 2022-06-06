@@ -28,174 +28,174 @@ import (
 )
 
 type PodServiceIface interface {
-	CreatePod(p *CreatePodParams) (*CreatePodResponse, error)
+	CreatePod(P *CreatePodParams) (*CreatePodResponse, error)
 	NewCreatePodParams(gateway string, name string, netmask string, startip string, zoneid string) *CreatePodParams
-	DedicatePod(p *DedicatePodParams) (*DedicatePodResponse, error)
+	DedicatePod(P *DedicatePodParams) (*DedicatePodResponse, error)
 	NewDedicatePodParams(domainid string, podid string) *DedicatePodParams
-	DeletePod(p *DeletePodParams) (*DeletePodResponse, error)
+	DeletePod(P *DeletePodParams) (*DeletePodResponse, error)
 	NewDeletePodParams(id string) *DeletePodParams
-	ListDedicatedPods(p *ListDedicatedPodsParams) (*ListDedicatedPodsResponse, error)
+	ListDedicatedPods(P *ListDedicatedPodsParams) (*ListDedicatedPodsResponse, error)
 	NewListDedicatedPodsParams() *ListDedicatedPodsParams
-	ListPods(p *ListPodsParams) (*ListPodsResponse, error)
+	ListPods(P *ListPodsParams) (*ListPodsResponse, error)
 	NewListPodsParams() *ListPodsParams
 	GetPodID(name string, opts ...OptionFunc) (string, int, error)
 	GetPodByName(name string, opts ...OptionFunc) (*Pod, int, error)
 	GetPodByID(id string, opts ...OptionFunc) (*Pod, int, error)
-	ReleaseDedicatedPod(p *ReleaseDedicatedPodParams) (*ReleaseDedicatedPodResponse, error)
+	ReleaseDedicatedPod(P *ReleaseDedicatedPodParams) (*ReleaseDedicatedPodResponse, error)
 	NewReleaseDedicatedPodParams(podid string) *ReleaseDedicatedPodParams
-	UpdatePod(p *UpdatePodParams) (*UpdatePodResponse, error)
+	UpdatePod(P *UpdatePodParams) (*UpdatePodResponse, error)
 	NewUpdatePodParams(id string) *UpdatePodParams
 }
 
 type CreatePodParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreatePodParams) toURLValues() url.Values {
+func (P *CreatePodParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["endip"]; found {
+	if v, found := P.P["endip"]; found {
 		u.Set("endip", v.(string))
 	}
-	if v, found := p.p["gateway"]; found {
+	if v, found := P.P["gateway"]; found {
 		u.Set("gateway", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["netmask"]; found {
+	if v, found := P.P["netmask"]; found {
 		u.Set("netmask", v.(string))
 	}
-	if v, found := p.p["startip"]; found {
+	if v, found := P.P["startip"]; found {
 		u.Set("startip", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *CreatePodParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *CreatePodParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *CreatePodParams) SetEndip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) SetEndip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endip"] = v
+	P.P["endip"] = v
 }
 
-func (p *CreatePodParams) GetEndip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) GetEndip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endip"].(string)
+	value, ok := P.P["endip"].(string)
 	return value, ok
 }
 
-func (p *CreatePodParams) SetGateway(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) SetGateway(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gateway"] = v
+	P.P["gateway"] = v
 }
 
-func (p *CreatePodParams) GetGateway() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) GetGateway() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gateway"].(string)
+	value, ok := P.P["gateway"].(string)
 	return value, ok
 }
 
-func (p *CreatePodParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreatePodParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreatePodParams) SetNetmask(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) SetNetmask(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["netmask"] = v
+	P.P["netmask"] = v
 }
 
-func (p *CreatePodParams) GetNetmask() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) GetNetmask() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["netmask"].(string)
+	value, ok := P.P["netmask"].(string)
 	return value, ok
 }
 
-func (p *CreatePodParams) SetStartip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) SetStartip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startip"] = v
+	P.P["startip"] = v
 }
 
-func (p *CreatePodParams) GetStartip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) GetStartip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startip"].(string)
+	value, ok := P.P["startip"].(string)
 	return value, ok
 }
 
-func (p *CreatePodParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreatePodParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePodParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreatePodParams instance,
 // as then you are sure you have configured all required params
 func (s *PodService) NewCreatePodParams(gateway string, name string, netmask string, startip string, zoneid string) *CreatePodParams {
-	p := &CreatePodParams{}
-	p.p = make(map[string]interface{})
-	p.p["gateway"] = gateway
-	p.p["name"] = name
-	p.p["netmask"] = netmask
-	p.p["startip"] = startip
-	p.p["zoneid"] = zoneid
-	return p
+	P := &CreatePodParams{}
+	P.P = make(map[string]interface{})
+	P.P["gateway"] = gateway
+	P.P["name"] = name
+	P.P["netmask"] = netmask
+	P.P["startip"] = startip
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Creates a new Pod.
@@ -255,79 +255,79 @@ type CreatePodResponseCapacity struct {
 }
 
 type DedicatePodParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DedicatePodParams) toURLValues() url.Values {
+func (P *DedicatePodParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
 	return u
 }
 
-func (p *DedicatePodParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePodParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *DedicatePodParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePodParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *DedicatePodParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePodParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *DedicatePodParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePodParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *DedicatePodParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePodParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *DedicatePodParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicatePodParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DedicatePodParams instance,
 // as then you are sure you have configured all required params
 func (s *PodService) NewDedicatePodParams(domainid string, podid string) *DedicatePodParams {
-	p := &DedicatePodParams{}
-	p.p = make(map[string]interface{})
-	p.p["domainid"] = domainid
-	p.p["podid"] = podid
-	return p
+	P := &DedicatePodParams{}
+	P.P = make(map[string]interface{})
+	P.P["domainid"] = domainid
+	P.P["podid"] = podid
+	return P
 }
 
 // Dedicates a Pod.
@@ -377,42 +377,42 @@ type DedicatePodResponse struct {
 }
 
 type DeletePodParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeletePodParams) toURLValues() url.Values {
+func (P *DeletePodParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeletePodParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePodParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeletePodParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePodParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeletePodParams instance,
 // as then you are sure you have configured all required params
 func (s *PodService) NewDeletePodParams(id string) *DeletePodParams {
-	p := &DeletePodParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeletePodParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a Pod.
@@ -465,151 +465,151 @@ func (r *DeletePodResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListDedicatedPodsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListDedicatedPodsParams) toURLValues() url.Values {
+func (P *ListDedicatedPodsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["affinitygroupid"]; found {
+	if v, found := P.P["affinitygroupid"]; found {
 		u.Set("affinitygroupid", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
 	return u
 }
 
-func (p *ListDedicatedPodsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListDedicatedPodsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedPodsParams) SetAffinitygroupid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) SetAffinitygroupid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["affinitygroupid"] = v
+	P.P["affinitygroupid"] = v
 }
 
-func (p *ListDedicatedPodsParams) GetAffinitygroupid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) GetAffinitygroupid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["affinitygroupid"].(string)
+	value, ok := P.P["affinitygroupid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedPodsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListDedicatedPodsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedPodsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListDedicatedPodsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedPodsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListDedicatedPodsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListDedicatedPodsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListDedicatedPodsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListDedicatedPodsParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListDedicatedPodsParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedPodsParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListDedicatedPodsParams instance,
 // as then you are sure you have configured all required params
 func (s *PodService) NewListDedicatedPodsParams() *ListDedicatedPodsParams {
-	p := &ListDedicatedPodsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListDedicatedPodsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists dedicated pods.
@@ -644,186 +644,186 @@ type DedicatedPod struct {
 }
 
 type ListPodsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListPodsParams) toURLValues() url.Values {
+func (P *ListPodsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["showcapacities"]; found {
+	if v, found := P.P["showcapacities"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showcapacities", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListPodsParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *ListPodsParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *ListPodsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListPodsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListPodsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListPodsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListPodsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListPodsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListPodsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListPodsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListPodsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListPodsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListPodsParams) SetShowcapacities(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) SetShowcapacities(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showcapacities"] = v
+	P.P["showcapacities"] = v
 }
 
-func (p *ListPodsParams) GetShowcapacities() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) GetShowcapacities() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showcapacities"].(bool)
+	value, ok := P.P["showcapacities"].(bool)
 	return value, ok
 }
 
-func (p *ListPodsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListPodsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPodsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListPodsParams instance,
 // as then you are sure you have configured all required params
 func (s *PodService) NewListPodsParams() *ListPodsParams {
-	p := &ListPodsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListPodsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *PodService) GetPodID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListPodsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListPodsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListPods(p)
+	l, err := s.ListPods(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -862,18 +862,18 @@ func (s *PodService) GetPodByName(name string, opts ...OptionFunc) (*Pod, int, e
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *PodService) GetPodByID(id string, opts ...OptionFunc) (*Pod, int, error) {
-	p := &ListPodsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListPodsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListPods(p)
+	l, err := s.ListPods(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -955,42 +955,42 @@ type PodCapacity struct {
 }
 
 type ReleaseDedicatedPodParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ReleaseDedicatedPodParams) toURLValues() url.Values {
+func (P *ReleaseDedicatedPodParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
 	return u
 }
 
-func (p *ReleaseDedicatedPodParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseDedicatedPodParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ReleaseDedicatedPodParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseDedicatedPodParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ReleaseDedicatedPodParams instance,
 // as then you are sure you have configured all required params
 func (s *PodService) NewReleaseDedicatedPodParams(podid string) *ReleaseDedicatedPodParams {
-	p := &ReleaseDedicatedPodParams{}
-	p.p = make(map[string]interface{})
-	p.p["podid"] = podid
-	return p
+	P := &ReleaseDedicatedPodParams{}
+	P.P = make(map[string]interface{})
+	P.P["podid"] = podid
+	return P
 }
 
 // Release the dedication for the pod
@@ -1031,150 +1031,150 @@ type ReleaseDedicatedPodResponse struct {
 }
 
 type UpdatePodParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdatePodParams) toURLValues() url.Values {
+func (P *UpdatePodParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["endip"]; found {
+	if v, found := P.P["endip"]; found {
 		u.Set("endip", v.(string))
 	}
-	if v, found := p.p["gateway"]; found {
+	if v, found := P.P["gateway"]; found {
 		u.Set("gateway", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["netmask"]; found {
+	if v, found := P.P["netmask"]; found {
 		u.Set("netmask", v.(string))
 	}
-	if v, found := p.p["startip"]; found {
+	if v, found := P.P["startip"]; found {
 		u.Set("startip", v.(string))
 	}
 	return u
 }
 
-func (p *UpdatePodParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *UpdatePodParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *UpdatePodParams) SetEndip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) SetEndip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endip"] = v
+	P.P["endip"] = v
 }
 
-func (p *UpdatePodParams) GetEndip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) GetEndip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endip"].(string)
+	value, ok := P.P["endip"].(string)
 	return value, ok
 }
 
-func (p *UpdatePodParams) SetGateway(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) SetGateway(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gateway"] = v
+	P.P["gateway"] = v
 }
 
-func (p *UpdatePodParams) GetGateway() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) GetGateway() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gateway"].(string)
+	value, ok := P.P["gateway"].(string)
 	return value, ok
 }
 
-func (p *UpdatePodParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdatePodParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdatePodParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdatePodParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdatePodParams) SetNetmask(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) SetNetmask(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["netmask"] = v
+	P.P["netmask"] = v
 }
 
-func (p *UpdatePodParams) GetNetmask() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) GetNetmask() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["netmask"].(string)
+	value, ok := P.P["netmask"].(string)
 	return value, ok
 }
 
-func (p *UpdatePodParams) SetStartip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) SetStartip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startip"] = v
+	P.P["startip"] = v
 }
 
-func (p *UpdatePodParams) GetStartip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdatePodParams) GetStartip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startip"].(string)
+	value, ok := P.P["startip"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdatePodParams instance,
 // as then you are sure you have configured all required params
 func (s *PodService) NewUpdatePodParams(id string) *UpdatePodParams {
-	p := &UpdatePodParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdatePodParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a Pod.

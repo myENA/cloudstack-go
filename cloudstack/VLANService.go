@@ -28,366 +28,366 @@ import (
 )
 
 type VLANServiceIface interface {
-	CreateVlanIpRange(p *CreateVlanIpRangeParams) (*CreateVlanIpRangeResponse, error)
+	CreateVlanIpRange(P *CreateVlanIpRangeParams) (*CreateVlanIpRangeResponse, error)
 	NewCreateVlanIpRangeParams() *CreateVlanIpRangeParams
-	DedicateGuestVlanRange(p *DedicateGuestVlanRangeParams) (*DedicateGuestVlanRangeResponse, error)
+	DedicateGuestVlanRange(P *DedicateGuestVlanRangeParams) (*DedicateGuestVlanRangeResponse, error)
 	NewDedicateGuestVlanRangeParams(physicalnetworkid string, vlanrange string) *DedicateGuestVlanRangeParams
-	DeleteVlanIpRange(p *DeleteVlanIpRangeParams) (*DeleteVlanIpRangeResponse, error)
+	DeleteVlanIpRange(P *DeleteVlanIpRangeParams) (*DeleteVlanIpRangeResponse, error)
 	NewDeleteVlanIpRangeParams(id string) *DeleteVlanIpRangeParams
-	ListDedicatedGuestVlanRanges(p *ListDedicatedGuestVlanRangesParams) (*ListDedicatedGuestVlanRangesResponse, error)
+	ListDedicatedGuestVlanRanges(P *ListDedicatedGuestVlanRangesParams) (*ListDedicatedGuestVlanRangesResponse, error)
 	NewListDedicatedGuestVlanRangesParams() *ListDedicatedGuestVlanRangesParams
 	GetDedicatedGuestVlanRangeByID(id string, opts ...OptionFunc) (*DedicatedGuestVlanRange, int, error)
-	ListVlanIpRanges(p *ListVlanIpRangesParams) (*ListVlanIpRangesResponse, error)
+	ListVlanIpRanges(P *ListVlanIpRangesParams) (*ListVlanIpRangesResponse, error)
 	NewListVlanIpRangesParams() *ListVlanIpRangesParams
 	GetVlanIpRangeByID(id string, opts ...OptionFunc) (*VlanIpRange, int, error)
-	ReleaseDedicatedGuestVlanRange(p *ReleaseDedicatedGuestVlanRangeParams) (*ReleaseDedicatedGuestVlanRangeResponse, error)
+	ReleaseDedicatedGuestVlanRange(P *ReleaseDedicatedGuestVlanRangeParams) (*ReleaseDedicatedGuestVlanRangeResponse, error)
 	NewReleaseDedicatedGuestVlanRangeParams(id string) *ReleaseDedicatedGuestVlanRangeParams
 }
 
 type CreateVlanIpRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateVlanIpRangeParams) toURLValues() url.Values {
+func (P *CreateVlanIpRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["endip"]; found {
+	if v, found := P.P["endip"]; found {
 		u.Set("endip", v.(string))
 	}
-	if v, found := p.p["endipv6"]; found {
+	if v, found := P.P["endipv6"]; found {
 		u.Set("endipv6", v.(string))
 	}
-	if v, found := p.p["forsystemvms"]; found {
+	if v, found := P.P["forsystemvms"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forsystemvms", vv)
 	}
-	if v, found := p.p["forvirtualnetwork"]; found {
+	if v, found := P.P["forvirtualnetwork"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forvirtualnetwork", vv)
 	}
-	if v, found := p.p["gateway"]; found {
+	if v, found := P.P["gateway"]; found {
 		u.Set("gateway", v.(string))
 	}
-	if v, found := p.p["ip6cidr"]; found {
+	if v, found := P.P["ip6cidr"]; found {
 		u.Set("ip6cidr", v.(string))
 	}
-	if v, found := p.p["ip6gateway"]; found {
+	if v, found := P.P["ip6gateway"]; found {
 		u.Set("ip6gateway", v.(string))
 	}
-	if v, found := p.p["netmask"]; found {
+	if v, found := P.P["netmask"]; found {
 		u.Set("netmask", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["startip"]; found {
+	if v, found := P.P["startip"]; found {
 		u.Set("startip", v.(string))
 	}
-	if v, found := p.p["startipv6"]; found {
+	if v, found := P.P["startipv6"]; found {
 		u.Set("startipv6", v.(string))
 	}
-	if v, found := p.p["vlan"]; found {
+	if v, found := P.P["vlan"]; found {
 		u.Set("vlan", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateVlanIpRangeParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetEndip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetEndip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endip"] = v
+	P.P["endip"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetEndip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetEndip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endip"].(string)
+	value, ok := P.P["endip"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetEndipv6(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetEndipv6(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endipv6"] = v
+	P.P["endipv6"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetEndipv6() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetEndipv6() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endipv6"].(string)
+	value, ok := P.P["endipv6"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetForsystemvms(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetForsystemvms(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forsystemvms"] = v
+	P.P["forsystemvms"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetForsystemvms() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetForsystemvms() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forsystemvms"].(bool)
+	value, ok := P.P["forsystemvms"].(bool)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetForvirtualnetwork(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetForvirtualnetwork(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forvirtualnetwork"] = v
+	P.P["forvirtualnetwork"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetForvirtualnetwork() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetForvirtualnetwork() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forvirtualnetwork"].(bool)
+	value, ok := P.P["forvirtualnetwork"].(bool)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetGateway(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetGateway(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gateway"] = v
+	P.P["gateway"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetGateway() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetGateway() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gateway"].(string)
+	value, ok := P.P["gateway"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetIp6cidr(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetIp6cidr(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ip6cidr"] = v
+	P.P["ip6cidr"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetIp6cidr() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetIp6cidr() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ip6cidr"].(string)
+	value, ok := P.P["ip6cidr"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetIp6gateway(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetIp6gateway(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ip6gateway"] = v
+	P.P["ip6gateway"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetIp6gateway() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetIp6gateway() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ip6gateway"].(string)
+	value, ok := P.P["ip6gateway"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetNetmask(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetNetmask(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["netmask"] = v
+	P.P["netmask"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetNetmask() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetNetmask() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["netmask"].(string)
+	value, ok := P.P["netmask"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetStartip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetStartip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startip"] = v
+	P.P["startip"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetStartip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetStartip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startip"].(string)
+	value, ok := P.P["startip"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetStartipv6(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetStartipv6(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startipv6"] = v
+	P.P["startipv6"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetStartipv6() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetStartipv6() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startipv6"].(string)
+	value, ok := P.P["startipv6"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetVlan(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetVlan(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlan"] = v
+	P.P["vlan"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetVlan() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetVlan() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlan"].(string)
+	value, ok := P.P["vlan"].(string)
 	return value, ok
 }
 
-func (p *CreateVlanIpRangeParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreateVlanIpRangeParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVlanIpRangeParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateVlanIpRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *VLANService) NewCreateVlanIpRangeParams() *CreateVlanIpRangeParams {
-	p := &CreateVlanIpRangeParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &CreateVlanIpRangeParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Creates a VLAN IP range.
@@ -434,115 +434,115 @@ type CreateVlanIpRangeResponse struct {
 }
 
 type DedicateGuestVlanRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DedicateGuestVlanRangeParams) toURLValues() url.Values {
+func (P *DedicateGuestVlanRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["vlanrange"]; found {
+	if v, found := P.P["vlanrange"]; found {
 		u.Set("vlanrange", v.(string))
 	}
 	return u
 }
 
-func (p *DedicateGuestVlanRangeParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateGuestVlanRangeParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *DedicateGuestVlanRangeParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateGuestVlanRangeParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *DedicateGuestVlanRangeParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateGuestVlanRangeParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *DedicateGuestVlanRangeParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateGuestVlanRangeParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *DedicateGuestVlanRangeParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateGuestVlanRangeParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *DedicateGuestVlanRangeParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateGuestVlanRangeParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *DedicateGuestVlanRangeParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateGuestVlanRangeParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *DedicateGuestVlanRangeParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateGuestVlanRangeParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *DedicateGuestVlanRangeParams) SetVlanrange(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateGuestVlanRangeParams) SetVlanrange(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlanrange"] = v
+	P.P["vlanrange"] = v
 }
 
-func (p *DedicateGuestVlanRangeParams) GetVlanrange() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateGuestVlanRangeParams) GetVlanrange() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlanrange"].(string)
+	value, ok := P.P["vlanrange"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DedicateGuestVlanRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *VLANService) NewDedicateGuestVlanRangeParams(physicalnetworkid string, vlanrange string) *DedicateGuestVlanRangeParams {
-	p := &DedicateGuestVlanRangeParams{}
-	p.p = make(map[string]interface{})
-	p.p["physicalnetworkid"] = physicalnetworkid
-	p.p["vlanrange"] = vlanrange
-	return p
+	P := &DedicateGuestVlanRangeParams{}
+	P.P = make(map[string]interface{})
+	P.P["physicalnetworkid"] = physicalnetworkid
+	P.P["vlanrange"] = vlanrange
+	return P
 }
 
 // Dedicates a guest vlan range to an account
@@ -579,42 +579,42 @@ type DedicateGuestVlanRangeResponse struct {
 }
 
 type DeleteVlanIpRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteVlanIpRangeParams) toURLValues() url.Values {
+func (P *DeleteVlanIpRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteVlanIpRangeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVlanIpRangeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteVlanIpRangeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVlanIpRangeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteVlanIpRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *VLANService) NewDeleteVlanIpRangeParams(id string) *DeleteVlanIpRangeParams {
-	p := &DeleteVlanIpRangeParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteVlanIpRangeParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Creates a VLAN IP range.
@@ -667,221 +667,221 @@ func (r *DeleteVlanIpRangeResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListDedicatedGuestVlanRangesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) toURLValues() url.Values {
+func (P *ListDedicatedGuestVlanRangesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["guestvlanrange"]; found {
+	if v, found := P.P["guestvlanrange"]; found {
 		u.Set("guestvlanrange", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) SetGuestvlanrange(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) SetGuestvlanrange(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["guestvlanrange"] = v
+	P.P["guestvlanrange"] = v
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) GetGuestvlanrange() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) GetGuestvlanrange() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["guestvlanrange"].(string)
+	value, ok := P.P["guestvlanrange"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListDedicatedGuestVlanRangesParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedGuestVlanRangesParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListDedicatedGuestVlanRangesParams instance,
 // as then you are sure you have configured all required params
 func (s *VLANService) NewListDedicatedGuestVlanRangesParams() *ListDedicatedGuestVlanRangesParams {
-	p := &ListDedicatedGuestVlanRangesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListDedicatedGuestVlanRangesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VLANService) GetDedicatedGuestVlanRangeByID(id string, opts ...OptionFunc) (*DedicatedGuestVlanRange, int, error) {
-	p := &ListDedicatedGuestVlanRangesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListDedicatedGuestVlanRangesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListDedicatedGuestVlanRanges(p)
+	l, err := s.ListDedicatedGuestVlanRanges(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -936,276 +936,276 @@ type DedicatedGuestVlanRange struct {
 }
 
 type ListVlanIpRangesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListVlanIpRangesParams) toURLValues() url.Values {
+func (P *ListVlanIpRangesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["forvirtualnetwork"]; found {
+	if v, found := P.P["forvirtualnetwork"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forvirtualnetwork", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["vlan"]; found {
+	if v, found := P.P["vlan"]; found {
 		u.Set("vlan", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListVlanIpRangesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetForvirtualnetwork(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetForvirtualnetwork(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forvirtualnetwork"] = v
+	P.P["forvirtualnetwork"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetForvirtualnetwork() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetForvirtualnetwork() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forvirtualnetwork"].(bool)
+	value, ok := P.P["forvirtualnetwork"].(bool)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetVlan(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetVlan(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlan"] = v
+	P.P["vlan"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetVlan() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetVlan() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlan"].(string)
+	value, ok := P.P["vlan"].(string)
 	return value, ok
 }
 
-func (p *ListVlanIpRangesParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListVlanIpRangesParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVlanIpRangesParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListVlanIpRangesParams instance,
 // as then you are sure you have configured all required params
 func (s *VLANService) NewListVlanIpRangesParams() *ListVlanIpRangesParams {
-	p := &ListVlanIpRangesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListVlanIpRangesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VLANService) GetVlanIpRangeByID(id string, opts ...OptionFunc) (*VlanIpRange, int, error) {
-	p := &ListVlanIpRangesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVlanIpRangesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListVlanIpRanges(p)
+	l, err := s.ListVlanIpRanges(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1274,42 +1274,42 @@ type VlanIpRange struct {
 }
 
 type ReleaseDedicatedGuestVlanRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ReleaseDedicatedGuestVlanRangeParams) toURLValues() url.Values {
+func (P *ReleaseDedicatedGuestVlanRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *ReleaseDedicatedGuestVlanRangeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseDedicatedGuestVlanRangeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ReleaseDedicatedGuestVlanRangeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseDedicatedGuestVlanRangeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ReleaseDedicatedGuestVlanRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *VLANService) NewReleaseDedicatedGuestVlanRangeParams(id string) *ReleaseDedicatedGuestVlanRangeParams {
-	p := &ReleaseDedicatedGuestVlanRangeParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &ReleaseDedicatedGuestVlanRangeParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Releases a dedicated guest vlan range to the system

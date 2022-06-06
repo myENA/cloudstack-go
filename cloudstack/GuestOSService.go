@@ -28,128 +28,128 @@ import (
 )
 
 type GuestOSServiceIface interface {
-	AddGuestOs(p *AddGuestOsParams) (*AddGuestOsResponse, error)
+	AddGuestOs(P *AddGuestOsParams) (*AddGuestOsResponse, error)
 	NewAddGuestOsParams(details map[string]string, oscategoryid string, osdisplayname string) *AddGuestOsParams
-	AddGuestOsMapping(p *AddGuestOsMappingParams) (*AddGuestOsMappingResponse, error)
+	AddGuestOsMapping(P *AddGuestOsMappingParams) (*AddGuestOsMappingResponse, error)
 	NewAddGuestOsMappingParams(hypervisor string, hypervisorversion string, osnameforhypervisor string) *AddGuestOsMappingParams
-	ListGuestOsMapping(p *ListGuestOsMappingParams) (*ListGuestOsMappingResponse, error)
+	ListGuestOsMapping(P *ListGuestOsMappingParams) (*ListGuestOsMappingResponse, error)
 	NewListGuestOsMappingParams() *ListGuestOsMappingParams
 	GetGuestOsMappingByID(id string, opts ...OptionFunc) (*GuestOsMapping, int, error)
-	ListOsCategories(p *ListOsCategoriesParams) (*ListOsCategoriesResponse, error)
+	ListOsCategories(P *ListOsCategoriesParams) (*ListOsCategoriesResponse, error)
 	NewListOsCategoriesParams() *ListOsCategoriesParams
 	GetOsCategoryID(name string, opts ...OptionFunc) (string, int, error)
 	GetOsCategoryByName(name string, opts ...OptionFunc) (*OsCategory, int, error)
 	GetOsCategoryByID(id string, opts ...OptionFunc) (*OsCategory, int, error)
-	ListOsTypes(p *ListOsTypesParams) (*ListOsTypesResponse, error)
+	ListOsTypes(P *ListOsTypesParams) (*ListOsTypesResponse, error)
 	NewListOsTypesParams() *ListOsTypesParams
 	GetOsTypeByID(id string, opts ...OptionFunc) (*OsType, int, error)
-	RemoveGuestOs(p *RemoveGuestOsParams) (*RemoveGuestOsResponse, error)
+	RemoveGuestOs(P *RemoveGuestOsParams) (*RemoveGuestOsResponse, error)
 	NewRemoveGuestOsParams(id string) *RemoveGuestOsParams
-	RemoveGuestOsMapping(p *RemoveGuestOsMappingParams) (*RemoveGuestOsMappingResponse, error)
+	RemoveGuestOsMapping(P *RemoveGuestOsMappingParams) (*RemoveGuestOsMappingResponse, error)
 	NewRemoveGuestOsMappingParams(id string) *RemoveGuestOsMappingParams
-	UpdateGuestOs(p *UpdateGuestOsParams) (*UpdateGuestOsResponse, error)
+	UpdateGuestOs(P *UpdateGuestOsParams) (*UpdateGuestOsResponse, error)
 	NewUpdateGuestOsParams(details map[string]string, id string, osdisplayname string) *UpdateGuestOsParams
-	UpdateGuestOsMapping(p *UpdateGuestOsMappingParams) (*UpdateGuestOsMappingResponse, error)
+	UpdateGuestOsMapping(P *UpdateGuestOsMappingParams) (*UpdateGuestOsMappingResponse, error)
 	NewUpdateGuestOsMappingParams(id string, osnameforhypervisor string) *UpdateGuestOsMappingParams
 }
 
 type AddGuestOsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddGuestOsParams) toURLValues() url.Values {
+func (P *AddGuestOsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].key", i), k)
 			u.Set(fmt.Sprintf("details[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["oscategoryid"]; found {
+	if v, found := P.P["oscategoryid"]; found {
 		u.Set("oscategoryid", v.(string))
 	}
-	if v, found := p.p["osdisplayname"]; found {
+	if v, found := P.P["osdisplayname"]; found {
 		u.Set("osdisplayname", v.(string))
 	}
 	return u
 }
 
-func (p *AddGuestOsParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *AddGuestOsParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *AddGuestOsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *AddGuestOsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *AddGuestOsParams) SetOscategoryid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsParams) SetOscategoryid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["oscategoryid"] = v
+	P.P["oscategoryid"] = v
 }
 
-func (p *AddGuestOsParams) GetOscategoryid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsParams) GetOscategoryid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["oscategoryid"].(string)
+	value, ok := P.P["oscategoryid"].(string)
 	return value, ok
 }
 
-func (p *AddGuestOsParams) SetOsdisplayname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsParams) SetOsdisplayname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["osdisplayname"] = v
+	P.P["osdisplayname"] = v
 }
 
-func (p *AddGuestOsParams) GetOsdisplayname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsParams) GetOsdisplayname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["osdisplayname"].(string)
+	value, ok := P.P["osdisplayname"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddGuestOsParams instance,
 // as then you are sure you have configured all required params
 func (s *GuestOSService) NewAddGuestOsParams(details map[string]string, oscategoryid string, osdisplayname string) *AddGuestOsParams {
-	p := &AddGuestOsParams{}
-	p.p = make(map[string]interface{})
-	p.p["details"] = details
-	p.p["oscategoryid"] = oscategoryid
-	p.p["osdisplayname"] = osdisplayname
-	return p
+	P := &AddGuestOsParams{}
+	P.P = make(map[string]interface{})
+	P.P["details"] = details
+	P.P["oscategoryid"] = oscategoryid
+	P.P["osdisplayname"] = osdisplayname
+	return P
 }
 
 // Add a new guest OS type
@@ -197,116 +197,116 @@ type AddGuestOsResponse struct {
 }
 
 type AddGuestOsMappingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddGuestOsMappingParams) toURLValues() url.Values {
+func (P *AddGuestOsMappingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["hypervisorversion"]; found {
+	if v, found := P.P["hypervisorversion"]; found {
 		u.Set("hypervisorversion", v.(string))
 	}
-	if v, found := p.p["osdisplayname"]; found {
+	if v, found := P.P["osdisplayname"]; found {
 		u.Set("osdisplayname", v.(string))
 	}
-	if v, found := p.p["osnameforhypervisor"]; found {
+	if v, found := P.P["osnameforhypervisor"]; found {
 		u.Set("osnameforhypervisor", v.(string))
 	}
-	if v, found := p.p["ostypeid"]; found {
+	if v, found := P.P["ostypeid"]; found {
 		u.Set("ostypeid", v.(string))
 	}
 	return u
 }
 
-func (p *AddGuestOsMappingParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsMappingParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *AddGuestOsMappingParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsMappingParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *AddGuestOsMappingParams) SetHypervisorversion(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsMappingParams) SetHypervisorversion(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisorversion"] = v
+	P.P["hypervisorversion"] = v
 }
 
-func (p *AddGuestOsMappingParams) GetHypervisorversion() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsMappingParams) GetHypervisorversion() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisorversion"].(string)
+	value, ok := P.P["hypervisorversion"].(string)
 	return value, ok
 }
 
-func (p *AddGuestOsMappingParams) SetOsdisplayname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsMappingParams) SetOsdisplayname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["osdisplayname"] = v
+	P.P["osdisplayname"] = v
 }
 
-func (p *AddGuestOsMappingParams) GetOsdisplayname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsMappingParams) GetOsdisplayname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["osdisplayname"].(string)
+	value, ok := P.P["osdisplayname"].(string)
 	return value, ok
 }
 
-func (p *AddGuestOsMappingParams) SetOsnameforhypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsMappingParams) SetOsnameforhypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["osnameforhypervisor"] = v
+	P.P["osnameforhypervisor"] = v
 }
 
-func (p *AddGuestOsMappingParams) GetOsnameforhypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsMappingParams) GetOsnameforhypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["osnameforhypervisor"].(string)
+	value, ok := P.P["osnameforhypervisor"].(string)
 	return value, ok
 }
 
-func (p *AddGuestOsMappingParams) SetOstypeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsMappingParams) SetOstypeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ostypeid"] = v
+	P.P["ostypeid"] = v
 }
 
-func (p *AddGuestOsMappingParams) GetOstypeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddGuestOsMappingParams) GetOstypeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ostypeid"].(string)
+	value, ok := P.P["ostypeid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddGuestOsMappingParams instance,
 // as then you are sure you have configured all required params
 func (s *GuestOSService) NewAddGuestOsMappingParams(hypervisor string, hypervisorversion string, osnameforhypervisor string) *AddGuestOsMappingParams {
-	p := &AddGuestOsMappingParams{}
-	p.p = make(map[string]interface{})
-	p.p["hypervisor"] = hypervisor
-	p.p["hypervisorversion"] = hypervisorversion
-	p.p["osnameforhypervisor"] = osnameforhypervisor
-	return p
+	P := &AddGuestOsMappingParams{}
+	P.P = make(map[string]interface{})
+	P.P["hypervisor"] = hypervisor
+	P.P["hypervisorversion"] = hypervisorversion
+	P.P["osnameforhypervisor"] = osnameforhypervisor
+	return P
 }
 
 // Adds a guest OS name to hypervisor OS name mapping
@@ -384,167 +384,167 @@ func (r *AddGuestOsMappingResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListGuestOsMappingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListGuestOsMappingParams) toURLValues() url.Values {
+func (P *ListGuestOsMappingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["hypervisorversion"]; found {
+	if v, found := P.P["hypervisorversion"]; found {
 		u.Set("hypervisorversion", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["ostypeid"]; found {
+	if v, found := P.P["ostypeid"]; found {
 		u.Set("ostypeid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListGuestOsMappingParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *ListGuestOsMappingParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *ListGuestOsMappingParams) SetHypervisorversion(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) SetHypervisorversion(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisorversion"] = v
+	P.P["hypervisorversion"] = v
 }
 
-func (p *ListGuestOsMappingParams) GetHypervisorversion() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) GetHypervisorversion() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisorversion"].(string)
+	value, ok := P.P["hypervisorversion"].(string)
 	return value, ok
 }
 
-func (p *ListGuestOsMappingParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListGuestOsMappingParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListGuestOsMappingParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListGuestOsMappingParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListGuestOsMappingParams) SetOstypeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) SetOstypeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ostypeid"] = v
+	P.P["ostypeid"] = v
 }
 
-func (p *ListGuestOsMappingParams) GetOstypeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) GetOstypeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ostypeid"].(string)
+	value, ok := P.P["ostypeid"].(string)
 	return value, ok
 }
 
-func (p *ListGuestOsMappingParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListGuestOsMappingParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListGuestOsMappingParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListGuestOsMappingParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGuestOsMappingParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListGuestOsMappingParams instance,
 // as then you are sure you have configured all required params
 func (s *GuestOSService) NewListGuestOsMappingParams() *ListGuestOsMappingParams {
-	p := &ListGuestOsMappingParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListGuestOsMappingParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *GuestOSService) GetGuestOsMappingByID(id string, opts ...OptionFunc) (*GuestOsMapping, int, error) {
-	p := &ListGuestOsMappingParams{}
-	p.p = make(map[string]interface{})
+	P := &ListGuestOsMappingParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListGuestOsMapping(p)
+	l, err := s.ListGuestOsMapping(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -624,131 +624,131 @@ func (r *GuestOsMapping) UnmarshalJSON(b []byte) error {
 }
 
 type ListOsCategoriesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListOsCategoriesParams) toURLValues() url.Values {
+func (P *ListOsCategoriesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListOsCategoriesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsCategoriesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListOsCategoriesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsCategoriesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListOsCategoriesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsCategoriesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListOsCategoriesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsCategoriesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListOsCategoriesParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsCategoriesParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListOsCategoriesParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsCategoriesParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListOsCategoriesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsCategoriesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListOsCategoriesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsCategoriesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListOsCategoriesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsCategoriesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListOsCategoriesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsCategoriesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListOsCategoriesParams instance,
 // as then you are sure you have configured all required params
 func (s *GuestOSService) NewListOsCategoriesParams() *ListOsCategoriesParams {
-	p := &ListOsCategoriesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListOsCategoriesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *GuestOSService) GetOsCategoryID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListOsCategoriesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListOsCategoriesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListOsCategories(p)
+	l, err := s.ListOsCategories(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -787,18 +787,18 @@ func (s *GuestOSService) GetOsCategoryByName(name string, opts ...OptionFunc) (*
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *GuestOSService) GetOsCategoryByID(id string, opts ...OptionFunc) (*OsCategory, int, error) {
-	p := &ListOsCategoriesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListOsCategoriesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListOsCategories(p)
+	l, err := s.ListOsCategories(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -846,149 +846,149 @@ type OsCategory struct {
 }
 
 type ListOsTypesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListOsTypesParams) toURLValues() url.Values {
+func (P *ListOsTypesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["oscategoryid"]; found {
+	if v, found := P.P["oscategoryid"]; found {
 		u.Set("oscategoryid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListOsTypesParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *ListOsTypesParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *ListOsTypesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListOsTypesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListOsTypesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListOsTypesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListOsTypesParams) SetOscategoryid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) SetOscategoryid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["oscategoryid"] = v
+	P.P["oscategoryid"] = v
 }
 
-func (p *ListOsTypesParams) GetOscategoryid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) GetOscategoryid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["oscategoryid"].(string)
+	value, ok := P.P["oscategoryid"].(string)
 	return value, ok
 }
 
-func (p *ListOsTypesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListOsTypesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListOsTypesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListOsTypesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListOsTypesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListOsTypesParams instance,
 // as then you are sure you have configured all required params
 func (s *GuestOSService) NewListOsTypesParams() *ListOsTypesParams {
-	p := &ListOsTypesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListOsTypesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *GuestOSService) GetOsTypeByID(id string, opts ...OptionFunc) (*OsType, int, error) {
-	p := &ListOsTypesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListOsTypesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListOsTypes(p)
+	l, err := s.ListOsTypes(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1038,42 +1038,42 @@ type OsType struct {
 }
 
 type RemoveGuestOsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RemoveGuestOsParams) toURLValues() url.Values {
+func (P *RemoveGuestOsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *RemoveGuestOsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveGuestOsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *RemoveGuestOsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveGuestOsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new RemoveGuestOsParams instance,
 // as then you are sure you have configured all required params
 func (s *GuestOSService) NewRemoveGuestOsParams(id string) *RemoveGuestOsParams {
-	p := &RemoveGuestOsParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &RemoveGuestOsParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Removes a Guest OS from listing.
@@ -1114,42 +1114,42 @@ type RemoveGuestOsResponse struct {
 }
 
 type RemoveGuestOsMappingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RemoveGuestOsMappingParams) toURLValues() url.Values {
+func (P *RemoveGuestOsMappingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *RemoveGuestOsMappingParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveGuestOsMappingParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *RemoveGuestOsMappingParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveGuestOsMappingParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new RemoveGuestOsMappingParams instance,
 // as then you are sure you have configured all required params
 func (s *GuestOSService) NewRemoveGuestOsMappingParams(id string) *RemoveGuestOsMappingParams {
-	p := &RemoveGuestOsMappingParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &RemoveGuestOsMappingParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Removes a Guest OS Mapping.
@@ -1190,84 +1190,84 @@ type RemoveGuestOsMappingResponse struct {
 }
 
 type UpdateGuestOsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateGuestOsParams) toURLValues() url.Values {
+func (P *UpdateGuestOsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].key", i), k)
 			u.Set(fmt.Sprintf("details[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["osdisplayname"]; found {
+	if v, found := P.P["osdisplayname"]; found {
 		u.Set("osdisplayname", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateGuestOsParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGuestOsParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *UpdateGuestOsParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGuestOsParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *UpdateGuestOsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGuestOsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateGuestOsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGuestOsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateGuestOsParams) SetOsdisplayname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGuestOsParams) SetOsdisplayname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["osdisplayname"] = v
+	P.P["osdisplayname"] = v
 }
 
-func (p *UpdateGuestOsParams) GetOsdisplayname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGuestOsParams) GetOsdisplayname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["osdisplayname"].(string)
+	value, ok := P.P["osdisplayname"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateGuestOsParams instance,
 // as then you are sure you have configured all required params
 func (s *GuestOSService) NewUpdateGuestOsParams(details map[string]string, id string, osdisplayname string) *UpdateGuestOsParams {
-	p := &UpdateGuestOsParams{}
-	p.p = make(map[string]interface{})
-	p.p["details"] = details
-	p.p["id"] = id
-	p.p["osdisplayname"] = osdisplayname
-	return p
+	P := &UpdateGuestOsParams{}
+	P.P = make(map[string]interface{})
+	P.P["details"] = details
+	P.P["id"] = id
+	P.P["osdisplayname"] = osdisplayname
+	return P
 }
 
 // Updates the information about Guest OS
@@ -1315,61 +1315,61 @@ type UpdateGuestOsResponse struct {
 }
 
 type UpdateGuestOsMappingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateGuestOsMappingParams) toURLValues() url.Values {
+func (P *UpdateGuestOsMappingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["osnameforhypervisor"]; found {
+	if v, found := P.P["osnameforhypervisor"]; found {
 		u.Set("osnameforhypervisor", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateGuestOsMappingParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGuestOsMappingParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateGuestOsMappingParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGuestOsMappingParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateGuestOsMappingParams) SetOsnameforhypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGuestOsMappingParams) SetOsnameforhypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["osnameforhypervisor"] = v
+	P.P["osnameforhypervisor"] = v
 }
 
-func (p *UpdateGuestOsMappingParams) GetOsnameforhypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGuestOsMappingParams) GetOsnameforhypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["osnameforhypervisor"].(string)
+	value, ok := P.P["osnameforhypervisor"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateGuestOsMappingParams instance,
 // as then you are sure you have configured all required params
 func (s *GuestOSService) NewUpdateGuestOsMappingParams(id string, osnameforhypervisor string) *UpdateGuestOsMappingParams {
-	p := &UpdateGuestOsMappingParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["osnameforhypervisor"] = osnameforhypervisor
-	return p
+	P := &UpdateGuestOsMappingParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["osnameforhypervisor"] = osnameforhypervisor
+	return P
 }
 
 // Updates the information about Guest OS to Hypervisor specific name mapping

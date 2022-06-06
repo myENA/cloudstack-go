@@ -26,194 +26,194 @@ import (
 )
 
 type SystemCapacityServiceIface interface {
-	ListCapacity(p *ListCapacityParams) (*ListCapacityResponse, error)
+	ListCapacity(P *ListCapacityParams) (*ListCapacityResponse, error)
 	NewListCapacityParams() *ListCapacityParams
 }
 
 type ListCapacityParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListCapacityParams) toURLValues() url.Values {
+func (P *ListCapacityParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
-	if v, found := p.p["fetchlatest"]; found {
+	if v, found := P.P["fetchlatest"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fetchlatest", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["sortby"]; found {
+	if v, found := P.P["sortby"]; found {
 		u.Set("sortby", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("type", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListCapacityParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *ListCapacityParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
-func (p *ListCapacityParams) SetFetchlatest(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) SetFetchlatest(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fetchlatest"] = v
+	P.P["fetchlatest"] = v
 }
 
-func (p *ListCapacityParams) GetFetchlatest() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) GetFetchlatest() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fetchlatest"].(bool)
+	value, ok := P.P["fetchlatest"].(bool)
 	return value, ok
 }
 
-func (p *ListCapacityParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListCapacityParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListCapacityParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListCapacityParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListCapacityParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListCapacityParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListCapacityParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListCapacityParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *ListCapacityParams) SetSortby(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) SetSortby(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sortby"] = v
+	P.P["sortby"] = v
 }
 
-func (p *ListCapacityParams) GetSortby() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) GetSortby() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sortby"].(string)
+	value, ok := P.P["sortby"].(string)
 	return value, ok
 }
 
-func (p *ListCapacityParams) SetType(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) SetType(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *ListCapacityParams) GetType() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) GetType() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(int)
+	value, ok := P.P["type"].(int)
 	return value, ok
 }
 
-func (p *ListCapacityParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListCapacityParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListCapacityParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListCapacityParams instance,
 // as then you are sure you have configured all required params
 func (s *SystemCapacityService) NewListCapacityParams() *ListCapacityParams {
-	p := &ListCapacityParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListCapacityParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists all the system wide capacities.

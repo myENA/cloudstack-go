@@ -28,13 +28,13 @@ import (
 )
 
 type AlertServiceIface interface {
-	ArchiveAlerts(p *ArchiveAlertsParams) (*ArchiveAlertsResponse, error)
+	ArchiveAlerts(P *ArchiveAlertsParams) (*ArchiveAlertsResponse, error)
 	NewArchiveAlertsParams() *ArchiveAlertsParams
-	DeleteAlerts(p *DeleteAlertsParams) (*DeleteAlertsResponse, error)
+	DeleteAlerts(P *DeleteAlertsParams) (*DeleteAlertsResponse, error)
 	NewDeleteAlertsParams() *DeleteAlertsParams
-	GenerateAlert(p *GenerateAlertParams) (*GenerateAlertResponse, error)
+	GenerateAlert(P *GenerateAlertParams) (*GenerateAlertResponse, error)
 	NewGenerateAlertParams(description string, name string, alertType int) *GenerateAlertParams
-	ListAlerts(p *ListAlertsParams) (*ListAlertsResponse, error)
+	ListAlerts(P *ListAlertsParams) (*ListAlertsResponse, error)
 	NewListAlertsParams() *ListAlertsParams
 	GetAlertID(name string, opts ...OptionFunc) (string, int, error)
 	GetAlertByName(name string, opts ...OptionFunc) (*Alert, int, error)
@@ -42,96 +42,96 @@ type AlertServiceIface interface {
 }
 
 type ArchiveAlertsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ArchiveAlertsParams) toURLValues() url.Values {
+func (P *ArchiveAlertsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["enddate"]; found {
+	if v, found := P.P["enddate"]; found {
 		u.Set("enddate", v.(string))
 	}
-	if v, found := p.p["ids"]; found {
+	if v, found := P.P["ids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("ids", vv)
 	}
-	if v, found := p.p["startdate"]; found {
+	if v, found := P.P["startdate"]; found {
 		u.Set("startdate", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *ArchiveAlertsParams) SetEnddate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveAlertsParams) SetEnddate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enddate"] = v
+	P.P["enddate"] = v
 }
 
-func (p *ArchiveAlertsParams) GetEnddate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveAlertsParams) GetEnddate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enddate"].(string)
+	value, ok := P.P["enddate"].(string)
 	return value, ok
 }
 
-func (p *ArchiveAlertsParams) SetIds(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveAlertsParams) SetIds(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ids"] = v
+	P.P["ids"] = v
 }
 
-func (p *ArchiveAlertsParams) GetIds() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveAlertsParams) GetIds() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ids"].([]string)
+	value, ok := P.P["ids"].([]string)
 	return value, ok
 }
 
-func (p *ArchiveAlertsParams) SetStartdate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveAlertsParams) SetStartdate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startdate"] = v
+	P.P["startdate"] = v
 }
 
-func (p *ArchiveAlertsParams) GetStartdate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveAlertsParams) GetStartdate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startdate"].(string)
+	value, ok := P.P["startdate"].(string)
 	return value, ok
 }
 
-func (p *ArchiveAlertsParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveAlertsParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *ArchiveAlertsParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveAlertsParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ArchiveAlertsParams instance,
 // as then you are sure you have configured all required params
 func (s *AlertService) NewArchiveAlertsParams() *ArchiveAlertsParams {
-	p := &ArchiveAlertsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ArchiveAlertsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Archive one or more alerts.
@@ -184,96 +184,96 @@ func (r *ArchiveAlertsResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DeleteAlertsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteAlertsParams) toURLValues() url.Values {
+func (P *DeleteAlertsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["enddate"]; found {
+	if v, found := P.P["enddate"]; found {
 		u.Set("enddate", v.(string))
 	}
-	if v, found := p.p["ids"]; found {
+	if v, found := P.P["ids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("ids", vv)
 	}
-	if v, found := p.p["startdate"]; found {
+	if v, found := P.P["startdate"]; found {
 		u.Set("startdate", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteAlertsParams) SetEnddate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteAlertsParams) SetEnddate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enddate"] = v
+	P.P["enddate"] = v
 }
 
-func (p *DeleteAlertsParams) GetEnddate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteAlertsParams) GetEnddate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enddate"].(string)
+	value, ok := P.P["enddate"].(string)
 	return value, ok
 }
 
-func (p *DeleteAlertsParams) SetIds(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteAlertsParams) SetIds(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ids"] = v
+	P.P["ids"] = v
 }
 
-func (p *DeleteAlertsParams) GetIds() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteAlertsParams) GetIds() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ids"].([]string)
+	value, ok := P.P["ids"].([]string)
 	return value, ok
 }
 
-func (p *DeleteAlertsParams) SetStartdate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteAlertsParams) SetStartdate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startdate"] = v
+	P.P["startdate"] = v
 }
 
-func (p *DeleteAlertsParams) GetStartdate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteAlertsParams) GetStartdate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startdate"].(string)
+	value, ok := P.P["startdate"].(string)
 	return value, ok
 }
 
-func (p *DeleteAlertsParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteAlertsParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *DeleteAlertsParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteAlertsParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteAlertsParams instance,
 // as then you are sure you have configured all required params
 func (s *AlertService) NewDeleteAlertsParams() *DeleteAlertsParams {
-	p := &DeleteAlertsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &DeleteAlertsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Delete one or more alerts.
@@ -326,117 +326,117 @@ func (r *DeleteAlertsResponse) UnmarshalJSON(b []byte) error {
 }
 
 type GenerateAlertParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *GenerateAlertParams) toURLValues() url.Values {
+func (P *GenerateAlertParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("type", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *GenerateAlertParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GenerateAlertParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *GenerateAlertParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GenerateAlertParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *GenerateAlertParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GenerateAlertParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *GenerateAlertParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GenerateAlertParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *GenerateAlertParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GenerateAlertParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *GenerateAlertParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GenerateAlertParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *GenerateAlertParams) SetType(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GenerateAlertParams) SetType(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *GenerateAlertParams) GetType() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GenerateAlertParams) GetType() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(int)
+	value, ok := P.P["type"].(int)
 	return value, ok
 }
 
-func (p *GenerateAlertParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GenerateAlertParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *GenerateAlertParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GenerateAlertParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new GenerateAlertParams instance,
 // as then you are sure you have configured all required params
 func (s *AlertService) NewGenerateAlertParams(description string, name string, alertType int) *GenerateAlertParams {
-	p := &GenerateAlertParams{}
-	p.p = make(map[string]interface{})
-	p.p["description"] = description
-	p.p["name"] = name
-	p.p["type"] = alertType
-	return p
+	P := &GenerateAlertParams{}
+	P.P = make(map[string]interface{})
+	P.P["description"] = description
+	P.P["name"] = name
+	P.P["type"] = alertType
+	return P
 }
 
 // Generates an alert
@@ -477,149 +477,149 @@ type GenerateAlertResponse struct {
 }
 
 type ListAlertsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListAlertsParams) toURLValues() url.Values {
+func (P *ListAlertsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *ListAlertsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListAlertsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListAlertsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListAlertsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListAlertsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListAlertsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListAlertsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListAlertsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListAlertsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListAlertsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListAlertsParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *ListAlertsParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListAlertsParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListAlertsParams instance,
 // as then you are sure you have configured all required params
 func (s *AlertService) NewListAlertsParams() *ListAlertsParams {
-	p := &ListAlertsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListAlertsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *AlertService) GetAlertID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListAlertsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListAlertsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListAlerts(p)
+	l, err := s.ListAlerts(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -658,18 +658,18 @@ func (s *AlertService) GetAlertByName(name string, opts ...OptionFunc) (*Alert, 
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *AlertService) GetAlertByID(id string, opts ...OptionFunc) (*Alert, int, error) {
-	p := &ListAlertsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListAlertsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListAlerts(p)
+	l, err := s.ListAlerts(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+

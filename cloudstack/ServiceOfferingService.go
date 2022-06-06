@@ -28,868 +28,868 @@ import (
 )
 
 type ServiceOfferingServiceIface interface {
-	CreateServiceOffering(p *CreateServiceOfferingParams) (*CreateServiceOfferingResponse, error)
+	CreateServiceOffering(P *CreateServiceOfferingParams) (*CreateServiceOfferingResponse, error)
 	NewCreateServiceOfferingParams(displaytext string, name string) *CreateServiceOfferingParams
-	DeleteServiceOffering(p *DeleteServiceOfferingParams) (*DeleteServiceOfferingResponse, error)
+	DeleteServiceOffering(P *DeleteServiceOfferingParams) (*DeleteServiceOfferingResponse, error)
 	NewDeleteServiceOfferingParams(id string) *DeleteServiceOfferingParams
-	ListServiceOfferings(p *ListServiceOfferingsParams) (*ListServiceOfferingsResponse, error)
+	ListServiceOfferings(P *ListServiceOfferingsParams) (*ListServiceOfferingsResponse, error)
 	NewListServiceOfferingsParams() *ListServiceOfferingsParams
 	GetServiceOfferingID(name string, opts ...OptionFunc) (string, int, error)
 	GetServiceOfferingByName(name string, opts ...OptionFunc) (*ServiceOffering, int, error)
 	GetServiceOfferingByID(id string, opts ...OptionFunc) (*ServiceOffering, int, error)
-	UpdateServiceOffering(p *UpdateServiceOfferingParams) (*UpdateServiceOfferingResponse, error)
+	UpdateServiceOffering(P *UpdateServiceOfferingParams) (*UpdateServiceOfferingResponse, error)
 	NewUpdateServiceOfferingParams(id string) *UpdateServiceOfferingParams
 }
 
 type CreateServiceOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateServiceOfferingParams) toURLValues() url.Values {
+func (P *CreateServiceOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["bytesreadrate"]; found {
+	if v, found := P.P["bytesreadrate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("bytesreadrate", vv)
 	}
-	if v, found := p.p["bytesreadratemax"]; found {
+	if v, found := P.P["bytesreadratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("bytesreadratemax", vv)
 	}
-	if v, found := p.p["bytesreadratemaxlength"]; found {
+	if v, found := P.P["bytesreadratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("bytesreadratemaxlength", vv)
 	}
-	if v, found := p.p["byteswriterate"]; found {
+	if v, found := P.P["byteswriterate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("byteswriterate", vv)
 	}
-	if v, found := p.p["byteswriteratemax"]; found {
+	if v, found := P.P["byteswriteratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("byteswriteratemax", vv)
 	}
-	if v, found := p.p["byteswriteratemaxlength"]; found {
+	if v, found := P.P["byteswriteratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("byteswriteratemaxlength", vv)
 	}
-	if v, found := p.p["cachemode"]; found {
+	if v, found := P.P["cachemode"]; found {
 		u.Set("cachemode", v.(string))
 	}
-	if v, found := p.p["cpunumber"]; found {
+	if v, found := P.P["cpunumber"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("cpunumber", vv)
 	}
-	if v, found := p.p["cpuspeed"]; found {
+	if v, found := P.P["cpuspeed"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("cpuspeed", vv)
 	}
-	if v, found := p.p["customized"]; found {
+	if v, found := P.P["customized"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("customized", vv)
 	}
-	if v, found := p.p["customizediops"]; found {
+	if v, found := P.P["customizediops"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("customizediops", vv)
 	}
-	if v, found := p.p["deploymentplanner"]; found {
+	if v, found := P.P["deploymentplanner"]; found {
 		u.Set("deploymentplanner", v.(string))
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("domainid", vv)
 	}
-	if v, found := p.p["dynamicscalingenabled"]; found {
+	if v, found := P.P["dynamicscalingenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("dynamicscalingenabled", vv)
 	}
-	if v, found := p.p["hosttags"]; found {
+	if v, found := P.P["hosttags"]; found {
 		u.Set("hosttags", v.(string))
 	}
-	if v, found := p.p["hypervisorsnapshotreserve"]; found {
+	if v, found := P.P["hypervisorsnapshotreserve"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("hypervisorsnapshotreserve", vv)
 	}
-	if v, found := p.p["iopsreadrate"]; found {
+	if v, found := P.P["iopsreadrate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopsreadrate", vv)
 	}
-	if v, found := p.p["iopsreadratemax"]; found {
+	if v, found := P.P["iopsreadratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopsreadratemax", vv)
 	}
-	if v, found := p.p["iopsreadratemaxlength"]; found {
+	if v, found := P.P["iopsreadratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopsreadratemaxlength", vv)
 	}
-	if v, found := p.p["iopswriterate"]; found {
+	if v, found := P.P["iopswriterate"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopswriterate", vv)
 	}
-	if v, found := p.p["iopswriteratemax"]; found {
+	if v, found := P.P["iopswriteratemax"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopswriteratemax", vv)
 	}
-	if v, found := p.p["iopswriteratemaxlength"]; found {
+	if v, found := P.P["iopswriteratemaxlength"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("iopswriteratemaxlength", vv)
 	}
-	if v, found := p.p["issystem"]; found {
+	if v, found := P.P["issystem"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("issystem", vv)
 	}
-	if v, found := p.p["isvolatile"]; found {
+	if v, found := P.P["isvolatile"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isvolatile", vv)
 	}
-	if v, found := p.p["limitcpuuse"]; found {
+	if v, found := P.P["limitcpuuse"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("limitcpuuse", vv)
 	}
-	if v, found := p.p["maxcpunumber"]; found {
+	if v, found := P.P["maxcpunumber"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("maxcpunumber", vv)
 	}
-	if v, found := p.p["maxiops"]; found {
+	if v, found := P.P["maxiops"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("maxiops", vv)
 	}
-	if v, found := p.p["maxmemory"]; found {
+	if v, found := P.P["maxmemory"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("maxmemory", vv)
 	}
-	if v, found := p.p["memory"]; found {
+	if v, found := P.P["memory"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("memory", vv)
 	}
-	if v, found := p.p["mincpunumber"]; found {
+	if v, found := P.P["mincpunumber"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("mincpunumber", vv)
 	}
-	if v, found := p.p["miniops"]; found {
+	if v, found := P.P["miniops"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("miniops", vv)
 	}
-	if v, found := p.p["minmemory"]; found {
+	if v, found := P.P["minmemory"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("minmemory", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkrate"]; found {
+	if v, found := P.P["networkrate"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("networkrate", vv)
 	}
-	if v, found := p.p["offerha"]; found {
+	if v, found := P.P["offerha"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("offerha", vv)
 	}
-	if v, found := p.p["provisioningtype"]; found {
+	if v, found := P.P["provisioningtype"]; found {
 		u.Set("provisioningtype", v.(string))
 	}
-	if v, found := p.p["rootdisksize"]; found {
+	if v, found := P.P["rootdisksize"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("rootdisksize", vv)
 	}
-	if v, found := p.p["serviceofferingdetails"]; found {
+	if v, found := P.P["serviceofferingdetails"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("serviceofferingdetails[%d].key", i), k)
 			u.Set(fmt.Sprintf("serviceofferingdetails[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["storagepolicy"]; found {
+	if v, found := P.P["storagepolicy"]; found {
 		u.Set("storagepolicy", v.(string))
 	}
-	if v, found := p.p["storagetype"]; found {
+	if v, found := P.P["storagetype"]; found {
 		u.Set("storagetype", v.(string))
 	}
-	if v, found := p.p["systemvmtype"]; found {
+	if v, found := P.P["systemvmtype"]; found {
 		u.Set("systemvmtype", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		u.Set("tags", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("zoneid", vv)
 	}
 	return u
 }
 
-func (p *CreateServiceOfferingParams) SetBytesreadrate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetBytesreadrate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bytesreadrate"] = v
+	P.P["bytesreadrate"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetBytesreadrate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetBytesreadrate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bytesreadrate"].(int64)
+	value, ok := P.P["bytesreadrate"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetBytesreadratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetBytesreadratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bytesreadratemax"] = v
+	P.P["bytesreadratemax"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetBytesreadratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetBytesreadratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bytesreadratemax"].(int64)
+	value, ok := P.P["bytesreadratemax"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetBytesreadratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetBytesreadratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bytesreadratemaxlength"] = v
+	P.P["bytesreadratemaxlength"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetBytesreadratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetBytesreadratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bytesreadratemaxlength"].(int64)
+	value, ok := P.P["bytesreadratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetByteswriterate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetByteswriterate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["byteswriterate"] = v
+	P.P["byteswriterate"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetByteswriterate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetByteswriterate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["byteswriterate"].(int64)
+	value, ok := P.P["byteswriterate"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetByteswriteratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetByteswriteratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["byteswriteratemax"] = v
+	P.P["byteswriteratemax"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetByteswriteratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetByteswriteratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["byteswriteratemax"].(int64)
+	value, ok := P.P["byteswriteratemax"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetByteswriteratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetByteswriteratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["byteswriteratemaxlength"] = v
+	P.P["byteswriteratemaxlength"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetByteswriteratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetByteswriteratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["byteswriteratemaxlength"].(int64)
+	value, ok := P.P["byteswriteratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetCachemode(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetCachemode(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cachemode"] = v
+	P.P["cachemode"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetCachemode() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetCachemode() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cachemode"].(string)
+	value, ok := P.P["cachemode"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetCpunumber(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetCpunumber(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cpunumber"] = v
+	P.P["cpunumber"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetCpunumber() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetCpunumber() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cpunumber"].(int)
+	value, ok := P.P["cpunumber"].(int)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetCpuspeed(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetCpuspeed(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cpuspeed"] = v
+	P.P["cpuspeed"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetCpuspeed() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetCpuspeed() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cpuspeed"].(int)
+	value, ok := P.P["cpuspeed"].(int)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetCustomized(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetCustomized(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customized"] = v
+	P.P["customized"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetCustomized() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetCustomized() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customized"].(bool)
+	value, ok := P.P["customized"].(bool)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetCustomizediops(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetCustomizediops(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customizediops"] = v
+	P.P["customizediops"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetCustomizediops() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetCustomizediops() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customizediops"].(bool)
+	value, ok := P.P["customizediops"].(bool)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetDeploymentplanner(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetDeploymentplanner(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["deploymentplanner"] = v
+	P.P["deploymentplanner"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetDeploymentplanner() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetDeploymentplanner() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["deploymentplanner"].(string)
+	value, ok := P.P["deploymentplanner"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetDomainid(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetDomainid(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetDomainid() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetDomainid() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].([]string)
+	value, ok := P.P["domainid"].([]string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetDynamicscalingenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetDynamicscalingenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["dynamicscalingenabled"] = v
+	P.P["dynamicscalingenabled"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetDynamicscalingenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetDynamicscalingenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["dynamicscalingenabled"].(bool)
+	value, ok := P.P["dynamicscalingenabled"].(bool)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetHosttags(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetHosttags(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hosttags"] = v
+	P.P["hosttags"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetHosttags() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetHosttags() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hosttags"].(string)
+	value, ok := P.P["hosttags"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetHypervisorsnapshotreserve(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetHypervisorsnapshotreserve(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisorsnapshotreserve"] = v
+	P.P["hypervisorsnapshotreserve"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetHypervisorsnapshotreserve() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetHypervisorsnapshotreserve() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisorsnapshotreserve"].(int)
+	value, ok := P.P["hypervisorsnapshotreserve"].(int)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetIopsreadrate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetIopsreadrate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopsreadrate"] = v
+	P.P["iopsreadrate"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetIopsreadrate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetIopsreadrate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopsreadrate"].(int64)
+	value, ok := P.P["iopsreadrate"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetIopsreadratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetIopsreadratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopsreadratemax"] = v
+	P.P["iopsreadratemax"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetIopsreadratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetIopsreadratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopsreadratemax"].(int64)
+	value, ok := P.P["iopsreadratemax"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetIopsreadratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetIopsreadratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopsreadratemaxlength"] = v
+	P.P["iopsreadratemaxlength"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetIopsreadratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetIopsreadratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopsreadratemaxlength"].(int64)
+	value, ok := P.P["iopsreadratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetIopswriterate(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetIopswriterate(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopswriterate"] = v
+	P.P["iopswriterate"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetIopswriterate() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetIopswriterate() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopswriterate"].(int64)
+	value, ok := P.P["iopswriterate"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetIopswriteratemax(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetIopswriteratemax(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopswriteratemax"] = v
+	P.P["iopswriteratemax"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetIopswriteratemax() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetIopswriteratemax() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopswriteratemax"].(int64)
+	value, ok := P.P["iopswriteratemax"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetIopswriteratemaxlength(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetIopswriteratemaxlength(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iopswriteratemaxlength"] = v
+	P.P["iopswriteratemaxlength"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetIopswriteratemaxlength() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetIopswriteratemaxlength() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iopswriteratemaxlength"].(int64)
+	value, ok := P.P["iopswriteratemaxlength"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetIssystem(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetIssystem(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["issystem"] = v
+	P.P["issystem"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetIssystem() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetIssystem() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["issystem"].(bool)
+	value, ok := P.P["issystem"].(bool)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetIsvolatile(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetIsvolatile(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isvolatile"] = v
+	P.P["isvolatile"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetIsvolatile() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetIsvolatile() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isvolatile"].(bool)
+	value, ok := P.P["isvolatile"].(bool)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetLimitcpuuse(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetLimitcpuuse(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["limitcpuuse"] = v
+	P.P["limitcpuuse"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetLimitcpuuse() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetLimitcpuuse() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["limitcpuuse"].(bool)
+	value, ok := P.P["limitcpuuse"].(bool)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetMaxcpunumber(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetMaxcpunumber(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["maxcpunumber"] = v
+	P.P["maxcpunumber"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetMaxcpunumber() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetMaxcpunumber() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["maxcpunumber"].(int)
+	value, ok := P.P["maxcpunumber"].(int)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetMaxiops(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetMaxiops(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["maxiops"] = v
+	P.P["maxiops"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetMaxiops() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetMaxiops() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["maxiops"].(int64)
+	value, ok := P.P["maxiops"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetMaxmemory(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetMaxmemory(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["maxmemory"] = v
+	P.P["maxmemory"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetMaxmemory() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetMaxmemory() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["maxmemory"].(int)
+	value, ok := P.P["maxmemory"].(int)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetMemory(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetMemory(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["memory"] = v
+	P.P["memory"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetMemory() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetMemory() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["memory"].(int)
+	value, ok := P.P["memory"].(int)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetMincpunumber(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetMincpunumber(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["mincpunumber"] = v
+	P.P["mincpunumber"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetMincpunumber() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetMincpunumber() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["mincpunumber"].(int)
+	value, ok := P.P["mincpunumber"].(int)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetMiniops(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetMiniops(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["miniops"] = v
+	P.P["miniops"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetMiniops() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetMiniops() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["miniops"].(int64)
+	value, ok := P.P["miniops"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetMinmemory(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetMinmemory(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["minmemory"] = v
+	P.P["minmemory"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetMinmemory() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetMinmemory() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["minmemory"].(int)
+	value, ok := P.P["minmemory"].(int)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetNetworkrate(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetNetworkrate(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkrate"] = v
+	P.P["networkrate"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetNetworkrate() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetNetworkrate() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkrate"].(int)
+	value, ok := P.P["networkrate"].(int)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetOfferha(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetOfferha(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["offerha"] = v
+	P.P["offerha"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetOfferha() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetOfferha() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["offerha"].(bool)
+	value, ok := P.P["offerha"].(bool)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetProvisioningtype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetProvisioningtype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["provisioningtype"] = v
+	P.P["provisioningtype"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetProvisioningtype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetProvisioningtype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["provisioningtype"].(string)
+	value, ok := P.P["provisioningtype"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetRootdisksize(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetRootdisksize(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["rootdisksize"] = v
+	P.P["rootdisksize"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetRootdisksize() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetRootdisksize() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["rootdisksize"].(int64)
+	value, ok := P.P["rootdisksize"].(int64)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetServiceofferingdetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetServiceofferingdetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["serviceofferingdetails"] = v
+	P.P["serviceofferingdetails"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetServiceofferingdetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetServiceofferingdetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["serviceofferingdetails"].(map[string]string)
+	value, ok := P.P["serviceofferingdetails"].(map[string]string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetStoragepolicy(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetStoragepolicy(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["storagepolicy"] = v
+	P.P["storagepolicy"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetStoragepolicy() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetStoragepolicy() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["storagepolicy"].(string)
+	value, ok := P.P["storagepolicy"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetStoragetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetStoragetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["storagetype"] = v
+	P.P["storagetype"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetStoragetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetStoragetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["storagetype"].(string)
+	value, ok := P.P["storagetype"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetSystemvmtype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetSystemvmtype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["systemvmtype"] = v
+	P.P["systemvmtype"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetSystemvmtype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetSystemvmtype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["systemvmtype"].(string)
+	value, ok := P.P["systemvmtype"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetTags(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetTags(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetTags() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetTags() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(string)
+	value, ok := P.P["tags"].(string)
 	return value, ok
 }
 
-func (p *CreateServiceOfferingParams) SetZoneid(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) SetZoneid(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreateServiceOfferingParams) GetZoneid() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateServiceOfferingParams) GetZoneid() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].([]string)
+	value, ok := P.P["zoneid"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateServiceOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *ServiceOfferingService) NewCreateServiceOfferingParams(displaytext string, name string) *CreateServiceOfferingParams {
-	p := &CreateServiceOfferingParams{}
-	p.p = make(map[string]interface{})
-	p.p["displaytext"] = displaytext
-	p.p["name"] = name
-	return p
+	P := &CreateServiceOfferingParams{}
+	P.P = make(map[string]interface{})
+	P.P["displaytext"] = displaytext
+	P.P["name"] = name
+	return P
 }
 
 // Creates a service offering.
@@ -963,42 +963,42 @@ type CreateServiceOfferingResponse struct {
 }
 
 type DeleteServiceOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteServiceOfferingParams) toURLValues() url.Values {
+func (P *DeleteServiceOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteServiceOfferingParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteServiceOfferingParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteServiceOfferingParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteServiceOfferingParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteServiceOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *ServiceOfferingService) NewDeleteServiceOfferingParams(id string) *DeleteServiceOfferingParams {
-	p := &DeleteServiceOfferingParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteServiceOfferingParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a service offering.
@@ -1051,317 +1051,317 @@ func (r *DeleteServiceOfferingResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListServiceOfferingsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListServiceOfferingsParams) toURLValues() url.Values {
+func (P *ListServiceOfferingsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["cpunumber"]; found {
+	if v, found := P.P["cpunumber"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("cpunumber", vv)
 	}
-	if v, found := p.p["cpuspeed"]; found {
+	if v, found := P.P["cpuspeed"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("cpuspeed", vv)
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["issystem"]; found {
+	if v, found := P.P["issystem"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("issystem", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["memory"]; found {
+	if v, found := P.P["memory"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("memory", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["systemvmtype"]; found {
+	if v, found := P.P["systemvmtype"]; found {
 		u.Set("systemvmtype", v.(string))
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListServiceOfferingsParams) SetCpunumber(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetCpunumber(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cpunumber"] = v
+	P.P["cpunumber"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetCpunumber() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetCpunumber() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cpunumber"].(int)
+	value, ok := P.P["cpunumber"].(int)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetCpuspeed(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetCpuspeed(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cpuspeed"] = v
+	P.P["cpuspeed"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetCpuspeed() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetCpuspeed() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cpuspeed"].(int)
+	value, ok := P.P["cpuspeed"].(int)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetIssystem(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetIssystem(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["issystem"] = v
+	P.P["issystem"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetIssystem() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetIssystem() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["issystem"].(bool)
+	value, ok := P.P["issystem"].(bool)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetMemory(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetMemory(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["memory"] = v
+	P.P["memory"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetMemory() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetMemory() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["memory"].(int)
+	value, ok := P.P["memory"].(int)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetSystemvmtype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetSystemvmtype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["systemvmtype"] = v
+	P.P["systemvmtype"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetSystemvmtype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetSystemvmtype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["systemvmtype"].(string)
+	value, ok := P.P["systemvmtype"].(string)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
-func (p *ListServiceOfferingsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListServiceOfferingsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListServiceOfferingsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListServiceOfferingsParams instance,
 // as then you are sure you have configured all required params
 func (s *ServiceOfferingService) NewListServiceOfferingsParams() *ListServiceOfferingsParams {
-	p := &ListServiceOfferingsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListServiceOfferingsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ServiceOfferingService) GetServiceOfferingID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListServiceOfferingsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListServiceOfferingsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListServiceOfferings(p)
+	l, err := s.ListServiceOfferings(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1400,18 +1400,18 @@ func (s *ServiceOfferingService) GetServiceOfferingByName(name string, opts ...O
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ServiceOfferingService) GetServiceOfferingByID(id string, opts ...OptionFunc) (*ServiceOffering, int, error) {
-	p := &ListServiceOfferingsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListServiceOfferingsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListServiceOfferings(p)
+	l, err := s.ListServiceOfferings(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1503,169 +1503,169 @@ type ServiceOffering struct {
 }
 
 type UpdateServiceOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateServiceOfferingParams) toURLValues() url.Values {
+func (P *UpdateServiceOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["hosttags"]; found {
+	if v, found := P.P["hosttags"]; found {
 		u.Set("hosttags", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["sortkey"]; found {
+	if v, found := P.P["sortkey"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("sortkey", vv)
 	}
-	if v, found := p.p["storagetags"]; found {
+	if v, found := P.P["storagetags"]; found {
 		u.Set("storagetags", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateServiceOfferingParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *UpdateServiceOfferingParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *UpdateServiceOfferingParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *UpdateServiceOfferingParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *UpdateServiceOfferingParams) SetHosttags(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) SetHosttags(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hosttags"] = v
+	P.P["hosttags"] = v
 }
 
-func (p *UpdateServiceOfferingParams) GetHosttags() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) GetHosttags() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hosttags"].(string)
+	value, ok := P.P["hosttags"].(string)
 	return value, ok
 }
 
-func (p *UpdateServiceOfferingParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateServiceOfferingParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateServiceOfferingParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateServiceOfferingParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateServiceOfferingParams) SetSortkey(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) SetSortkey(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sortkey"] = v
+	P.P["sortkey"] = v
 }
 
-func (p *UpdateServiceOfferingParams) GetSortkey() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) GetSortkey() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sortkey"].(int)
+	value, ok := P.P["sortkey"].(int)
 	return value, ok
 }
 
-func (p *UpdateServiceOfferingParams) SetStoragetags(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) SetStoragetags(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["storagetags"] = v
+	P.P["storagetags"] = v
 }
 
-func (p *UpdateServiceOfferingParams) GetStoragetags() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) GetStoragetags() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["storagetags"].(string)
+	value, ok := P.P["storagetags"].(string)
 	return value, ok
 }
 
-func (p *UpdateServiceOfferingParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *UpdateServiceOfferingParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateServiceOfferingParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateServiceOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *ServiceOfferingService) NewUpdateServiceOfferingParams(id string) *UpdateServiceOfferingParams {
-	p := &UpdateServiceOfferingParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateServiceOfferingParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a service offering.

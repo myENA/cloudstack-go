@@ -28,115 +28,115 @@ import (
 )
 
 type DomainServiceIface interface {
-	CreateDomain(p *CreateDomainParams) (*CreateDomainResponse, error)
+	CreateDomain(P *CreateDomainParams) (*CreateDomainResponse, error)
 	NewCreateDomainParams(name string) *CreateDomainParams
-	DeleteDomain(p *DeleteDomainParams) (*DeleteDomainResponse, error)
+	DeleteDomain(P *DeleteDomainParams) (*DeleteDomainResponse, error)
 	NewDeleteDomainParams(id string) *DeleteDomainParams
-	ListDomainChildren(p *ListDomainChildrenParams) (*ListDomainChildrenResponse, error)
+	ListDomainChildren(P *ListDomainChildrenParams) (*ListDomainChildrenResponse, error)
 	NewListDomainChildrenParams() *ListDomainChildrenParams
 	GetDomainChildrenID(name string, opts ...OptionFunc) (string, int, error)
 	GetDomainChildrenByName(name string, opts ...OptionFunc) (*DomainChildren, int, error)
 	GetDomainChildrenByID(id string, opts ...OptionFunc) (*DomainChildren, int, error)
-	ListDomains(p *ListDomainsParams) (*ListDomainsResponse, error)
+	ListDomains(P *ListDomainsParams) (*ListDomainsResponse, error)
 	NewListDomainsParams() *ListDomainsParams
 	GetDomainID(name string, opts ...OptionFunc) (string, int, error)
 	GetDomainByName(name string, opts ...OptionFunc) (*Domain, int, error)
 	GetDomainByID(id string, opts ...OptionFunc) (*Domain, int, error)
-	UpdateDomain(p *UpdateDomainParams) (*UpdateDomainResponse, error)
+	UpdateDomain(P *UpdateDomainParams) (*UpdateDomainResponse, error)
 	NewUpdateDomainParams(id string) *UpdateDomainParams
 }
 
 type CreateDomainParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateDomainParams) toURLValues() url.Values {
+func (P *CreateDomainParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkdomain"]; found {
+	if v, found := P.P["networkdomain"]; found {
 		u.Set("networkdomain", v.(string))
 	}
-	if v, found := p.p["parentdomainid"]; found {
+	if v, found := P.P["parentdomainid"]; found {
 		u.Set("parentdomainid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateDomainParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDomainParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateDomainParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDomainParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateDomainParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDomainParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateDomainParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDomainParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateDomainParams) SetNetworkdomain(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDomainParams) SetNetworkdomain(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdomain"] = v
+	P.P["networkdomain"] = v
 }
 
-func (p *CreateDomainParams) GetNetworkdomain() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDomainParams) GetNetworkdomain() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdomain"].(string)
+	value, ok := P.P["networkdomain"].(string)
 	return value, ok
 }
 
-func (p *CreateDomainParams) SetParentdomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDomainParams) SetParentdomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["parentdomainid"] = v
+	P.P["parentdomainid"] = v
 }
 
-func (p *CreateDomainParams) GetParentdomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateDomainParams) GetParentdomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["parentdomainid"].(string)
+	value, ok := P.P["parentdomainid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateDomainParams instance,
 // as then you are sure you have configured all required params
 func (s *DomainService) NewCreateDomainParams(name string) *CreateDomainParams {
-	p := &CreateDomainParams{}
-	p.p = make(map[string]interface{})
-	p.p["name"] = name
-	return p
+	P := &CreateDomainParams{}
+	P.P = make(map[string]interface{})
+	P.P["name"] = name
+	return P
 }
 
 // Creates a domain
@@ -213,61 +213,61 @@ type CreateDomainResponse struct {
 }
 
 type DeleteDomainParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteDomainParams) toURLValues() url.Values {
+func (P *DeleteDomainParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["cleanup"]; found {
+	if v, found := P.P["cleanup"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("cleanup", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteDomainParams) SetCleanup(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteDomainParams) SetCleanup(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cleanup"] = v
+	P.P["cleanup"] = v
 }
 
-func (p *DeleteDomainParams) GetCleanup() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteDomainParams) GetCleanup() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cleanup"].(bool)
+	value, ok := P.P["cleanup"].(bool)
 	return value, ok
 }
 
-func (p *DeleteDomainParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteDomainParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteDomainParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteDomainParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteDomainParams instance,
 // as then you are sure you have configured all required params
 func (s *DomainService) NewDeleteDomainParams(id string) *DeleteDomainParams {
-	p := &DeleteDomainParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteDomainParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a specified domain
@@ -308,188 +308,188 @@ type DeleteDomainResponse struct {
 }
 
 type ListDomainChildrenParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListDomainChildrenParams) toURLValues() url.Values {
+func (P *ListDomainChildrenParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["showicon"]; found {
+	if v, found := P.P["showicon"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showicon", vv)
 	}
 	return u
 }
 
-func (p *ListDomainChildrenParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListDomainChildrenParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListDomainChildrenParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListDomainChildrenParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListDomainChildrenParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListDomainChildrenParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListDomainChildrenParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListDomainChildrenParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListDomainChildrenParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListDomainChildrenParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListDomainChildrenParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListDomainChildrenParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListDomainChildrenParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListDomainChildrenParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListDomainChildrenParams) SetShowicon(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) SetShowicon(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showicon"] = v
+	P.P["showicon"] = v
 }
 
-func (p *ListDomainChildrenParams) GetShowicon() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainChildrenParams) GetShowicon() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showicon"].(bool)
+	value, ok := P.P["showicon"].(bool)
 	return value, ok
 }
 
 // You should always use this function to get a new ListDomainChildrenParams instance,
 // as then you are sure you have configured all required params
 func (s *DomainService) NewListDomainChildrenParams() *ListDomainChildrenParams {
-	p := &ListDomainChildrenParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListDomainChildrenParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *DomainService) GetDomainChildrenID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListDomainChildrenParams{}
-	p.p = make(map[string]interface{})
+	P := &ListDomainChildrenParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListDomainChildren(p)
+	l, err := s.ListDomainChildren(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -528,18 +528,18 @@ func (s *DomainService) GetDomainChildrenByName(name string, opts ...OptionFunc)
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *DomainService) GetDomainChildrenByID(id string, opts ...OptionFunc) (*DomainChildren, int, error) {
-	p := &ListDomainChildrenParams{}
-	p.p = make(map[string]interface{})
+	P := &ListDomainChildrenParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListDomainChildren(p)
+	l, err := s.ListDomainChildren(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -634,207 +634,207 @@ type DomainChildren struct {
 }
 
 type ListDomainsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListDomainsParams) toURLValues() url.Values {
+func (P *ListDomainsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("details", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["level"]; found {
+	if v, found := P.P["level"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("level", vv)
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["showicon"]; found {
+	if v, found := P.P["showicon"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showicon", vv)
 	}
 	return u
 }
 
-func (p *ListDomainsParams) SetDetails(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) SetDetails(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *ListDomainsParams) GetDetails() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) GetDetails() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].([]string)
+	value, ok := P.P["details"].([]string)
 	return value, ok
 }
 
-func (p *ListDomainsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListDomainsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListDomainsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListDomainsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListDomainsParams) SetLevel(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) SetLevel(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["level"] = v
+	P.P["level"] = v
 }
 
-func (p *ListDomainsParams) GetLevel() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) GetLevel() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["level"].(int)
+	value, ok := P.P["level"].(int)
 	return value, ok
 }
 
-func (p *ListDomainsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListDomainsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListDomainsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListDomainsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListDomainsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListDomainsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListDomainsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListDomainsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListDomainsParams) SetShowicon(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) SetShowicon(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showicon"] = v
+	P.P["showicon"] = v
 }
 
-func (p *ListDomainsParams) GetShowicon() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDomainsParams) GetShowicon() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showicon"].(bool)
+	value, ok := P.P["showicon"].(bool)
 	return value, ok
 }
 
 // You should always use this function to get a new ListDomainsParams instance,
 // as then you are sure you have configured all required params
 func (s *DomainService) NewListDomainsParams() *ListDomainsParams {
-	p := &ListDomainsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListDomainsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *DomainService) GetDomainID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListDomainsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListDomainsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListDomains(p)
+	l, err := s.ListDomains(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -873,18 +873,18 @@ func (s *DomainService) GetDomainByName(name string, opts ...OptionFunc) (*Domai
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *DomainService) GetDomainByID(id string, opts ...OptionFunc) (*Domain, int, error) {
-	p := &ListDomainsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListDomainsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListDomains(p)
+	l, err := s.ListDomains(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -979,78 +979,78 @@ type Domain struct {
 }
 
 type UpdateDomainParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateDomainParams) toURLValues() url.Values {
+func (P *UpdateDomainParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkdomain"]; found {
+	if v, found := P.P["networkdomain"]; found {
 		u.Set("networkdomain", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateDomainParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDomainParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateDomainParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDomainParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateDomainParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDomainParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateDomainParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDomainParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateDomainParams) SetNetworkdomain(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDomainParams) SetNetworkdomain(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdomain"] = v
+	P.P["networkdomain"] = v
 }
 
-func (p *UpdateDomainParams) GetNetworkdomain() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateDomainParams) GetNetworkdomain() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdomain"].(string)
+	value, ok := P.P["networkdomain"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateDomainParams instance,
 // as then you are sure you have configured all required params
 func (s *DomainService) NewUpdateDomainParams(id string) *UpdateDomainParams {
-	p := &UpdateDomainParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateDomainParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a domain with a new name

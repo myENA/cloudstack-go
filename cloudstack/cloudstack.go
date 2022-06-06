@@ -28,6 +28,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/golang/mock/gomock"
 	"io/ioutil"
 	"net"
 	"net/http"
@@ -38,8 +39,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
-	gomock "github.com/golang/mock/gomock"
 )
 
 // UnlimitedResourceID is a special ID to define an unlimited resource

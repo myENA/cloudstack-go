@@ -27,103 +27,103 @@ import (
 )
 
 type LDAPServiceIface interface {
-	AddLdapConfiguration(p *AddLdapConfigurationParams) (*AddLdapConfigurationResponse, error)
+	AddLdapConfiguration(P *AddLdapConfigurationParams) (*AddLdapConfigurationResponse, error)
 	NewAddLdapConfigurationParams(hostname string, port int) *AddLdapConfigurationParams
-	DeleteLdapConfiguration(p *DeleteLdapConfigurationParams) (*DeleteLdapConfigurationResponse, error)
+	DeleteLdapConfiguration(P *DeleteLdapConfigurationParams) (*DeleteLdapConfigurationResponse, error)
 	NewDeleteLdapConfigurationParams(hostname string) *DeleteLdapConfigurationParams
-	ImportLdapUsers(p *ImportLdapUsersParams) (*ImportLdapUsersResponse, error)
+	ImportLdapUsers(P *ImportLdapUsersParams) (*ImportLdapUsersResponse, error)
 	NewImportLdapUsersParams() *ImportLdapUsersParams
-	LdapConfig(p *LdapConfigParams) (*LdapConfigResponse, error)
+	LdapConfig(P *LdapConfigParams) (*LdapConfigResponse, error)
 	NewLdapConfigParams() *LdapConfigParams
-	LdapCreateAccount(p *LdapCreateAccountParams) (*LdapCreateAccountResponse, error)
+	LdapCreateAccount(P *LdapCreateAccountParams) (*LdapCreateAccountResponse, error)
 	NewLdapCreateAccountParams(username string) *LdapCreateAccountParams
-	LdapRemove(p *LdapRemoveParams) (*LdapRemoveResponse, error)
+	LdapRemove(P *LdapRemoveParams) (*LdapRemoveResponse, error)
 	NewLdapRemoveParams() *LdapRemoveParams
-	LinkDomainToLdap(p *LinkDomainToLdapParams) (*LinkDomainToLdapResponse, error)
+	LinkDomainToLdap(P *LinkDomainToLdapParams) (*LinkDomainToLdapResponse, error)
 	NewLinkDomainToLdapParams(accounttype int, domainid string, lDAPType string) *LinkDomainToLdapParams
-	ListLdapConfigurations(p *ListLdapConfigurationsParams) (*ListLdapConfigurationsResponse, error)
+	ListLdapConfigurations(P *ListLdapConfigurationsParams) (*ListLdapConfigurationsResponse, error)
 	NewListLdapConfigurationsParams() *ListLdapConfigurationsParams
-	ListLdapUsers(p *ListLdapUsersParams) (*ListLdapUsersResponse, error)
+	ListLdapUsers(P *ListLdapUsersParams) (*ListLdapUsersResponse, error)
 	NewListLdapUsersParams() *ListLdapUsersParams
-	SearchLdap(p *SearchLdapParams) (*SearchLdapResponse, error)
+	SearchLdap(P *SearchLdapParams) (*SearchLdapResponse, error)
 	NewSearchLdapParams(query string) *SearchLdapParams
 }
 
 type AddLdapConfigurationParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddLdapConfigurationParams) toURLValues() url.Values {
+func (P *AddLdapConfigurationParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["hostname"]; found {
+	if v, found := P.P["hostname"]; found {
 		u.Set("hostname", v.(string))
 	}
-	if v, found := p.p["port"]; found {
+	if v, found := P.P["port"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("port", vv)
 	}
 	return u
 }
 
-func (p *AddLdapConfigurationParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddLdapConfigurationParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *AddLdapConfigurationParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddLdapConfigurationParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *AddLdapConfigurationParams) SetHostname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddLdapConfigurationParams) SetHostname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostname"] = v
+	P.P["hostname"] = v
 }
 
-func (p *AddLdapConfigurationParams) GetHostname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddLdapConfigurationParams) GetHostname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostname"].(string)
+	value, ok := P.P["hostname"].(string)
 	return value, ok
 }
 
-func (p *AddLdapConfigurationParams) SetPort(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddLdapConfigurationParams) SetPort(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["port"] = v
+	P.P["port"] = v
 }
 
-func (p *AddLdapConfigurationParams) GetPort() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddLdapConfigurationParams) GetPort() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["port"].(int)
+	value, ok := P.P["port"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new AddLdapConfigurationParams instance,
 // as then you are sure you have configured all required params
 func (s *LDAPService) NewAddLdapConfigurationParams(hostname string, port int) *AddLdapConfigurationParams {
-	p := &AddLdapConfigurationParams{}
-	p.p = make(map[string]interface{})
-	p.p["hostname"] = hostname
-	p.p["port"] = port
-	return p
+	P := &AddLdapConfigurationParams{}
+	P.P = make(map[string]interface{})
+	P.P["hostname"] = hostname
+	P.P["port"] = port
+	return P
 }
 
 // Add a new Ldap Configuration
@@ -150,79 +150,79 @@ type AddLdapConfigurationResponse struct {
 }
 
 type DeleteLdapConfigurationParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteLdapConfigurationParams) toURLValues() url.Values {
+func (P *DeleteLdapConfigurationParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["hostname"]; found {
+	if v, found := P.P["hostname"]; found {
 		u.Set("hostname", v.(string))
 	}
-	if v, found := p.p["port"]; found {
+	if v, found := P.P["port"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("port", vv)
 	}
 	return u
 }
 
-func (p *DeleteLdapConfigurationParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLdapConfigurationParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *DeleteLdapConfigurationParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLdapConfigurationParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *DeleteLdapConfigurationParams) SetHostname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLdapConfigurationParams) SetHostname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostname"] = v
+	P.P["hostname"] = v
 }
 
-func (p *DeleteLdapConfigurationParams) GetHostname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLdapConfigurationParams) GetHostname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostname"].(string)
+	value, ok := P.P["hostname"].(string)
 	return value, ok
 }
 
-func (p *DeleteLdapConfigurationParams) SetPort(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLdapConfigurationParams) SetPort(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["port"] = v
+	P.P["port"] = v
 }
 
-func (p *DeleteLdapConfigurationParams) GetPort() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLdapConfigurationParams) GetPort() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["port"].(int)
+	value, ok := P.P["port"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteLdapConfigurationParams instance,
 // as then you are sure you have configured all required params
 func (s *LDAPService) NewDeleteLdapConfigurationParams(hostname string) *DeleteLdapConfigurationParams {
-	p := &DeleteLdapConfigurationParams{}
-	p.p = make(map[string]interface{})
-	p.p["hostname"] = hostname
-	return p
+	P := &DeleteLdapConfigurationParams{}
+	P.P = make(map[string]interface{})
+	P.P["hostname"] = hostname
+	return P
 }
 
 // Remove an Ldap Configuration
@@ -249,210 +249,210 @@ type DeleteLdapConfigurationResponse struct {
 }
 
 type ImportLdapUsersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ImportLdapUsersParams) toURLValues() url.Values {
+func (P *ImportLdapUsersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["accountdetails"]; found {
+	if v, found := P.P["accountdetails"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("accountdetails[%d].key", i), k)
 			u.Set(fmt.Sprintf("accountdetails[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["accounttype"]; found {
+	if v, found := P.P["accounttype"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("accounttype", vv)
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["group"]; found {
+	if v, found := P.P["group"]; found {
 		u.Set("group", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["roleid"]; found {
+	if v, found := P.P["roleid"]; found {
 		u.Set("roleid", v.(string))
 	}
-	if v, found := p.p["timezone"]; found {
+	if v, found := P.P["timezone"]; found {
 		u.Set("timezone", v.(string))
 	}
 	return u
 }
 
-func (p *ImportLdapUsersParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ImportLdapUsersParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ImportLdapUsersParams) SetAccountdetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) SetAccountdetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accountdetails"] = v
+	P.P["accountdetails"] = v
 }
 
-func (p *ImportLdapUsersParams) GetAccountdetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) GetAccountdetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accountdetails"].(map[string]string)
+	value, ok := P.P["accountdetails"].(map[string]string)
 	return value, ok
 }
 
-func (p *ImportLdapUsersParams) SetAccounttype(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) SetAccounttype(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accounttype"] = v
+	P.P["accounttype"] = v
 }
 
-func (p *ImportLdapUsersParams) GetAccounttype() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) GetAccounttype() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accounttype"].(int)
+	value, ok := P.P["accounttype"].(int)
 	return value, ok
 }
 
-func (p *ImportLdapUsersParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ImportLdapUsersParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ImportLdapUsersParams) SetGroup(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) SetGroup(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["group"] = v
+	P.P["group"] = v
 }
 
-func (p *ImportLdapUsersParams) GetGroup() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) GetGroup() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["group"].(string)
+	value, ok := P.P["group"].(string)
 	return value, ok
 }
 
-func (p *ImportLdapUsersParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ImportLdapUsersParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ImportLdapUsersParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ImportLdapUsersParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ImportLdapUsersParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ImportLdapUsersParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ImportLdapUsersParams) SetRoleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) SetRoleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["roleid"] = v
+	P.P["roleid"] = v
 }
 
-func (p *ImportLdapUsersParams) GetRoleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) GetRoleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["roleid"].(string)
+	value, ok := P.P["roleid"].(string)
 	return value, ok
 }
 
-func (p *ImportLdapUsersParams) SetTimezone(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) SetTimezone(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["timezone"] = v
+	P.P["timezone"] = v
 }
 
-func (p *ImportLdapUsersParams) GetTimezone() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ImportLdapUsersParams) GetTimezone() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["timezone"].(string)
+	value, ok := P.P["timezone"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ImportLdapUsersParams instance,
 // as then you are sure you have configured all required params
 func (s *LDAPService) NewImportLdapUsersParams() *ImportLdapUsersParams {
-	p := &ImportLdapUsersParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ImportLdapUsersParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Import LDAP users
@@ -483,206 +483,206 @@ type ImportLdapUsersResponse struct {
 }
 
 type LdapConfigParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *LdapConfigParams) toURLValues() url.Values {
+func (P *LdapConfigParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["binddn"]; found {
+	if v, found := P.P["binddn"]; found {
 		u.Set("binddn", v.(string))
 	}
-	if v, found := p.p["bindpass"]; found {
+	if v, found := P.P["bindpass"]; found {
 		u.Set("bindpass", v.(string))
 	}
-	if v, found := p.p["hostname"]; found {
+	if v, found := P.P["hostname"]; found {
 		u.Set("hostname", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["port"]; found {
+	if v, found := P.P["port"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("port", vv)
 	}
-	if v, found := p.p["queryfilter"]; found {
+	if v, found := P.P["queryfilter"]; found {
 		u.Set("queryfilter", v.(string))
 	}
-	if v, found := p.p["searchbase"]; found {
+	if v, found := P.P["searchbase"]; found {
 		u.Set("searchbase", v.(string))
 	}
-	if v, found := p.p["ssl"]; found {
+	if v, found := P.P["ssl"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("ssl", vv)
 	}
-	if v, found := p.p["truststore"]; found {
+	if v, found := P.P["truststore"]; found {
 		u.Set("truststore", v.(string))
 	}
-	if v, found := p.p["truststorepass"]; found {
+	if v, found := P.P["truststorepass"]; found {
 		u.Set("truststorepass", v.(string))
 	}
 	return u
 }
 
-func (p *LdapConfigParams) SetBinddn(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) SetBinddn(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["binddn"] = v
+	P.P["binddn"] = v
 }
 
-func (p *LdapConfigParams) GetBinddn() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) GetBinddn() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["binddn"].(string)
+	value, ok := P.P["binddn"].(string)
 	return value, ok
 }
 
-func (p *LdapConfigParams) SetBindpass(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) SetBindpass(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bindpass"] = v
+	P.P["bindpass"] = v
 }
 
-func (p *LdapConfigParams) GetBindpass() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) GetBindpass() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bindpass"].(string)
+	value, ok := P.P["bindpass"].(string)
 	return value, ok
 }
 
-func (p *LdapConfigParams) SetHostname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) SetHostname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostname"] = v
+	P.P["hostname"] = v
 }
 
-func (p *LdapConfigParams) GetHostname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) GetHostname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostname"].(string)
+	value, ok := P.P["hostname"].(string)
 	return value, ok
 }
 
-func (p *LdapConfigParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *LdapConfigParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *LdapConfigParams) SetPort(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) SetPort(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["port"] = v
+	P.P["port"] = v
 }
 
-func (p *LdapConfigParams) GetPort() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) GetPort() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["port"].(int)
+	value, ok := P.P["port"].(int)
 	return value, ok
 }
 
-func (p *LdapConfigParams) SetQueryfilter(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) SetQueryfilter(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["queryfilter"] = v
+	P.P["queryfilter"] = v
 }
 
-func (p *LdapConfigParams) GetQueryfilter() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) GetQueryfilter() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["queryfilter"].(string)
+	value, ok := P.P["queryfilter"].(string)
 	return value, ok
 }
 
-func (p *LdapConfigParams) SetSearchbase(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) SetSearchbase(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["searchbase"] = v
+	P.P["searchbase"] = v
 }
 
-func (p *LdapConfigParams) GetSearchbase() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) GetSearchbase() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["searchbase"].(string)
+	value, ok := P.P["searchbase"].(string)
 	return value, ok
 }
 
-func (p *LdapConfigParams) SetSsl(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) SetSsl(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ssl"] = v
+	P.P["ssl"] = v
 }
 
-func (p *LdapConfigParams) GetSsl() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) GetSsl() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ssl"].(bool)
+	value, ok := P.P["ssl"].(bool)
 	return value, ok
 }
 
-func (p *LdapConfigParams) SetTruststore(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) SetTruststore(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["truststore"] = v
+	P.P["truststore"] = v
 }
 
-func (p *LdapConfigParams) GetTruststore() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) GetTruststore() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["truststore"].(string)
+	value, ok := P.P["truststore"].(string)
 	return value, ok
 }
 
-func (p *LdapConfigParams) SetTruststorepass(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) SetTruststorepass(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["truststorepass"] = v
+	P.P["truststorepass"] = v
 }
 
-func (p *LdapConfigParams) GetTruststorepass() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapConfigParams) GetTruststorepass() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["truststorepass"].(string)
+	value, ok := P.P["truststorepass"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new LdapConfigParams instance,
 // as then you are sure you have configured all required params
 func (s *LDAPService) NewLdapConfigParams() *LdapConfigParams {
-	p := &LdapConfigParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &LdapConfigParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // (Deprecated, use addLdapConfiguration) Configure the LDAP context for this site.
@@ -713,209 +713,209 @@ type LdapConfigResponse struct {
 }
 
 type LdapCreateAccountParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *LdapCreateAccountParams) toURLValues() url.Values {
+func (P *LdapCreateAccountParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["accountdetails"]; found {
+	if v, found := P.P["accountdetails"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("accountdetails[%d].key", i), k)
 			u.Set(fmt.Sprintf("accountdetails[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["accountid"]; found {
+	if v, found := P.P["accountid"]; found {
 		u.Set("accountid", v.(string))
 	}
-	if v, found := p.p["accounttype"]; found {
+	if v, found := P.P["accounttype"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("accounttype", vv)
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["networkdomain"]; found {
+	if v, found := P.P["networkdomain"]; found {
 		u.Set("networkdomain", v.(string))
 	}
-	if v, found := p.p["roleid"]; found {
+	if v, found := P.P["roleid"]; found {
 		u.Set("roleid", v.(string))
 	}
-	if v, found := p.p["timezone"]; found {
+	if v, found := P.P["timezone"]; found {
 		u.Set("timezone", v.(string))
 	}
-	if v, found := p.p["userid"]; found {
+	if v, found := P.P["userid"]; found {
 		u.Set("userid", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *LdapCreateAccountParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *LdapCreateAccountParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *LdapCreateAccountParams) SetAccountdetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) SetAccountdetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accountdetails"] = v
+	P.P["accountdetails"] = v
 }
 
-func (p *LdapCreateAccountParams) GetAccountdetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) GetAccountdetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accountdetails"].(map[string]string)
+	value, ok := P.P["accountdetails"].(map[string]string)
 	return value, ok
 }
 
-func (p *LdapCreateAccountParams) SetAccountid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) SetAccountid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accountid"] = v
+	P.P["accountid"] = v
 }
 
-func (p *LdapCreateAccountParams) GetAccountid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) GetAccountid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accountid"].(string)
+	value, ok := P.P["accountid"].(string)
 	return value, ok
 }
 
-func (p *LdapCreateAccountParams) SetAccounttype(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) SetAccounttype(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accounttype"] = v
+	P.P["accounttype"] = v
 }
 
-func (p *LdapCreateAccountParams) GetAccounttype() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) GetAccounttype() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accounttype"].(int)
+	value, ok := P.P["accounttype"].(int)
 	return value, ok
 }
 
-func (p *LdapCreateAccountParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *LdapCreateAccountParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *LdapCreateAccountParams) SetNetworkdomain(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) SetNetworkdomain(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdomain"] = v
+	P.P["networkdomain"] = v
 }
 
-func (p *LdapCreateAccountParams) GetNetworkdomain() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) GetNetworkdomain() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdomain"].(string)
+	value, ok := P.P["networkdomain"].(string)
 	return value, ok
 }
 
-func (p *LdapCreateAccountParams) SetRoleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) SetRoleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["roleid"] = v
+	P.P["roleid"] = v
 }
 
-func (p *LdapCreateAccountParams) GetRoleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) GetRoleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["roleid"].(string)
+	value, ok := P.P["roleid"].(string)
 	return value, ok
 }
 
-func (p *LdapCreateAccountParams) SetTimezone(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) SetTimezone(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["timezone"] = v
+	P.P["timezone"] = v
 }
 
-func (p *LdapCreateAccountParams) GetTimezone() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) GetTimezone() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["timezone"].(string)
+	value, ok := P.P["timezone"].(string)
 	return value, ok
 }
 
-func (p *LdapCreateAccountParams) SetUserid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) SetUserid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["userid"] = v
+	P.P["userid"] = v
 }
 
-func (p *LdapCreateAccountParams) GetUserid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) GetUserid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["userid"].(string)
+	value, ok := P.P["userid"].(string)
 	return value, ok
 }
 
-func (p *LdapCreateAccountParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *LdapCreateAccountParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LdapCreateAccountParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new LdapCreateAccountParams instance,
 // as then you are sure you have configured all required params
 func (s *LDAPService) NewLdapCreateAccountParams(username string) *LdapCreateAccountParams {
-	p := &LdapCreateAccountParams{}
-	p.p = make(map[string]interface{})
-	p.p["username"] = username
-	return p
+	P := &LdapCreateAccountParams{}
+	P.P = make(map[string]interface{})
+	P.P["username"] = username
+	return P
 }
 
 // Creates an account from an LDAP user
@@ -1023,12 +1023,12 @@ type LdapCreateAccountResponseUser struct {
 }
 
 type LdapRemoveParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *LdapRemoveParams) toURLValues() url.Values {
+func (P *LdapRemoveParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
 	return u
@@ -1037,9 +1037,9 @@ func (p *LdapRemoveParams) toURLValues() url.Values {
 // You should always use this function to get a new LdapRemoveParams instance,
 // as then you are sure you have configured all required params
 func (s *LDAPService) NewLdapRemoveParams() *LdapRemoveParams {
-	p := &LdapRemoveParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &LdapRemoveParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // (Deprecated , use deleteLdapConfiguration) Remove the LDAP context for this site.
@@ -1070,135 +1070,135 @@ type LdapRemoveResponse struct {
 }
 
 type LinkDomainToLdapParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *LinkDomainToLdapParams) toURLValues() url.Values {
+func (P *LinkDomainToLdapParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["accounttype"]; found {
+	if v, found := P.P["accounttype"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("accounttype", vv)
 	}
-	if v, found := p.p["admin"]; found {
+	if v, found := P.P["admin"]; found {
 		u.Set("admin", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["ldapdomain"]; found {
+	if v, found := P.P["ldapdomain"]; found {
 		u.Set("ldapdomain", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *LinkDomainToLdapParams) SetAccounttype(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) SetAccounttype(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accounttype"] = v
+	P.P["accounttype"] = v
 }
 
-func (p *LinkDomainToLdapParams) GetAccounttype() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) GetAccounttype() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accounttype"].(int)
+	value, ok := P.P["accounttype"].(int)
 	return value, ok
 }
 
-func (p *LinkDomainToLdapParams) SetAdmin(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) SetAdmin(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["admin"] = v
+	P.P["admin"] = v
 }
 
-func (p *LinkDomainToLdapParams) GetAdmin() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) GetAdmin() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["admin"].(string)
+	value, ok := P.P["admin"].(string)
 	return value, ok
 }
 
-func (p *LinkDomainToLdapParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *LinkDomainToLdapParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *LinkDomainToLdapParams) SetLdapdomain(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) SetLdapdomain(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ldapdomain"] = v
+	P.P["ldapdomain"] = v
 }
 
-func (p *LinkDomainToLdapParams) GetLdapdomain() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) GetLdapdomain() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ldapdomain"].(string)
+	value, ok := P.P["ldapdomain"].(string)
 	return value, ok
 }
 
-func (p *LinkDomainToLdapParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *LinkDomainToLdapParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *LinkDomainToLdapParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *LinkDomainToLdapParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LinkDomainToLdapParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new LinkDomainToLdapParams instance,
 // as then you are sure you have configured all required params
 func (s *LDAPService) NewLinkDomainToLdapParams(accounttype int, domainid string, lDAPType string) *LinkDomainToLdapParams {
-	p := &LinkDomainToLdapParams{}
-	p.p = make(map[string]interface{})
-	p.p["accounttype"] = accounttype
-	p.p["domainid"] = domainid
-	p.p["type"] = lDAPType
-	return p
+	P := &LinkDomainToLdapParams{}
+	P.P = make(map[string]interface{})
+	P.P["accounttype"] = accounttype
+	P.P["domainid"] = domainid
+	P.P["type"] = lDAPType
+	return P
 }
 
 // link an existing cloudstack domain to group or OU in ldap
@@ -1228,153 +1228,153 @@ type LinkDomainToLdapResponse struct {
 }
 
 type ListLdapConfigurationsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListLdapConfigurationsParams) toURLValues() url.Values {
+func (P *ListLdapConfigurationsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["hostname"]; found {
+	if v, found := P.P["hostname"]; found {
 		u.Set("hostname", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["port"]; found {
+	if v, found := P.P["port"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("port", vv)
 	}
 	return u
 }
 
-func (p *ListLdapConfigurationsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListLdapConfigurationsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListLdapConfigurationsParams) SetHostname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) SetHostname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostname"] = v
+	P.P["hostname"] = v
 }
 
-func (p *ListLdapConfigurationsParams) GetHostname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) GetHostname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostname"].(string)
+	value, ok := P.P["hostname"].(string)
 	return value, ok
 }
 
-func (p *ListLdapConfigurationsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListLdapConfigurationsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListLdapConfigurationsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListLdapConfigurationsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListLdapConfigurationsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListLdapConfigurationsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListLdapConfigurationsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListLdapConfigurationsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListLdapConfigurationsParams) SetPort(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) SetPort(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["port"] = v
+	P.P["port"] = v
 }
 
-func (p *ListLdapConfigurationsParams) GetPort() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapConfigurationsParams) GetPort() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["port"].(int)
+	value, ok := P.P["port"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListLdapConfigurationsParams instance,
 // as then you are sure you have configured all required params
 func (s *LDAPService) NewListLdapConfigurationsParams() *ListLdapConfigurationsParams {
-	p := &ListLdapConfigurationsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListLdapConfigurationsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists all LDAP configurations
@@ -1406,133 +1406,133 @@ type LdapConfiguration struct {
 }
 
 type ListLdapUsersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListLdapUsersParams) toURLValues() url.Values {
+func (P *ListLdapUsersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listtype"]; found {
+	if v, found := P.P["listtype"]; found {
 		u.Set("listtype", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["userfilter"]; found {
+	if v, found := P.P["userfilter"]; found {
 		u.Set("userfilter", v.(string))
 	}
 	return u
 }
 
-func (p *ListLdapUsersParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListLdapUsersParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListLdapUsersParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListLdapUsersParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListLdapUsersParams) SetListtype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) SetListtype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listtype"] = v
+	P.P["listtype"] = v
 }
 
-func (p *ListLdapUsersParams) GetListtype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) GetListtype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listtype"].(string)
+	value, ok := P.P["listtype"].(string)
 	return value, ok
 }
 
-func (p *ListLdapUsersParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListLdapUsersParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListLdapUsersParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListLdapUsersParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListLdapUsersParams) SetUserfilter(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) SetUserfilter(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["userfilter"] = v
+	P.P["userfilter"] = v
 }
 
-func (p *ListLdapUsersParams) GetUserfilter() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLdapUsersParams) GetUserfilter() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["userfilter"].(string)
+	value, ok := P.P["userfilter"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListLdapUsersParams instance,
 // as then you are sure you have configured all required params
 func (s *LDAPService) NewListLdapUsersParams() *ListLdapUsersParams {
-	p := &ListLdapUsersParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListLdapUsersParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists LDAP Users according to the specifications from the user request.
@@ -1568,98 +1568,98 @@ type LdapUser struct {
 }
 
 type SearchLdapParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *SearchLdapParams) toURLValues() url.Values {
+func (P *SearchLdapParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["query"]; found {
+	if v, found := P.P["query"]; found {
 		u.Set("query", v.(string))
 	}
 	return u
 }
 
-func (p *SearchLdapParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *SearchLdapParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *SearchLdapParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *SearchLdapParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *SearchLdapParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *SearchLdapParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *SearchLdapParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *SearchLdapParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *SearchLdapParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *SearchLdapParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *SearchLdapParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *SearchLdapParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *SearchLdapParams) SetQuery(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *SearchLdapParams) SetQuery(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["query"] = v
+	P.P["query"] = v
 }
 
-func (p *SearchLdapParams) GetQuery() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *SearchLdapParams) GetQuery() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["query"].(string)
+	value, ok := P.P["query"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new SearchLdapParams instance,
 // as then you are sure you have configured all required params
 func (s *LDAPService) NewSearchLdapParams(query string) *SearchLdapParams {
-	p := &SearchLdapParams{}
-	p.p = make(map[string]interface{})
-	p.p["query"] = query
-	return p
+	P := &SearchLdapParams{}
+	P.P = make(map[string]interface{})
+	P.P["query"] = query
+	return P
 }
 
 // Searches LDAP based on the username attribute

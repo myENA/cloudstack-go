@@ -28,118 +28,118 @@ import (
 )
 
 type RoleServiceIface interface {
-	CreateRole(p *CreateRoleParams) (*CreateRoleResponse, error)
+	CreateRole(P *CreateRoleParams) (*CreateRoleResponse, error)
 	NewCreateRoleParams(name string) *CreateRoleParams
-	CreateRolePermission(p *CreateRolePermissionParams) (*CreateRolePermissionResponse, error)
+	CreateRolePermission(P *CreateRolePermissionParams) (*CreateRolePermissionResponse, error)
 	NewCreateRolePermissionParams(permission string, roleid string, rule string) *CreateRolePermissionParams
-	DeleteRole(p *DeleteRoleParams) (*DeleteRoleResponse, error)
+	DeleteRole(P *DeleteRoleParams) (*DeleteRoleResponse, error)
 	NewDeleteRoleParams(id string) *DeleteRoleParams
-	DeleteRolePermission(p *DeleteRolePermissionParams) (*DeleteRolePermissionResponse, error)
+	DeleteRolePermission(P *DeleteRolePermissionParams) (*DeleteRolePermissionResponse, error)
 	NewDeleteRolePermissionParams(id string) *DeleteRolePermissionParams
-	ListRolePermissions(p *ListRolePermissionsParams) (*ListRolePermissionsResponse, error)
+	ListRolePermissions(P *ListRolePermissionsParams) (*ListRolePermissionsResponse, error)
 	NewListRolePermissionsParams() *ListRolePermissionsParams
-	ListRoles(p *ListRolesParams) (*ListRolesResponse, error)
+	ListRoles(P *ListRolesParams) (*ListRolesResponse, error)
 	NewListRolesParams() *ListRolesParams
 	GetRoleID(name string, opts ...OptionFunc) (string, int, error)
 	GetRoleByName(name string, opts ...OptionFunc) (*Role, int, error)
 	GetRoleByID(id string, opts ...OptionFunc) (*Role, int, error)
-	UpdateRole(p *UpdateRoleParams) (*UpdateRoleResponse, error)
+	UpdateRole(P *UpdateRoleParams) (*UpdateRoleResponse, error)
 	NewUpdateRoleParams(id string) *UpdateRoleParams
-	UpdateRolePermission(p *UpdateRolePermissionParams) (*UpdateRolePermissionResponse, error)
+	UpdateRolePermission(P *UpdateRolePermissionParams) (*UpdateRolePermissionResponse, error)
 	NewUpdateRolePermissionParams(roleid string) *UpdateRolePermissionParams
 }
 
 type CreateRoleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateRoleParams) toURLValues() url.Values {
+func (P *CreateRoleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["roleid"]; found {
+	if v, found := P.P["roleid"]; found {
 		u.Set("roleid", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *CreateRoleParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRoleParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *CreateRoleParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRoleParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *CreateRoleParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRoleParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateRoleParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRoleParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateRoleParams) SetRoleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRoleParams) SetRoleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["roleid"] = v
+	P.P["roleid"] = v
 }
 
-func (p *CreateRoleParams) GetRoleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRoleParams) GetRoleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["roleid"].(string)
+	value, ok := P.P["roleid"].(string)
 	return value, ok
 }
 
-func (p *CreateRoleParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRoleParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *CreateRoleParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRoleParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateRoleParams instance,
 // as then you are sure you have configured all required params
 func (s *RoleService) NewCreateRoleParams(name string) *CreateRoleParams {
-	p := &CreateRoleParams{}
-	p.p = make(map[string]interface{})
-	p.p["name"] = name
-	return p
+	P := &CreateRoleParams{}
+	P.P = make(map[string]interface{})
+	P.P["name"] = name
+	return P
 }
 
 // Creates a role
@@ -168,98 +168,98 @@ type CreateRoleResponse struct {
 }
 
 type CreateRolePermissionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateRolePermissionParams) toURLValues() url.Values {
+func (P *CreateRolePermissionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["permission"]; found {
+	if v, found := P.P["permission"]; found {
 		u.Set("permission", v.(string))
 	}
-	if v, found := p.p["roleid"]; found {
+	if v, found := P.P["roleid"]; found {
 		u.Set("roleid", v.(string))
 	}
-	if v, found := p.p["rule"]; found {
+	if v, found := P.P["rule"]; found {
 		u.Set("rule", v.(string))
 	}
 	return u
 }
 
-func (p *CreateRolePermissionParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRolePermissionParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *CreateRolePermissionParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRolePermissionParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *CreateRolePermissionParams) SetPermission(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRolePermissionParams) SetPermission(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["permission"] = v
+	P.P["permission"] = v
 }
 
-func (p *CreateRolePermissionParams) GetPermission() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRolePermissionParams) GetPermission() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["permission"].(string)
+	value, ok := P.P["permission"].(string)
 	return value, ok
 }
 
-func (p *CreateRolePermissionParams) SetRoleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRolePermissionParams) SetRoleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["roleid"] = v
+	P.P["roleid"] = v
 }
 
-func (p *CreateRolePermissionParams) GetRoleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRolePermissionParams) GetRoleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["roleid"].(string)
+	value, ok := P.P["roleid"].(string)
 	return value, ok
 }
 
-func (p *CreateRolePermissionParams) SetRule(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRolePermissionParams) SetRule(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["rule"] = v
+	P.P["rule"] = v
 }
 
-func (p *CreateRolePermissionParams) GetRule() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRolePermissionParams) GetRule() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["rule"].(string)
+	value, ok := P.P["rule"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateRolePermissionParams instance,
 // as then you are sure you have configured all required params
 func (s *RoleService) NewCreateRolePermissionParams(permission string, roleid string, rule string) *CreateRolePermissionParams {
-	p := &CreateRolePermissionParams{}
-	p.p = make(map[string]interface{})
-	p.p["permission"] = permission
-	p.p["roleid"] = roleid
-	p.p["rule"] = rule
-	return p
+	P := &CreateRolePermissionParams{}
+	P.P = make(map[string]interface{})
+	P.P["permission"] = permission
+	P.P["roleid"] = roleid
+	P.P["rule"] = rule
+	return P
 }
 
 // Adds an API permission to a role
@@ -289,42 +289,42 @@ type CreateRolePermissionResponse struct {
 }
 
 type DeleteRoleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteRoleParams) toURLValues() url.Values {
+func (P *DeleteRoleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteRoleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteRoleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteRoleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteRoleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteRoleParams instance,
 // as then you are sure you have configured all required params
 func (s *RoleService) NewDeleteRoleParams(id string) *DeleteRoleParams {
-	p := &DeleteRoleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteRoleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a role
@@ -377,42 +377,42 @@ func (r *DeleteRoleResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DeleteRolePermissionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteRolePermissionParams) toURLValues() url.Values {
+func (P *DeleteRolePermissionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteRolePermissionParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteRolePermissionParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteRolePermissionParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteRolePermissionParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteRolePermissionParams instance,
 // as then you are sure you have configured all required params
 func (s *RoleService) NewDeleteRolePermissionParams(id string) *DeleteRolePermissionParams {
-	p := &DeleteRolePermissionParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteRolePermissionParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a role permission
@@ -465,41 +465,41 @@ func (r *DeleteRolePermissionResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListRolePermissionsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListRolePermissionsParams) toURLValues() url.Values {
+func (P *ListRolePermissionsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["roleid"]; found {
+	if v, found := P.P["roleid"]; found {
 		u.Set("roleid", v.(string))
 	}
 	return u
 }
 
-func (p *ListRolePermissionsParams) SetRoleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolePermissionsParams) SetRoleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["roleid"] = v
+	P.P["roleid"] = v
 }
 
-func (p *ListRolePermissionsParams) GetRoleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolePermissionsParams) GetRoleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["roleid"].(string)
+	value, ok := P.P["roleid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListRolePermissionsParams instance,
 // as then you are sure you have configured all required params
 func (s *RoleService) NewListRolePermissionsParams() *ListRolePermissionsParams {
-	p := &ListRolePermissionsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListRolePermissionsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists role permissions
@@ -534,149 +534,149 @@ type RolePermission struct {
 }
 
 type ListRolesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListRolesParams) toURLValues() url.Values {
+func (P *ListRolesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *ListRolesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListRolesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListRolesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListRolesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListRolesParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListRolesParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListRolesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListRolesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListRolesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListRolesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListRolesParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *ListRolesParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRolesParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListRolesParams instance,
 // as then you are sure you have configured all required params
 func (s *RoleService) NewListRolesParams() *ListRolesParams {
-	p := &ListRolesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListRolesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *RoleService) GetRoleID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListRolesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListRolesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListRoles(p)
+	l, err := s.ListRoles(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -715,18 +715,18 @@ func (s *RoleService) GetRoleByName(name string, opts ...OptionFunc) (*Role, int
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *RoleService) GetRoleByID(id string, opts ...OptionFunc) (*Role, int, error) {
-	p := &ListRolesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListRolesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListRoles(p)
+	l, err := s.ListRoles(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -777,99 +777,99 @@ type Role struct {
 }
 
 type UpdateRoleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateRoleParams) toURLValues() url.Values {
+func (P *UpdateRoleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateRoleParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRoleParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *UpdateRoleParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRoleParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *UpdateRoleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRoleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateRoleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRoleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateRoleParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRoleParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateRoleParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRoleParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateRoleParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRoleParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *UpdateRoleParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRoleParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateRoleParams instance,
 // as then you are sure you have configured all required params
 func (s *RoleService) NewUpdateRoleParams(id string) *UpdateRoleParams {
-	p := &UpdateRoleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateRoleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a role
@@ -898,97 +898,97 @@ type UpdateRoleResponse struct {
 }
 
 type UpdateRolePermissionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateRolePermissionParams) toURLValues() url.Values {
+func (P *UpdateRolePermissionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["permission"]; found {
+	if v, found := P.P["permission"]; found {
 		u.Set("permission", v.(string))
 	}
-	if v, found := p.p["roleid"]; found {
+	if v, found := P.P["roleid"]; found {
 		u.Set("roleid", v.(string))
 	}
-	if v, found := p.p["ruleid"]; found {
+	if v, found := P.P["ruleid"]; found {
 		u.Set("ruleid", v.(string))
 	}
-	if v, found := p.p["ruleorder"]; found {
+	if v, found := P.P["ruleorder"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("ruleorder", vv)
 	}
 	return u
 }
 
-func (p *UpdateRolePermissionParams) SetPermission(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRolePermissionParams) SetPermission(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["permission"] = v
+	P.P["permission"] = v
 }
 
-func (p *UpdateRolePermissionParams) GetPermission() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRolePermissionParams) GetPermission() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["permission"].(string)
+	value, ok := P.P["permission"].(string)
 	return value, ok
 }
 
-func (p *UpdateRolePermissionParams) SetRoleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRolePermissionParams) SetRoleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["roleid"] = v
+	P.P["roleid"] = v
 }
 
-func (p *UpdateRolePermissionParams) GetRoleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRolePermissionParams) GetRoleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["roleid"].(string)
+	value, ok := P.P["roleid"].(string)
 	return value, ok
 }
 
-func (p *UpdateRolePermissionParams) SetRuleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRolePermissionParams) SetRuleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ruleid"] = v
+	P.P["ruleid"] = v
 }
 
-func (p *UpdateRolePermissionParams) GetRuleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRolePermissionParams) GetRuleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ruleid"].(string)
+	value, ok := P.P["ruleid"].(string)
 	return value, ok
 }
 
-func (p *UpdateRolePermissionParams) SetRuleorder(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRolePermissionParams) SetRuleorder(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ruleorder"] = v
+	P.P["ruleorder"] = v
 }
 
-func (p *UpdateRolePermissionParams) GetRuleorder() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRolePermissionParams) GetRuleorder() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ruleorder"].([]string)
+	value, ok := P.P["ruleorder"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateRolePermissionParams instance,
 // as then you are sure you have configured all required params
 func (s *RoleService) NewUpdateRolePermissionParams(roleid string) *UpdateRolePermissionParams {
-	p := &UpdateRolePermissionParams{}
-	p.p = make(map[string]interface{})
-	p.p["roleid"] = roleid
-	return p
+	P := &UpdateRolePermissionParams{}
+	P.P = make(map[string]interface{})
+	P.P["roleid"] = roleid
+	return P
 }
 
 // Updates a role permission order

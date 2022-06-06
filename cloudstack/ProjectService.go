@@ -28,75 +28,75 @@ import (
 )
 
 type ProjectServiceIface interface {
-	ActivateProject(p *ActivateProjectParams) (*ActivateProjectResponse, error)
+	ActivateProject(P *ActivateProjectParams) (*ActivateProjectResponse, error)
 	NewActivateProjectParams(id string) *ActivateProjectParams
-	CreateProject(p *CreateProjectParams) (*CreateProjectResponse, error)
+	CreateProject(P *CreateProjectParams) (*CreateProjectResponse, error)
 	NewCreateProjectParams(displaytext string, name string) *CreateProjectParams
-	DeleteProject(p *DeleteProjectParams) (*DeleteProjectResponse, error)
+	DeleteProject(P *DeleteProjectParams) (*DeleteProjectResponse, error)
 	NewDeleteProjectParams(id string) *DeleteProjectParams
-	DeleteProjectInvitation(p *DeleteProjectInvitationParams) (*DeleteProjectInvitationResponse, error)
+	DeleteProjectInvitation(P *DeleteProjectInvitationParams) (*DeleteProjectInvitationResponse, error)
 	NewDeleteProjectInvitationParams(id string) *DeleteProjectInvitationParams
-	ListProjectInvitations(p *ListProjectInvitationsParams) (*ListProjectInvitationsResponse, error)
+	ListProjectInvitations(P *ListProjectInvitationsParams) (*ListProjectInvitationsResponse, error)
 	NewListProjectInvitationsParams() *ListProjectInvitationsParams
 	GetProjectInvitationByID(id string, opts ...OptionFunc) (*ProjectInvitation, int, error)
-	ListProjects(p *ListProjectsParams) (*ListProjectsResponse, error)
+	ListProjects(P *ListProjectsParams) (*ListProjectsResponse, error)
 	NewListProjectsParams() *ListProjectsParams
 	GetProjectID(name string, opts ...OptionFunc) (string, int, error)
 	GetProjectByName(name string, opts ...OptionFunc) (*Project, int, error)
 	GetProjectByID(id string, opts ...OptionFunc) (*Project, int, error)
-	SuspendProject(p *SuspendProjectParams) (*SuspendProjectResponse, error)
+	SuspendProject(P *SuspendProjectParams) (*SuspendProjectResponse, error)
 	NewSuspendProjectParams(id string) *SuspendProjectParams
-	UpdateProject(p *UpdateProjectParams) (*UpdateProjectResponse, error)
+	UpdateProject(P *UpdateProjectParams) (*UpdateProjectResponse, error)
 	NewUpdateProjectParams(id string) *UpdateProjectParams
-	UpdateProjectInvitation(p *UpdateProjectInvitationParams) (*UpdateProjectInvitationResponse, error)
+	UpdateProjectInvitation(P *UpdateProjectInvitationParams) (*UpdateProjectInvitationResponse, error)
 	NewUpdateProjectInvitationParams(projectid string) *UpdateProjectInvitationParams
-	ListProjectRolePermissions(p *ListProjectRolePermissionsParams) (*ListProjectRolePermissionsResponse, error)
+	ListProjectRolePermissions(P *ListProjectRolePermissionsParams) (*ListProjectRolePermissionsResponse, error)
 	NewListProjectRolePermissionsParams(projectid string) *ListProjectRolePermissionsParams
-	CreateProjectRolePermission(p *CreateProjectRolePermissionParams) (*CreateProjectRolePermissionResponse, error)
+	CreateProjectRolePermission(P *CreateProjectRolePermissionParams) (*CreateProjectRolePermissionResponse, error)
 	NewCreateProjectRolePermissionParams(permission string, projectid string, projectroleid string, rule string) *CreateProjectRolePermissionParams
-	UpdateProjectRolePermission(p *UpdateProjectRolePermissionParams) (*UpdateProjectRolePermissionResponse, error)
+	UpdateProjectRolePermission(P *UpdateProjectRolePermissionParams) (*UpdateProjectRolePermissionResponse, error)
 	NewUpdateProjectRolePermissionParams(projectid string, projectroleid string) *UpdateProjectRolePermissionParams
-	DeleteProjectRolePermission(p *DeleteProjectRolePermissionParams) (*DeleteProjectRolePermissionResponse, error)
+	DeleteProjectRolePermission(P *DeleteProjectRolePermissionParams) (*DeleteProjectRolePermissionResponse, error)
 	NewDeleteProjectRolePermissionParams(id string, projectid string) *DeleteProjectRolePermissionParams
 }
 
 type ActivateProjectParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ActivateProjectParams) toURLValues() url.Values {
+func (P *ActivateProjectParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *ActivateProjectParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ActivateProjectParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ActivateProjectParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ActivateProjectParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ActivateProjectParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewActivateProjectParams(id string) *ActivateProjectParams {
-	p := &ActivateProjectParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &ActivateProjectParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Activates a project
@@ -186,133 +186,133 @@ type ActivateProjectResponse struct {
 }
 
 type CreateProjectParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateProjectParams) toURLValues() url.Values {
+func (P *CreateProjectParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["accountid"]; found {
+	if v, found := P.P["accountid"]; found {
 		u.Set("accountid", v.(string))
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["userid"]; found {
+	if v, found := P.P["userid"]; found {
 		u.Set("userid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateProjectParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *CreateProjectParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *CreateProjectParams) SetAccountid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) SetAccountid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accountid"] = v
+	P.P["accountid"] = v
 }
 
-func (p *CreateProjectParams) GetAccountid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) GetAccountid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accountid"].(string)
+	value, ok := P.P["accountid"].(string)
 	return value, ok
 }
 
-func (p *CreateProjectParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *CreateProjectParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *CreateProjectParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateProjectParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateProjectParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateProjectParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateProjectParams) SetUserid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) SetUserid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["userid"] = v
+	P.P["userid"] = v
 }
 
-func (p *CreateProjectParams) GetUserid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectParams) GetUserid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["userid"].(string)
+	value, ok := P.P["userid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateProjectParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewCreateProjectParams(displaytext string, name string) *CreateProjectParams {
-	p := &CreateProjectParams{}
-	p.p = make(map[string]interface{})
-	p.p["displaytext"] = displaytext
-	p.p["name"] = name
-	return p
+	P := &CreateProjectParams{}
+	P.P = make(map[string]interface{})
+	P.P["displaytext"] = displaytext
+	P.P["name"] = name
+	return P
 }
 
 // Creates a project
@@ -402,61 +402,61 @@ type CreateProjectResponse struct {
 }
 
 type DeleteProjectParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteProjectParams) toURLValues() url.Values {
+func (P *DeleteProjectParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["cleanup"]; found {
+	if v, found := P.P["cleanup"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("cleanup", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteProjectParams) SetCleanup(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteProjectParams) SetCleanup(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cleanup"] = v
+	P.P["cleanup"] = v
 }
 
-func (p *DeleteProjectParams) GetCleanup() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteProjectParams) GetCleanup() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cleanup"].(bool)
+	value, ok := P.P["cleanup"].(bool)
 	return value, ok
 }
 
-func (p *DeleteProjectParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteProjectParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteProjectParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteProjectParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteProjectParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewDeleteProjectParams(id string) *DeleteProjectParams {
-	p := &DeleteProjectParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteProjectParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a project
@@ -497,42 +497,42 @@ type DeleteProjectResponse struct {
 }
 
 type DeleteProjectInvitationParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteProjectInvitationParams) toURLValues() url.Values {
+func (P *DeleteProjectInvitationParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteProjectInvitationParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteProjectInvitationParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteProjectInvitationParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteProjectInvitationParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteProjectInvitationParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewDeleteProjectInvitationParams(id string) *DeleteProjectInvitationParams {
-	p := &DeleteProjectInvitationParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteProjectInvitationParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes project invitation
@@ -573,260 +573,260 @@ type DeleteProjectInvitationResponse struct {
 }
 
 type ListProjectInvitationsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListProjectInvitationsParams) toURLValues() url.Values {
+func (P *ListProjectInvitationsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["activeonly"]; found {
+	if v, found := P.P["activeonly"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("activeonly", vv)
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["userid"]; found {
+	if v, found := P.P["userid"]; found {
 		u.Set("userid", v.(string))
 	}
 	return u
 }
 
-func (p *ListProjectInvitationsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListProjectInvitationsParams) SetActiveonly(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetActiveonly(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["activeonly"] = v
+	P.P["activeonly"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetActiveonly() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetActiveonly() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["activeonly"].(bool)
+	value, ok := P.P["activeonly"].(bool)
 	return value, ok
 }
 
-func (p *ListProjectInvitationsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListProjectInvitationsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListProjectInvitationsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListProjectInvitationsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListProjectInvitationsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListProjectInvitationsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListProjectInvitationsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListProjectInvitationsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListProjectInvitationsParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListProjectInvitationsParams) SetUserid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) SetUserid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["userid"] = v
+	P.P["userid"] = v
 }
 
-func (p *ListProjectInvitationsParams) GetUserid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectInvitationsParams) GetUserid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["userid"].(string)
+	value, ok := P.P["userid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListProjectInvitationsParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewListProjectInvitationsParams() *ListProjectInvitationsParams {
-	p := &ListProjectInvitationsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListProjectInvitationsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ProjectService) GetProjectInvitationByID(id string, opts ...OptionFunc) (*ProjectInvitation, int, error) {
-	p := &ListProjectInvitationsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListProjectInvitationsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListProjectInvitations(p)
+	l, err := s.ListProjectInvitations(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -881,319 +881,319 @@ type ProjectInvitation struct {
 }
 
 type ListProjectsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListProjectsParams) toURLValues() url.Values {
+func (P *ListProjectsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("details", vv)
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["showicon"]; found {
+	if v, found := P.P["showicon"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showicon", vv)
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *ListProjectsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListProjectsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetDetails(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetDetails(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *ListProjectsParams) GetDetails() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetDetails() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].([]string)
+	value, ok := P.P["details"].([]string)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *ListProjectsParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListProjectsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListProjectsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListProjectsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListProjectsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListProjectsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListProjectsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListProjectsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListProjectsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetShowicon(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetShowicon(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showicon"] = v
+	P.P["showicon"] = v
 }
 
-func (p *ListProjectsParams) GetShowicon() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetShowicon() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showicon"].(bool)
+	value, ok := P.P["showicon"].(bool)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListProjectsParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListProjectsParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListProjectsParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *ListProjectsParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectsParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListProjectsParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewListProjectsParams() *ListProjectsParams {
-	p := &ListProjectsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListProjectsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ProjectService) GetProjectID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListProjectsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListProjectsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListProjects(p)
+	l, err := s.ListProjects(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1232,18 +1232,18 @@ func (s *ProjectService) GetProjectByName(name string, opts ...OptionFunc) (*Pro
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ProjectService) GetProjectByID(id string, opts ...OptionFunc) (*Project, int, error) {
-	p := &ListProjectsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListProjectsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListProjects(p)
+	l, err := s.ListProjects(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1335,42 +1335,42 @@ type Project struct {
 }
 
 type SuspendProjectParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *SuspendProjectParams) toURLValues() url.Values {
+func (P *SuspendProjectParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *SuspendProjectParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *SuspendProjectParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *SuspendProjectParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *SuspendProjectParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new SuspendProjectParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewSuspendProjectParams(id string) *SuspendProjectParams {
-	p := &SuspendProjectParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &SuspendProjectParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Suspends a project
@@ -1460,133 +1460,133 @@ type SuspendProjectResponse struct {
 }
 
 type UpdateProjectParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateProjectParams) toURLValues() url.Values {
+func (P *UpdateProjectParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["roletype"]; found {
+	if v, found := P.P["roletype"]; found {
 		u.Set("roletype", v.(string))
 	}
-	if v, found := p.p["swapowner"]; found {
+	if v, found := P.P["swapowner"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("swapowner", vv)
 	}
-	if v, found := p.p["userid"]; found {
+	if v, found := P.P["userid"]; found {
 		u.Set("userid", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateProjectParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *UpdateProjectParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *UpdateProjectParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *UpdateProjectParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *UpdateProjectParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateProjectParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateProjectParams) SetRoletype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) SetRoletype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["roletype"] = v
+	P.P["roletype"] = v
 }
 
-func (p *UpdateProjectParams) GetRoletype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) GetRoletype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["roletype"].(string)
+	value, ok := P.P["roletype"].(string)
 	return value, ok
 }
 
-func (p *UpdateProjectParams) SetSwapowner(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) SetSwapowner(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["swapowner"] = v
+	P.P["swapowner"] = v
 }
 
-func (p *UpdateProjectParams) GetSwapowner() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) GetSwapowner() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["swapowner"].(bool)
+	value, ok := P.P["swapowner"].(bool)
 	return value, ok
 }
 
-func (p *UpdateProjectParams) SetUserid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) SetUserid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["userid"] = v
+	P.P["userid"] = v
 }
 
-func (p *UpdateProjectParams) GetUserid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectParams) GetUserid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["userid"].(string)
+	value, ok := P.P["userid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateProjectParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewUpdateProjectParams(id string) *UpdateProjectParams {
-	p := &UpdateProjectParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateProjectParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a project
@@ -1676,115 +1676,115 @@ type UpdateProjectResponse struct {
 }
 
 type UpdateProjectInvitationParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateProjectInvitationParams) toURLValues() url.Values {
+func (P *UpdateProjectInvitationParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["accept"]; found {
+	if v, found := P.P["accept"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("accept", vv)
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["token"]; found {
+	if v, found := P.P["token"]; found {
 		u.Set("token", v.(string))
 	}
-	if v, found := p.p["userid"]; found {
+	if v, found := P.P["userid"]; found {
 		u.Set("userid", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateProjectInvitationParams) SetAccept(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectInvitationParams) SetAccept(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accept"] = v
+	P.P["accept"] = v
 }
 
-func (p *UpdateProjectInvitationParams) GetAccept() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectInvitationParams) GetAccept() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accept"].(bool)
+	value, ok := P.P["accept"].(bool)
 	return value, ok
 }
 
-func (p *UpdateProjectInvitationParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectInvitationParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *UpdateProjectInvitationParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectInvitationParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *UpdateProjectInvitationParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectInvitationParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *UpdateProjectInvitationParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectInvitationParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *UpdateProjectInvitationParams) SetToken(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectInvitationParams) SetToken(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["token"] = v
+	P.P["token"] = v
 }
 
-func (p *UpdateProjectInvitationParams) GetToken() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectInvitationParams) GetToken() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["token"].(string)
+	value, ok := P.P["token"].(string)
 	return value, ok
 }
 
-func (p *UpdateProjectInvitationParams) SetUserid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectInvitationParams) SetUserid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["userid"] = v
+	P.P["userid"] = v
 }
 
-func (p *UpdateProjectInvitationParams) GetUserid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectInvitationParams) GetUserid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["userid"].(string)
+	value, ok := P.P["userid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateProjectInvitationParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewUpdateProjectInvitationParams(projectid string) *UpdateProjectInvitationParams {
-	p := &UpdateProjectInvitationParams{}
-	p.p = make(map[string]interface{})
-	p.p["projectid"] = projectid
-	return p
+	P := &UpdateProjectInvitationParams{}
+	P.P = make(map[string]interface{})
+	P.P["projectid"] = projectid
+	return P
 }
 
 // Accepts or declines project invitation
@@ -1825,60 +1825,60 @@ type UpdateProjectInvitationResponse struct {
 }
 
 type ListProjectRolePermissionsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListProjectRolePermissionsParams) toURLValues() url.Values {
+func (P *ListProjectRolePermissionsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["projectroleid"]; found {
+	if v, found := P.P["projectroleid"]; found {
 		u.Set("projectroleid", v.(string))
 	}
 	return u
 }
 
-func (p *ListProjectRolePermissionsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectRolePermissionsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListProjectRolePermissionsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectRolePermissionsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListProjectRolePermissionsParams) SetProjectroleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectRolePermissionsParams) SetProjectroleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectroleid"] = v
+	P.P["projectroleid"] = v
 }
 
-func (p *ListProjectRolePermissionsParams) GetProjectroleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListProjectRolePermissionsParams) GetProjectroleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectroleid"].(string)
+	value, ok := P.P["projectroleid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListProjectRolePermissionsParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewListProjectRolePermissionsParams(projectid string) *ListProjectRolePermissionsParams {
-	p := &ListProjectRolePermissionsParams{}
-	p.p = make(map[string]interface{})
-	p.p["projectid"] = projectid
-	return p
+	P := &ListProjectRolePermissionsParams{}
+	P.P = make(map[string]interface{})
+	P.P["projectid"] = projectid
+	return P
 }
 
 // Lists a project's project role permissions
@@ -1914,117 +1914,117 @@ type ProjectRolePermission struct {
 }
 
 type CreateProjectRolePermissionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateProjectRolePermissionParams) toURLValues() url.Values {
+func (P *CreateProjectRolePermissionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["permission"]; found {
+	if v, found := P.P["permission"]; found {
 		u.Set("permission", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["projectroleid"]; found {
+	if v, found := P.P["projectroleid"]; found {
 		u.Set("projectroleid", v.(string))
 	}
-	if v, found := p.p["rule"]; found {
+	if v, found := P.P["rule"]; found {
 		u.Set("rule", v.(string))
 	}
 	return u
 }
 
-func (p *CreateProjectRolePermissionParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectRolePermissionParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *CreateProjectRolePermissionParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectRolePermissionParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *CreateProjectRolePermissionParams) SetPermission(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectRolePermissionParams) SetPermission(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["permission"] = v
+	P.P["permission"] = v
 }
 
-func (p *CreateProjectRolePermissionParams) GetPermission() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectRolePermissionParams) GetPermission() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["permission"].(string)
+	value, ok := P.P["permission"].(string)
 	return value, ok
 }
 
-func (p *CreateProjectRolePermissionParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectRolePermissionParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *CreateProjectRolePermissionParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectRolePermissionParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *CreateProjectRolePermissionParams) SetProjectroleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectRolePermissionParams) SetProjectroleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectroleid"] = v
+	P.P["projectroleid"] = v
 }
 
-func (p *CreateProjectRolePermissionParams) GetProjectroleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectRolePermissionParams) GetProjectroleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectroleid"].(string)
+	value, ok := P.P["projectroleid"].(string)
 	return value, ok
 }
 
-func (p *CreateProjectRolePermissionParams) SetRule(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectRolePermissionParams) SetRule(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["rule"] = v
+	P.P["rule"] = v
 }
 
-func (p *CreateProjectRolePermissionParams) GetRule() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateProjectRolePermissionParams) GetRule() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["rule"].(string)
+	value, ok := P.P["rule"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateProjectRolePermissionParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewCreateProjectRolePermissionParams(permission string, projectid string, projectroleid string, rule string) *CreateProjectRolePermissionParams {
-	p := &CreateProjectRolePermissionParams{}
-	p.p = make(map[string]interface{})
-	p.p["permission"] = permission
-	p.p["projectid"] = projectid
-	p.p["projectroleid"] = projectroleid
-	p.p["rule"] = rule
-	return p
+	P := &CreateProjectRolePermissionParams{}
+	P.P = make(map[string]interface{})
+	P.P["permission"] = permission
+	P.P["projectid"] = projectid
+	P.P["projectroleid"] = projectroleid
+	P.P["rule"] = rule
+	return P
 }
 
 // Adds API permissions to a project role
@@ -2055,116 +2055,116 @@ type CreateProjectRolePermissionResponse struct {
 }
 
 type UpdateProjectRolePermissionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateProjectRolePermissionParams) toURLValues() url.Values {
+func (P *UpdateProjectRolePermissionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["permission"]; found {
+	if v, found := P.P["permission"]; found {
 		u.Set("permission", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["projectroleid"]; found {
+	if v, found := P.P["projectroleid"]; found {
 		u.Set("projectroleid", v.(string))
 	}
-	if v, found := p.p["projectrolepermissionid"]; found {
+	if v, found := P.P["projectrolepermissionid"]; found {
 		u.Set("projectrolepermissionid", v.(string))
 	}
-	if v, found := p.p["ruleorder"]; found {
+	if v, found := P.P["ruleorder"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("ruleorder", vv)
 	}
 	return u
 }
 
-func (p *UpdateProjectRolePermissionParams) SetPermission(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectRolePermissionParams) SetPermission(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["permission"] = v
+	P.P["permission"] = v
 }
 
-func (p *UpdateProjectRolePermissionParams) GetPermission() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectRolePermissionParams) GetPermission() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["permission"].(string)
+	value, ok := P.P["permission"].(string)
 	return value, ok
 }
 
-func (p *UpdateProjectRolePermissionParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectRolePermissionParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *UpdateProjectRolePermissionParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectRolePermissionParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *UpdateProjectRolePermissionParams) SetProjectroleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectRolePermissionParams) SetProjectroleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectroleid"] = v
+	P.P["projectroleid"] = v
 }
 
-func (p *UpdateProjectRolePermissionParams) GetProjectroleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectRolePermissionParams) GetProjectroleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectroleid"].(string)
+	value, ok := P.P["projectroleid"].(string)
 	return value, ok
 }
 
-func (p *UpdateProjectRolePermissionParams) SetProjectrolepermissionid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectRolePermissionParams) SetProjectrolepermissionid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectrolepermissionid"] = v
+	P.P["projectrolepermissionid"] = v
 }
 
-func (p *UpdateProjectRolePermissionParams) GetProjectrolepermissionid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectRolePermissionParams) GetProjectrolepermissionid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectrolepermissionid"].(string)
+	value, ok := P.P["projectrolepermissionid"].(string)
 	return value, ok
 }
 
-func (p *UpdateProjectRolePermissionParams) SetRuleorder(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectRolePermissionParams) SetRuleorder(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ruleorder"] = v
+	P.P["ruleorder"] = v
 }
 
-func (p *UpdateProjectRolePermissionParams) GetRuleorder() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateProjectRolePermissionParams) GetRuleorder() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ruleorder"].([]string)
+	value, ok := P.P["ruleorder"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateProjectRolePermissionParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewUpdateProjectRolePermissionParams(projectid string, projectroleid string) *UpdateProjectRolePermissionParams {
-	p := &UpdateProjectRolePermissionParams{}
-	p.p = make(map[string]interface{})
-	p.p["projectid"] = projectid
-	p.p["projectroleid"] = projectroleid
-	return p
+	P := &UpdateProjectRolePermissionParams{}
+	P.P = make(map[string]interface{})
+	P.P["projectid"] = projectid
+	P.P["projectroleid"] = projectroleid
+	return P
 }
 
 // Updates a project role permission and/or order
@@ -2217,61 +2217,61 @@ func (r *UpdateProjectRolePermissionResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DeleteProjectRolePermissionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteProjectRolePermissionParams) toURLValues() url.Values {
+func (P *DeleteProjectRolePermissionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteProjectRolePermissionParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteProjectRolePermissionParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteProjectRolePermissionParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteProjectRolePermissionParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *DeleteProjectRolePermissionParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteProjectRolePermissionParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *DeleteProjectRolePermissionParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteProjectRolePermissionParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteProjectRolePermissionParams instance,
 // as then you are sure you have configured all required params
 func (s *ProjectService) NewDeleteProjectRolePermissionParams(id string, projectid string) *DeleteProjectRolePermissionParams {
-	p := &DeleteProjectRolePermissionParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["projectid"] = projectid
-	return p
+	P := &DeleteProjectRolePermissionParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["projectid"] = projectid
+	return P
 }
 
 // Deletes a project role permission in the project

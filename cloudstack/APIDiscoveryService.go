@@ -25,46 +25,46 @@ import (
 )
 
 type APIDiscoveryServiceIface interface {
-	ListApis(p *ListApisParams) (*ListApisResponse, error)
+	ListApis(P *ListApisParams) (*ListApisResponse, error)
 	NewListApisParams() *ListApisParams
 }
 
 type ListApisParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListApisParams) toURLValues() url.Values {
+func (P *ListApisParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
 	return u
 }
 
-func (p *ListApisParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListApisParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListApisParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListApisParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListApisParams instance,
 // as then you are sure you have configured all required params
 func (s *APIDiscoveryService) NewListApisParams() *ListApisParams {
-	p := &ListApisParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListApisParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // lists all available apis on the server, provided by the Api Discovery plugin

@@ -28,403 +28,403 @@ import (
 )
 
 type ClusterServiceIface interface {
-	AddCluster(p *AddClusterParams) (*AddClusterResponse, error)
+	AddCluster(P *AddClusterParams) (*AddClusterResponse, error)
 	NewAddClusterParams(clustername string, clustertype string, hypervisor string, podid string, zoneid string) *AddClusterParams
-	DedicateCluster(p *DedicateClusterParams) (*DedicateClusterResponse, error)
+	DedicateCluster(P *DedicateClusterParams) (*DedicateClusterResponse, error)
 	NewDedicateClusterParams(clusterid string, domainid string) *DedicateClusterParams
-	DeleteCluster(p *DeleteClusterParams) (*DeleteClusterResponse, error)
+	DeleteCluster(P *DeleteClusterParams) (*DeleteClusterResponse, error)
 	NewDeleteClusterParams(id string) *DeleteClusterParams
-	DisableOutOfBandManagementForCluster(p *DisableOutOfBandManagementForClusterParams) (*DisableOutOfBandManagementForClusterResponse, error)
+	DisableOutOfBandManagementForCluster(P *DisableOutOfBandManagementForClusterParams) (*DisableOutOfBandManagementForClusterResponse, error)
 	NewDisableOutOfBandManagementForClusterParams(clusterid string) *DisableOutOfBandManagementForClusterParams
-	EnableOutOfBandManagementForCluster(p *EnableOutOfBandManagementForClusterParams) (*EnableOutOfBandManagementForClusterResponse, error)
+	EnableOutOfBandManagementForCluster(P *EnableOutOfBandManagementForClusterParams) (*EnableOutOfBandManagementForClusterResponse, error)
 	NewEnableOutOfBandManagementForClusterParams(clusterid string) *EnableOutOfBandManagementForClusterParams
-	EnableHAForCluster(p *EnableHAForClusterParams) (*EnableHAForClusterResponse, error)
+	EnableHAForCluster(P *EnableHAForClusterParams) (*EnableHAForClusterResponse, error)
 	NewEnableHAForClusterParams(clusterid string) *EnableHAForClusterParams
-	DisableHAForCluster(p *DisableHAForClusterParams) (*DisableHAForClusterResponse, error)
+	DisableHAForCluster(P *DisableHAForClusterParams) (*DisableHAForClusterResponse, error)
 	NewDisableHAForClusterParams(clusterid string) *DisableHAForClusterParams
-	ListClusters(p *ListClustersParams) (*ListClustersResponse, error)
+	ListClusters(P *ListClustersParams) (*ListClustersResponse, error)
 	NewListClustersParams() *ListClustersParams
 	GetClusterID(name string, opts ...OptionFunc) (string, int, error)
 	GetClusterByName(name string, opts ...OptionFunc) (*Cluster, int, error)
 	GetClusterByID(id string, opts ...OptionFunc) (*Cluster, int, error)
-	ListClustersMetrics(p *ListClustersMetricsParams) (*ListClustersMetricsResponse, error)
+	ListClustersMetrics(P *ListClustersMetricsParams) (*ListClustersMetricsResponse, error)
 	NewListClustersMetricsParams() *ListClustersMetricsParams
 	GetClustersMetricID(name string, opts ...OptionFunc) (string, int, error)
 	GetClustersMetricByName(name string, opts ...OptionFunc) (*ClustersMetric, int, error)
 	GetClustersMetricByID(id string, opts ...OptionFunc) (*ClustersMetric, int, error)
-	ListDedicatedClusters(p *ListDedicatedClustersParams) (*ListDedicatedClustersResponse, error)
+	ListDedicatedClusters(P *ListDedicatedClustersParams) (*ListDedicatedClustersResponse, error)
 	NewListDedicatedClustersParams() *ListDedicatedClustersParams
-	ReleaseDedicatedCluster(p *ReleaseDedicatedClusterParams) (*ReleaseDedicatedClusterResponse, error)
+	ReleaseDedicatedCluster(P *ReleaseDedicatedClusterParams) (*ReleaseDedicatedClusterResponse, error)
 	NewReleaseDedicatedClusterParams(clusterid string) *ReleaseDedicatedClusterParams
-	UpdateCluster(p *UpdateClusterParams) (*UpdateClusterResponse, error)
+	UpdateCluster(P *UpdateClusterParams) (*UpdateClusterResponse, error)
 	NewUpdateClusterParams(id string) *UpdateClusterParams
 }
 
 type AddClusterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddClusterParams) toURLValues() url.Values {
+func (P *AddClusterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["clustername"]; found {
+	if v, found := P.P["clustername"]; found {
 		u.Set("clustername", v.(string))
 	}
-	if v, found := p.p["clustertype"]; found {
+	if v, found := P.P["clustertype"]; found {
 		u.Set("clustertype", v.(string))
 	}
-	if v, found := p.p["guestvswitchname"]; found {
+	if v, found := P.P["guestvswitchname"]; found {
 		u.Set("guestvswitchname", v.(string))
 	}
-	if v, found := p.p["guestvswitchtype"]; found {
+	if v, found := P.P["guestvswitchtype"]; found {
 		u.Set("guestvswitchtype", v.(string))
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["ovm3cluster"]; found {
+	if v, found := P.P["ovm3cluster"]; found {
 		u.Set("ovm3cluster", v.(string))
 	}
-	if v, found := p.p["ovm3pool"]; found {
+	if v, found := P.P["ovm3pool"]; found {
 		u.Set("ovm3pool", v.(string))
 	}
-	if v, found := p.p["ovm3vip"]; found {
+	if v, found := P.P["ovm3vip"]; found {
 		u.Set("ovm3vip", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["publicvswitchname"]; found {
+	if v, found := P.P["publicvswitchname"]; found {
 		u.Set("publicvswitchname", v.(string))
 	}
-	if v, found := p.p["publicvswitchtype"]; found {
+	if v, found := P.P["publicvswitchtype"]; found {
 		u.Set("publicvswitchtype", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
-	if v, found := p.p["vsmipaddress"]; found {
+	if v, found := P.P["vsmipaddress"]; found {
 		u.Set("vsmipaddress", v.(string))
 	}
-	if v, found := p.p["vsmpassword"]; found {
+	if v, found := P.P["vsmpassword"]; found {
 		u.Set("vsmpassword", v.(string))
 	}
-	if v, found := p.p["vsmusername"]; found {
+	if v, found := P.P["vsmusername"]; found {
 		u.Set("vsmusername", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *AddClusterParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *AddClusterParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetClustername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetClustername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clustername"] = v
+	P.P["clustername"] = v
 }
 
-func (p *AddClusterParams) GetClustername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetClustername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clustername"].(string)
+	value, ok := P.P["clustername"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetClustertype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetClustertype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clustertype"] = v
+	P.P["clustertype"] = v
 }
 
-func (p *AddClusterParams) GetClustertype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetClustertype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clustertype"].(string)
+	value, ok := P.P["clustertype"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetGuestvswitchname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetGuestvswitchname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["guestvswitchname"] = v
+	P.P["guestvswitchname"] = v
 }
 
-func (p *AddClusterParams) GetGuestvswitchname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetGuestvswitchname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["guestvswitchname"].(string)
+	value, ok := P.P["guestvswitchname"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetGuestvswitchtype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetGuestvswitchtype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["guestvswitchtype"] = v
+	P.P["guestvswitchtype"] = v
 }
 
-func (p *AddClusterParams) GetGuestvswitchtype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetGuestvswitchtype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["guestvswitchtype"].(string)
+	value, ok := P.P["guestvswitchtype"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *AddClusterParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetOvm3cluster(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetOvm3cluster(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ovm3cluster"] = v
+	P.P["ovm3cluster"] = v
 }
 
-func (p *AddClusterParams) GetOvm3cluster() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetOvm3cluster() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ovm3cluster"].(string)
+	value, ok := P.P["ovm3cluster"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetOvm3pool(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetOvm3pool(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ovm3pool"] = v
+	P.P["ovm3pool"] = v
 }
 
-func (p *AddClusterParams) GetOvm3pool() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetOvm3pool() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ovm3pool"].(string)
+	value, ok := P.P["ovm3pool"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetOvm3vip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetOvm3vip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ovm3vip"] = v
+	P.P["ovm3vip"] = v
 }
 
-func (p *AddClusterParams) GetOvm3vip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetOvm3vip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ovm3vip"].(string)
+	value, ok := P.P["ovm3vip"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *AddClusterParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *AddClusterParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetPublicvswitchname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetPublicvswitchname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["publicvswitchname"] = v
+	P.P["publicvswitchname"] = v
 }
 
-func (p *AddClusterParams) GetPublicvswitchname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetPublicvswitchname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["publicvswitchname"].(string)
+	value, ok := P.P["publicvswitchname"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetPublicvswitchtype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetPublicvswitchtype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["publicvswitchtype"] = v
+	P.P["publicvswitchtype"] = v
 }
 
-func (p *AddClusterParams) GetPublicvswitchtype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetPublicvswitchtype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["publicvswitchtype"].(string)
+	value, ok := P.P["publicvswitchtype"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddClusterParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddClusterParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetVsmipaddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetVsmipaddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vsmipaddress"] = v
+	P.P["vsmipaddress"] = v
 }
 
-func (p *AddClusterParams) GetVsmipaddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetVsmipaddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vsmipaddress"].(string)
+	value, ok := P.P["vsmipaddress"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetVsmpassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetVsmpassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vsmpassword"] = v
+	P.P["vsmpassword"] = v
 }
 
-func (p *AddClusterParams) GetVsmpassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetVsmpassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vsmpassword"].(string)
+	value, ok := P.P["vsmpassword"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetVsmusername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetVsmusername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vsmusername"] = v
+	P.P["vsmusername"] = v
 }
 
-func (p *AddClusterParams) GetVsmusername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetVsmusername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vsmusername"].(string)
+	value, ok := P.P["vsmusername"].(string)
 	return value, ok
 }
 
-func (p *AddClusterParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *AddClusterParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddClusterParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddClusterParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewAddClusterParams(clustername string, clustertype string, hypervisor string, podid string, zoneid string) *AddClusterParams {
-	p := &AddClusterParams{}
-	p.p = make(map[string]interface{})
-	p.p["clustername"] = clustername
-	p.p["clustertype"] = clustertype
-	p.p["hypervisor"] = hypervisor
-	p.p["podid"] = podid
-	p.p["zoneid"] = zoneid
-	return p
+	P := &AddClusterParams{}
+	P.P = make(map[string]interface{})
+	P.P["clustername"] = clustername
+	P.P["clustertype"] = clustertype
+	P.P["hypervisor"] = hypervisor
+	P.P["podid"] = podid
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Adds a new cluster
@@ -479,79 +479,79 @@ type AddClusterResponseCapacity struct {
 }
 
 type DedicateClusterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DedicateClusterParams) toURLValues() url.Values {
+func (P *DedicateClusterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
 	return u
 }
 
-func (p *DedicateClusterParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateClusterParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *DedicateClusterParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateClusterParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *DedicateClusterParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateClusterParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *DedicateClusterParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateClusterParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
-func (p *DedicateClusterParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateClusterParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *DedicateClusterParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateClusterParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DedicateClusterParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewDedicateClusterParams(clusterid string, domainid string) *DedicateClusterParams {
-	p := &DedicateClusterParams{}
-	p.p = make(map[string]interface{})
-	p.p["clusterid"] = clusterid
-	p.p["domainid"] = domainid
-	return p
+	P := &DedicateClusterParams{}
+	P.P = make(map[string]interface{})
+	P.P["clusterid"] = clusterid
+	P.P["domainid"] = domainid
+	return P
 }
 
 // Dedicate an existing cluster
@@ -601,42 +601,42 @@ type DedicateClusterResponse struct {
 }
 
 type DeleteClusterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteClusterParams) toURLValues() url.Values {
+func (P *DeleteClusterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteClusterParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteClusterParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteClusterParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteClusterParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteClusterParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewDeleteClusterParams(id string) *DeleteClusterParams {
-	p := &DeleteClusterParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteClusterParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a cluster.
@@ -689,42 +689,42 @@ func (r *DeleteClusterResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DisableOutOfBandManagementForClusterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DisableOutOfBandManagementForClusterParams) toURLValues() url.Values {
+func (P *DisableOutOfBandManagementForClusterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
 	return u
 }
 
-func (p *DisableOutOfBandManagementForClusterParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisableOutOfBandManagementForClusterParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *DisableOutOfBandManagementForClusterParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisableOutOfBandManagementForClusterParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DisableOutOfBandManagementForClusterParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewDisableOutOfBandManagementForClusterParams(clusterid string) *DisableOutOfBandManagementForClusterParams {
-	p := &DisableOutOfBandManagementForClusterParams{}
-	p.p = make(map[string]interface{})
-	p.p["clusterid"] = clusterid
-	return p
+	P := &DisableOutOfBandManagementForClusterParams{}
+	P.P = make(map[string]interface{})
+	P.P["clusterid"] = clusterid
+	return P
 }
 
 // Disables out-of-band management for a cluster
@@ -779,42 +779,42 @@ type DisableOutOfBandManagementForClusterResponse struct {
 }
 
 type EnableOutOfBandManagementForClusterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *EnableOutOfBandManagementForClusterParams) toURLValues() url.Values {
+func (P *EnableOutOfBandManagementForClusterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
 	return u
 }
 
-func (p *EnableOutOfBandManagementForClusterParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableOutOfBandManagementForClusterParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *EnableOutOfBandManagementForClusterParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableOutOfBandManagementForClusterParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new EnableOutOfBandManagementForClusterParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewEnableOutOfBandManagementForClusterParams(clusterid string) *EnableOutOfBandManagementForClusterParams {
-	p := &EnableOutOfBandManagementForClusterParams{}
-	p.p = make(map[string]interface{})
-	p.p["clusterid"] = clusterid
-	return p
+	P := &EnableOutOfBandManagementForClusterParams{}
+	P.P = make(map[string]interface{})
+	P.P["clusterid"] = clusterid
+	return P
 }
 
 // Enables out-of-band management for a cluster
@@ -869,42 +869,42 @@ type EnableOutOfBandManagementForClusterResponse struct {
 }
 
 type EnableHAForClusterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *EnableHAForClusterParams) toURLValues() url.Values {
+func (P *EnableHAForClusterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
 	return u
 }
 
-func (p *EnableHAForClusterParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableHAForClusterParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *EnableHAForClusterParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableHAForClusterParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new EnableHAForClusterParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewEnableHAForClusterParams(clusterid string) *EnableHAForClusterParams {
-	p := &EnableHAForClusterParams{}
-	p.p = make(map[string]interface{})
-	p.p["clusterid"] = clusterid
-	return p
+	P := &EnableHAForClusterParams{}
+	P.P = make(map[string]interface{})
+	P.P["clusterid"] = clusterid
+	return P
 }
 
 // Enables HA cluster-wide
@@ -945,42 +945,42 @@ type EnableHAForClusterResponse struct {
 }
 
 type DisableHAForClusterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DisableHAForClusterParams) toURLValues() url.Values {
+func (P *DisableHAForClusterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
 	return u
 }
 
-func (p *DisableHAForClusterParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisableHAForClusterParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *DisableHAForClusterParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisableHAForClusterParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DisableHAForClusterParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewDisableHAForClusterParams(clusterid string) *DisableHAForClusterParams {
-	p := &DisableHAForClusterParams{}
-	p.p = make(map[string]interface{})
-	p.p["clusterid"] = clusterid
-	return p
+	P := &DisableHAForClusterParams{}
+	P.P = make(map[string]interface{})
+	P.P["clusterid"] = clusterid
+	return P
 }
 
 // Disables HA cluster-wide
@@ -1021,258 +1021,258 @@ type DisableHAForClusterResponse struct {
 }
 
 type ListClustersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListClustersParams) toURLValues() url.Values {
+func (P *ListClustersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["clustertype"]; found {
+	if v, found := P.P["clustertype"]; found {
 		u.Set("clustertype", v.(string))
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["managedstate"]; found {
+	if v, found := P.P["managedstate"]; found {
 		u.Set("managedstate", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["showcapacities"]; found {
+	if v, found := P.P["showcapacities"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showcapacities", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListClustersParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *ListClustersParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *ListClustersParams) SetClustertype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetClustertype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clustertype"] = v
+	P.P["clustertype"] = v
 }
 
-func (p *ListClustersParams) GetClustertype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetClustertype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clustertype"].(string)
+	value, ok := P.P["clustertype"].(string)
 	return value, ok
 }
 
-func (p *ListClustersParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *ListClustersParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *ListClustersParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListClustersParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListClustersParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListClustersParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListClustersParams) SetManagedstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetManagedstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["managedstate"] = v
+	P.P["managedstate"] = v
 }
 
-func (p *ListClustersParams) GetManagedstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetManagedstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["managedstate"].(string)
+	value, ok := P.P["managedstate"].(string)
 	return value, ok
 }
 
-func (p *ListClustersParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListClustersParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListClustersParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListClustersParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListClustersParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListClustersParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListClustersParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListClustersParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *ListClustersParams) SetShowcapacities(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetShowcapacities(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showcapacities"] = v
+	P.P["showcapacities"] = v
 }
 
-func (p *ListClustersParams) GetShowcapacities() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetShowcapacities() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showcapacities"].(bool)
+	value, ok := P.P["showcapacities"].(bool)
 	return value, ok
 }
 
-func (p *ListClustersParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListClustersParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListClustersParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewListClustersParams() *ListClustersParams {
-	p := &ListClustersParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListClustersParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ClusterService) GetClusterID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListClustersParams{}
-	p.p = make(map[string]interface{})
+	P := &ListClustersParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListClusters(p)
+	l, err := s.ListClusters(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1311,18 +1311,18 @@ func (s *ClusterService) GetClusterByName(name string, opts ...OptionFunc) (*Clu
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ClusterService) GetClusterByID(id string, opts ...OptionFunc) (*Cluster, int, error) {
-	p := &ListClustersParams{}
-	p.p = make(map[string]interface{})
+	P := &ListClustersParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListClusters(p)
+	l, err := s.ListClusters(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1399,258 +1399,258 @@ type ClusterCapacity struct {
 }
 
 type ListClustersMetricsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListClustersMetricsParams) toURLValues() url.Values {
+func (P *ListClustersMetricsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["clustertype"]; found {
+	if v, found := P.P["clustertype"]; found {
 		u.Set("clustertype", v.(string))
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["managedstate"]; found {
+	if v, found := P.P["managedstate"]; found {
 		u.Set("managedstate", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["showcapacities"]; found {
+	if v, found := P.P["showcapacities"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showcapacities", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListClustersMetricsParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *ListClustersMetricsParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *ListClustersMetricsParams) SetClustertype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetClustertype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clustertype"] = v
+	P.P["clustertype"] = v
 }
 
-func (p *ListClustersMetricsParams) GetClustertype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetClustertype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clustertype"].(string)
+	value, ok := P.P["clustertype"].(string)
 	return value, ok
 }
 
-func (p *ListClustersMetricsParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *ListClustersMetricsParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *ListClustersMetricsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListClustersMetricsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListClustersMetricsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListClustersMetricsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListClustersMetricsParams) SetManagedstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetManagedstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["managedstate"] = v
+	P.P["managedstate"] = v
 }
 
-func (p *ListClustersMetricsParams) GetManagedstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetManagedstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["managedstate"].(string)
+	value, ok := P.P["managedstate"].(string)
 	return value, ok
 }
 
-func (p *ListClustersMetricsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListClustersMetricsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListClustersMetricsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListClustersMetricsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListClustersMetricsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListClustersMetricsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListClustersMetricsParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListClustersMetricsParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *ListClustersMetricsParams) SetShowcapacities(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetShowcapacities(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showcapacities"] = v
+	P.P["showcapacities"] = v
 }
 
-func (p *ListClustersMetricsParams) GetShowcapacities() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetShowcapacities() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showcapacities"].(bool)
+	value, ok := P.P["showcapacities"].(bool)
 	return value, ok
 }
 
-func (p *ListClustersMetricsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListClustersMetricsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListClustersMetricsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListClustersMetricsParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewListClustersMetricsParams() *ListClustersMetricsParams {
-	p := &ListClustersMetricsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListClustersMetricsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ClusterService) GetClustersMetricID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListClustersMetricsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListClustersMetricsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListClustersMetrics(p)
+	l, err := s.ListClustersMetrics(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1689,18 +1689,18 @@ func (s *ClusterService) GetClustersMetricByName(name string, opts ...OptionFunc
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ClusterService) GetClustersMetricByID(id string, opts ...OptionFunc) (*ClustersMetric, int, error) {
-	p := &ListClustersMetricsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListClustersMetricsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListClustersMetrics(p)
+	l, err := s.ListClustersMetrics(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1795,151 +1795,151 @@ type ClustersMetricCapacity struct {
 }
 
 type ListDedicatedClustersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListDedicatedClustersParams) toURLValues() url.Values {
+func (P *ListDedicatedClustersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["affinitygroupid"]; found {
+	if v, found := P.P["affinitygroupid"]; found {
 		u.Set("affinitygroupid", v.(string))
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListDedicatedClustersParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListDedicatedClustersParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedClustersParams) SetAffinitygroupid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) SetAffinitygroupid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["affinitygroupid"] = v
+	P.P["affinitygroupid"] = v
 }
 
-func (p *ListDedicatedClustersParams) GetAffinitygroupid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) GetAffinitygroupid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["affinitygroupid"].(string)
+	value, ok := P.P["affinitygroupid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedClustersParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *ListDedicatedClustersParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedClustersParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListDedicatedClustersParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedClustersParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListDedicatedClustersParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedClustersParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListDedicatedClustersParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListDedicatedClustersParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListDedicatedClustersParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedClustersParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListDedicatedClustersParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewListDedicatedClustersParams() *ListDedicatedClustersParams {
-	p := &ListDedicatedClustersParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListDedicatedClustersParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists dedicated clusters.
@@ -1974,42 +1974,42 @@ type DedicatedCluster struct {
 }
 
 type ReleaseDedicatedClusterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ReleaseDedicatedClusterParams) toURLValues() url.Values {
+func (P *ReleaseDedicatedClusterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
 	return u
 }
 
-func (p *ReleaseDedicatedClusterParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseDedicatedClusterParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *ReleaseDedicatedClusterParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseDedicatedClusterParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ReleaseDedicatedClusterParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewReleaseDedicatedClusterParams(clusterid string) *ReleaseDedicatedClusterParams {
-	p := &ReleaseDedicatedClusterParams{}
-	p.p = make(map[string]interface{})
-	p.p["clusterid"] = clusterid
-	return p
+	P := &ReleaseDedicatedClusterParams{}
+	P.P = make(map[string]interface{})
+	P.P["clusterid"] = clusterid
+	return P
 }
 
 // Release the dedication for cluster
@@ -2050,132 +2050,132 @@ type ReleaseDedicatedClusterResponse struct {
 }
 
 type UpdateClusterParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateClusterParams) toURLValues() url.Values {
+func (P *UpdateClusterParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["clustername"]; found {
+	if v, found := P.P["clustername"]; found {
 		u.Set("clustername", v.(string))
 	}
-	if v, found := p.p["clustertype"]; found {
+	if v, found := P.P["clustertype"]; found {
 		u.Set("clustertype", v.(string))
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["managedstate"]; found {
+	if v, found := P.P["managedstate"]; found {
 		u.Set("managedstate", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateClusterParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *UpdateClusterParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *UpdateClusterParams) SetClustername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) SetClustername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clustername"] = v
+	P.P["clustername"] = v
 }
 
-func (p *UpdateClusterParams) GetClustername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) GetClustername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clustername"].(string)
+	value, ok := P.P["clustername"].(string)
 	return value, ok
 }
 
-func (p *UpdateClusterParams) SetClustertype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) SetClustertype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clustertype"] = v
+	P.P["clustertype"] = v
 }
 
-func (p *UpdateClusterParams) GetClustertype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) GetClustertype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clustertype"].(string)
+	value, ok := P.P["clustertype"].(string)
 	return value, ok
 }
 
-func (p *UpdateClusterParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *UpdateClusterParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *UpdateClusterParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateClusterParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateClusterParams) SetManagedstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) SetManagedstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["managedstate"] = v
+	P.P["managedstate"] = v
 }
 
-func (p *UpdateClusterParams) GetManagedstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateClusterParams) GetManagedstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["managedstate"].(string)
+	value, ok := P.P["managedstate"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateClusterParams instance,
 // as then you are sure you have configured all required params
 func (s *ClusterService) NewUpdateClusterParams(id string) *UpdateClusterParams {
-	p := &UpdateClusterParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateClusterParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates an existing cluster

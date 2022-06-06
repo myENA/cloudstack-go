@@ -28,290 +28,290 @@ import (
 )
 
 type NetworkACLServiceIface interface {
-	CreateNetworkACL(p *CreateNetworkACLParams) (*CreateNetworkACLResponse, error)
+	CreateNetworkACL(P *CreateNetworkACLParams) (*CreateNetworkACLResponse, error)
 	NewCreateNetworkACLParams(protocol string) *CreateNetworkACLParams
-	CreateNetworkACLList(p *CreateNetworkACLListParams) (*CreateNetworkACLListResponse, error)
+	CreateNetworkACLList(P *CreateNetworkACLListParams) (*CreateNetworkACLListResponse, error)
 	NewCreateNetworkACLListParams(name string, vpcid string) *CreateNetworkACLListParams
-	DeleteNetworkACL(p *DeleteNetworkACLParams) (*DeleteNetworkACLResponse, error)
+	DeleteNetworkACL(P *DeleteNetworkACLParams) (*DeleteNetworkACLResponse, error)
 	NewDeleteNetworkACLParams(id string) *DeleteNetworkACLParams
-	DeleteNetworkACLList(p *DeleteNetworkACLListParams) (*DeleteNetworkACLListResponse, error)
+	DeleteNetworkACLList(P *DeleteNetworkACLListParams) (*DeleteNetworkACLListResponse, error)
 	NewDeleteNetworkACLListParams(id string) *DeleteNetworkACLListParams
-	ListNetworkACLLists(p *ListNetworkACLListsParams) (*ListNetworkACLListsResponse, error)
+	ListNetworkACLLists(P *ListNetworkACLListsParams) (*ListNetworkACLListsResponse, error)
 	NewListNetworkACLListsParams() *ListNetworkACLListsParams
 	GetNetworkACLListID(name string, opts ...OptionFunc) (string, int, error)
 	GetNetworkACLListByName(name string, opts ...OptionFunc) (*NetworkACLList, int, error)
 	GetNetworkACLListByID(id string, opts ...OptionFunc) (*NetworkACLList, int, error)
-	ListNetworkACLs(p *ListNetworkACLsParams) (*ListNetworkACLsResponse, error)
+	ListNetworkACLs(P *ListNetworkACLsParams) (*ListNetworkACLsResponse, error)
 	NewListNetworkACLsParams() *ListNetworkACLsParams
 	GetNetworkACLByID(id string, opts ...OptionFunc) (*NetworkACL, int, error)
-	ReplaceNetworkACLList(p *ReplaceNetworkACLListParams) (*ReplaceNetworkACLListResponse, error)
+	ReplaceNetworkACLList(P *ReplaceNetworkACLListParams) (*ReplaceNetworkACLListResponse, error)
 	NewReplaceNetworkACLListParams(aclid string) *ReplaceNetworkACLListParams
-	UpdateNetworkACLItem(p *UpdateNetworkACLItemParams) (*UpdateNetworkACLItemResponse, error)
+	UpdateNetworkACLItem(P *UpdateNetworkACLItemParams) (*UpdateNetworkACLItemResponse, error)
 	NewUpdateNetworkACLItemParams(id string) *UpdateNetworkACLItemParams
-	UpdateNetworkACLList(p *UpdateNetworkACLListParams) (*UpdateNetworkACLListResponse, error)
+	UpdateNetworkACLList(P *UpdateNetworkACLListParams) (*UpdateNetworkACLListResponse, error)
 	NewUpdateNetworkACLListParams(id string) *UpdateNetworkACLListParams
 }
 
 type CreateNetworkACLParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateNetworkACLParams) toURLValues() url.Values {
+func (P *CreateNetworkACLParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["aclid"]; found {
+	if v, found := P.P["aclid"]; found {
 		u.Set("aclid", v.(string))
 	}
-	if v, found := p.p["action"]; found {
+	if v, found := P.P["action"]; found {
 		u.Set("action", v.(string))
 	}
-	if v, found := p.p["cidrlist"]; found {
+	if v, found := P.P["cidrlist"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("cidrlist", vv)
 	}
-	if v, found := p.p["endport"]; found {
+	if v, found := P.P["endport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("endport", vv)
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["icmpcode"]; found {
+	if v, found := P.P["icmpcode"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("icmpcode", vv)
 	}
-	if v, found := p.p["icmptype"]; found {
+	if v, found := P.P["icmptype"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("icmptype", vv)
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["number"]; found {
+	if v, found := P.P["number"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("number", vv)
 	}
-	if v, found := p.p["protocol"]; found {
+	if v, found := P.P["protocol"]; found {
 		u.Set("protocol", v.(string))
 	}
-	if v, found := p.p["reason"]; found {
+	if v, found := P.P["reason"]; found {
 		u.Set("reason", v.(string))
 	}
-	if v, found := p.p["startport"]; found {
+	if v, found := P.P["startport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("startport", vv)
 	}
-	if v, found := p.p["traffictype"]; found {
+	if v, found := P.P["traffictype"]; found {
 		u.Set("traffictype", v.(string))
 	}
 	return u
 }
 
-func (p *CreateNetworkACLParams) SetAclid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetAclid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["aclid"] = v
+	P.P["aclid"] = v
 }
 
-func (p *CreateNetworkACLParams) GetAclid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetAclid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["aclid"].(string)
+	value, ok := P.P["aclid"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetAction(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetAction(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["action"] = v
+	P.P["action"] = v
 }
 
-func (p *CreateNetworkACLParams) GetAction() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetAction() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["action"].(string)
+	value, ok := P.P["action"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetCidrlist(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetCidrlist(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cidrlist"] = v
+	P.P["cidrlist"] = v
 }
 
-func (p *CreateNetworkACLParams) GetCidrlist() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetCidrlist() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cidrlist"].([]string)
+	value, ok := P.P["cidrlist"].([]string)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetEndport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetEndport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endport"] = v
+	P.P["endport"] = v
 }
 
-func (p *CreateNetworkACLParams) GetEndport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetEndport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endport"].(int)
+	value, ok := P.P["endport"].(int)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateNetworkACLParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetIcmpcode(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetIcmpcode(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["icmpcode"] = v
+	P.P["icmpcode"] = v
 }
 
-func (p *CreateNetworkACLParams) GetIcmpcode() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetIcmpcode() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["icmpcode"].(int)
+	value, ok := P.P["icmpcode"].(int)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetIcmptype(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetIcmptype(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["icmptype"] = v
+	P.P["icmptype"] = v
 }
 
-func (p *CreateNetworkACLParams) GetIcmptype() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetIcmptype() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["icmptype"].(int)
+	value, ok := P.P["icmptype"].(int)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *CreateNetworkACLParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetNumber(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetNumber(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["number"] = v
+	P.P["number"] = v
 }
 
-func (p *CreateNetworkACLParams) GetNumber() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetNumber() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["number"].(int)
+	value, ok := P.P["number"].(int)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetProtocol(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetProtocol(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["protocol"] = v
+	P.P["protocol"] = v
 }
 
-func (p *CreateNetworkACLParams) GetProtocol() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetProtocol() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["protocol"].(string)
+	value, ok := P.P["protocol"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetReason(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetReason(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["reason"] = v
+	P.P["reason"] = v
 }
 
-func (p *CreateNetworkACLParams) GetReason() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetReason() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["reason"].(string)
+	value, ok := P.P["reason"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetStartport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetStartport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startport"] = v
+	P.P["startport"] = v
 }
 
-func (p *CreateNetworkACLParams) GetStartport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetStartport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startport"].(int)
+	value, ok := P.P["startport"].(int)
 	return value, ok
 }
 
-func (p *CreateNetworkACLParams) SetTraffictype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) SetTraffictype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["traffictype"] = v
+	P.P["traffictype"] = v
 }
 
-func (p *CreateNetworkACLParams) GetTraffictype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLParams) GetTraffictype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["traffictype"].(string)
+	value, ok := P.P["traffictype"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateNetworkACLParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkACLService) NewCreateNetworkACLParams(protocol string) *CreateNetworkACLParams {
-	p := &CreateNetworkACLParams{}
-	p.p = make(map[string]interface{})
-	p.p["protocol"] = protocol
-	return p
+	P := &CreateNetworkACLParams{}
+	P.P = make(map[string]interface{})
+	P.P["protocol"] = protocol
+	return P
 }
 
 // Creates a ACL rule in the given network (the network has to belong to VPC)
@@ -371,98 +371,98 @@ type CreateNetworkACLResponse struct {
 }
 
 type CreateNetworkACLListParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateNetworkACLListParams) toURLValues() url.Values {
+func (P *CreateNetworkACLListParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateNetworkACLListParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLListParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *CreateNetworkACLListParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLListParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkACLListParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLListParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateNetworkACLListParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLListParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkACLListParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLListParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateNetworkACLListParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLListParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkACLListParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLListParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *CreateNetworkACLListParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkACLListParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateNetworkACLListParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkACLService) NewCreateNetworkACLListParams(name string, vpcid string) *CreateNetworkACLListParams {
-	p := &CreateNetworkACLListParams{}
-	p.p = make(map[string]interface{})
-	p.p["name"] = name
-	p.p["vpcid"] = vpcid
-	return p
+	P := &CreateNetworkACLListParams{}
+	P.P = make(map[string]interface{})
+	P.P["name"] = name
+	P.P["vpcid"] = vpcid
+	return P
 }
 
 // Creates a network ACL for the given VPC
@@ -511,42 +511,42 @@ type CreateNetworkACLListResponse struct {
 }
 
 type DeleteNetworkACLParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteNetworkACLParams) toURLValues() url.Values {
+func (P *DeleteNetworkACLParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteNetworkACLParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkACLParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteNetworkACLParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkACLParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteNetworkACLParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkACLService) NewDeleteNetworkACLParams(id string) *DeleteNetworkACLParams {
-	p := &DeleteNetworkACLParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteNetworkACLParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a network ACL
@@ -587,42 +587,42 @@ type DeleteNetworkACLResponse struct {
 }
 
 type DeleteNetworkACLListParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteNetworkACLListParams) toURLValues() url.Values {
+func (P *DeleteNetworkACLListParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteNetworkACLListParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkACLListParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteNetworkACLListParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkACLListParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteNetworkACLListParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkACLService) NewDeleteNetworkACLListParams(id string) *DeleteNetworkACLListParams {
-	p := &DeleteNetworkACLListParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteNetworkACLListParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a network ACL
@@ -663,278 +663,278 @@ type DeleteNetworkACLListResponse struct {
 }
 
 type ListNetworkACLListsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListNetworkACLListsParams) toURLValues() url.Values {
+func (P *ListNetworkACLListsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
 	return u
 }
 
-func (p *ListNetworkACLListsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLListsParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *ListNetworkACLListsParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLListsParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListNetworkACLListsParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkACLService) NewListNetworkACLListsParams() *ListNetworkACLListsParams {
-	p := &ListNetworkACLListsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListNetworkACLListsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkACLService) GetNetworkACLListID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListNetworkACLListsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListNetworkACLListsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListNetworkACLLists(p)
+	l, err := s.ListNetworkACLLists(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -973,18 +973,18 @@ func (s *NetworkACLService) GetNetworkACLListByName(name string, opts ...OptionF
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkACLService) GetNetworkACLListByID(id string, opts ...OptionFunc) (*NetworkACLList, int, error) {
-	p := &ListNetworkACLListsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListNetworkACLListsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListNetworkACLLists(p)
+	l, err := s.ListNetworkACLLists(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1035,336 +1035,336 @@ type NetworkACLList struct {
 }
 
 type ListNetworkACLsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListNetworkACLsParams) toURLValues() url.Values {
+func (P *ListNetworkACLsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["aclid"]; found {
+	if v, found := P.P["aclid"]; found {
 		u.Set("aclid", v.(string))
 	}
-	if v, found := p.p["action"]; found {
+	if v, found := P.P["action"]; found {
 		u.Set("action", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["protocol"]; found {
+	if v, found := P.P["protocol"]; found {
 		u.Set("protocol", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["traffictype"]; found {
+	if v, found := P.P["traffictype"]; found {
 		u.Set("traffictype", v.(string))
 	}
 	return u
 }
 
-func (p *ListNetworkACLsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListNetworkACLsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetAclid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetAclid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["aclid"] = v
+	P.P["aclid"] = v
 }
 
-func (p *ListNetworkACLsParams) GetAclid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetAclid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["aclid"].(string)
+	value, ok := P.P["aclid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetAction(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetAction(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["action"] = v
+	P.P["action"] = v
 }
 
-func (p *ListNetworkACLsParams) GetAction() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetAction() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["action"].(string)
+	value, ok := P.P["action"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListNetworkACLsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListNetworkACLsParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListNetworkACLsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListNetworkACLsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListNetworkACLsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListNetworkACLsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListNetworkACLsParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListNetworkACLsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListNetworkACLsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListNetworkACLsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetProtocol(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetProtocol(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["protocol"] = v
+	P.P["protocol"] = v
 }
 
-func (p *ListNetworkACLsParams) GetProtocol() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetProtocol() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["protocol"].(string)
+	value, ok := P.P["protocol"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListNetworkACLsParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListNetworkACLsParams) SetTraffictype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) SetTraffictype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["traffictype"] = v
+	P.P["traffictype"] = v
 }
 
-func (p *ListNetworkACLsParams) GetTraffictype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkACLsParams) GetTraffictype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["traffictype"].(string)
+	value, ok := P.P["traffictype"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListNetworkACLsParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkACLService) NewListNetworkACLsParams() *ListNetworkACLsParams {
-	p := &ListNetworkACLsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListNetworkACLsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkACLService) GetNetworkACLByID(id string, opts ...OptionFunc) (*NetworkACL, int, error) {
-	p := &ListNetworkACLsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListNetworkACLsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListNetworkACLs(p)
+	l, err := s.ListNetworkACLs(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1426,78 +1426,78 @@ type NetworkACL struct {
 }
 
 type ReplaceNetworkACLListParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ReplaceNetworkACLListParams) toURLValues() url.Values {
+func (P *ReplaceNetworkACLListParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["aclid"]; found {
+	if v, found := P.P["aclid"]; found {
 		u.Set("aclid", v.(string))
 	}
-	if v, found := p.p["gatewayid"]; found {
+	if v, found := P.P["gatewayid"]; found {
 		u.Set("gatewayid", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
 	return u
 }
 
-func (p *ReplaceNetworkACLListParams) SetAclid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReplaceNetworkACLListParams) SetAclid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["aclid"] = v
+	P.P["aclid"] = v
 }
 
-func (p *ReplaceNetworkACLListParams) GetAclid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReplaceNetworkACLListParams) GetAclid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["aclid"].(string)
+	value, ok := P.P["aclid"].(string)
 	return value, ok
 }
 
-func (p *ReplaceNetworkACLListParams) SetGatewayid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReplaceNetworkACLListParams) SetGatewayid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gatewayid"] = v
+	P.P["gatewayid"] = v
 }
 
-func (p *ReplaceNetworkACLListParams) GetGatewayid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReplaceNetworkACLListParams) GetGatewayid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gatewayid"].(string)
+	value, ok := P.P["gatewayid"].(string)
 	return value, ok
 }
 
-func (p *ReplaceNetworkACLListParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReplaceNetworkACLListParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ReplaceNetworkACLListParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReplaceNetworkACLListParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ReplaceNetworkACLListParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkACLService) NewReplaceNetworkACLListParams(aclid string) *ReplaceNetworkACLListParams {
-	p := &ReplaceNetworkACLListParams{}
-	p.p = make(map[string]interface{})
-	p.p["aclid"] = aclid
-	return p
+	P := &ReplaceNetworkACLListParams{}
+	P.P = make(map[string]interface{})
+	P.P["aclid"] = aclid
+	return P
 }
 
 // Replaces ACL associated with a network or private gateway
@@ -1538,284 +1538,284 @@ type ReplaceNetworkACLListResponse struct {
 }
 
 type UpdateNetworkACLItemParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateNetworkACLItemParams) toURLValues() url.Values {
+func (P *UpdateNetworkACLItemParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["action"]; found {
+	if v, found := P.P["action"]; found {
 		u.Set("action", v.(string))
 	}
-	if v, found := p.p["cidrlist"]; found {
+	if v, found := P.P["cidrlist"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("cidrlist", vv)
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["endport"]; found {
+	if v, found := P.P["endport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("endport", vv)
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["icmpcode"]; found {
+	if v, found := P.P["icmpcode"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("icmpcode", vv)
 	}
-	if v, found := p.p["icmptype"]; found {
+	if v, found := P.P["icmptype"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("icmptype", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["number"]; found {
+	if v, found := P.P["number"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("number", vv)
 	}
-	if v, found := p.p["partialupgrade"]; found {
+	if v, found := P.P["partialupgrade"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("partialupgrade", vv)
 	}
-	if v, found := p.p["protocol"]; found {
+	if v, found := P.P["protocol"]; found {
 		u.Set("protocol", v.(string))
 	}
-	if v, found := p.p["reason"]; found {
+	if v, found := P.P["reason"]; found {
 		u.Set("reason", v.(string))
 	}
-	if v, found := p.p["startport"]; found {
+	if v, found := P.P["startport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("startport", vv)
 	}
-	if v, found := p.p["traffictype"]; found {
+	if v, found := P.P["traffictype"]; found {
 		u.Set("traffictype", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateNetworkACLItemParams) SetAction(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetAction(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["action"] = v
+	P.P["action"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetAction() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetAction() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["action"].(string)
+	value, ok := P.P["action"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetCidrlist(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetCidrlist(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cidrlist"] = v
+	P.P["cidrlist"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetCidrlist() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetCidrlist() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cidrlist"].([]string)
+	value, ok := P.P["cidrlist"].([]string)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetEndport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetEndport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endport"] = v
+	P.P["endport"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetEndport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetEndport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endport"].(int)
+	value, ok := P.P["endport"].(int)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetIcmpcode(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetIcmpcode(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["icmpcode"] = v
+	P.P["icmpcode"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetIcmpcode() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetIcmpcode() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["icmpcode"].(int)
+	value, ok := P.P["icmpcode"].(int)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetIcmptype(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetIcmptype(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["icmptype"] = v
+	P.P["icmptype"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetIcmptype() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetIcmptype() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["icmptype"].(int)
+	value, ok := P.P["icmptype"].(int)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetNumber(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetNumber(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["number"] = v
+	P.P["number"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetNumber() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetNumber() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["number"].(int)
+	value, ok := P.P["number"].(int)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetPartialupgrade(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetPartialupgrade(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["partialupgrade"] = v
+	P.P["partialupgrade"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetPartialupgrade() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetPartialupgrade() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["partialupgrade"].(bool)
+	value, ok := P.P["partialupgrade"].(bool)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetProtocol(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetProtocol(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["protocol"] = v
+	P.P["protocol"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetProtocol() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetProtocol() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["protocol"].(string)
+	value, ok := P.P["protocol"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetReason(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetReason(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["reason"] = v
+	P.P["reason"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetReason() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetReason() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["reason"].(string)
+	value, ok := P.P["reason"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetStartport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetStartport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startport"] = v
+	P.P["startport"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetStartport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetStartport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startport"].(int)
+	value, ok := P.P["startport"].(int)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLItemParams) SetTraffictype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) SetTraffictype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["traffictype"] = v
+	P.P["traffictype"] = v
 }
 
-func (p *UpdateNetworkACLItemParams) GetTraffictype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLItemParams) GetTraffictype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["traffictype"].(string)
+	value, ok := P.P["traffictype"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateNetworkACLItemParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkACLService) NewUpdateNetworkACLItemParams(id string) *UpdateNetworkACLItemParams {
-	p := &UpdateNetworkACLItemParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateNetworkACLItemParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates ACL item with specified ID
@@ -1875,115 +1875,115 @@ type UpdateNetworkACLItemResponse struct {
 }
 
 type UpdateNetworkACLListParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateNetworkACLListParams) toURLValues() url.Values {
+func (P *UpdateNetworkACLListParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateNetworkACLListParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLListParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateNetworkACLListParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLListParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLListParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLListParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *UpdateNetworkACLListParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLListParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLListParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLListParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateNetworkACLListParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLListParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLListParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLListParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateNetworkACLListParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLListParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkACLListParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLListParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateNetworkACLListParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkACLListParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateNetworkACLListParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkACLService) NewUpdateNetworkACLListParams(id string) *UpdateNetworkACLListParams {
-	p := &UpdateNetworkACLListParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateNetworkACLListParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates network ACL list

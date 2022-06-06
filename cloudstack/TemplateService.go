@@ -28,128 +28,128 @@ import (
 )
 
 type TemplateServiceIface interface {
-	CopyTemplate(p *CopyTemplateParams) (*CopyTemplateResponse, error)
+	CopyTemplate(P *CopyTemplateParams) (*CopyTemplateResponse, error)
 	NewCopyTemplateParams(id string) *CopyTemplateParams
-	CreateTemplate(p *CreateTemplateParams) (*CreateTemplateResponse, error)
+	CreateTemplate(P *CreateTemplateParams) (*CreateTemplateResponse, error)
 	NewCreateTemplateParams(displaytext string, name string, ostypeid string) *CreateTemplateParams
-	DeleteTemplate(p *DeleteTemplateParams) (*DeleteTemplateResponse, error)
+	DeleteTemplate(P *DeleteTemplateParams) (*DeleteTemplateResponse, error)
 	NewDeleteTemplateParams(id string) *DeleteTemplateParams
-	ExtractTemplate(p *ExtractTemplateParams) (*ExtractTemplateResponse, error)
+	ExtractTemplate(P *ExtractTemplateParams) (*ExtractTemplateResponse, error)
 	NewExtractTemplateParams(id string, mode string) *ExtractTemplateParams
-	GetUploadParamsForTemplate(p *GetUploadParamsForTemplateParams) (*GetUploadParamsForTemplateResponse, error)
+	GetUploadParamsForTemplate(P *GetUploadParamsForTemplateParams) (*GetUploadParamsForTemplateResponse, error)
 	NewGetUploadParamsForTemplateParams(displaytext string, format string, hypervisor string, name string, zoneid string) *GetUploadParamsForTemplateParams
-	ListTemplatePermissions(p *ListTemplatePermissionsParams) (*ListTemplatePermissionsResponse, error)
+	ListTemplatePermissions(P *ListTemplatePermissionsParams) (*ListTemplatePermissionsResponse, error)
 	NewListTemplatePermissionsParams(id string) *ListTemplatePermissionsParams
 	GetTemplatePermissionByID(id string, opts ...OptionFunc) (*TemplatePermission, int, error)
-	ListTemplates(p *ListTemplatesParams) (*ListTemplatesResponse, error)
+	ListTemplates(P *ListTemplatesParams) (*ListTemplatesResponse, error)
 	NewListTemplatesParams(templatefilter string) *ListTemplatesParams
 	GetTemplateID(name string, templatefilter string, zoneid string, opts ...OptionFunc) (string, int, error)
 	GetTemplateByName(name string, templatefilter string, zoneid string, opts ...OptionFunc) (*Template, int, error)
 	GetTemplateByID(id string, templatefilter string, opts ...OptionFunc) (*Template, int, error)
-	PrepareTemplate(p *PrepareTemplateParams) (*PrepareTemplateResponse, error)
+	PrepareTemplate(P *PrepareTemplateParams) (*PrepareTemplateResponse, error)
 	NewPrepareTemplateParams(templateid string, zoneid string) *PrepareTemplateParams
-	RegisterTemplate(p *RegisterTemplateParams) (*RegisterTemplateResponse, error)
+	RegisterTemplate(P *RegisterTemplateParams) (*RegisterTemplateResponse, error)
 	NewRegisterTemplateParams(displaytext string, format string, hypervisor string, name string, url string) *RegisterTemplateParams
-	UpdateTemplate(p *UpdateTemplateParams) (*UpdateTemplateResponse, error)
+	UpdateTemplate(P *UpdateTemplateParams) (*UpdateTemplateResponse, error)
 	NewUpdateTemplateParams(id string) *UpdateTemplateParams
-	UpdateTemplatePermissions(p *UpdateTemplatePermissionsParams) (*UpdateTemplatePermissionsResponse, error)
+	UpdateTemplatePermissions(P *UpdateTemplatePermissionsParams) (*UpdateTemplatePermissionsResponse, error)
 	NewUpdateTemplatePermissionsParams(id string) *UpdateTemplatePermissionsParams
-	UpgradeRouterTemplate(p *UpgradeRouterTemplateParams) (*UpgradeRouterTemplateResponse, error)
+	UpgradeRouterTemplate(P *UpgradeRouterTemplateParams) (*UpgradeRouterTemplateResponse, error)
 	NewUpgradeRouterTemplateParams() *UpgradeRouterTemplateParams
 }
 
 type CopyTemplateParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CopyTemplateParams) toURLValues() url.Values {
+func (P *CopyTemplateParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["destzoneid"]; found {
+	if v, found := P.P["destzoneid"]; found {
 		u.Set("destzoneid", v.(string))
 	}
-	if v, found := p.p["destzoneids"]; found {
+	if v, found := P.P["destzoneids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("destzoneids", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["sourcezoneid"]; found {
+	if v, found := P.P["sourcezoneid"]; found {
 		u.Set("sourcezoneid", v.(string))
 	}
 	return u
 }
 
-func (p *CopyTemplateParams) SetDestzoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyTemplateParams) SetDestzoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["destzoneid"] = v
+	P.P["destzoneid"] = v
 }
 
-func (p *CopyTemplateParams) GetDestzoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyTemplateParams) GetDestzoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["destzoneid"].(string)
+	value, ok := P.P["destzoneid"].(string)
 	return value, ok
 }
 
-func (p *CopyTemplateParams) SetDestzoneids(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyTemplateParams) SetDestzoneids(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["destzoneids"] = v
+	P.P["destzoneids"] = v
 }
 
-func (p *CopyTemplateParams) GetDestzoneids() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyTemplateParams) GetDestzoneids() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["destzoneids"].([]string)
+	value, ok := P.P["destzoneids"].([]string)
 	return value, ok
 }
 
-func (p *CopyTemplateParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyTemplateParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *CopyTemplateParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyTemplateParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *CopyTemplateParams) SetSourcezoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyTemplateParams) SetSourcezoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sourcezoneid"] = v
+	P.P["sourcezoneid"] = v
 }
 
-func (p *CopyTemplateParams) GetSourcezoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyTemplateParams) GetSourcezoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sourcezoneid"].(string)
+	value, ok := P.P["sourcezoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CopyTemplateParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewCopyTemplateParams(id string) *CopyTemplateParams {
-	p := &CopyTemplateParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &CopyTemplateParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Copies a template from one zone to another.
@@ -268,342 +268,342 @@ func (r *CopyTemplateResponse) UnmarshalJSON(b []byte) error {
 }
 
 type CreateTemplateParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateTemplateParams) toURLValues() url.Values {
+func (P *CreateTemplateParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["bits"]; found {
+	if v, found := P.P["bits"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("bits", vv)
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].%s", i, k), m[k])
 		}
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["isdynamicallyscalable"]; found {
+	if v, found := P.P["isdynamicallyscalable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isdynamicallyscalable", vv)
 	}
-	if v, found := p.p["isfeatured"]; found {
+	if v, found := P.P["isfeatured"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isfeatured", vv)
 	}
-	if v, found := p.p["ispublic"]; found {
+	if v, found := P.P["ispublic"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("ispublic", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["ostypeid"]; found {
+	if v, found := P.P["ostypeid"]; found {
 		u.Set("ostypeid", v.(string))
 	}
-	if v, found := p.p["passwordenabled"]; found {
+	if v, found := P.P["passwordenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("passwordenabled", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["requireshvm"]; found {
+	if v, found := P.P["requireshvm"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("requireshvm", vv)
 	}
-	if v, found := p.p["snapshotid"]; found {
+	if v, found := P.P["snapshotid"]; found {
 		u.Set("snapshotid", v.(string))
 	}
-	if v, found := p.p["sshkeyenabled"]; found {
+	if v, found := P.P["sshkeyenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("sshkeyenabled", vv)
 	}
-	if v, found := p.p["templatetag"]; found {
+	if v, found := P.P["templatetag"]; found {
 		u.Set("templatetag", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
-	if v, found := p.p["volumeid"]; found {
+	if v, found := P.P["volumeid"]; found {
 		u.Set("volumeid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateTemplateParams) SetBits(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetBits(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bits"] = v
+	P.P["bits"] = v
 }
 
-func (p *CreateTemplateParams) GetBits() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetBits() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bits"].(int)
+	value, ok := P.P["bits"].(int)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *CreateTemplateParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *CreateTemplateParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetIsdynamicallyscalable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetIsdynamicallyscalable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isdynamicallyscalable"] = v
+	P.P["isdynamicallyscalable"] = v
 }
 
-func (p *CreateTemplateParams) GetIsdynamicallyscalable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetIsdynamicallyscalable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isdynamicallyscalable"].(bool)
+	value, ok := P.P["isdynamicallyscalable"].(bool)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetIsfeatured(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetIsfeatured(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isfeatured"] = v
+	P.P["isfeatured"] = v
 }
 
-func (p *CreateTemplateParams) GetIsfeatured() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetIsfeatured() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isfeatured"].(bool)
+	value, ok := P.P["isfeatured"].(bool)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetIspublic(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetIspublic(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ispublic"] = v
+	P.P["ispublic"] = v
 }
 
-func (p *CreateTemplateParams) GetIspublic() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetIspublic() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ispublic"].(bool)
+	value, ok := P.P["ispublic"].(bool)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateTemplateParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetOstypeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetOstypeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ostypeid"] = v
+	P.P["ostypeid"] = v
 }
 
-func (p *CreateTemplateParams) GetOstypeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetOstypeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ostypeid"].(string)
+	value, ok := P.P["ostypeid"].(string)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetPasswordenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetPasswordenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["passwordenabled"] = v
+	P.P["passwordenabled"] = v
 }
 
-func (p *CreateTemplateParams) GetPasswordenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetPasswordenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["passwordenabled"].(bool)
+	value, ok := P.P["passwordenabled"].(bool)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *CreateTemplateParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetRequireshvm(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetRequireshvm(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["requireshvm"] = v
+	P.P["requireshvm"] = v
 }
 
-func (p *CreateTemplateParams) GetRequireshvm() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetRequireshvm() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["requireshvm"].(bool)
+	value, ok := P.P["requireshvm"].(bool)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetSnapshotid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetSnapshotid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["snapshotid"] = v
+	P.P["snapshotid"] = v
 }
 
-func (p *CreateTemplateParams) GetSnapshotid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetSnapshotid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["snapshotid"].(string)
+	value, ok := P.P["snapshotid"].(string)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetSshkeyenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetSshkeyenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sshkeyenabled"] = v
+	P.P["sshkeyenabled"] = v
 }
 
-func (p *CreateTemplateParams) GetSshkeyenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetSshkeyenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sshkeyenabled"].(bool)
+	value, ok := P.P["sshkeyenabled"].(bool)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetTemplatetag(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetTemplatetag(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["templatetag"] = v
+	P.P["templatetag"] = v
 }
 
-func (p *CreateTemplateParams) GetTemplatetag() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetTemplatetag() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["templatetag"].(string)
+	value, ok := P.P["templatetag"].(string)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *CreateTemplateParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *CreateTemplateParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
-func (p *CreateTemplateParams) SetVolumeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) SetVolumeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["volumeid"] = v
+	P.P["volumeid"] = v
 }
 
-func (p *CreateTemplateParams) GetVolumeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateTemplateParams) GetVolumeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["volumeid"].(string)
+	value, ok := P.P["volumeid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateTemplateParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewCreateTemplateParams(displaytext string, name string, ostypeid string) *CreateTemplateParams {
-	p := &CreateTemplateParams{}
-	p.p = make(map[string]interface{})
-	p.p["displaytext"] = displaytext
-	p.p["name"] = name
-	p.p["ostypeid"] = ostypeid
-	return p
+	P := &CreateTemplateParams{}
+	P.P = make(map[string]interface{})
+	P.P["displaytext"] = displaytext
+	P.P["name"] = name
+	P.P["ostypeid"] = ostypeid
+	return P
 }
 
 // Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it.
@@ -722,79 +722,79 @@ func (r *CreateTemplateResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DeleteTemplateParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteTemplateParams) toURLValues() url.Values {
+func (P *DeleteTemplateParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["forced"]; found {
+	if v, found := P.P["forced"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forced", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteTemplateParams) SetForced(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTemplateParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forced"] = v
+	P.P["forced"] = v
 }
 
-func (p *DeleteTemplateParams) GetForced() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTemplateParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forced"].(bool)
+	value, ok := P.P["forced"].(bool)
 	return value, ok
 }
 
-func (p *DeleteTemplateParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTemplateParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteTemplateParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTemplateParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *DeleteTemplateParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTemplateParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *DeleteTemplateParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteTemplateParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteTemplateParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewDeleteTemplateParams(id string) *DeleteTemplateParams {
-	p := &DeleteTemplateParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteTemplateParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a template from the system. All virtual machines using the deleted template will not be affected.
@@ -835,97 +835,97 @@ type DeleteTemplateResponse struct {
 }
 
 type ExtractTemplateParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ExtractTemplateParams) toURLValues() url.Values {
+func (P *ExtractTemplateParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["mode"]; found {
+	if v, found := P.P["mode"]; found {
 		u.Set("mode", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ExtractTemplateParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractTemplateParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ExtractTemplateParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractTemplateParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ExtractTemplateParams) SetMode(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractTemplateParams) SetMode(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["mode"] = v
+	P.P["mode"] = v
 }
 
-func (p *ExtractTemplateParams) GetMode() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractTemplateParams) GetMode() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["mode"].(string)
+	value, ok := P.P["mode"].(string)
 	return value, ok
 }
 
-func (p *ExtractTemplateParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractTemplateParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *ExtractTemplateParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractTemplateParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *ExtractTemplateParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractTemplateParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ExtractTemplateParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractTemplateParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ExtractTemplateParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewExtractTemplateParams(id string, mode string) *ExtractTemplateParams {
-	p := &ExtractTemplateParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["mode"] = mode
-	return p
+	P := &ExtractTemplateParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["mode"] = mode
+	return P
 }
 
 // Extracts a template
@@ -983,437 +983,437 @@ type ExtractTemplateResponse struct {
 }
 
 type GetUploadParamsForTemplateParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *GetUploadParamsForTemplateParams) toURLValues() url.Values {
+func (P *GetUploadParamsForTemplateParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["bits"]; found {
+	if v, found := P.P["bits"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("bits", vv)
 	}
-	if v, found := p.p["checksum"]; found {
+	if v, found := P.P["checksum"]; found {
 		u.Set("checksum", v.(string))
 	}
-	if v, found := p.p["deployasis"]; found {
+	if v, found := P.P["deployasis"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("deployasis", vv)
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].%s", i, k), m[k])
 		}
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["format"]; found {
+	if v, found := P.P["format"]; found {
 		u.Set("format", v.(string))
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["isdynamicallyscalable"]; found {
+	if v, found := P.P["isdynamicallyscalable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isdynamicallyscalable", vv)
 	}
-	if v, found := p.p["isextractable"]; found {
+	if v, found := P.P["isextractable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isextractable", vv)
 	}
-	if v, found := p.p["isfeatured"]; found {
+	if v, found := P.P["isfeatured"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isfeatured", vv)
 	}
-	if v, found := p.p["ispublic"]; found {
+	if v, found := P.P["ispublic"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("ispublic", vv)
 	}
-	if v, found := p.p["isrouting"]; found {
+	if v, found := P.P["isrouting"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrouting", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["ostypeid"]; found {
+	if v, found := P.P["ostypeid"]; found {
 		u.Set("ostypeid", v.(string))
 	}
-	if v, found := p.p["passwordenabled"]; found {
+	if v, found := P.P["passwordenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("passwordenabled", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["requireshvm"]; found {
+	if v, found := P.P["requireshvm"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("requireshvm", vv)
 	}
-	if v, found := p.p["sshkeyenabled"]; found {
+	if v, found := P.P["sshkeyenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("sshkeyenabled", vv)
 	}
-	if v, found := p.p["templatetag"]; found {
+	if v, found := P.P["templatetag"]; found {
 		u.Set("templatetag", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *GetUploadParamsForTemplateParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetBits(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetBits(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bits"] = v
+	P.P["bits"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetBits() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetBits() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bits"].(int)
+	value, ok := P.P["bits"].(int)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetChecksum(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetChecksum(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["checksum"] = v
+	P.P["checksum"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetChecksum() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetChecksum() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["checksum"].(string)
+	value, ok := P.P["checksum"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetDeployasis(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetDeployasis(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["deployasis"] = v
+	P.P["deployasis"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetDeployasis() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetDeployasis() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["deployasis"].(bool)
+	value, ok := P.P["deployasis"].(bool)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetFormat(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetFormat(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["format"] = v
+	P.P["format"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetFormat() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetFormat() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["format"].(string)
+	value, ok := P.P["format"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetIsdynamicallyscalable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetIsdynamicallyscalable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isdynamicallyscalable"] = v
+	P.P["isdynamicallyscalable"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetIsdynamicallyscalable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetIsdynamicallyscalable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isdynamicallyscalable"].(bool)
+	value, ok := P.P["isdynamicallyscalable"].(bool)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetIsextractable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetIsextractable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isextractable"] = v
+	P.P["isextractable"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetIsextractable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetIsextractable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isextractable"].(bool)
+	value, ok := P.P["isextractable"].(bool)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetIsfeatured(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetIsfeatured(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isfeatured"] = v
+	P.P["isfeatured"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetIsfeatured() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetIsfeatured() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isfeatured"].(bool)
+	value, ok := P.P["isfeatured"].(bool)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetIspublic(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetIspublic(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ispublic"] = v
+	P.P["ispublic"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetIspublic() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetIspublic() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ispublic"].(bool)
+	value, ok := P.P["ispublic"].(bool)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetIsrouting(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetIsrouting(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrouting"] = v
+	P.P["isrouting"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetIsrouting() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetIsrouting() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrouting"].(bool)
+	value, ok := P.P["isrouting"].(bool)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetOstypeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetOstypeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ostypeid"] = v
+	P.P["ostypeid"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetOstypeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetOstypeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ostypeid"].(string)
+	value, ok := P.P["ostypeid"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetPasswordenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetPasswordenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["passwordenabled"] = v
+	P.P["passwordenabled"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetPasswordenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetPasswordenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["passwordenabled"].(bool)
+	value, ok := P.P["passwordenabled"].(bool)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetRequireshvm(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetRequireshvm(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["requireshvm"] = v
+	P.P["requireshvm"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetRequireshvm() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetRequireshvm() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["requireshvm"].(bool)
+	value, ok := P.P["requireshvm"].(bool)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetSshkeyenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetSshkeyenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sshkeyenabled"] = v
+	P.P["sshkeyenabled"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetSshkeyenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetSshkeyenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sshkeyenabled"].(bool)
+	value, ok := P.P["sshkeyenabled"].(bool)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetTemplatetag(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetTemplatetag(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["templatetag"] = v
+	P.P["templatetag"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetTemplatetag() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetTemplatetag() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["templatetag"].(string)
+	value, ok := P.P["templatetag"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForTemplateParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *GetUploadParamsForTemplateParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForTemplateParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new GetUploadParamsForTemplateParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewGetUploadParamsForTemplateParams(displaytext string, format string, hypervisor string, name string, zoneid string) *GetUploadParamsForTemplateParams {
-	p := &GetUploadParamsForTemplateParams{}
-	p.p = make(map[string]interface{})
-	p.p["displaytext"] = displaytext
-	p.p["format"] = format
-	p.p["hypervisor"] = hypervisor
-	p.p["name"] = name
-	p.p["zoneid"] = zoneid
-	return p
+	P := &GetUploadParamsForTemplateParams{}
+	P.P = make(map[string]interface{})
+	P.P["displaytext"] = displaytext
+	P.P["format"] = format
+	P.P["hypervisor"] = hypervisor
+	P.P["name"] = name
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // upload an existing template into the CloudStack cloud.
@@ -1445,58 +1445,58 @@ type GetUploadParamsForTemplateResponse struct {
 }
 
 type ListTemplatePermissionsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListTemplatePermissionsParams) toURLValues() url.Values {
+func (P *ListTemplatePermissionsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *ListTemplatePermissionsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatePermissionsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListTemplatePermissionsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatePermissionsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListTemplatePermissionsParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewListTemplatePermissionsParams(id string) *ListTemplatePermissionsParams {
-	p := &ListTemplatePermissionsParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &ListTemplatePermissionsParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *TemplateService) GetTemplatePermissionByID(id string, opts ...OptionFunc) (*TemplatePermission, int, error) {
-	p := &ListTemplatePermissionsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListTemplatePermissionsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListTemplatePermissions(p)
+	l, err := s.ListTemplatePermissions(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1547,415 +1547,415 @@ type TemplatePermission struct {
 }
 
 type ListTemplatesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListTemplatesParams) toURLValues() url.Values {
+func (P *ListTemplatesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("details", vv)
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["ids"]; found {
+	if v, found := P.P["ids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("ids", vv)
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["parenttemplateid"]; found {
+	if v, found := P.P["parenttemplateid"]; found {
 		u.Set("parenttemplateid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["showicon"]; found {
+	if v, found := P.P["showicon"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showicon", vv)
 	}
-	if v, found := p.p["showremoved"]; found {
+	if v, found := P.P["showremoved"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showremoved", vv)
 	}
-	if v, found := p.p["showunique"]; found {
+	if v, found := P.P["showunique"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showunique", vv)
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["templatefilter"]; found {
+	if v, found := P.P["templatefilter"]; found {
 		u.Set("templatefilter", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListTemplatesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListTemplatesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetDetails(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetDetails(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *ListTemplatesParams) GetDetails() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetDetails() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].([]string)
+	value, ok := P.P["details"].([]string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListTemplatesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *ListTemplatesParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListTemplatesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetIds(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetIds(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ids"] = v
+	P.P["ids"] = v
 }
 
-func (p *ListTemplatesParams) GetIds() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetIds() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ids"].([]string)
+	value, ok := P.P["ids"].([]string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListTemplatesParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListTemplatesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListTemplatesParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListTemplatesParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListTemplatesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListTemplatesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetParenttemplateid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetParenttemplateid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["parenttemplateid"] = v
+	P.P["parenttemplateid"] = v
 }
 
-func (p *ListTemplatesParams) GetParenttemplateid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetParenttemplateid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["parenttemplateid"].(string)
+	value, ok := P.P["parenttemplateid"].(string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListTemplatesParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetShowicon(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetShowicon(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showicon"] = v
+	P.P["showicon"] = v
 }
 
-func (p *ListTemplatesParams) GetShowicon() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetShowicon() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showicon"].(bool)
+	value, ok := P.P["showicon"].(bool)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetShowremoved(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetShowremoved(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showremoved"] = v
+	P.P["showremoved"] = v
 }
 
-func (p *ListTemplatesParams) GetShowremoved() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetShowremoved() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showremoved"].(bool)
+	value, ok := P.P["showremoved"].(bool)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetShowunique(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetShowunique(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showunique"] = v
+	P.P["showunique"] = v
 }
 
-func (p *ListTemplatesParams) GetShowunique() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetShowunique() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showunique"].(bool)
+	value, ok := P.P["showunique"].(bool)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListTemplatesParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetTemplatefilter(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetTemplatefilter(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["templatefilter"] = v
+	P.P["templatefilter"] = v
 }
 
-func (p *ListTemplatesParams) GetTemplatefilter() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetTemplatefilter() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["templatefilter"].(string)
+	value, ok := P.P["templatefilter"].(string)
 	return value, ok
 }
 
-func (p *ListTemplatesParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListTemplatesParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListTemplatesParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListTemplatesParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewListTemplatesParams(templatefilter string) *ListTemplatesParams {
-	p := &ListTemplatesParams{}
-	p.p = make(map[string]interface{})
-	p.p["templatefilter"] = templatefilter
-	return p
+	P := &ListTemplatesParams{}
+	P.P = make(map[string]interface{})
+	P.P["templatefilter"] = templatefilter
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *TemplateService) GetTemplateID(name string, templatefilter string, zoneid string, opts ...OptionFunc) (string, int, error) {
-	p := &ListTemplatesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListTemplatesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
-	p.p["templatefilter"] = templatefilter
-	p.p["zoneid"] = zoneid
+	P.P["name"] = name
+	P.P["templatefilter"] = templatefilter
+	P.P["zoneid"] = zoneid
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListTemplates(p)
+	l, err := s.ListTemplates(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1994,19 +1994,19 @@ func (s *TemplateService) GetTemplateByName(name string, templatefilter string, 
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *TemplateService) GetTemplateByID(id string, templatefilter string, opts ...OptionFunc) (*Template, int, error) {
-	p := &ListTemplatesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListTemplatesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
-	p.p["templatefilter"] = templatefilter
+	P.P["id"] = id
+	P.P["templatefilter"] = templatefilter
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListTemplates(p)
+	l, err := s.ListTemplates(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -2127,79 +2127,79 @@ func (r *Template) UnmarshalJSON(b []byte) error {
 }
 
 type PrepareTemplateParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *PrepareTemplateParams) toURLValues() url.Values {
+func (P *PrepareTemplateParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["storageid"]; found {
+	if v, found := P.P["storageid"]; found {
 		u.Set("storageid", v.(string))
 	}
-	if v, found := p.p["templateid"]; found {
+	if v, found := P.P["templateid"]; found {
 		u.Set("templateid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *PrepareTemplateParams) SetStorageid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *PrepareTemplateParams) SetStorageid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["storageid"] = v
+	P.P["storageid"] = v
 }
 
-func (p *PrepareTemplateParams) GetStorageid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *PrepareTemplateParams) GetStorageid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["storageid"].(string)
+	value, ok := P.P["storageid"].(string)
 	return value, ok
 }
 
-func (p *PrepareTemplateParams) SetTemplateid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *PrepareTemplateParams) SetTemplateid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["templateid"] = v
+	P.P["templateid"] = v
 }
 
-func (p *PrepareTemplateParams) GetTemplateid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *PrepareTemplateParams) GetTemplateid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["templateid"].(string)
+	value, ok := P.P["templateid"].(string)
 	return value, ok
 }
 
-func (p *PrepareTemplateParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *PrepareTemplateParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *PrepareTemplateParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *PrepareTemplateParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new PrepareTemplateParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewPrepareTemplateParams(templateid string, zoneid string) *PrepareTemplateParams {
-	p := &PrepareTemplateParams{}
-	p.p = make(map[string]interface{})
-	p.p["templateid"] = templateid
-	p.p["zoneid"] = zoneid
-	return p
+	P := &PrepareTemplateParams{}
+	P.P = make(map[string]interface{})
+	P.P["templateid"] = templateid
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // load template into primary storage
@@ -2298,493 +2298,493 @@ func (r *PrepareTemplateResponse) UnmarshalJSON(b []byte) error {
 }
 
 type RegisterTemplateParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RegisterTemplateParams) toURLValues() url.Values {
+func (P *RegisterTemplateParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["bits"]; found {
+	if v, found := P.P["bits"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("bits", vv)
 	}
-	if v, found := p.p["checksum"]; found {
+	if v, found := P.P["checksum"]; found {
 		u.Set("checksum", v.(string))
 	}
-	if v, found := p.p["deployasis"]; found {
+	if v, found := P.P["deployasis"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("deployasis", vv)
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].%s", i, k), m[k])
 		}
 	}
-	if v, found := p.p["directdownload"]; found {
+	if v, found := P.P["directdownload"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("directdownload", vv)
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["format"]; found {
+	if v, found := P.P["format"]; found {
 		u.Set("format", v.(string))
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["isdynamicallyscalable"]; found {
+	if v, found := P.P["isdynamicallyscalable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isdynamicallyscalable", vv)
 	}
-	if v, found := p.p["isextractable"]; found {
+	if v, found := P.P["isextractable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isextractable", vv)
 	}
-	if v, found := p.p["isfeatured"]; found {
+	if v, found := P.P["isfeatured"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isfeatured", vv)
 	}
-	if v, found := p.p["ispublic"]; found {
+	if v, found := P.P["ispublic"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("ispublic", vv)
 	}
-	if v, found := p.p["isrouting"]; found {
+	if v, found := P.P["isrouting"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrouting", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["ostypeid"]; found {
+	if v, found := P.P["ostypeid"]; found {
 		u.Set("ostypeid", v.(string))
 	}
-	if v, found := p.p["passwordenabled"]; found {
+	if v, found := P.P["passwordenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("passwordenabled", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["requireshvm"]; found {
+	if v, found := P.P["requireshvm"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("requireshvm", vv)
 	}
-	if v, found := p.p["sshkeyenabled"]; found {
+	if v, found := P.P["sshkeyenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("sshkeyenabled", vv)
 	}
-	if v, found := p.p["templatetag"]; found {
+	if v, found := P.P["templatetag"]; found {
 		u.Set("templatetag", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
-	if v, found := p.p["zoneids"]; found {
+	if v, found := P.P["zoneids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("zoneids", vv)
 	}
 	return u
 }
 
-func (p *RegisterTemplateParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *RegisterTemplateParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetBits(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetBits(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bits"] = v
+	P.P["bits"] = v
 }
 
-func (p *RegisterTemplateParams) GetBits() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetBits() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bits"].(int)
+	value, ok := P.P["bits"].(int)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetChecksum(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetChecksum(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["checksum"] = v
+	P.P["checksum"] = v
 }
 
-func (p *RegisterTemplateParams) GetChecksum() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetChecksum() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["checksum"].(string)
+	value, ok := P.P["checksum"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetDeployasis(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetDeployasis(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["deployasis"] = v
+	P.P["deployasis"] = v
 }
 
-func (p *RegisterTemplateParams) GetDeployasis() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetDeployasis() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["deployasis"].(bool)
+	value, ok := P.P["deployasis"].(bool)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *RegisterTemplateParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetDirectdownload(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetDirectdownload(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["directdownload"] = v
+	P.P["directdownload"] = v
 }
 
-func (p *RegisterTemplateParams) GetDirectdownload() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetDirectdownload() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["directdownload"].(bool)
+	value, ok := P.P["directdownload"].(bool)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *RegisterTemplateParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *RegisterTemplateParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetFormat(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetFormat(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["format"] = v
+	P.P["format"] = v
 }
 
-func (p *RegisterTemplateParams) GetFormat() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetFormat() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["format"].(string)
+	value, ok := P.P["format"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *RegisterTemplateParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetIsdynamicallyscalable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetIsdynamicallyscalable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isdynamicallyscalable"] = v
+	P.P["isdynamicallyscalable"] = v
 }
 
-func (p *RegisterTemplateParams) GetIsdynamicallyscalable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetIsdynamicallyscalable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isdynamicallyscalable"].(bool)
+	value, ok := P.P["isdynamicallyscalable"].(bool)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetIsextractable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetIsextractable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isextractable"] = v
+	P.P["isextractable"] = v
 }
 
-func (p *RegisterTemplateParams) GetIsextractable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetIsextractable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isextractable"].(bool)
+	value, ok := P.P["isextractable"].(bool)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetIsfeatured(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetIsfeatured(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isfeatured"] = v
+	P.P["isfeatured"] = v
 }
 
-func (p *RegisterTemplateParams) GetIsfeatured() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetIsfeatured() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isfeatured"].(bool)
+	value, ok := P.P["isfeatured"].(bool)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetIspublic(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetIspublic(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ispublic"] = v
+	P.P["ispublic"] = v
 }
 
-func (p *RegisterTemplateParams) GetIspublic() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetIspublic() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ispublic"].(bool)
+	value, ok := P.P["ispublic"].(bool)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetIsrouting(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetIsrouting(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrouting"] = v
+	P.P["isrouting"] = v
 }
 
-func (p *RegisterTemplateParams) GetIsrouting() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetIsrouting() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrouting"].(bool)
+	value, ok := P.P["isrouting"].(bool)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *RegisterTemplateParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetOstypeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetOstypeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ostypeid"] = v
+	P.P["ostypeid"] = v
 }
 
-func (p *RegisterTemplateParams) GetOstypeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetOstypeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ostypeid"].(string)
+	value, ok := P.P["ostypeid"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetPasswordenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetPasswordenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["passwordenabled"] = v
+	P.P["passwordenabled"] = v
 }
 
-func (p *RegisterTemplateParams) GetPasswordenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetPasswordenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["passwordenabled"].(bool)
+	value, ok := P.P["passwordenabled"].(bool)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *RegisterTemplateParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetRequireshvm(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetRequireshvm(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["requireshvm"] = v
+	P.P["requireshvm"] = v
 }
 
-func (p *RegisterTemplateParams) GetRequireshvm() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetRequireshvm() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["requireshvm"].(bool)
+	value, ok := P.P["requireshvm"].(bool)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetSshkeyenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetSshkeyenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sshkeyenabled"] = v
+	P.P["sshkeyenabled"] = v
 }
 
-func (p *RegisterTemplateParams) GetSshkeyenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetSshkeyenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sshkeyenabled"].(bool)
+	value, ok := P.P["sshkeyenabled"].(bool)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetTemplatetag(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetTemplatetag(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["templatetag"] = v
+	P.P["templatetag"] = v
 }
 
-func (p *RegisterTemplateParams) GetTemplatetag() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetTemplatetag() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["templatetag"].(string)
+	value, ok := P.P["templatetag"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *RegisterTemplateParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *RegisterTemplateParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
-func (p *RegisterTemplateParams) SetZoneids(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) SetZoneids(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneids"] = v
+	P.P["zoneids"] = v
 }
 
-func (p *RegisterTemplateParams) GetZoneids() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterTemplateParams) GetZoneids() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneids"].([]string)
+	value, ok := P.P["zoneids"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new RegisterTemplateParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewRegisterTemplateParams(displaytext string, format string, hypervisor string, name string, url string) *RegisterTemplateParams {
-	p := &RegisterTemplateParams{}
-	p.p = make(map[string]interface{})
-	p.p["displaytext"] = displaytext
-	p.p["format"] = format
-	p.p["hypervisor"] = hypervisor
-	p.p["name"] = name
-	p.p["url"] = url
-	return p
+	P := &RegisterTemplateParams{}
+	P.P = make(map[string]interface{})
+	P.P["displaytext"] = displaytext
+	P.P["format"] = format
+	P.P["hypervisor"] = hypervisor
+	P.P["name"] = name
+	P.P["url"] = url
+	return P
 }
 
 // Registers an existing template into the CloudStack cloud.
@@ -2888,305 +2888,305 @@ func (r *RegisterTemplate) UnmarshalJSON(b []byte) error {
 }
 
 type UpdateTemplateParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateTemplateParams) toURLValues() url.Values {
+func (P *UpdateTemplateParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["bootable"]; found {
+	if v, found := P.P["bootable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("bootable", vv)
 	}
-	if v, found := p.p["cleanupdetails"]; found {
+	if v, found := P.P["cleanupdetails"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("cleanupdetails", vv)
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].%s", i, k), m[k])
 		}
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["format"]; found {
+	if v, found := P.P["format"]; found {
 		u.Set("format", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isdynamicallyscalable"]; found {
+	if v, found := P.P["isdynamicallyscalable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isdynamicallyscalable", vv)
 	}
-	if v, found := p.p["isrouting"]; found {
+	if v, found := P.P["isrouting"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrouting", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["ostypeid"]; found {
+	if v, found := P.P["ostypeid"]; found {
 		u.Set("ostypeid", v.(string))
 	}
-	if v, found := p.p["passwordenabled"]; found {
+	if v, found := P.P["passwordenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("passwordenabled", vv)
 	}
-	if v, found := p.p["requireshvm"]; found {
+	if v, found := P.P["requireshvm"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("requireshvm", vv)
 	}
-	if v, found := p.p["sortkey"]; found {
+	if v, found := P.P["sortkey"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("sortkey", vv)
 	}
-	if v, found := p.p["sshkeyenabled"]; found {
+	if v, found := P.P["sshkeyenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("sshkeyenabled", vv)
 	}
-	if v, found := p.p["templatetype"]; found {
+	if v, found := P.P["templatetype"]; found {
 		u.Set("templatetype", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateTemplateParams) SetBootable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetBootable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bootable"] = v
+	P.P["bootable"] = v
 }
 
-func (p *UpdateTemplateParams) GetBootable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetBootable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bootable"].(bool)
+	value, ok := P.P["bootable"].(bool)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetCleanupdetails(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetCleanupdetails(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cleanupdetails"] = v
+	P.P["cleanupdetails"] = v
 }
 
-func (p *UpdateTemplateParams) GetCleanupdetails() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetCleanupdetails() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cleanupdetails"].(bool)
+	value, ok := P.P["cleanupdetails"].(bool)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *UpdateTemplateParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *UpdateTemplateParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetFormat(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetFormat(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["format"] = v
+	P.P["format"] = v
 }
 
-func (p *UpdateTemplateParams) GetFormat() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetFormat() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["format"].(string)
+	value, ok := P.P["format"].(string)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateTemplateParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetIsdynamicallyscalable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetIsdynamicallyscalable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isdynamicallyscalable"] = v
+	P.P["isdynamicallyscalable"] = v
 }
 
-func (p *UpdateTemplateParams) GetIsdynamicallyscalable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetIsdynamicallyscalable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isdynamicallyscalable"].(bool)
+	value, ok := P.P["isdynamicallyscalable"].(bool)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetIsrouting(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetIsrouting(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrouting"] = v
+	P.P["isrouting"] = v
 }
 
-func (p *UpdateTemplateParams) GetIsrouting() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetIsrouting() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrouting"].(bool)
+	value, ok := P.P["isrouting"].(bool)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateTemplateParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetOstypeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetOstypeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ostypeid"] = v
+	P.P["ostypeid"] = v
 }
 
-func (p *UpdateTemplateParams) GetOstypeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetOstypeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ostypeid"].(string)
+	value, ok := P.P["ostypeid"].(string)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetPasswordenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetPasswordenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["passwordenabled"] = v
+	P.P["passwordenabled"] = v
 }
 
-func (p *UpdateTemplateParams) GetPasswordenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetPasswordenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["passwordenabled"].(bool)
+	value, ok := P.P["passwordenabled"].(bool)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetRequireshvm(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetRequireshvm(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["requireshvm"] = v
+	P.P["requireshvm"] = v
 }
 
-func (p *UpdateTemplateParams) GetRequireshvm() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetRequireshvm() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["requireshvm"].(bool)
+	value, ok := P.P["requireshvm"].(bool)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetSortkey(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetSortkey(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sortkey"] = v
+	P.P["sortkey"] = v
 }
 
-func (p *UpdateTemplateParams) GetSortkey() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetSortkey() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sortkey"].(int)
+	value, ok := P.P["sortkey"].(int)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetSshkeyenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetSshkeyenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sshkeyenabled"] = v
+	P.P["sshkeyenabled"] = v
 }
 
-func (p *UpdateTemplateParams) GetSshkeyenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetSshkeyenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sshkeyenabled"].(bool)
+	value, ok := P.P["sshkeyenabled"].(bool)
 	return value, ok
 }
 
-func (p *UpdateTemplateParams) SetTemplatetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) SetTemplatetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["templatetype"] = v
+	P.P["templatetype"] = v
 }
 
-func (p *UpdateTemplateParams) GetTemplatetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplateParams) GetTemplatetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["templatetype"].(string)
+	value, ok := P.P["templatetype"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateTemplateParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewUpdateTemplateParams(id string) *UpdateTemplateParams {
-	p := &UpdateTemplateParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateTemplateParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates attributes of a template.
@@ -3285,155 +3285,155 @@ func (r *UpdateTemplateResponse) UnmarshalJSON(b []byte) error {
 }
 
 type UpdateTemplatePermissionsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateTemplatePermissionsParams) toURLValues() url.Values {
+func (P *UpdateTemplatePermissionsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["accounts"]; found {
+	if v, found := P.P["accounts"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("accounts", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isextractable"]; found {
+	if v, found := P.P["isextractable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isextractable", vv)
 	}
-	if v, found := p.p["isfeatured"]; found {
+	if v, found := P.P["isfeatured"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isfeatured", vv)
 	}
-	if v, found := p.p["ispublic"]; found {
+	if v, found := P.P["ispublic"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("ispublic", vv)
 	}
-	if v, found := p.p["op"]; found {
+	if v, found := P.P["op"]; found {
 		u.Set("op", v.(string))
 	}
-	if v, found := p.p["projectids"]; found {
+	if v, found := P.P["projectids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("projectids", vv)
 	}
 	return u
 }
 
-func (p *UpdateTemplatePermissionsParams) SetAccounts(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) SetAccounts(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accounts"] = v
+	P.P["accounts"] = v
 }
 
-func (p *UpdateTemplatePermissionsParams) GetAccounts() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) GetAccounts() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accounts"].([]string)
+	value, ok := P.P["accounts"].([]string)
 	return value, ok
 }
 
-func (p *UpdateTemplatePermissionsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateTemplatePermissionsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateTemplatePermissionsParams) SetIsextractable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) SetIsextractable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isextractable"] = v
+	P.P["isextractable"] = v
 }
 
-func (p *UpdateTemplatePermissionsParams) GetIsextractable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) GetIsextractable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isextractable"].(bool)
+	value, ok := P.P["isextractable"].(bool)
 	return value, ok
 }
 
-func (p *UpdateTemplatePermissionsParams) SetIsfeatured(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) SetIsfeatured(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isfeatured"] = v
+	P.P["isfeatured"] = v
 }
 
-func (p *UpdateTemplatePermissionsParams) GetIsfeatured() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) GetIsfeatured() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isfeatured"].(bool)
+	value, ok := P.P["isfeatured"].(bool)
 	return value, ok
 }
 
-func (p *UpdateTemplatePermissionsParams) SetIspublic(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) SetIspublic(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ispublic"] = v
+	P.P["ispublic"] = v
 }
 
-func (p *UpdateTemplatePermissionsParams) GetIspublic() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) GetIspublic() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ispublic"].(bool)
+	value, ok := P.P["ispublic"].(bool)
 	return value, ok
 }
 
-func (p *UpdateTemplatePermissionsParams) SetOp(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) SetOp(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["op"] = v
+	P.P["op"] = v
 }
 
-func (p *UpdateTemplatePermissionsParams) GetOp() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) GetOp() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["op"].(string)
+	value, ok := P.P["op"].(string)
 	return value, ok
 }
 
-func (p *UpdateTemplatePermissionsParams) SetProjectids(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) SetProjectids(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectids"] = v
+	P.P["projectids"] = v
 }
 
-func (p *UpdateTemplatePermissionsParams) GetProjectids() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateTemplatePermissionsParams) GetProjectids() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectids"].([]string)
+	value, ok := P.P["projectids"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateTemplatePermissionsParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewUpdateTemplatePermissionsParams(id string) *UpdateTemplatePermissionsParams {
-	p := &UpdateTemplatePermissionsParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateTemplatePermissionsParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a template visibility permissions. A public template is visible to all accounts within the same domain. A private template is visible only to the owner of the template. A priviledged template is a private template with account permissions added. Only accounts specified under the template permissions are visible to them.
@@ -3486,131 +3486,131 @@ func (r *UpdateTemplatePermissionsResponse) UnmarshalJSON(b []byte) error {
 }
 
 type UpgradeRouterTemplateParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpgradeRouterTemplateParams) toURLValues() url.Values {
+func (P *UpgradeRouterTemplateParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *UpgradeRouterTemplateParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *UpgradeRouterTemplateParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *UpgradeRouterTemplateParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *UpgradeRouterTemplateParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
-func (p *UpgradeRouterTemplateParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *UpgradeRouterTemplateParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *UpgradeRouterTemplateParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpgradeRouterTemplateParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpgradeRouterTemplateParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *UpgradeRouterTemplateParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *UpgradeRouterTemplateParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *UpgradeRouterTemplateParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpgradeRouterTemplateParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpgradeRouterTemplateParams instance,
 // as then you are sure you have configured all required params
 func (s *TemplateService) NewUpgradeRouterTemplateParams() *UpgradeRouterTemplateParams {
-	p := &UpgradeRouterTemplateParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &UpgradeRouterTemplateParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Upgrades router to use newer template

@@ -26,105 +26,105 @@ import (
 )
 
 type AuthenticationServiceIface interface {
-	Login(p *LoginParams) (*LoginResponse, error)
+	Login(P *LoginParams) (*LoginResponse, error)
 	NewLoginParams(password string, username string) *LoginParams
-	Logout(p *LogoutParams) (*LogoutResponse, error)
+	Logout(P *LogoutParams) (*LogoutResponse, error)
 	NewLogoutParams() *LogoutParams
 }
 
 type LoginParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *LoginParams) toURLValues() url.Values {
+func (P *LoginParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["domain"]; found {
+	if v, found := P.P["domain"]; found {
 		u.Set("domain", v.(string))
 	}
-	if v, found := p.p["domainId"]; found {
+	if v, found := P.P["domainId"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("domainId", vv)
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *LoginParams) SetDomain(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LoginParams) SetDomain(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domain"] = v
+	P.P["domain"] = v
 }
 
-func (p *LoginParams) GetDomain() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LoginParams) GetDomain() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domain"].(string)
+	value, ok := P.P["domain"].(string)
 	return value, ok
 }
 
-func (p *LoginParams) SetDomainId(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LoginParams) SetDomainId(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainId"] = v
+	P.P["domainId"] = v
 }
 
-func (p *LoginParams) GetDomainId() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LoginParams) GetDomainId() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainId"].(int64)
+	value, ok := P.P["domainId"].(int64)
 	return value, ok
 }
 
-func (p *LoginParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LoginParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *LoginParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LoginParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *LoginParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LoginParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *LoginParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *LoginParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new LoginParams instance,
 // as then you are sure you have configured all required params
 func (s *AuthenticationService) NewLoginParams(password string, username string) *LoginParams {
-	p := &LoginParams{}
-	p.p = make(map[string]interface{})
-	p.p["password"] = password
-	p.p["username"] = username
-	return p
+	P := &LoginParams{}
+	P.P = make(map[string]interface{})
+	P.P["password"] = password
+	P.P["username"] = username
+	return P
 }
 
 // Logs a user into the CloudStack. A successful login attempt will generate a JSESSIONID cookie value that can be passed in subsequent Query command calls until the "logout" command has been issued or the session has expired.
@@ -160,12 +160,12 @@ type LoginResponse struct {
 }
 
 type LogoutParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *LogoutParams) toURLValues() url.Values {
+func (P *LogoutParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
 	return u
@@ -174,9 +174,9 @@ func (p *LogoutParams) toURLValues() url.Values {
 // You should always use this function to get a new LogoutParams instance,
 // as then you are sure you have configured all required params
 func (s *AuthenticationService) NewLogoutParams() *LogoutParams {
-	p := &LogoutParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &LogoutParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Logs out the user

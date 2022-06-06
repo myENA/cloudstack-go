@@ -28,108 +28,108 @@ import (
 )
 
 type EventServiceIface interface {
-	ArchiveEvents(p *ArchiveEventsParams) (*ArchiveEventsResponse, error)
+	ArchiveEvents(P *ArchiveEventsParams) (*ArchiveEventsResponse, error)
 	NewArchiveEventsParams() *ArchiveEventsParams
-	DeleteEvents(p *DeleteEventsParams) (*DeleteEventsResponse, error)
+	DeleteEvents(P *DeleteEventsParams) (*DeleteEventsResponse, error)
 	NewDeleteEventsParams() *DeleteEventsParams
-	ListEventTypes(p *ListEventTypesParams) (*ListEventTypesResponse, error)
+	ListEventTypes(P *ListEventTypesParams) (*ListEventTypesResponse, error)
 	NewListEventTypesParams() *ListEventTypesParams
-	ListEvents(p *ListEventsParams) (*ListEventsResponse, error)
+	ListEvents(P *ListEventsParams) (*ListEventsResponse, error)
 	NewListEventsParams() *ListEventsParams
 	GetEventByID(id string, opts ...OptionFunc) (*Event, int, error)
 }
 
 type ArchiveEventsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ArchiveEventsParams) toURLValues() url.Values {
+func (P *ArchiveEventsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["enddate"]; found {
+	if v, found := P.P["enddate"]; found {
 		u.Set("enddate", v.(string))
 	}
-	if v, found := p.p["ids"]; found {
+	if v, found := P.P["ids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("ids", vv)
 	}
-	if v, found := p.p["startdate"]; found {
+	if v, found := P.P["startdate"]; found {
 		u.Set("startdate", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *ArchiveEventsParams) SetEnddate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveEventsParams) SetEnddate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enddate"] = v
+	P.P["enddate"] = v
 }
 
-func (p *ArchiveEventsParams) GetEnddate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveEventsParams) GetEnddate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enddate"].(string)
+	value, ok := P.P["enddate"].(string)
 	return value, ok
 }
 
-func (p *ArchiveEventsParams) SetIds(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveEventsParams) SetIds(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ids"] = v
+	P.P["ids"] = v
 }
 
-func (p *ArchiveEventsParams) GetIds() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveEventsParams) GetIds() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ids"].([]string)
+	value, ok := P.P["ids"].([]string)
 	return value, ok
 }
 
-func (p *ArchiveEventsParams) SetStartdate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveEventsParams) SetStartdate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startdate"] = v
+	P.P["startdate"] = v
 }
 
-func (p *ArchiveEventsParams) GetStartdate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveEventsParams) GetStartdate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startdate"].(string)
+	value, ok := P.P["startdate"].(string)
 	return value, ok
 }
 
-func (p *ArchiveEventsParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveEventsParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *ArchiveEventsParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ArchiveEventsParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ArchiveEventsParams instance,
 // as then you are sure you have configured all required params
 func (s *EventService) NewArchiveEventsParams() *ArchiveEventsParams {
-	p := &ArchiveEventsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ArchiveEventsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Archive one or more events.
@@ -182,96 +182,96 @@ func (r *ArchiveEventsResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DeleteEventsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteEventsParams) toURLValues() url.Values {
+func (P *DeleteEventsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["enddate"]; found {
+	if v, found := P.P["enddate"]; found {
 		u.Set("enddate", v.(string))
 	}
-	if v, found := p.p["ids"]; found {
+	if v, found := P.P["ids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("ids", vv)
 	}
-	if v, found := p.p["startdate"]; found {
+	if v, found := P.P["startdate"]; found {
 		u.Set("startdate", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteEventsParams) SetEnddate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteEventsParams) SetEnddate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enddate"] = v
+	P.P["enddate"] = v
 }
 
-func (p *DeleteEventsParams) GetEnddate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteEventsParams) GetEnddate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enddate"].(string)
+	value, ok := P.P["enddate"].(string)
 	return value, ok
 }
 
-func (p *DeleteEventsParams) SetIds(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteEventsParams) SetIds(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ids"] = v
+	P.P["ids"] = v
 }
 
-func (p *DeleteEventsParams) GetIds() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteEventsParams) GetIds() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ids"].([]string)
+	value, ok := P.P["ids"].([]string)
 	return value, ok
 }
 
-func (p *DeleteEventsParams) SetStartdate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteEventsParams) SetStartdate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startdate"] = v
+	P.P["startdate"] = v
 }
 
-func (p *DeleteEventsParams) GetStartdate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteEventsParams) GetStartdate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startdate"].(string)
+	value, ok := P.P["startdate"].(string)
 	return value, ok
 }
 
-func (p *DeleteEventsParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteEventsParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *DeleteEventsParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteEventsParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteEventsParams instance,
 // as then you are sure you have configured all required params
 func (s *EventService) NewDeleteEventsParams() *DeleteEventsParams {
-	p := &DeleteEventsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &DeleteEventsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Delete one or more events.
@@ -324,12 +324,12 @@ func (r *DeleteEventsResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListEventTypesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListEventTypesParams) toURLValues() url.Values {
+func (P *ListEventTypesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
 	return u
@@ -338,9 +338,9 @@ func (p *ListEventTypesParams) toURLValues() url.Values {
 // You should always use this function to get a new ListEventTypesParams instance,
 // as then you are sure you have configured all required params
 func (s *EventService) NewListEventTypesParams() *ListEventTypesParams {
-	p := &ListEventTypesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListEventTypesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // List Event Types
@@ -370,333 +370,333 @@ type EventType struct {
 }
 
 type ListEventsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListEventsParams) toURLValues() url.Values {
+func (P *ListEventsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["duration"]; found {
+	if v, found := P.P["duration"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("duration", vv)
 	}
-	if v, found := p.p["enddate"]; found {
+	if v, found := P.P["enddate"]; found {
 		u.Set("enddate", v.(string))
 	}
-	if v, found := p.p["entrytime"]; found {
+	if v, found := P.P["entrytime"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("entrytime", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["level"]; found {
+	if v, found := P.P["level"]; found {
 		u.Set("level", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["startdate"]; found {
+	if v, found := P.P["startdate"]; found {
 		u.Set("startdate", v.(string))
 	}
-	if v, found := p.p["startid"]; found {
+	if v, found := P.P["startid"]; found {
 		u.Set("startid", v.(string))
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *ListEventsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListEventsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListEventsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetDuration(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetDuration(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["duration"] = v
+	P.P["duration"] = v
 }
 
-func (p *ListEventsParams) GetDuration() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetDuration() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["duration"].(int)
+	value, ok := P.P["duration"].(int)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetEnddate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetEnddate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enddate"] = v
+	P.P["enddate"] = v
 }
 
-func (p *ListEventsParams) GetEnddate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetEnddate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enddate"].(string)
+	value, ok := P.P["enddate"].(string)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetEntrytime(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetEntrytime(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["entrytime"] = v
+	P.P["entrytime"] = v
 }
 
-func (p *ListEventsParams) GetEntrytime() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetEntrytime() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["entrytime"].(int)
+	value, ok := P.P["entrytime"].(int)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListEventsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListEventsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListEventsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetLevel(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetLevel(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["level"] = v
+	P.P["level"] = v
 }
 
-func (p *ListEventsParams) GetLevel() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetLevel() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["level"].(string)
+	value, ok := P.P["level"].(string)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListEventsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListEventsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListEventsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListEventsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetStartdate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetStartdate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startdate"] = v
+	P.P["startdate"] = v
 }
 
-func (p *ListEventsParams) GetStartdate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetStartdate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startdate"].(string)
+	value, ok := P.P["startdate"].(string)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetStartid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetStartid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startid"] = v
+	P.P["startid"] = v
 }
 
-func (p *ListEventsParams) GetStartid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetStartid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startid"].(string)
+	value, ok := P.P["startid"].(string)
 	return value, ok
 }
 
-func (p *ListEventsParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *ListEventsParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListEventsParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListEventsParams instance,
 // as then you are sure you have configured all required params
 func (s *EventService) NewListEventsParams() *ListEventsParams {
-	p := &ListEventsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListEventsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *EventService) GetEventByID(id string, opts ...OptionFunc) (*Event, int, error) {
-	p := &ListEventsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListEventsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListEvents(p)
+	l, err := s.ListEvents(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+

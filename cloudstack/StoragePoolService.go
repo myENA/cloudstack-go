@@ -26,51 +26,51 @@ import (
 )
 
 type StoragePoolServiceIface interface {
-	CancelStorageMaintenance(p *CancelStorageMaintenanceParams) (*CancelStorageMaintenanceResponse, error)
+	CancelStorageMaintenance(P *CancelStorageMaintenanceParams) (*CancelStorageMaintenanceResponse, error)
 	NewCancelStorageMaintenanceParams(id string) *CancelStorageMaintenanceParams
-	EnableStorageMaintenance(p *EnableStorageMaintenanceParams) (*EnableStorageMaintenanceResponse, error)
+	EnableStorageMaintenance(P *EnableStorageMaintenanceParams) (*EnableStorageMaintenanceResponse, error)
 	NewEnableStorageMaintenanceParams(id string) *EnableStorageMaintenanceParams
-	ListStorageProviders(p *ListStorageProvidersParams) (*ListStorageProvidersResponse, error)
+	ListStorageProviders(P *ListStorageProvidersParams) (*ListStorageProvidersResponse, error)
 	NewListStorageProvidersParams(storagePoolType string) *ListStorageProvidersParams
 }
 
 type CancelStorageMaintenanceParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CancelStorageMaintenanceParams) toURLValues() url.Values {
+func (P *CancelStorageMaintenanceParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *CancelStorageMaintenanceParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CancelStorageMaintenanceParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *CancelStorageMaintenanceParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CancelStorageMaintenanceParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CancelStorageMaintenanceParams instance,
 // as then you are sure you have configured all required params
 func (s *StoragePoolService) NewCancelStorageMaintenanceParams(id string) *CancelStorageMaintenanceParams {
-	p := &CancelStorageMaintenanceParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &CancelStorageMaintenanceParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Cancels maintenance for primary storage
@@ -140,42 +140,42 @@ type CancelStorageMaintenanceResponse struct {
 }
 
 type EnableStorageMaintenanceParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *EnableStorageMaintenanceParams) toURLValues() url.Values {
+func (P *EnableStorageMaintenanceParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *EnableStorageMaintenanceParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableStorageMaintenanceParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *EnableStorageMaintenanceParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableStorageMaintenanceParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new EnableStorageMaintenanceParams instance,
 // as then you are sure you have configured all required params
 func (s *StoragePoolService) NewEnableStorageMaintenanceParams(id string) *EnableStorageMaintenanceParams {
-	p := &EnableStorageMaintenanceParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &EnableStorageMaintenanceParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Puts storage pool into maintenance state
@@ -245,98 +245,98 @@ type EnableStorageMaintenanceResponse struct {
 }
 
 type ListStorageProvidersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListStorageProvidersParams) toURLValues() url.Values {
+func (P *ListStorageProvidersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
 	return u
 }
 
-func (p *ListStorageProvidersParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageProvidersParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListStorageProvidersParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageProvidersParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListStorageProvidersParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageProvidersParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListStorageProvidersParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageProvidersParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListStorageProvidersParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageProvidersParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListStorageProvidersParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageProvidersParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListStorageProvidersParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageProvidersParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *ListStorageProvidersParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListStorageProvidersParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListStorageProvidersParams instance,
 // as then you are sure you have configured all required params
 func (s *StoragePoolService) NewListStorageProvidersParams(storagePoolType string) *ListStorageProvidersParams {
-	p := &ListStorageProvidersParams{}
-	p.p = make(map[string]interface{})
-	p.p["type"] = storagePoolType
-	return p
+	P := &ListStorageProvidersParams{}
+	P.P = make(map[string]interface{})
+	P.P["type"] = storagePoolType
+	return P
 }
 
 // Lists storage providers.

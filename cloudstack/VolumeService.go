@@ -28,114 +28,114 @@ import (
 )
 
 type VolumeServiceIface interface {
-	AttachVolume(p *AttachVolumeParams) (*AttachVolumeResponse, error)
+	AttachVolume(P *AttachVolumeParams) (*AttachVolumeResponse, error)
 	NewAttachVolumeParams(id string, virtualmachineid string) *AttachVolumeParams
-	CreateVolume(p *CreateVolumeParams) (*CreateVolumeResponse, error)
+	CreateVolume(P *CreateVolumeParams) (*CreateVolumeResponse, error)
 	NewCreateVolumeParams() *CreateVolumeParams
-	DeleteVolume(p *DeleteVolumeParams) (*DeleteVolumeResponse, error)
+	DeleteVolume(P *DeleteVolumeParams) (*DeleteVolumeResponse, error)
 	NewDeleteVolumeParams(id string) *DeleteVolumeParams
-	DetachVolume(p *DetachVolumeParams) (*DetachVolumeResponse, error)
+	DetachVolume(P *DetachVolumeParams) (*DetachVolumeResponse, error)
 	NewDetachVolumeParams() *DetachVolumeParams
-	ExtractVolume(p *ExtractVolumeParams) (*ExtractVolumeResponse, error)
+	ExtractVolume(P *ExtractVolumeParams) (*ExtractVolumeResponse, error)
 	NewExtractVolumeParams(id string, mode string, zoneid string) *ExtractVolumeParams
-	GetPathForVolume(p *GetPathForVolumeParams) (*GetPathForVolumeResponse, error)
+	GetPathForVolume(P *GetPathForVolumeParams) (*GetPathForVolumeResponse, error)
 	NewGetPathForVolumeParams(volumeid string) *GetPathForVolumeParams
-	GetSolidFireVolumeSize(p *GetSolidFireVolumeSizeParams) (*GetSolidFireVolumeSizeResponse, error)
+	GetSolidFireVolumeSize(P *GetSolidFireVolumeSizeParams) (*GetSolidFireVolumeSizeResponse, error)
 	NewGetSolidFireVolumeSizeParams(volumeid string) *GetSolidFireVolumeSizeParams
-	GetUploadParamsForVolume(p *GetUploadParamsForVolumeParams) (*GetUploadParamsForVolumeResponse, error)
+	GetUploadParamsForVolume(P *GetUploadParamsForVolumeParams) (*GetUploadParamsForVolumeResponse, error)
 	NewGetUploadParamsForVolumeParams(format string, name string, zoneid string) *GetUploadParamsForVolumeParams
-	GetVolumeiScsiName(p *GetVolumeiScsiNameParams) (*GetVolumeiScsiNameResponse, error)
+	GetVolumeiScsiName(P *GetVolumeiScsiNameParams) (*GetVolumeiScsiNameResponse, error)
 	NewGetVolumeiScsiNameParams(volumeid string) *GetVolumeiScsiNameParams
-	ListVolumes(p *ListVolumesParams) (*ListVolumesResponse, error)
+	ListVolumes(P *ListVolumesParams) (*ListVolumesResponse, error)
 	NewListVolumesParams() *ListVolumesParams
 	GetVolumeID(name string, opts ...OptionFunc) (string, int, error)
 	GetVolumeByName(name string, opts ...OptionFunc) (*Volume, int, error)
 	GetVolumeByID(id string, opts ...OptionFunc) (*Volume, int, error)
-	MigrateVolume(p *MigrateVolumeParams) (*MigrateVolumeResponse, error)
+	MigrateVolume(P *MigrateVolumeParams) (*MigrateVolumeResponse, error)
 	NewMigrateVolumeParams(storageid string, volumeid string) *MigrateVolumeParams
-	ResizeVolume(p *ResizeVolumeParams) (*ResizeVolumeResponse, error)
+	ResizeVolume(P *ResizeVolumeParams) (*ResizeVolumeResponse, error)
 	NewResizeVolumeParams(id string) *ResizeVolumeParams
-	UpdateVolume(p *UpdateVolumeParams) (*UpdateVolumeResponse, error)
+	UpdateVolume(P *UpdateVolumeParams) (*UpdateVolumeResponse, error)
 	NewUpdateVolumeParams() *UpdateVolumeParams
-	UploadVolume(p *UploadVolumeParams) (*UploadVolumeResponse, error)
+	UploadVolume(P *UploadVolumeParams) (*UploadVolumeResponse, error)
 	NewUploadVolumeParams(format string, name string, url string, zoneid string) *UploadVolumeParams
 }
 
 type AttachVolumeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AttachVolumeParams) toURLValues() url.Values {
+func (P *AttachVolumeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["deviceid"]; found {
+	if v, found := P.P["deviceid"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("deviceid", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
 	return u
 }
 
-func (p *AttachVolumeParams) SetDeviceid(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachVolumeParams) SetDeviceid(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["deviceid"] = v
+	P.P["deviceid"] = v
 }
 
-func (p *AttachVolumeParams) GetDeviceid() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachVolumeParams) GetDeviceid() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["deviceid"].(int64)
+	value, ok := P.P["deviceid"].(int64)
 	return value, ok
 }
 
-func (p *AttachVolumeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachVolumeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *AttachVolumeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachVolumeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *AttachVolumeParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachVolumeParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *AttachVolumeParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachVolumeParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AttachVolumeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewAttachVolumeParams(id string, virtualmachineid string) *AttachVolumeParams {
-	p := &AttachVolumeParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["virtualmachineid"] = virtualmachineid
-	return p
+	P := &AttachVolumeParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["virtualmachineid"] = virtualmachineid
+	return P
 }
 
 // Attaches a disk volume to a virtual machine.
@@ -243,261 +243,261 @@ type AttachVolumeResponse struct {
 }
 
 type CreateVolumeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateVolumeParams) toURLValues() url.Values {
+func (P *CreateVolumeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["diskofferingid"]; found {
+	if v, found := P.P["diskofferingid"]; found {
 		u.Set("diskofferingid", v.(string))
 	}
-	if v, found := p.p["displayvolume"]; found {
+	if v, found := P.P["displayvolume"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("displayvolume", vv)
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["maxiops"]; found {
+	if v, found := P.P["maxiops"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("maxiops", vv)
 	}
-	if v, found := p.p["miniops"]; found {
+	if v, found := P.P["miniops"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("miniops", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["size"]; found {
+	if v, found := P.P["size"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("size", vv)
 	}
-	if v, found := p.p["snapshotid"]; found {
+	if v, found := P.P["snapshotid"]; found {
 		u.Set("snapshotid", v.(string))
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateVolumeParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *CreateVolumeParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *CreateVolumeParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetDiskofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetDiskofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["diskofferingid"] = v
+	P.P["diskofferingid"] = v
 }
 
-func (p *CreateVolumeParams) GetDiskofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetDiskofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["diskofferingid"].(string)
+	value, ok := P.P["diskofferingid"].(string)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetDisplayvolume(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetDisplayvolume(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displayvolume"] = v
+	P.P["displayvolume"] = v
 }
 
-func (p *CreateVolumeParams) GetDisplayvolume() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetDisplayvolume() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displayvolume"].(bool)
+	value, ok := P.P["displayvolume"].(bool)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateVolumeParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetMaxiops(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetMaxiops(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["maxiops"] = v
+	P.P["maxiops"] = v
 }
 
-func (p *CreateVolumeParams) GetMaxiops() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetMaxiops() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["maxiops"].(int64)
+	value, ok := P.P["maxiops"].(int64)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetMiniops(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetMiniops(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["miniops"] = v
+	P.P["miniops"] = v
 }
 
-func (p *CreateVolumeParams) GetMiniops() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetMiniops() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["miniops"].(int64)
+	value, ok := P.P["miniops"].(int64)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateVolumeParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *CreateVolumeParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetSize(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetSize(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["size"] = v
+	P.P["size"] = v
 }
 
-func (p *CreateVolumeParams) GetSize() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetSize() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["size"].(int64)
+	value, ok := P.P["size"].(int64)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetSnapshotid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetSnapshotid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["snapshotid"] = v
+	P.P["snapshotid"] = v
 }
 
-func (p *CreateVolumeParams) GetSnapshotid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetSnapshotid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["snapshotid"].(string)
+	value, ok := P.P["snapshotid"].(string)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *CreateVolumeParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
-func (p *CreateVolumeParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreateVolumeParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVolumeParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateVolumeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewCreateVolumeParams() *CreateVolumeParams {
-	p := &CreateVolumeParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &CreateVolumeParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it.
@@ -605,42 +605,42 @@ type CreateVolumeResponse struct {
 }
 
 type DeleteVolumeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteVolumeParams) toURLValues() url.Values {
+func (P *DeleteVolumeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteVolumeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVolumeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteVolumeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVolumeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteVolumeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewDeleteVolumeParams(id string) *DeleteVolumeParams {
-	p := &DeleteVolumeParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteVolumeParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a detached disk volume.
@@ -693,78 +693,78 @@ func (r *DeleteVolumeResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DetachVolumeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DetachVolumeParams) toURLValues() url.Values {
+func (P *DetachVolumeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["deviceid"]; found {
+	if v, found := P.P["deviceid"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("deviceid", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
 	return u
 }
 
-func (p *DetachVolumeParams) SetDeviceid(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DetachVolumeParams) SetDeviceid(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["deviceid"] = v
+	P.P["deviceid"] = v
 }
 
-func (p *DetachVolumeParams) GetDeviceid() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DetachVolumeParams) GetDeviceid() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["deviceid"].(int64)
+	value, ok := P.P["deviceid"].(int64)
 	return value, ok
 }
 
-func (p *DetachVolumeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DetachVolumeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DetachVolumeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DetachVolumeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *DetachVolumeParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DetachVolumeParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *DetachVolumeParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DetachVolumeParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DetachVolumeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewDetachVolumeParams() *DetachVolumeParams {
-	p := &DetachVolumeParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &DetachVolumeParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Detaches a disk volume from a virtual machine.
@@ -872,98 +872,98 @@ type DetachVolumeResponse struct {
 }
 
 type ExtractVolumeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ExtractVolumeParams) toURLValues() url.Values {
+func (P *ExtractVolumeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["mode"]; found {
+	if v, found := P.P["mode"]; found {
 		u.Set("mode", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ExtractVolumeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractVolumeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ExtractVolumeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractVolumeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ExtractVolumeParams) SetMode(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractVolumeParams) SetMode(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["mode"] = v
+	P.P["mode"] = v
 }
 
-func (p *ExtractVolumeParams) GetMode() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractVolumeParams) GetMode() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["mode"].(string)
+	value, ok := P.P["mode"].(string)
 	return value, ok
 }
 
-func (p *ExtractVolumeParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractVolumeParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *ExtractVolumeParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractVolumeParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *ExtractVolumeParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractVolumeParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ExtractVolumeParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractVolumeParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ExtractVolumeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewExtractVolumeParams(id string, mode string, zoneid string) *ExtractVolumeParams {
-	p := &ExtractVolumeParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["mode"] = mode
-	p.p["zoneid"] = zoneid
-	return p
+	P := &ExtractVolumeParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["mode"] = mode
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Extracts volume
@@ -1021,42 +1021,42 @@ type ExtractVolumeResponse struct {
 }
 
 type GetPathForVolumeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *GetPathForVolumeParams) toURLValues() url.Values {
+func (P *GetPathForVolumeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["volumeid"]; found {
+	if v, found := P.P["volumeid"]; found {
 		u.Set("volumeid", v.(string))
 	}
 	return u
 }
 
-func (p *GetPathForVolumeParams) SetVolumeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetPathForVolumeParams) SetVolumeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["volumeid"] = v
+	P.P["volumeid"] = v
 }
 
-func (p *GetPathForVolumeParams) GetVolumeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetPathForVolumeParams) GetVolumeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["volumeid"].(string)
+	value, ok := P.P["volumeid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new GetPathForVolumeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewGetPathForVolumeParams(volumeid string) *GetPathForVolumeParams {
-	p := &GetPathForVolumeParams{}
-	p.p = make(map[string]interface{})
-	p.p["volumeid"] = volumeid
-	return p
+	P := &GetPathForVolumeParams{}
+	P.P = make(map[string]interface{})
+	P.P["volumeid"] = volumeid
+	return P
 }
 
 // Get the path associated with the provided volume UUID
@@ -1081,42 +1081,42 @@ type GetPathForVolumeResponse struct {
 }
 
 type GetSolidFireVolumeSizeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *GetSolidFireVolumeSizeParams) toURLValues() url.Values {
+func (P *GetSolidFireVolumeSizeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["volumeid"]; found {
+	if v, found := P.P["volumeid"]; found {
 		u.Set("volumeid", v.(string))
 	}
 	return u
 }
 
-func (p *GetSolidFireVolumeSizeParams) SetVolumeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetSolidFireVolumeSizeParams) SetVolumeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["volumeid"] = v
+	P.P["volumeid"] = v
 }
 
-func (p *GetSolidFireVolumeSizeParams) GetVolumeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetSolidFireVolumeSizeParams) GetVolumeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["volumeid"].(string)
+	value, ok := P.P["volumeid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new GetSolidFireVolumeSizeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewGetSolidFireVolumeSizeParams(volumeid string) *GetSolidFireVolumeSizeParams {
-	p := &GetSolidFireVolumeSizeParams{}
-	p.p = make(map[string]interface{})
-	p.p["volumeid"] = volumeid
-	return p
+	P := &GetSolidFireVolumeSizeParams{}
+	P.P = make(map[string]interface{})
+	P.P["volumeid"] = volumeid
+	return P
 }
 
 // Get the SF volume size including Hypervisor Snapshot Reserve
@@ -1141,188 +1141,188 @@ type GetSolidFireVolumeSizeResponse struct {
 }
 
 type GetUploadParamsForVolumeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *GetUploadParamsForVolumeParams) toURLValues() url.Values {
+func (P *GetUploadParamsForVolumeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["checksum"]; found {
+	if v, found := P.P["checksum"]; found {
 		u.Set("checksum", v.(string))
 	}
-	if v, found := p.p["diskofferingid"]; found {
+	if v, found := P.P["diskofferingid"]; found {
 		u.Set("diskofferingid", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["format"]; found {
+	if v, found := P.P["format"]; found {
 		u.Set("format", v.(string))
 	}
-	if v, found := p.p["imagestoreuuid"]; found {
+	if v, found := P.P["imagestoreuuid"]; found {
 		u.Set("imagestoreuuid", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *GetUploadParamsForVolumeParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *GetUploadParamsForVolumeParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForVolumeParams) SetChecksum(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) SetChecksum(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["checksum"] = v
+	P.P["checksum"] = v
 }
 
-func (p *GetUploadParamsForVolumeParams) GetChecksum() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) GetChecksum() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["checksum"].(string)
+	value, ok := P.P["checksum"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForVolumeParams) SetDiskofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) SetDiskofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["diskofferingid"] = v
+	P.P["diskofferingid"] = v
 }
 
-func (p *GetUploadParamsForVolumeParams) GetDiskofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) GetDiskofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["diskofferingid"].(string)
+	value, ok := P.P["diskofferingid"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForVolumeParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *GetUploadParamsForVolumeParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForVolumeParams) SetFormat(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) SetFormat(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["format"] = v
+	P.P["format"] = v
 }
 
-func (p *GetUploadParamsForVolumeParams) GetFormat() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) GetFormat() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["format"].(string)
+	value, ok := P.P["format"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForVolumeParams) SetImagestoreuuid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) SetImagestoreuuid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["imagestoreuuid"] = v
+	P.P["imagestoreuuid"] = v
 }
 
-func (p *GetUploadParamsForVolumeParams) GetImagestoreuuid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) GetImagestoreuuid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["imagestoreuuid"].(string)
+	value, ok := P.P["imagestoreuuid"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForVolumeParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *GetUploadParamsForVolumeParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForVolumeParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *GetUploadParamsForVolumeParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *GetUploadParamsForVolumeParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *GetUploadParamsForVolumeParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetUploadParamsForVolumeParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new GetUploadParamsForVolumeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewGetUploadParamsForVolumeParams(format string, name string, zoneid string) *GetUploadParamsForVolumeParams {
-	p := &GetUploadParamsForVolumeParams{}
-	p.p = make(map[string]interface{})
-	p.p["format"] = format
-	p.p["name"] = name
-	p.p["zoneid"] = zoneid
-	return p
+	P := &GetUploadParamsForVolumeParams{}
+	P.P = make(map[string]interface{})
+	P.P["format"] = format
+	P.P["name"] = name
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Upload a data disk to the cloudstack cloud.
@@ -1354,42 +1354,42 @@ type GetUploadParamsForVolumeResponse struct {
 }
 
 type GetVolumeiScsiNameParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *GetVolumeiScsiNameParams) toURLValues() url.Values {
+func (P *GetVolumeiScsiNameParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["volumeid"]; found {
+	if v, found := P.P["volumeid"]; found {
 		u.Set("volumeid", v.(string))
 	}
 	return u
 }
 
-func (p *GetVolumeiScsiNameParams) SetVolumeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetVolumeiScsiNameParams) SetVolumeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["volumeid"] = v
+	P.P["volumeid"] = v
 }
 
-func (p *GetVolumeiScsiNameParams) GetVolumeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *GetVolumeiScsiNameParams) GetVolumeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["volumeid"].(string)
+	value, ok := P.P["volumeid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new GetVolumeiScsiNameParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewGetVolumeiScsiNameParams(volumeid string) *GetVolumeiScsiNameParams {
-	p := &GetVolumeiScsiNameParams{}
-	p.p = make(map[string]interface{})
-	p.p["volumeid"] = volumeid
-	return p
+	P := &GetVolumeiScsiNameParams{}
+	P.P = make(map[string]interface{})
+	P.P["volumeid"] = volumeid
+	return P
 }
 
 // Get Volume's iSCSI Name
@@ -1414,445 +1414,445 @@ type GetVolumeiScsiNameResponse struct {
 }
 
 type ListVolumesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListVolumesParams) toURLValues() url.Values {
+func (P *ListVolumesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["clusterid"]; found {
+	if v, found := P.P["clusterid"]; found {
 		u.Set("clusterid", v.(string))
 	}
-	if v, found := p.p["diskofferingid"]; found {
+	if v, found := P.P["diskofferingid"]; found {
 		u.Set("diskofferingid", v.(string))
 	}
-	if v, found := p.p["displayvolume"]; found {
+	if v, found := P.P["displayvolume"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("displayvolume", vv)
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["ids"]; found {
+	if v, found := P.P["ids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("ids", vv)
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["storageid"]; found {
+	if v, found := P.P["storageid"]; found {
 		u.Set("storageid", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["type"]; found {
+	if v, found := P.P["type"]; found {
 		u.Set("type", v.(string))
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListVolumesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListVolumesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetClusterid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetClusterid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["clusterid"] = v
+	P.P["clusterid"] = v
 }
 
-func (p *ListVolumesParams) GetClusterid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetClusterid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["clusterid"].(string)
+	value, ok := P.P["clusterid"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetDiskofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetDiskofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["diskofferingid"] = v
+	P.P["diskofferingid"] = v
 }
 
-func (p *ListVolumesParams) GetDiskofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetDiskofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["diskofferingid"].(string)
+	value, ok := P.P["diskofferingid"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetDisplayvolume(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetDisplayvolume(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displayvolume"] = v
+	P.P["displayvolume"] = v
 }
 
-func (p *ListVolumesParams) GetDisplayvolume() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetDisplayvolume() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displayvolume"].(bool)
+	value, ok := P.P["displayvolume"].(bool)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListVolumesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *ListVolumesParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListVolumesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetIds(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetIds(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ids"] = v
+	P.P["ids"] = v
 }
 
-func (p *ListVolumesParams) GetIds() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetIds() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ids"].([]string)
+	value, ok := P.P["ids"].([]string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListVolumesParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListVolumesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListVolumesParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListVolumesParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListVolumesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListVolumesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListVolumesParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListVolumesParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListVolumesParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetStorageid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetStorageid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["storageid"] = v
+	P.P["storageid"] = v
 }
 
-func (p *ListVolumesParams) GetStorageid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetStorageid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["storageid"].(string)
+	value, ok := P.P["storageid"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListVolumesParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetType(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["type"] = v
+	P.P["type"] = v
 }
 
-func (p *ListVolumesParams) GetType() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["type"].(string)
+	value, ok := P.P["type"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *ListVolumesParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
-func (p *ListVolumesParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListVolumesParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVolumesParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListVolumesParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewListVolumesParams() *ListVolumesParams {
-	p := &ListVolumesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListVolumesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VolumeService) GetVolumeID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListVolumesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVolumesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListVolumes(p)
+	l, err := s.ListVolumes(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1891,18 +1891,18 @@ func (s *VolumeService) GetVolumeByName(name string, opts ...OptionFunc) (*Volum
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VolumeService) GetVolumeByID(id string, opts ...OptionFunc) (*Volume, int, error) {
-	p := &ListVolumesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVolumesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListVolumes(p)
+	l, err := s.ListVolumes(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -2012,98 +2012,98 @@ type Volume struct {
 }
 
 type MigrateVolumeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *MigrateVolumeParams) toURLValues() url.Values {
+func (P *MigrateVolumeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["livemigrate"]; found {
+	if v, found := P.P["livemigrate"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("livemigrate", vv)
 	}
-	if v, found := p.p["newdiskofferingid"]; found {
+	if v, found := P.P["newdiskofferingid"]; found {
 		u.Set("newdiskofferingid", v.(string))
 	}
-	if v, found := p.p["storageid"]; found {
+	if v, found := P.P["storageid"]; found {
 		u.Set("storageid", v.(string))
 	}
-	if v, found := p.p["volumeid"]; found {
+	if v, found := P.P["volumeid"]; found {
 		u.Set("volumeid", v.(string))
 	}
 	return u
 }
 
-func (p *MigrateVolumeParams) SetLivemigrate(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateVolumeParams) SetLivemigrate(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["livemigrate"] = v
+	P.P["livemigrate"] = v
 }
 
-func (p *MigrateVolumeParams) GetLivemigrate() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateVolumeParams) GetLivemigrate() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["livemigrate"].(bool)
+	value, ok := P.P["livemigrate"].(bool)
 	return value, ok
 }
 
-func (p *MigrateVolumeParams) SetNewdiskofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateVolumeParams) SetNewdiskofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["newdiskofferingid"] = v
+	P.P["newdiskofferingid"] = v
 }
 
-func (p *MigrateVolumeParams) GetNewdiskofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateVolumeParams) GetNewdiskofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["newdiskofferingid"].(string)
+	value, ok := P.P["newdiskofferingid"].(string)
 	return value, ok
 }
 
-func (p *MigrateVolumeParams) SetStorageid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateVolumeParams) SetStorageid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["storageid"] = v
+	P.P["storageid"] = v
 }
 
-func (p *MigrateVolumeParams) GetStorageid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateVolumeParams) GetStorageid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["storageid"].(string)
+	value, ok := P.P["storageid"].(string)
 	return value, ok
 }
 
-func (p *MigrateVolumeParams) SetVolumeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateVolumeParams) SetVolumeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["volumeid"] = v
+	P.P["volumeid"] = v
 }
 
-func (p *MigrateVolumeParams) GetVolumeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateVolumeParams) GetVolumeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["volumeid"].(string)
+	value, ok := P.P["volumeid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new MigrateVolumeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewMigrateVolumeParams(storageid string, volumeid string) *MigrateVolumeParams {
-	p := &MigrateVolumeParams{}
-	p.p = make(map[string]interface{})
-	p.p["storageid"] = storageid
-	p.p["volumeid"] = volumeid
-	return p
+	P := &MigrateVolumeParams{}
+	P.P = make(map[string]interface{})
+	P.P["storageid"] = storageid
+	P.P["volumeid"] = volumeid
+	return P
 }
 
 // Migrate volume
@@ -2211,136 +2211,136 @@ type MigrateVolumeResponse struct {
 }
 
 type ResizeVolumeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ResizeVolumeParams) toURLValues() url.Values {
+func (P *ResizeVolumeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["diskofferingid"]; found {
+	if v, found := P.P["diskofferingid"]; found {
 		u.Set("diskofferingid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["maxiops"]; found {
+	if v, found := P.P["maxiops"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("maxiops", vv)
 	}
-	if v, found := p.p["miniops"]; found {
+	if v, found := P.P["miniops"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("miniops", vv)
 	}
-	if v, found := p.p["shrinkok"]; found {
+	if v, found := P.P["shrinkok"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("shrinkok", vv)
 	}
-	if v, found := p.p["size"]; found {
+	if v, found := P.P["size"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("size", vv)
 	}
 	return u
 }
 
-func (p *ResizeVolumeParams) SetDiskofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) SetDiskofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["diskofferingid"] = v
+	P.P["diskofferingid"] = v
 }
 
-func (p *ResizeVolumeParams) GetDiskofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) GetDiskofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["diskofferingid"].(string)
+	value, ok := P.P["diskofferingid"].(string)
 	return value, ok
 }
 
-func (p *ResizeVolumeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ResizeVolumeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ResizeVolumeParams) SetMaxiops(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) SetMaxiops(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["maxiops"] = v
+	P.P["maxiops"] = v
 }
 
-func (p *ResizeVolumeParams) GetMaxiops() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) GetMaxiops() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["maxiops"].(int64)
+	value, ok := P.P["maxiops"].(int64)
 	return value, ok
 }
 
-func (p *ResizeVolumeParams) SetMiniops(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) SetMiniops(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["miniops"] = v
+	P.P["miniops"] = v
 }
 
-func (p *ResizeVolumeParams) GetMiniops() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) GetMiniops() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["miniops"].(int64)
+	value, ok := P.P["miniops"].(int64)
 	return value, ok
 }
 
-func (p *ResizeVolumeParams) SetShrinkok(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) SetShrinkok(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["shrinkok"] = v
+	P.P["shrinkok"] = v
 }
 
-func (p *ResizeVolumeParams) GetShrinkok() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) GetShrinkok() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["shrinkok"].(bool)
+	value, ok := P.P["shrinkok"].(bool)
 	return value, ok
 }
 
-func (p *ResizeVolumeParams) SetSize(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) SetSize(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["size"] = v
+	P.P["size"] = v
 }
 
-func (p *ResizeVolumeParams) GetSize() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResizeVolumeParams) GetSize() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["size"].(int64)
+	value, ok := P.P["size"].(int64)
 	return value, ok
 }
 
 // You should always use this function to get a new ResizeVolumeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewResizeVolumeParams(id string) *ResizeVolumeParams {
-	p := &ResizeVolumeParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &ResizeVolumeParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Resizes a volume
@@ -2448,168 +2448,168 @@ type ResizeVolumeResponse struct {
 }
 
 type UpdateVolumeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateVolumeParams) toURLValues() url.Values {
+func (P *UpdateVolumeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["chaininfo"]; found {
+	if v, found := P.P["chaininfo"]; found {
 		u.Set("chaininfo", v.(string))
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["displayvolume"]; found {
+	if v, found := P.P["displayvolume"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("displayvolume", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["path"]; found {
+	if v, found := P.P["path"]; found {
 		u.Set("path", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["storageid"]; found {
+	if v, found := P.P["storageid"]; found {
 		u.Set("storageid", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateVolumeParams) SetChaininfo(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) SetChaininfo(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["chaininfo"] = v
+	P.P["chaininfo"] = v
 }
 
-func (p *UpdateVolumeParams) GetChaininfo() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) GetChaininfo() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["chaininfo"].(string)
+	value, ok := P.P["chaininfo"].(string)
 	return value, ok
 }
 
-func (p *UpdateVolumeParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateVolumeParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateVolumeParams) SetDisplayvolume(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) SetDisplayvolume(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displayvolume"] = v
+	P.P["displayvolume"] = v
 }
 
-func (p *UpdateVolumeParams) GetDisplayvolume() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) GetDisplayvolume() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displayvolume"].(bool)
+	value, ok := P.P["displayvolume"].(bool)
 	return value, ok
 }
 
-func (p *UpdateVolumeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateVolumeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateVolumeParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateVolumeParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateVolumeParams) SetPath(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) SetPath(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["path"] = v
+	P.P["path"] = v
 }
 
-func (p *UpdateVolumeParams) GetPath() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) GetPath() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["path"].(string)
+	value, ok := P.P["path"].(string)
 	return value, ok
 }
 
-func (p *UpdateVolumeParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *UpdateVolumeParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *UpdateVolumeParams) SetStorageid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) SetStorageid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["storageid"] = v
+	P.P["storageid"] = v
 }
 
-func (p *UpdateVolumeParams) GetStorageid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVolumeParams) GetStorageid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["storageid"].(string)
+	value, ok := P.P["storageid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateVolumeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewUpdateVolumeParams() *UpdateVolumeParams {
-	p := &UpdateVolumeParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &UpdateVolumeParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Updates the volume.
@@ -2717,207 +2717,207 @@ type UpdateVolumeResponse struct {
 }
 
 type UploadVolumeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UploadVolumeParams) toURLValues() url.Values {
+func (P *UploadVolumeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["checksum"]; found {
+	if v, found := P.P["checksum"]; found {
 		u.Set("checksum", v.(string))
 	}
-	if v, found := p.p["diskofferingid"]; found {
+	if v, found := P.P["diskofferingid"]; found {
 		u.Set("diskofferingid", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["format"]; found {
+	if v, found := P.P["format"]; found {
 		u.Set("format", v.(string))
 	}
-	if v, found := p.p["imagestoreuuid"]; found {
+	if v, found := P.P["imagestoreuuid"]; found {
 		u.Set("imagestoreuuid", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *UploadVolumeParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *UploadVolumeParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *UploadVolumeParams) SetChecksum(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) SetChecksum(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["checksum"] = v
+	P.P["checksum"] = v
 }
 
-func (p *UploadVolumeParams) GetChecksum() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) GetChecksum() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["checksum"].(string)
+	value, ok := P.P["checksum"].(string)
 	return value, ok
 }
 
-func (p *UploadVolumeParams) SetDiskofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) SetDiskofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["diskofferingid"] = v
+	P.P["diskofferingid"] = v
 }
 
-func (p *UploadVolumeParams) GetDiskofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) GetDiskofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["diskofferingid"].(string)
+	value, ok := P.P["diskofferingid"].(string)
 	return value, ok
 }
 
-func (p *UploadVolumeParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *UploadVolumeParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *UploadVolumeParams) SetFormat(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) SetFormat(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["format"] = v
+	P.P["format"] = v
 }
 
-func (p *UploadVolumeParams) GetFormat() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) GetFormat() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["format"].(string)
+	value, ok := P.P["format"].(string)
 	return value, ok
 }
 
-func (p *UploadVolumeParams) SetImagestoreuuid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) SetImagestoreuuid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["imagestoreuuid"] = v
+	P.P["imagestoreuuid"] = v
 }
 
-func (p *UploadVolumeParams) GetImagestoreuuid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) GetImagestoreuuid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["imagestoreuuid"].(string)
+	value, ok := P.P["imagestoreuuid"].(string)
 	return value, ok
 }
 
-func (p *UploadVolumeParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UploadVolumeParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UploadVolumeParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *UploadVolumeParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *UploadVolumeParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *UploadVolumeParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *UploadVolumeParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *UploadVolumeParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadVolumeParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UploadVolumeParams instance,
 // as then you are sure you have configured all required params
 func (s *VolumeService) NewUploadVolumeParams(format string, name string, url string, zoneid string) *UploadVolumeParams {
-	p := &UploadVolumeParams{}
-	p.p = make(map[string]interface{})
-	p.p["format"] = format
-	p.p["name"] = name
-	p.p["url"] = url
-	p.p["zoneid"] = zoneid
-	return p
+	P := &UploadVolumeParams{}
+	P.P = make(map[string]interface{})
+	P.P["format"] = format
+	P.P["name"] = name
+	P.P["url"] = url
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Uploads a data disk.

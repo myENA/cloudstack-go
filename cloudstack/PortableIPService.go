@@ -28,147 +28,147 @@ import (
 )
 
 type PortableIPServiceIface interface {
-	CreatePortableIpRange(p *CreatePortableIpRangeParams) (*CreatePortableIpRangeResponse, error)
+	CreatePortableIpRange(P *CreatePortableIpRangeParams) (*CreatePortableIpRangeResponse, error)
 	NewCreatePortableIpRangeParams(endip string, gateway string, netmask string, regionid int, startip string) *CreatePortableIpRangeParams
-	DeletePortableIpRange(p *DeletePortableIpRangeParams) (*DeletePortableIpRangeResponse, error)
+	DeletePortableIpRange(P *DeletePortableIpRangeParams) (*DeletePortableIpRangeResponse, error)
 	NewDeletePortableIpRangeParams(id string) *DeletePortableIpRangeParams
-	ListPortableIpRanges(p *ListPortableIpRangesParams) (*ListPortableIpRangesResponse, error)
+	ListPortableIpRanges(P *ListPortableIpRangesParams) (*ListPortableIpRangesResponse, error)
 	NewListPortableIpRangesParams() *ListPortableIpRangesParams
 	GetPortableIpRangeByID(id string, opts ...OptionFunc) (*PortableIpRange, int, error)
 }
 
 type CreatePortableIpRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreatePortableIpRangeParams) toURLValues() url.Values {
+func (P *CreatePortableIpRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["endip"]; found {
+	if v, found := P.P["endip"]; found {
 		u.Set("endip", v.(string))
 	}
-	if v, found := p.p["gateway"]; found {
+	if v, found := P.P["gateway"]; found {
 		u.Set("gateway", v.(string))
 	}
-	if v, found := p.p["netmask"]; found {
+	if v, found := P.P["netmask"]; found {
 		u.Set("netmask", v.(string))
 	}
-	if v, found := p.p["regionid"]; found {
+	if v, found := P.P["regionid"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("regionid", vv)
 	}
-	if v, found := p.p["startip"]; found {
+	if v, found := P.P["startip"]; found {
 		u.Set("startip", v.(string))
 	}
-	if v, found := p.p["vlan"]; found {
+	if v, found := P.P["vlan"]; found {
 		u.Set("vlan", v.(string))
 	}
 	return u
 }
 
-func (p *CreatePortableIpRangeParams) SetEndip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) SetEndip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["endip"] = v
+	P.P["endip"] = v
 }
 
-func (p *CreatePortableIpRangeParams) GetEndip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) GetEndip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["endip"].(string)
+	value, ok := P.P["endip"].(string)
 	return value, ok
 }
 
-func (p *CreatePortableIpRangeParams) SetGateway(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) SetGateway(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gateway"] = v
+	P.P["gateway"] = v
 }
 
-func (p *CreatePortableIpRangeParams) GetGateway() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) GetGateway() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gateway"].(string)
+	value, ok := P.P["gateway"].(string)
 	return value, ok
 }
 
-func (p *CreatePortableIpRangeParams) SetNetmask(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) SetNetmask(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["netmask"] = v
+	P.P["netmask"] = v
 }
 
-func (p *CreatePortableIpRangeParams) GetNetmask() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) GetNetmask() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["netmask"].(string)
+	value, ok := P.P["netmask"].(string)
 	return value, ok
 }
 
-func (p *CreatePortableIpRangeParams) SetRegionid(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) SetRegionid(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["regionid"] = v
+	P.P["regionid"] = v
 }
 
-func (p *CreatePortableIpRangeParams) GetRegionid() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) GetRegionid() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["regionid"].(int)
+	value, ok := P.P["regionid"].(int)
 	return value, ok
 }
 
-func (p *CreatePortableIpRangeParams) SetStartip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) SetStartip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["startip"] = v
+	P.P["startip"] = v
 }
 
-func (p *CreatePortableIpRangeParams) GetStartip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) GetStartip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["startip"].(string)
+	value, ok := P.P["startip"].(string)
 	return value, ok
 }
 
-func (p *CreatePortableIpRangeParams) SetVlan(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) SetVlan(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vlan"] = v
+	P.P["vlan"] = v
 }
 
-func (p *CreatePortableIpRangeParams) GetVlan() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreatePortableIpRangeParams) GetVlan() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vlan"].(string)
+	value, ok := P.P["vlan"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreatePortableIpRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *PortableIPService) NewCreatePortableIpRangeParams(endip string, gateway string, netmask string, regionid int, startip string) *CreatePortableIpRangeParams {
-	p := &CreatePortableIpRangeParams{}
-	p.p = make(map[string]interface{})
-	p.p["endip"] = endip
-	p.p["gateway"] = gateway
-	p.p["netmask"] = netmask
-	p.p["regionid"] = regionid
-	p.p["startip"] = startip
-	return p
+	P := &CreatePortableIpRangeParams{}
+	P.P = make(map[string]interface{})
+	P.P["endip"] = endip
+	P.P["gateway"] = gateway
+	P.P["netmask"] = netmask
+	P.P["regionid"] = regionid
+	P.P["startip"] = startip
+	return P
 }
 
 // adds a range of portable public IP's to a region
@@ -233,42 +233,42 @@ type CreatePortableIpRangeResponsePortableipaddress struct {
 }
 
 type DeletePortableIpRangeParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeletePortableIpRangeParams) toURLValues() url.Values {
+func (P *DeletePortableIpRangeParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeletePortableIpRangeParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePortableIpRangeParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeletePortableIpRangeParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeletePortableIpRangeParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeletePortableIpRangeParams instance,
 // as then you are sure you have configured all required params
 func (s *PortableIPService) NewDeletePortableIpRangeParams(id string) *DeletePortableIpRangeParams {
-	p := &DeletePortableIpRangeParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeletePortableIpRangeParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // deletes a range of portable public IP's associated with a region
@@ -309,132 +309,132 @@ type DeletePortableIpRangeResponse struct {
 }
 
 type ListPortableIpRangesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListPortableIpRangesParams) toURLValues() url.Values {
+func (P *ListPortableIpRangesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["regionid"]; found {
+	if v, found := P.P["regionid"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("regionid", vv)
 	}
 	return u
 }
 
-func (p *ListPortableIpRangesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortableIpRangesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListPortableIpRangesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortableIpRangesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListPortableIpRangesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortableIpRangesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListPortableIpRangesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortableIpRangesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListPortableIpRangesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortableIpRangesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListPortableIpRangesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortableIpRangesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListPortableIpRangesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortableIpRangesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListPortableIpRangesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortableIpRangesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListPortableIpRangesParams) SetRegionid(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortableIpRangesParams) SetRegionid(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["regionid"] = v
+	P.P["regionid"] = v
 }
 
-func (p *ListPortableIpRangesParams) GetRegionid() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListPortableIpRangesParams) GetRegionid() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["regionid"].(int)
+	value, ok := P.P["regionid"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListPortableIpRangesParams instance,
 // as then you are sure you have configured all required params
 func (s *PortableIPService) NewListPortableIpRangesParams() *ListPortableIpRangesParams {
-	p := &ListPortableIpRangesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListPortableIpRangesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *PortableIPService) GetPortableIpRangeByID(id string, opts ...OptionFunc) (*PortableIpRange, int, error) {
-	p := &ListPortableIpRangesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListPortableIpRangesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListPortableIpRanges(p)
+	l, err := s.ListPortableIpRanges(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+

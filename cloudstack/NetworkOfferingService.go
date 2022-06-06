@@ -28,479 +28,479 @@ import (
 )
 
 type NetworkOfferingServiceIface interface {
-	CreateNetworkOffering(p *CreateNetworkOfferingParams) (*CreateNetworkOfferingResponse, error)
+	CreateNetworkOffering(P *CreateNetworkOfferingParams) (*CreateNetworkOfferingResponse, error)
 	NewCreateNetworkOfferingParams(displaytext string, guestiptype string, name string, traffictype string) *CreateNetworkOfferingParams
-	DeleteNetworkOffering(p *DeleteNetworkOfferingParams) (*DeleteNetworkOfferingResponse, error)
+	DeleteNetworkOffering(P *DeleteNetworkOfferingParams) (*DeleteNetworkOfferingResponse, error)
 	NewDeleteNetworkOfferingParams(id string) *DeleteNetworkOfferingParams
-	ListNetworkOfferings(p *ListNetworkOfferingsParams) (*ListNetworkOfferingsResponse, error)
+	ListNetworkOfferings(P *ListNetworkOfferingsParams) (*ListNetworkOfferingsResponse, error)
 	NewListNetworkOfferingsParams() *ListNetworkOfferingsParams
 	GetNetworkOfferingID(name string, opts ...OptionFunc) (string, int, error)
 	GetNetworkOfferingByName(name string, opts ...OptionFunc) (*NetworkOffering, int, error)
 	GetNetworkOfferingByID(id string, opts ...OptionFunc) (*NetworkOffering, int, error)
-	UpdateNetworkOffering(p *UpdateNetworkOfferingParams) (*UpdateNetworkOfferingResponse, error)
+	UpdateNetworkOffering(P *UpdateNetworkOfferingParams) (*UpdateNetworkOfferingResponse, error)
 	NewUpdateNetworkOfferingParams() *UpdateNetworkOfferingParams
 }
 
 type CreateNetworkOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateNetworkOfferingParams) toURLValues() url.Values {
+func (P *CreateNetworkOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["availability"]; found {
+	if v, found := P.P["availability"]; found {
 		u.Set("availability", v.(string))
 	}
-	if v, found := p.p["conservemode"]; found {
+	if v, found := P.P["conservemode"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("conservemode", vv)
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].%s", i, k), m[k])
 		}
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("domainid", vv)
 	}
-	if v, found := p.p["egressdefaultpolicy"]; found {
+	if v, found := P.P["egressdefaultpolicy"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("egressdefaultpolicy", vv)
 	}
-	if v, found := p.p["enable"]; found {
+	if v, found := P.P["enable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("enable", vv)
 	}
-	if v, found := p.p["forvpc"]; found {
+	if v, found := P.P["forvpc"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forvpc", vv)
 	}
-	if v, found := p.p["guestiptype"]; found {
+	if v, found := P.P["guestiptype"]; found {
 		u.Set("guestiptype", v.(string))
 	}
-	if v, found := p.p["ispersistent"]; found {
+	if v, found := P.P["ispersistent"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("ispersistent", vv)
 	}
-	if v, found := p.p["keepaliveenabled"]; found {
+	if v, found := P.P["keepaliveenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("keepaliveenabled", vv)
 	}
-	if v, found := p.p["maxconnections"]; found {
+	if v, found := P.P["maxconnections"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("maxconnections", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkrate"]; found {
+	if v, found := P.P["networkrate"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("networkrate", vv)
 	}
-	if v, found := p.p["servicecapabilitylist"]; found {
+	if v, found := P.P["servicecapabilitylist"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("servicecapabilitylist[%d].key", i), k)
 			u.Set(fmt.Sprintf("servicecapabilitylist[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["serviceofferingid"]; found {
+	if v, found := P.P["serviceofferingid"]; found {
 		u.Set("serviceofferingid", v.(string))
 	}
-	if v, found := p.p["serviceproviderlist"]; found {
+	if v, found := P.P["serviceproviderlist"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("serviceproviderlist[%d].service", i), k)
 			u.Set(fmt.Sprintf("serviceproviderlist[%d].provider", i), m[k])
 		}
 	}
-	if v, found := p.p["specifyipranges"]; found {
+	if v, found := P.P["specifyipranges"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("specifyipranges", vv)
 	}
-	if v, found := p.p["specifyvlan"]; found {
+	if v, found := P.P["specifyvlan"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("specifyvlan", vv)
 	}
-	if v, found := p.p["supportedservices"]; found {
+	if v, found := P.P["supportedservices"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("supportedservices", vv)
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		u.Set("tags", v.(string))
 	}
-	if v, found := p.p["traffictype"]; found {
+	if v, found := P.P["traffictype"]; found {
 		u.Set("traffictype", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("zoneid", vv)
 	}
 	return u
 }
 
-func (p *CreateNetworkOfferingParams) SetAvailability(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetAvailability(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["availability"] = v
+	P.P["availability"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetAvailability() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetAvailability() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["availability"].(string)
+	value, ok := P.P["availability"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetConservemode(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetConservemode(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["conservemode"] = v
+	P.P["conservemode"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetConservemode() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetConservemode() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["conservemode"].(bool)
+	value, ok := P.P["conservemode"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetDomainid(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetDomainid(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetDomainid() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetDomainid() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].([]string)
+	value, ok := P.P["domainid"].([]string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetEgressdefaultpolicy(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetEgressdefaultpolicy(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["egressdefaultpolicy"] = v
+	P.P["egressdefaultpolicy"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetEgressdefaultpolicy() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetEgressdefaultpolicy() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["egressdefaultpolicy"].(bool)
+	value, ok := P.P["egressdefaultpolicy"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetEnable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetEnable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enable"] = v
+	P.P["enable"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetEnable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetEnable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enable"].(bool)
+	value, ok := P.P["enable"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetForvpc(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetForvpc(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forvpc"] = v
+	P.P["forvpc"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetForvpc() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetForvpc() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forvpc"].(bool)
+	value, ok := P.P["forvpc"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetGuestiptype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetGuestiptype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["guestiptype"] = v
+	P.P["guestiptype"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetGuestiptype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetGuestiptype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["guestiptype"].(string)
+	value, ok := P.P["guestiptype"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetIspersistent(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetIspersistent(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ispersistent"] = v
+	P.P["ispersistent"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetIspersistent() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetIspersistent() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ispersistent"].(bool)
+	value, ok := P.P["ispersistent"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetKeepaliveenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetKeepaliveenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keepaliveenabled"] = v
+	P.P["keepaliveenabled"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetKeepaliveenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetKeepaliveenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keepaliveenabled"].(bool)
+	value, ok := P.P["keepaliveenabled"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetMaxconnections(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetMaxconnections(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["maxconnections"] = v
+	P.P["maxconnections"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetMaxconnections() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetMaxconnections() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["maxconnections"].(int)
+	value, ok := P.P["maxconnections"].(int)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetNetworkrate(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetNetworkrate(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkrate"] = v
+	P.P["networkrate"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetNetworkrate() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetNetworkrate() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkrate"].(int)
+	value, ok := P.P["networkrate"].(int)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetServicecapabilitylist(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetServicecapabilitylist(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["servicecapabilitylist"] = v
+	P.P["servicecapabilitylist"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetServicecapabilitylist() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetServicecapabilitylist() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["servicecapabilitylist"].(map[string]string)
+	value, ok := P.P["servicecapabilitylist"].(map[string]string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetServiceofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetServiceofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["serviceofferingid"] = v
+	P.P["serviceofferingid"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetServiceofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetServiceofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["serviceofferingid"].(string)
+	value, ok := P.P["serviceofferingid"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetServiceproviderlist(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetServiceproviderlist(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["serviceproviderlist"] = v
+	P.P["serviceproviderlist"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetServiceproviderlist() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetServiceproviderlist() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["serviceproviderlist"].(map[string]string)
+	value, ok := P.P["serviceproviderlist"].(map[string]string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetSpecifyipranges(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetSpecifyipranges(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["specifyipranges"] = v
+	P.P["specifyipranges"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetSpecifyipranges() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetSpecifyipranges() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["specifyipranges"].(bool)
+	value, ok := P.P["specifyipranges"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetSpecifyvlan(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetSpecifyvlan(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["specifyvlan"] = v
+	P.P["specifyvlan"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetSpecifyvlan() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetSpecifyvlan() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["specifyvlan"].(bool)
+	value, ok := P.P["specifyvlan"].(bool)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetSupportedservices(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetSupportedservices(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["supportedservices"] = v
+	P.P["supportedservices"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetSupportedservices() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetSupportedservices() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["supportedservices"].([]string)
+	value, ok := P.P["supportedservices"].([]string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetTags(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetTags(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetTags() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetTags() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(string)
+	value, ok := P.P["tags"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetTraffictype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetTraffictype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["traffictype"] = v
+	P.P["traffictype"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetTraffictype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetTraffictype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["traffictype"].(string)
+	value, ok := P.P["traffictype"].(string)
 	return value, ok
 }
 
-func (p *CreateNetworkOfferingParams) SetZoneid(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) SetZoneid(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreateNetworkOfferingParams) GetZoneid() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateNetworkOfferingParams) GetZoneid() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].([]string)
+	value, ok := P.P["zoneid"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateNetworkOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkOfferingService) NewCreateNetworkOfferingParams(displaytext string, guestiptype string, name string, traffictype string) *CreateNetworkOfferingParams {
-	p := &CreateNetworkOfferingParams{}
-	p.p = make(map[string]interface{})
-	p.p["displaytext"] = displaytext
-	p.p["guestiptype"] = guestiptype
-	p.p["name"] = name
-	p.p["traffictype"] = traffictype
-	return p
+	P := &CreateNetworkOfferingParams{}
+	P.P = make(map[string]interface{})
+	P.P["displaytext"] = displaytext
+	P.P["guestiptype"] = guestiptype
+	P.P["name"] = name
+	P.P["traffictype"] = traffictype
+	return P
 }
 
 // Creates a network offering.
@@ -578,42 +578,42 @@ type CreateNetworkOfferingResponseServiceCapability struct {
 }
 
 type DeleteNetworkOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteNetworkOfferingParams) toURLValues() url.Values {
+func (P *DeleteNetworkOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteNetworkOfferingParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkOfferingParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteNetworkOfferingParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetworkOfferingParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteNetworkOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkOfferingService) NewDeleteNetworkOfferingParams(id string) *DeleteNetworkOfferingParams {
-	p := &DeleteNetworkOfferingParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteNetworkOfferingParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a network offering.
@@ -666,426 +666,426 @@ func (r *DeleteNetworkOfferingResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListNetworkOfferingsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListNetworkOfferingsParams) toURLValues() url.Values {
+func (P *ListNetworkOfferingsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["availability"]; found {
+	if v, found := P.P["availability"]; found {
 		u.Set("availability", v.(string))
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["forvpc"]; found {
+	if v, found := P.P["forvpc"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forvpc", vv)
 	}
-	if v, found := p.p["guestiptype"]; found {
+	if v, found := P.P["guestiptype"]; found {
 		u.Set("guestiptype", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isdefault"]; found {
+	if v, found := P.P["isdefault"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isdefault", vv)
 	}
-	if v, found := p.p["istagged"]; found {
+	if v, found := P.P["istagged"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("istagged", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["sourcenatsupported"]; found {
+	if v, found := P.P["sourcenatsupported"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("sourcenatsupported", vv)
 	}
-	if v, found := p.p["specifyipranges"]; found {
+	if v, found := P.P["specifyipranges"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("specifyipranges", vv)
 	}
-	if v, found := p.p["specifyvlan"]; found {
+	if v, found := P.P["specifyvlan"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("specifyvlan", vv)
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["supportedservices"]; found {
+	if v, found := P.P["supportedservices"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("supportedservices", vv)
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		u.Set("tags", v.(string))
 	}
-	if v, found := p.p["traffictype"]; found {
+	if v, found := P.P["traffictype"]; found {
 		u.Set("traffictype", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListNetworkOfferingsParams) SetAvailability(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetAvailability(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["availability"] = v
+	P.P["availability"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetAvailability() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetAvailability() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["availability"].(string)
+	value, ok := P.P["availability"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetForvpc(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetForvpc(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forvpc"] = v
+	P.P["forvpc"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetForvpc() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetForvpc() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forvpc"].(bool)
+	value, ok := P.P["forvpc"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetGuestiptype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetGuestiptype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["guestiptype"] = v
+	P.P["guestiptype"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetGuestiptype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetGuestiptype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["guestiptype"].(string)
+	value, ok := P.P["guestiptype"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetIsdefault(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetIsdefault(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isdefault"] = v
+	P.P["isdefault"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetIsdefault() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetIsdefault() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isdefault"].(bool)
+	value, ok := P.P["isdefault"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetIstagged(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetIstagged(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["istagged"] = v
+	P.P["istagged"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetIstagged() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetIstagged() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["istagged"].(bool)
+	value, ok := P.P["istagged"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetSourcenatsupported(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetSourcenatsupported(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sourcenatsupported"] = v
+	P.P["sourcenatsupported"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetSourcenatsupported() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetSourcenatsupported() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sourcenatsupported"].(bool)
+	value, ok := P.P["sourcenatsupported"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetSpecifyipranges(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetSpecifyipranges(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["specifyipranges"] = v
+	P.P["specifyipranges"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetSpecifyipranges() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetSpecifyipranges() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["specifyipranges"].(bool)
+	value, ok := P.P["specifyipranges"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetSpecifyvlan(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetSpecifyvlan(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["specifyvlan"] = v
+	P.P["specifyvlan"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetSpecifyvlan() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetSpecifyvlan() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["specifyvlan"].(bool)
+	value, ok := P.P["specifyvlan"].(bool)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetSupportedservices(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetSupportedservices(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["supportedservices"] = v
+	P.P["supportedservices"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetSupportedservices() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetSupportedservices() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["supportedservices"].([]string)
+	value, ok := P.P["supportedservices"].([]string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetTags(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetTags(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetTags() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetTags() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(string)
+	value, ok := P.P["tags"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetTraffictype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetTraffictype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["traffictype"] = v
+	P.P["traffictype"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetTraffictype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetTraffictype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["traffictype"].(string)
+	value, ok := P.P["traffictype"].(string)
 	return value, ok
 }
 
-func (p *ListNetworkOfferingsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListNetworkOfferingsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetworkOfferingsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListNetworkOfferingsParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkOfferingService) NewListNetworkOfferingsParams() *ListNetworkOfferingsParams {
-	p := &ListNetworkOfferingsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListNetworkOfferingsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkOfferingService) GetNetworkOfferingID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListNetworkOfferingsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListNetworkOfferingsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListNetworkOfferings(p)
+	l, err := s.ListNetworkOfferings(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1124,18 +1124,18 @@ func (s *NetworkOfferingService) GetNetworkOfferingByName(name string, opts ...O
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *NetworkOfferingService) GetNetworkOfferingByID(id string, opts ...OptionFunc) (*NetworkOffering, int, error) {
-	p := &ListNetworkOfferingsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListNetworkOfferingsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListNetworkOfferings(p)
+	l, err := s.ListNetworkOfferings(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1231,224 +1231,224 @@ type NetworkOfferingServiceInternalCapability struct {
 }
 
 type UpdateNetworkOfferingParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateNetworkOfferingParams) toURLValues() url.Values {
+func (P *UpdateNetworkOfferingParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["availability"]; found {
+	if v, found := P.P["availability"]; found {
 		u.Set("availability", v.(string))
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keepaliveenabled"]; found {
+	if v, found := P.P["keepaliveenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("keepaliveenabled", vv)
 	}
-	if v, found := p.p["maxconnections"]; found {
+	if v, found := P.P["maxconnections"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("maxconnections", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["sortkey"]; found {
+	if v, found := P.P["sortkey"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("sortkey", vv)
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		u.Set("tags", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateNetworkOfferingParams) SetAvailability(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) SetAvailability(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["availability"] = v
+	P.P["availability"] = v
 }
 
-func (p *UpdateNetworkOfferingParams) GetAvailability() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) GetAvailability() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["availability"].(string)
+	value, ok := P.P["availability"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkOfferingParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *UpdateNetworkOfferingParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkOfferingParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *UpdateNetworkOfferingParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkOfferingParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateNetworkOfferingParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkOfferingParams) SetKeepaliveenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) SetKeepaliveenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keepaliveenabled"] = v
+	P.P["keepaliveenabled"] = v
 }
 
-func (p *UpdateNetworkOfferingParams) GetKeepaliveenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) GetKeepaliveenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keepaliveenabled"].(bool)
+	value, ok := P.P["keepaliveenabled"].(bool)
 	return value, ok
 }
 
-func (p *UpdateNetworkOfferingParams) SetMaxconnections(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) SetMaxconnections(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["maxconnections"] = v
+	P.P["maxconnections"] = v
 }
 
-func (p *UpdateNetworkOfferingParams) GetMaxconnections() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) GetMaxconnections() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["maxconnections"].(int)
+	value, ok := P.P["maxconnections"].(int)
 	return value, ok
 }
 
-func (p *UpdateNetworkOfferingParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateNetworkOfferingParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkOfferingParams) SetSortkey(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) SetSortkey(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sortkey"] = v
+	P.P["sortkey"] = v
 }
 
-func (p *UpdateNetworkOfferingParams) GetSortkey() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) GetSortkey() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sortkey"].(int)
+	value, ok := P.P["sortkey"].(int)
 	return value, ok
 }
 
-func (p *UpdateNetworkOfferingParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *UpdateNetworkOfferingParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkOfferingParams) SetTags(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) SetTags(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *UpdateNetworkOfferingParams) GetTags() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) GetTags() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(string)
+	value, ok := P.P["tags"].(string)
 	return value, ok
 }
 
-func (p *UpdateNetworkOfferingParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *UpdateNetworkOfferingParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateNetworkOfferingParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateNetworkOfferingParams instance,
 // as then you are sure you have configured all required params
 func (s *NetworkOfferingService) NewUpdateNetworkOfferingParams() *UpdateNetworkOfferingParams {
-	p := &UpdateNetworkOfferingParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &UpdateNetworkOfferingParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Updates a network offering.

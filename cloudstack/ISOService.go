@@ -28,107 +28,107 @@ import (
 )
 
 type ISOServiceIface interface {
-	AttachIso(p *AttachIsoParams) (*AttachIsoResponse, error)
+	AttachIso(P *AttachIsoParams) (*AttachIsoResponse, error)
 	NewAttachIsoParams(id string, virtualmachineid string) *AttachIsoParams
-	CopyIso(p *CopyIsoParams) (*CopyIsoResponse, error)
+	CopyIso(P *CopyIsoParams) (*CopyIsoResponse, error)
 	NewCopyIsoParams(id string) *CopyIsoParams
-	DeleteIso(p *DeleteIsoParams) (*DeleteIsoResponse, error)
+	DeleteIso(P *DeleteIsoParams) (*DeleteIsoResponse, error)
 	NewDeleteIsoParams(id string) *DeleteIsoParams
-	DetachIso(p *DetachIsoParams) (*DetachIsoResponse, error)
+	DetachIso(P *DetachIsoParams) (*DetachIsoResponse, error)
 	NewDetachIsoParams(virtualmachineid string) *DetachIsoParams
-	ExtractIso(p *ExtractIsoParams) (*ExtractIsoResponse, error)
+	ExtractIso(P *ExtractIsoParams) (*ExtractIsoResponse, error)
 	NewExtractIsoParams(id string, mode string) *ExtractIsoParams
-	ListIsoPermissions(p *ListIsoPermissionsParams) (*ListIsoPermissionsResponse, error)
+	ListIsoPermissions(P *ListIsoPermissionsParams) (*ListIsoPermissionsResponse, error)
 	NewListIsoPermissionsParams(id string) *ListIsoPermissionsParams
 	GetIsoPermissionByID(id string, opts ...OptionFunc) (*IsoPermission, int, error)
-	ListIsos(p *ListIsosParams) (*ListIsosResponse, error)
+	ListIsos(P *ListIsosParams) (*ListIsosResponse, error)
 	NewListIsosParams() *ListIsosParams
 	GetIsoID(name string, isofilter string, zoneid string, opts ...OptionFunc) (string, int, error)
 	GetIsoByName(name string, isofilter string, zoneid string, opts ...OptionFunc) (*Iso, int, error)
 	GetIsoByID(id string, opts ...OptionFunc) (*Iso, int, error)
-	RegisterIso(p *RegisterIsoParams) (*RegisterIsoResponse, error)
+	RegisterIso(P *RegisterIsoParams) (*RegisterIsoResponse, error)
 	NewRegisterIsoParams(displaytext string, name string, url string, zoneid string) *RegisterIsoParams
-	UpdateIso(p *UpdateIsoParams) (*UpdateIsoResponse, error)
+	UpdateIso(P *UpdateIsoParams) (*UpdateIsoResponse, error)
 	NewUpdateIsoParams(id string) *UpdateIsoParams
-	UpdateIsoPermissions(p *UpdateIsoPermissionsParams) (*UpdateIsoPermissionsResponse, error)
+	UpdateIsoPermissions(P *UpdateIsoPermissionsParams) (*UpdateIsoPermissionsResponse, error)
 	NewUpdateIsoPermissionsParams(id string) *UpdateIsoPermissionsParams
 }
 
 type AttachIsoParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AttachIsoParams) toURLValues() url.Values {
+func (P *AttachIsoParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["forced"]; found {
+	if v, found := P.P["forced"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forced", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
 	return u
 }
 
-func (p *AttachIsoParams) SetForced(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachIsoParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forced"] = v
+	P.P["forced"] = v
 }
 
-func (p *AttachIsoParams) GetForced() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachIsoParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forced"].(bool)
+	value, ok := P.P["forced"].(bool)
 	return value, ok
 }
 
-func (p *AttachIsoParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachIsoParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *AttachIsoParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachIsoParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *AttachIsoParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachIsoParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *AttachIsoParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AttachIsoParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AttachIsoParams instance,
 // as then you are sure you have configured all required params
 func (s *ISOService) NewAttachIsoParams(id string, virtualmachineid string) *AttachIsoParams {
-	p := &AttachIsoParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["virtualmachineid"] = virtualmachineid
-	return p
+	P := &AttachIsoParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["virtualmachineid"] = virtualmachineid
+	return P
 }
 
 // Attaches an ISO to a virtual machine.
@@ -316,97 +316,97 @@ func (r *AttachIsoResponse) UnmarshalJSON(b []byte) error {
 }
 
 type CopyIsoParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CopyIsoParams) toURLValues() url.Values {
+func (P *CopyIsoParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["destzoneid"]; found {
+	if v, found := P.P["destzoneid"]; found {
 		u.Set("destzoneid", v.(string))
 	}
-	if v, found := p.p["destzoneids"]; found {
+	if v, found := P.P["destzoneids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("destzoneids", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["sourcezoneid"]; found {
+	if v, found := P.P["sourcezoneid"]; found {
 		u.Set("sourcezoneid", v.(string))
 	}
 	return u
 }
 
-func (p *CopyIsoParams) SetDestzoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyIsoParams) SetDestzoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["destzoneid"] = v
+	P.P["destzoneid"] = v
 }
 
-func (p *CopyIsoParams) GetDestzoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyIsoParams) GetDestzoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["destzoneid"].(string)
+	value, ok := P.P["destzoneid"].(string)
 	return value, ok
 }
 
-func (p *CopyIsoParams) SetDestzoneids(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyIsoParams) SetDestzoneids(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["destzoneids"] = v
+	P.P["destzoneids"] = v
 }
 
-func (p *CopyIsoParams) GetDestzoneids() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyIsoParams) GetDestzoneids() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["destzoneids"].([]string)
+	value, ok := P.P["destzoneids"].([]string)
 	return value, ok
 }
 
-func (p *CopyIsoParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyIsoParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *CopyIsoParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyIsoParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *CopyIsoParams) SetSourcezoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyIsoParams) SetSourcezoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sourcezoneid"] = v
+	P.P["sourcezoneid"] = v
 }
 
-func (p *CopyIsoParams) GetSourcezoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CopyIsoParams) GetSourcezoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sourcezoneid"].(string)
+	value, ok := P.P["sourcezoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CopyIsoParams instance,
 // as then you are sure you have configured all required params
 func (s *ISOService) NewCopyIsoParams(id string) *CopyIsoParams {
-	p := &CopyIsoParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &CopyIsoParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Copies an iso from one zone to another.
@@ -525,60 +525,60 @@ func (r *CopyIsoResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DeleteIsoParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteIsoParams) toURLValues() url.Values {
+func (P *DeleteIsoParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteIsoParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteIsoParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteIsoParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteIsoParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *DeleteIsoParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteIsoParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *DeleteIsoParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteIsoParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteIsoParams instance,
 // as then you are sure you have configured all required params
 func (s *ISOService) NewDeleteIsoParams(id string) *DeleteIsoParams {
-	p := &DeleteIsoParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteIsoParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes an ISO file.
@@ -619,61 +619,61 @@ type DeleteIsoResponse struct {
 }
 
 type DetachIsoParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DetachIsoParams) toURLValues() url.Values {
+func (P *DetachIsoParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["forced"]; found {
+	if v, found := P.P["forced"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forced", vv)
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
 	return u
 }
 
-func (p *DetachIsoParams) SetForced(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DetachIsoParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forced"] = v
+	P.P["forced"] = v
 }
 
-func (p *DetachIsoParams) GetForced() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DetachIsoParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forced"].(bool)
+	value, ok := P.P["forced"].(bool)
 	return value, ok
 }
 
-func (p *DetachIsoParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DetachIsoParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *DetachIsoParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DetachIsoParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DetachIsoParams instance,
 // as then you are sure you have configured all required params
 func (s *ISOService) NewDetachIsoParams(virtualmachineid string) *DetachIsoParams {
-	p := &DetachIsoParams{}
-	p.p = make(map[string]interface{})
-	p.p["virtualmachineid"] = virtualmachineid
-	return p
+	P := &DetachIsoParams{}
+	P.P = make(map[string]interface{})
+	P.P["virtualmachineid"] = virtualmachineid
+	return P
 }
 
 // Detaches any ISO file (if any) currently attached to a virtual machine.
@@ -861,97 +861,97 @@ func (r *DetachIsoResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ExtractIsoParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ExtractIsoParams) toURLValues() url.Values {
+func (P *ExtractIsoParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["mode"]; found {
+	if v, found := P.P["mode"]; found {
 		u.Set("mode", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ExtractIsoParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractIsoParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ExtractIsoParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractIsoParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ExtractIsoParams) SetMode(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractIsoParams) SetMode(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["mode"] = v
+	P.P["mode"] = v
 }
 
-func (p *ExtractIsoParams) GetMode() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractIsoParams) GetMode() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["mode"].(string)
+	value, ok := P.P["mode"].(string)
 	return value, ok
 }
 
-func (p *ExtractIsoParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractIsoParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *ExtractIsoParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractIsoParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *ExtractIsoParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractIsoParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ExtractIsoParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ExtractIsoParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ExtractIsoParams instance,
 // as then you are sure you have configured all required params
 func (s *ISOService) NewExtractIsoParams(id string, mode string) *ExtractIsoParams {
-	p := &ExtractIsoParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["mode"] = mode
-	return p
+	P := &ExtractIsoParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["mode"] = mode
+	return P
 }
 
 // Extracts an ISO
@@ -1009,58 +1009,58 @@ type ExtractIsoResponse struct {
 }
 
 type ListIsoPermissionsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListIsoPermissionsParams) toURLValues() url.Values {
+func (P *ListIsoPermissionsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *ListIsoPermissionsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsoPermissionsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListIsoPermissionsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsoPermissionsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListIsoPermissionsParams instance,
 // as then you are sure you have configured all required params
 func (s *ISOService) NewListIsoPermissionsParams(id string) *ListIsoPermissionsParams {
-	p := &ListIsoPermissionsParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &ListIsoPermissionsParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ISOService) GetIsoPermissionByID(id string, opts ...OptionFunc) (*IsoPermission, int, error) {
-	p := &ListIsoPermissionsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListIsoPermissionsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListIsoPermissions(p)
+	l, err := s.ListIsoPermissions(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1111,415 +1111,415 @@ type IsoPermission struct {
 }
 
 type ListIsosParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListIsosParams) toURLValues() url.Values {
+func (P *ListIsosParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["bootable"]; found {
+	if v, found := P.P["bootable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("bootable", vv)
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["hypervisor"]; found {
+	if v, found := P.P["hypervisor"]; found {
 		u.Set("hypervisor", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isofilter"]; found {
+	if v, found := P.P["isofilter"]; found {
 		u.Set("isofilter", v.(string))
 	}
-	if v, found := p.p["ispublic"]; found {
+	if v, found := P.P["ispublic"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("ispublic", vv)
 	}
-	if v, found := p.p["isready"]; found {
+	if v, found := P.P["isready"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isready", vv)
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["showicon"]; found {
+	if v, found := P.P["showicon"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showicon", vv)
 	}
-	if v, found := p.p["showremoved"]; found {
+	if v, found := P.P["showremoved"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showremoved", vv)
 	}
-	if v, found := p.p["showunique"]; found {
+	if v, found := P.P["showunique"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showunique", vv)
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListIsosParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListIsosParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetBootable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetBootable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bootable"] = v
+	P.P["bootable"] = v
 }
 
-func (p *ListIsosParams) GetBootable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetBootable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bootable"].(bool)
+	value, ok := P.P["bootable"].(bool)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListIsosParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetHypervisor(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetHypervisor(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hypervisor"] = v
+	P.P["hypervisor"] = v
 }
 
-func (p *ListIsosParams) GetHypervisor() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetHypervisor() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hypervisor"].(string)
+	value, ok := P.P["hypervisor"].(string)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListIsosParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetIsofilter(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetIsofilter(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isofilter"] = v
+	P.P["isofilter"] = v
 }
 
-func (p *ListIsosParams) GetIsofilter() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetIsofilter() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isofilter"].(string)
+	value, ok := P.P["isofilter"].(string)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetIspublic(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetIspublic(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ispublic"] = v
+	P.P["ispublic"] = v
 }
 
-func (p *ListIsosParams) GetIspublic() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetIspublic() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ispublic"].(bool)
+	value, ok := P.P["ispublic"].(bool)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetIsready(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetIsready(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isready"] = v
+	P.P["isready"] = v
 }
 
-func (p *ListIsosParams) GetIsready() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetIsready() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isready"].(bool)
+	value, ok := P.P["isready"].(bool)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListIsosParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListIsosParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListIsosParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListIsosParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListIsosParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListIsosParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListIsosParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetShowicon(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetShowicon(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showicon"] = v
+	P.P["showicon"] = v
 }
 
-func (p *ListIsosParams) GetShowicon() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetShowicon() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showicon"].(bool)
+	value, ok := P.P["showicon"].(bool)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetShowremoved(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetShowremoved(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showremoved"] = v
+	P.P["showremoved"] = v
 }
 
-func (p *ListIsosParams) GetShowremoved() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetShowremoved() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showremoved"].(bool)
+	value, ok := P.P["showremoved"].(bool)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetShowunique(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetShowunique(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showunique"] = v
+	P.P["showunique"] = v
 }
 
-func (p *ListIsosParams) GetShowunique() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetShowunique() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showunique"].(bool)
+	value, ok := P.P["showunique"].(bool)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListIsosParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListIsosParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListIsosParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListIsosParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListIsosParams instance,
 // as then you are sure you have configured all required params
 func (s *ISOService) NewListIsosParams() *ListIsosParams {
-	p := &ListIsosParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListIsosParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ISOService) GetIsoID(name string, isofilter string, zoneid string, opts ...OptionFunc) (string, int, error) {
-	p := &ListIsosParams{}
-	p.p = make(map[string]interface{})
+	P := &ListIsosParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
-	p.p["isofilter"] = isofilter
-	p.p["zoneid"] = zoneid
+	P.P["name"] = name
+	P.P["isofilter"] = isofilter
+	P.P["zoneid"] = zoneid
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListIsos(p)
+	l, err := s.ListIsos(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1558,18 +1558,18 @@ func (s *ISOService) GetIsoByName(name string, isofilter string, zoneid string, 
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ISOService) GetIsoByID(id string, opts ...OptionFunc) (*Iso, int, error) {
-	p := &ListIsosParams{}
-	p.p = make(map[string]interface{})
+	P := &ListIsosParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListIsos(p)
+	l, err := s.ListIsos(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1690,340 +1690,340 @@ func (r *Iso) UnmarshalJSON(b []byte) error {
 }
 
 type RegisterIsoParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RegisterIsoParams) toURLValues() url.Values {
+func (P *RegisterIsoParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["bootable"]; found {
+	if v, found := P.P["bootable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("bootable", vv)
 	}
-	if v, found := p.p["checksum"]; found {
+	if v, found := P.P["checksum"]; found {
 		u.Set("checksum", v.(string))
 	}
-	if v, found := p.p["directdownload"]; found {
+	if v, found := P.P["directdownload"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("directdownload", vv)
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["imagestoreuuid"]; found {
+	if v, found := P.P["imagestoreuuid"]; found {
 		u.Set("imagestoreuuid", v.(string))
 	}
-	if v, found := p.p["isdynamicallyscalable"]; found {
+	if v, found := P.P["isdynamicallyscalable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isdynamicallyscalable", vv)
 	}
-	if v, found := p.p["isextractable"]; found {
+	if v, found := P.P["isextractable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isextractable", vv)
 	}
-	if v, found := p.p["isfeatured"]; found {
+	if v, found := P.P["isfeatured"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isfeatured", vv)
 	}
-	if v, found := p.p["ispublic"]; found {
+	if v, found := P.P["ispublic"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("ispublic", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["ostypeid"]; found {
+	if v, found := P.P["ostypeid"]; found {
 		u.Set("ostypeid", v.(string))
 	}
-	if v, found := p.p["passwordenabled"]; found {
+	if v, found := P.P["passwordenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("passwordenabled", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *RegisterIsoParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *RegisterIsoParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetBootable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetBootable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bootable"] = v
+	P.P["bootable"] = v
 }
 
-func (p *RegisterIsoParams) GetBootable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetBootable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bootable"].(bool)
+	value, ok := P.P["bootable"].(bool)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetChecksum(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetChecksum(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["checksum"] = v
+	P.P["checksum"] = v
 }
 
-func (p *RegisterIsoParams) GetChecksum() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetChecksum() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["checksum"].(string)
+	value, ok := P.P["checksum"].(string)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetDirectdownload(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetDirectdownload(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["directdownload"] = v
+	P.P["directdownload"] = v
 }
 
-func (p *RegisterIsoParams) GetDirectdownload() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetDirectdownload() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["directdownload"].(bool)
+	value, ok := P.P["directdownload"].(bool)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *RegisterIsoParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *RegisterIsoParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetImagestoreuuid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetImagestoreuuid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["imagestoreuuid"] = v
+	P.P["imagestoreuuid"] = v
 }
 
-func (p *RegisterIsoParams) GetImagestoreuuid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetImagestoreuuid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["imagestoreuuid"].(string)
+	value, ok := P.P["imagestoreuuid"].(string)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetIsdynamicallyscalable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetIsdynamicallyscalable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isdynamicallyscalable"] = v
+	P.P["isdynamicallyscalable"] = v
 }
 
-func (p *RegisterIsoParams) GetIsdynamicallyscalable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetIsdynamicallyscalable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isdynamicallyscalable"].(bool)
+	value, ok := P.P["isdynamicallyscalable"].(bool)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetIsextractable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetIsextractable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isextractable"] = v
+	P.P["isextractable"] = v
 }
 
-func (p *RegisterIsoParams) GetIsextractable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetIsextractable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isextractable"].(bool)
+	value, ok := P.P["isextractable"].(bool)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetIsfeatured(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetIsfeatured(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isfeatured"] = v
+	P.P["isfeatured"] = v
 }
 
-func (p *RegisterIsoParams) GetIsfeatured() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetIsfeatured() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isfeatured"].(bool)
+	value, ok := P.P["isfeatured"].(bool)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetIspublic(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetIspublic(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ispublic"] = v
+	P.P["ispublic"] = v
 }
 
-func (p *RegisterIsoParams) GetIspublic() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetIspublic() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ispublic"].(bool)
+	value, ok := P.P["ispublic"].(bool)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *RegisterIsoParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetOstypeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetOstypeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ostypeid"] = v
+	P.P["ostypeid"] = v
 }
 
-func (p *RegisterIsoParams) GetOstypeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetOstypeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ostypeid"].(string)
+	value, ok := P.P["ostypeid"].(string)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetPasswordenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetPasswordenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["passwordenabled"] = v
+	P.P["passwordenabled"] = v
 }
 
-func (p *RegisterIsoParams) GetPasswordenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetPasswordenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["passwordenabled"].(bool)
+	value, ok := P.P["passwordenabled"].(bool)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *RegisterIsoParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *RegisterIsoParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *RegisterIsoParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *RegisterIsoParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RegisterIsoParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new RegisterIsoParams instance,
 // as then you are sure you have configured all required params
 func (s *ISOService) NewRegisterIsoParams(displaytext string, name string, url string, zoneid string) *RegisterIsoParams {
-	p := &RegisterIsoParams{}
-	p.p = make(map[string]interface{})
-	p.p["displaytext"] = displaytext
-	p.p["name"] = name
-	p.p["url"] = url
-	p.p["zoneid"] = zoneid
-	return p
+	P := &RegisterIsoParams{}
+	P.P = make(map[string]interface{})
+	P.P["displaytext"] = displaytext
+	P.P["name"] = name
+	P.P["url"] = url
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Registers an existing ISO into the CloudStack Cloud.
@@ -2122,287 +2122,287 @@ func (r *RegisterIsoResponse) UnmarshalJSON(b []byte) error {
 }
 
 type UpdateIsoParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateIsoParams) toURLValues() url.Values {
+func (P *UpdateIsoParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["bootable"]; found {
+	if v, found := P.P["bootable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("bootable", vv)
 	}
-	if v, found := p.p["cleanupdetails"]; found {
+	if v, found := P.P["cleanupdetails"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("cleanupdetails", vv)
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].%s", i, k), m[k])
 		}
 	}
-	if v, found := p.p["displaytext"]; found {
+	if v, found := P.P["displaytext"]; found {
 		u.Set("displaytext", v.(string))
 	}
-	if v, found := p.p["format"]; found {
+	if v, found := P.P["format"]; found {
 		u.Set("format", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isdynamicallyscalable"]; found {
+	if v, found := P.P["isdynamicallyscalable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isdynamicallyscalable", vv)
 	}
-	if v, found := p.p["isrouting"]; found {
+	if v, found := P.P["isrouting"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrouting", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["ostypeid"]; found {
+	if v, found := P.P["ostypeid"]; found {
 		u.Set("ostypeid", v.(string))
 	}
-	if v, found := p.p["passwordenabled"]; found {
+	if v, found := P.P["passwordenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("passwordenabled", vv)
 	}
-	if v, found := p.p["requireshvm"]; found {
+	if v, found := P.P["requireshvm"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("requireshvm", vv)
 	}
-	if v, found := p.p["sortkey"]; found {
+	if v, found := P.P["sortkey"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("sortkey", vv)
 	}
-	if v, found := p.p["sshkeyenabled"]; found {
+	if v, found := P.P["sshkeyenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("sshkeyenabled", vv)
 	}
 	return u
 }
 
-func (p *UpdateIsoParams) SetBootable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetBootable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["bootable"] = v
+	P.P["bootable"] = v
 }
 
-func (p *UpdateIsoParams) GetBootable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetBootable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["bootable"].(bool)
+	value, ok := P.P["bootable"].(bool)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetCleanupdetails(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetCleanupdetails(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cleanupdetails"] = v
+	P.P["cleanupdetails"] = v
 }
 
-func (p *UpdateIsoParams) GetCleanupdetails() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetCleanupdetails() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cleanupdetails"].(bool)
+	value, ok := P.P["cleanupdetails"].(bool)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *UpdateIsoParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetDisplaytext(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetDisplaytext(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["displaytext"] = v
+	P.P["displaytext"] = v
 }
 
-func (p *UpdateIsoParams) GetDisplaytext() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetDisplaytext() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["displaytext"].(string)
+	value, ok := P.P["displaytext"].(string)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetFormat(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetFormat(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["format"] = v
+	P.P["format"] = v
 }
 
-func (p *UpdateIsoParams) GetFormat() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetFormat() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["format"].(string)
+	value, ok := P.P["format"].(string)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateIsoParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetIsdynamicallyscalable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetIsdynamicallyscalable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isdynamicallyscalable"] = v
+	P.P["isdynamicallyscalable"] = v
 }
 
-func (p *UpdateIsoParams) GetIsdynamicallyscalable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetIsdynamicallyscalable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isdynamicallyscalable"].(bool)
+	value, ok := P.P["isdynamicallyscalable"].(bool)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetIsrouting(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetIsrouting(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrouting"] = v
+	P.P["isrouting"] = v
 }
 
-func (p *UpdateIsoParams) GetIsrouting() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetIsrouting() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrouting"].(bool)
+	value, ok := P.P["isrouting"].(bool)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateIsoParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetOstypeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetOstypeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ostypeid"] = v
+	P.P["ostypeid"] = v
 }
 
-func (p *UpdateIsoParams) GetOstypeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetOstypeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ostypeid"].(string)
+	value, ok := P.P["ostypeid"].(string)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetPasswordenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetPasswordenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["passwordenabled"] = v
+	P.P["passwordenabled"] = v
 }
 
-func (p *UpdateIsoParams) GetPasswordenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetPasswordenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["passwordenabled"].(bool)
+	value, ok := P.P["passwordenabled"].(bool)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetRequireshvm(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetRequireshvm(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["requireshvm"] = v
+	P.P["requireshvm"] = v
 }
 
-func (p *UpdateIsoParams) GetRequireshvm() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetRequireshvm() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["requireshvm"].(bool)
+	value, ok := P.P["requireshvm"].(bool)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetSortkey(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetSortkey(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sortkey"] = v
+	P.P["sortkey"] = v
 }
 
-func (p *UpdateIsoParams) GetSortkey() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetSortkey() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sortkey"].(int)
+	value, ok := P.P["sortkey"].(int)
 	return value, ok
 }
 
-func (p *UpdateIsoParams) SetSshkeyenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) SetSshkeyenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sshkeyenabled"] = v
+	P.P["sshkeyenabled"] = v
 }
 
-func (p *UpdateIsoParams) GetSshkeyenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoParams) GetSshkeyenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sshkeyenabled"].(bool)
+	value, ok := P.P["sshkeyenabled"].(bool)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateIsoParams instance,
 // as then you are sure you have configured all required params
 func (s *ISOService) NewUpdateIsoParams(id string) *UpdateIsoParams {
-	p := &UpdateIsoParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateIsoParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates an ISO file.
@@ -2501,155 +2501,155 @@ func (r *UpdateIsoResponse) UnmarshalJSON(b []byte) error {
 }
 
 type UpdateIsoPermissionsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateIsoPermissionsParams) toURLValues() url.Values {
+func (P *UpdateIsoPermissionsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["accounts"]; found {
+	if v, found := P.P["accounts"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("accounts", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isextractable"]; found {
+	if v, found := P.P["isextractable"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isextractable", vv)
 	}
-	if v, found := p.p["isfeatured"]; found {
+	if v, found := P.P["isfeatured"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isfeatured", vv)
 	}
-	if v, found := p.p["ispublic"]; found {
+	if v, found := P.P["ispublic"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("ispublic", vv)
 	}
-	if v, found := p.p["op"]; found {
+	if v, found := P.P["op"]; found {
 		u.Set("op", v.(string))
 	}
-	if v, found := p.p["projectids"]; found {
+	if v, found := P.P["projectids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("projectids", vv)
 	}
 	return u
 }
 
-func (p *UpdateIsoPermissionsParams) SetAccounts(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) SetAccounts(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accounts"] = v
+	P.P["accounts"] = v
 }
 
-func (p *UpdateIsoPermissionsParams) GetAccounts() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) GetAccounts() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accounts"].([]string)
+	value, ok := P.P["accounts"].([]string)
 	return value, ok
 }
 
-func (p *UpdateIsoPermissionsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateIsoPermissionsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateIsoPermissionsParams) SetIsextractable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) SetIsextractable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isextractable"] = v
+	P.P["isextractable"] = v
 }
 
-func (p *UpdateIsoPermissionsParams) GetIsextractable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) GetIsextractable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isextractable"].(bool)
+	value, ok := P.P["isextractable"].(bool)
 	return value, ok
 }
 
-func (p *UpdateIsoPermissionsParams) SetIsfeatured(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) SetIsfeatured(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isfeatured"] = v
+	P.P["isfeatured"] = v
 }
 
-func (p *UpdateIsoPermissionsParams) GetIsfeatured() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) GetIsfeatured() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isfeatured"].(bool)
+	value, ok := P.P["isfeatured"].(bool)
 	return value, ok
 }
 
-func (p *UpdateIsoPermissionsParams) SetIspublic(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) SetIspublic(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ispublic"] = v
+	P.P["ispublic"] = v
 }
 
-func (p *UpdateIsoPermissionsParams) GetIspublic() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) GetIspublic() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ispublic"].(bool)
+	value, ok := P.P["ispublic"].(bool)
 	return value, ok
 }
 
-func (p *UpdateIsoPermissionsParams) SetOp(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) SetOp(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["op"] = v
+	P.P["op"] = v
 }
 
-func (p *UpdateIsoPermissionsParams) GetOp() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) GetOp() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["op"].(string)
+	value, ok := P.P["op"].(string)
 	return value, ok
 }
 
-func (p *UpdateIsoPermissionsParams) SetProjectids(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) SetProjectids(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectids"] = v
+	P.P["projectids"] = v
 }
 
-func (p *UpdateIsoPermissionsParams) GetProjectids() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateIsoPermissionsParams) GetProjectids() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectids"].([]string)
+	value, ok := P.P["projectids"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateIsoPermissionsParams instance,
 // as then you are sure you have configured all required params
 func (s *ISOService) NewUpdateIsoPermissionsParams(id string) *UpdateIsoPermissionsParams {
-	p := &UpdateIsoPermissionsParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateIsoPermissionsParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates ISO permissions

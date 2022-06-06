@@ -28,224 +28,224 @@ import (
 )
 
 type SnapshotServiceIface interface {
-	CreateSnapshot(p *CreateSnapshotParams) (*CreateSnapshotResponse, error)
+	CreateSnapshot(P *CreateSnapshotParams) (*CreateSnapshotResponse, error)
 	NewCreateSnapshotParams(volumeid string) *CreateSnapshotParams
-	CreateSnapshotPolicy(p *CreateSnapshotPolicyParams) (*CreateSnapshotPolicyResponse, error)
+	CreateSnapshotPolicy(P *CreateSnapshotPolicyParams) (*CreateSnapshotPolicyResponse, error)
 	NewCreateSnapshotPolicyParams(intervaltype string, maxsnaps int, schedule string, timezone string, volumeid string) *CreateSnapshotPolicyParams
-	CreateVMSnapshot(p *CreateVMSnapshotParams) (*CreateVMSnapshotResponse, error)
+	CreateVMSnapshot(P *CreateVMSnapshotParams) (*CreateVMSnapshotResponse, error)
 	NewCreateVMSnapshotParams(virtualmachineid string) *CreateVMSnapshotParams
-	DeleteSnapshot(p *DeleteSnapshotParams) (*DeleteSnapshotResponse, error)
+	DeleteSnapshot(P *DeleteSnapshotParams) (*DeleteSnapshotResponse, error)
 	NewDeleteSnapshotParams(id string) *DeleteSnapshotParams
-	DeleteSnapshotPolicies(p *DeleteSnapshotPoliciesParams) (*DeleteSnapshotPoliciesResponse, error)
+	DeleteSnapshotPolicies(P *DeleteSnapshotPoliciesParams) (*DeleteSnapshotPoliciesResponse, error)
 	NewDeleteSnapshotPoliciesParams() *DeleteSnapshotPoliciesParams
-	DeleteVMSnapshot(p *DeleteVMSnapshotParams) (*DeleteVMSnapshotResponse, error)
+	DeleteVMSnapshot(P *DeleteVMSnapshotParams) (*DeleteVMSnapshotResponse, error)
 	NewDeleteVMSnapshotParams(vmsnapshotid string) *DeleteVMSnapshotParams
-	ListSnapshotPolicies(p *ListSnapshotPoliciesParams) (*ListSnapshotPoliciesResponse, error)
+	ListSnapshotPolicies(P *ListSnapshotPoliciesParams) (*ListSnapshotPoliciesResponse, error)
 	NewListSnapshotPoliciesParams() *ListSnapshotPoliciesParams
 	GetSnapshotPolicyByID(id string, opts ...OptionFunc) (*SnapshotPolicy, int, error)
-	ListSnapshots(p *ListSnapshotsParams) (*ListSnapshotsResponse, error)
+	ListSnapshots(P *ListSnapshotsParams) (*ListSnapshotsResponse, error)
 	NewListSnapshotsParams() *ListSnapshotsParams
 	GetSnapshotID(name string, opts ...OptionFunc) (string, int, error)
 	GetSnapshotByName(name string, opts ...OptionFunc) (*Snapshot, int, error)
 	GetSnapshotByID(id string, opts ...OptionFunc) (*Snapshot, int, error)
-	ListVMSnapshot(p *ListVMSnapshotParams) (*ListVMSnapshotResponse, error)
+	ListVMSnapshot(P *ListVMSnapshotParams) (*ListVMSnapshotResponse, error)
 	NewListVMSnapshotParams() *ListVMSnapshotParams
 	GetVMSnapshotID(name string, opts ...OptionFunc) (string, int, error)
-	RevertSnapshot(p *RevertSnapshotParams) (*RevertSnapshotResponse, error)
+	RevertSnapshot(P *RevertSnapshotParams) (*RevertSnapshotResponse, error)
 	NewRevertSnapshotParams(id string) *RevertSnapshotParams
-	RevertToVMSnapshot(p *RevertToVMSnapshotParams) (*RevertToVMSnapshotResponse, error)
+	RevertToVMSnapshot(P *RevertToVMSnapshotParams) (*RevertToVMSnapshotResponse, error)
 	NewRevertToVMSnapshotParams(vmsnapshotid string) *RevertToVMSnapshotParams
-	UpdateSnapshotPolicy(p *UpdateSnapshotPolicyParams) (*UpdateSnapshotPolicyResponse, error)
+	UpdateSnapshotPolicy(P *UpdateSnapshotPolicyParams) (*UpdateSnapshotPolicyResponse, error)
 	NewUpdateSnapshotPolicyParams() *UpdateSnapshotPolicyParams
 }
 
 type CreateSnapshotParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateSnapshotParams) toURLValues() url.Values {
+func (P *CreateSnapshotParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["asyncbackup"]; found {
+	if v, found := P.P["asyncbackup"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("asyncbackup", vv)
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["locationtype"]; found {
+	if v, found := P.P["locationtype"]; found {
 		u.Set("locationtype", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["policyid"]; found {
+	if v, found := P.P["policyid"]; found {
 		u.Set("policyid", v.(string))
 	}
-	if v, found := p.p["quiescevm"]; found {
+	if v, found := P.P["quiescevm"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("quiescevm", vv)
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["volumeid"]; found {
+	if v, found := P.P["volumeid"]; found {
 		u.Set("volumeid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateSnapshotParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *CreateSnapshotParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *CreateSnapshotParams) SetAsyncbackup(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) SetAsyncbackup(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["asyncbackup"] = v
+	P.P["asyncbackup"] = v
 }
 
-func (p *CreateSnapshotParams) GetAsyncbackup() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) GetAsyncbackup() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["asyncbackup"].(bool)
+	value, ok := P.P["asyncbackup"].(bool)
 	return value, ok
 }
 
-func (p *CreateSnapshotParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateSnapshotParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateSnapshotParams) SetLocationtype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) SetLocationtype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["locationtype"] = v
+	P.P["locationtype"] = v
 }
 
-func (p *CreateSnapshotParams) GetLocationtype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) GetLocationtype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["locationtype"].(string)
+	value, ok := P.P["locationtype"].(string)
 	return value, ok
 }
 
-func (p *CreateSnapshotParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateSnapshotParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateSnapshotParams) SetPolicyid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) SetPolicyid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["policyid"] = v
+	P.P["policyid"] = v
 }
 
-func (p *CreateSnapshotParams) GetPolicyid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) GetPolicyid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["policyid"].(string)
+	value, ok := P.P["policyid"].(string)
 	return value, ok
 }
 
-func (p *CreateSnapshotParams) SetQuiescevm(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) SetQuiescevm(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["quiescevm"] = v
+	P.P["quiescevm"] = v
 }
 
-func (p *CreateSnapshotParams) GetQuiescevm() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) GetQuiescevm() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["quiescevm"].(bool)
+	value, ok := P.P["quiescevm"].(bool)
 	return value, ok
 }
 
-func (p *CreateSnapshotParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *CreateSnapshotParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *CreateSnapshotParams) SetVolumeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) SetVolumeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["volumeid"] = v
+	P.P["volumeid"] = v
 }
 
-func (p *CreateSnapshotParams) GetVolumeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotParams) GetVolumeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["volumeid"].(string)
+	value, ok := P.P["volumeid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateSnapshotParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewCreateSnapshotParams(volumeid string) *CreateSnapshotParams {
-	p := &CreateSnapshotParams{}
-	p.p = make(map[string]interface{})
-	p.p["volumeid"] = volumeid
-	return p
+	P := &CreateSnapshotParams{}
+	P.P = make(map[string]interface{})
+	P.P["volumeid"] = volumeid
+	return P
 }
 
 // Creates an instant snapshot of a volume.
@@ -339,160 +339,160 @@ func (r *CreateSnapshotResponse) UnmarshalJSON(b []byte) error {
 }
 
 type CreateSnapshotPolicyParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateSnapshotPolicyParams) toURLValues() url.Values {
+func (P *CreateSnapshotPolicyParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["intervaltype"]; found {
+	if v, found := P.P["intervaltype"]; found {
 		u.Set("intervaltype", v.(string))
 	}
-	if v, found := p.p["maxsnaps"]; found {
+	if v, found := P.P["maxsnaps"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("maxsnaps", vv)
 	}
-	if v, found := p.p["schedule"]; found {
+	if v, found := P.P["schedule"]; found {
 		u.Set("schedule", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["timezone"]; found {
+	if v, found := P.P["timezone"]; found {
 		u.Set("timezone", v.(string))
 	}
-	if v, found := p.p["volumeid"]; found {
+	if v, found := P.P["volumeid"]; found {
 		u.Set("volumeid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateSnapshotPolicyParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateSnapshotPolicyParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateSnapshotPolicyParams) SetIntervaltype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) SetIntervaltype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["intervaltype"] = v
+	P.P["intervaltype"] = v
 }
 
-func (p *CreateSnapshotPolicyParams) GetIntervaltype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) GetIntervaltype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["intervaltype"].(string)
+	value, ok := P.P["intervaltype"].(string)
 	return value, ok
 }
 
-func (p *CreateSnapshotPolicyParams) SetMaxsnaps(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) SetMaxsnaps(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["maxsnaps"] = v
+	P.P["maxsnaps"] = v
 }
 
-func (p *CreateSnapshotPolicyParams) GetMaxsnaps() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) GetMaxsnaps() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["maxsnaps"].(int)
+	value, ok := P.P["maxsnaps"].(int)
 	return value, ok
 }
 
-func (p *CreateSnapshotPolicyParams) SetSchedule(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) SetSchedule(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["schedule"] = v
+	P.P["schedule"] = v
 }
 
-func (p *CreateSnapshotPolicyParams) GetSchedule() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) GetSchedule() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["schedule"].(string)
+	value, ok := P.P["schedule"].(string)
 	return value, ok
 }
 
-func (p *CreateSnapshotPolicyParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *CreateSnapshotPolicyParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *CreateSnapshotPolicyParams) SetTimezone(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) SetTimezone(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["timezone"] = v
+	P.P["timezone"] = v
 }
 
-func (p *CreateSnapshotPolicyParams) GetTimezone() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) GetTimezone() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["timezone"].(string)
+	value, ok := P.P["timezone"].(string)
 	return value, ok
 }
 
-func (p *CreateSnapshotPolicyParams) SetVolumeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) SetVolumeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["volumeid"] = v
+	P.P["volumeid"] = v
 }
 
-func (p *CreateSnapshotPolicyParams) GetVolumeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateSnapshotPolicyParams) GetVolumeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["volumeid"].(string)
+	value, ok := P.P["volumeid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateSnapshotPolicyParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewCreateSnapshotPolicyParams(intervaltype string, maxsnaps int, schedule string, timezone string, volumeid string) *CreateSnapshotPolicyParams {
-	p := &CreateSnapshotPolicyParams{}
-	p.p = make(map[string]interface{})
-	p.p["intervaltype"] = intervaltype
-	p.p["maxsnaps"] = maxsnaps
-	p.p["schedule"] = schedule
-	p.p["timezone"] = timezone
-	p.p["volumeid"] = volumeid
-	return p
+	P := &CreateSnapshotPolicyParams{}
+	P.P = make(map[string]interface{})
+	P.P["intervaltype"] = intervaltype
+	P.P["maxsnaps"] = maxsnaps
+	P.P["schedule"] = schedule
+	P.P["timezone"] = timezone
+	P.P["volumeid"] = volumeid
+	return P
 }
 
 // Creates a snapshot policy for the account.
@@ -525,116 +525,116 @@ type CreateSnapshotPolicyResponse struct {
 }
 
 type CreateVMSnapshotParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateVMSnapshotParams) toURLValues() url.Values {
+func (P *CreateVMSnapshotParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["quiescevm"]; found {
+	if v, found := P.P["quiescevm"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("quiescevm", vv)
 	}
-	if v, found := p.p["snapshotmemory"]; found {
+	if v, found := P.P["snapshotmemory"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("snapshotmemory", vv)
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateVMSnapshotParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVMSnapshotParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *CreateVMSnapshotParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVMSnapshotParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *CreateVMSnapshotParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVMSnapshotParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateVMSnapshotParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVMSnapshotParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateVMSnapshotParams) SetQuiescevm(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVMSnapshotParams) SetQuiescevm(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["quiescevm"] = v
+	P.P["quiescevm"] = v
 }
 
-func (p *CreateVMSnapshotParams) GetQuiescevm() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVMSnapshotParams) GetQuiescevm() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["quiescevm"].(bool)
+	value, ok := P.P["quiescevm"].(bool)
 	return value, ok
 }
 
-func (p *CreateVMSnapshotParams) SetSnapshotmemory(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVMSnapshotParams) SetSnapshotmemory(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["snapshotmemory"] = v
+	P.P["snapshotmemory"] = v
 }
 
-func (p *CreateVMSnapshotParams) GetSnapshotmemory() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVMSnapshotParams) GetSnapshotmemory() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["snapshotmemory"].(bool)
+	value, ok := P.P["snapshotmemory"].(bool)
 	return value, ok
 }
 
-func (p *CreateVMSnapshotParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVMSnapshotParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *CreateVMSnapshotParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVMSnapshotParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateVMSnapshotParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewCreateVMSnapshotParams(virtualmachineid string) *CreateVMSnapshotParams {
-	p := &CreateVMSnapshotParams{}
-	p.p = make(map[string]interface{})
-	p.p["virtualmachineid"] = virtualmachineid
-	return p
+	P := &CreateVMSnapshotParams{}
+	P.P = make(map[string]interface{})
+	P.P["virtualmachineid"] = virtualmachineid
+	return P
 }
 
 // Creates snapshot for a vm.
@@ -700,42 +700,42 @@ type CreateVMSnapshotResponse struct {
 }
 
 type DeleteSnapshotParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteSnapshotParams) toURLValues() url.Values {
+func (P *DeleteSnapshotParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteSnapshotParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteSnapshotParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteSnapshotParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteSnapshotParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteSnapshotParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewDeleteSnapshotParams(id string) *DeleteSnapshotParams {
-	p := &DeleteSnapshotParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteSnapshotParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a snapshot of a disk volume.
@@ -776,60 +776,60 @@ type DeleteSnapshotResponse struct {
 }
 
 type DeleteSnapshotPoliciesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteSnapshotPoliciesParams) toURLValues() url.Values {
+func (P *DeleteSnapshotPoliciesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["ids"]; found {
+	if v, found := P.P["ids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("ids", vv)
 	}
 	return u
 }
 
-func (p *DeleteSnapshotPoliciesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteSnapshotPoliciesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteSnapshotPoliciesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteSnapshotPoliciesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *DeleteSnapshotPoliciesParams) SetIds(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteSnapshotPoliciesParams) SetIds(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ids"] = v
+	P.P["ids"] = v
 }
 
-func (p *DeleteSnapshotPoliciesParams) GetIds() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteSnapshotPoliciesParams) GetIds() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ids"].([]string)
+	value, ok := P.P["ids"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteSnapshotPoliciesParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewDeleteSnapshotPoliciesParams() *DeleteSnapshotPoliciesParams {
-	p := &DeleteSnapshotPoliciesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &DeleteSnapshotPoliciesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Deletes snapshot policies for the account.
@@ -882,42 +882,42 @@ func (r *DeleteSnapshotPoliciesResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DeleteVMSnapshotParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteVMSnapshotParams) toURLValues() url.Values {
+func (P *DeleteVMSnapshotParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["vmsnapshotid"]; found {
+	if v, found := P.P["vmsnapshotid"]; found {
 		u.Set("vmsnapshotid", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteVMSnapshotParams) SetVmsnapshotid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVMSnapshotParams) SetVmsnapshotid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vmsnapshotid"] = v
+	P.P["vmsnapshotid"] = v
 }
 
-func (p *DeleteVMSnapshotParams) GetVmsnapshotid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVMSnapshotParams) GetVmsnapshotid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vmsnapshotid"].(string)
+	value, ok := P.P["vmsnapshotid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteVMSnapshotParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewDeleteVMSnapshotParams(vmsnapshotid string) *DeleteVMSnapshotParams {
-	p := &DeleteVMSnapshotParams{}
-	p.p = make(map[string]interface{})
-	p.p["vmsnapshotid"] = vmsnapshotid
-	return p
+	P := &DeleteVMSnapshotParams{}
+	P.P = make(map[string]interface{})
+	P.P["vmsnapshotid"] = vmsnapshotid
+	return P
 }
 
 // Deletes a vmsnapshot.
@@ -958,150 +958,150 @@ type DeleteVMSnapshotResponse struct {
 }
 
 type ListSnapshotPoliciesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListSnapshotPoliciesParams) toURLValues() url.Values {
+func (P *ListSnapshotPoliciesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["volumeid"]; found {
+	if v, found := P.P["volumeid"]; found {
 		u.Set("volumeid", v.(string))
 	}
 	return u
 }
 
-func (p *ListSnapshotPoliciesParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListSnapshotPoliciesParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListSnapshotPoliciesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListSnapshotPoliciesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListSnapshotPoliciesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListSnapshotPoliciesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListSnapshotPoliciesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListSnapshotPoliciesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListSnapshotPoliciesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListSnapshotPoliciesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListSnapshotPoliciesParams) SetVolumeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) SetVolumeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["volumeid"] = v
+	P.P["volumeid"] = v
 }
 
-func (p *ListSnapshotPoliciesParams) GetVolumeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotPoliciesParams) GetVolumeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["volumeid"].(string)
+	value, ok := P.P["volumeid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListSnapshotPoliciesParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewListSnapshotPoliciesParams() *ListSnapshotPoliciesParams {
-	p := &ListSnapshotPoliciesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListSnapshotPoliciesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *SnapshotService) GetSnapshotPolicyByID(id string, opts ...OptionFunc) (*SnapshotPolicy, int, error) {
-	p := &ListSnapshotPoliciesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListSnapshotPoliciesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListSnapshotPolicies(p)
+	l, err := s.ListSnapshotPolicies(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1156,336 +1156,336 @@ type SnapshotPolicy struct {
 }
 
 type ListSnapshotsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListSnapshotsParams) toURLValues() url.Values {
+func (P *ListSnapshotsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["ids"]; found {
+	if v, found := P.P["ids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("ids", vv)
 	}
-	if v, found := p.p["intervaltype"]; found {
+	if v, found := P.P["intervaltype"]; found {
 		u.Set("intervaltype", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["snapshottype"]; found {
+	if v, found := P.P["snapshottype"]; found {
 		u.Set("snapshottype", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["volumeid"]; found {
+	if v, found := P.P["volumeid"]; found {
 		u.Set("volumeid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListSnapshotsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListSnapshotsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListSnapshotsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListSnapshotsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetIds(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetIds(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ids"] = v
+	P.P["ids"] = v
 }
 
-func (p *ListSnapshotsParams) GetIds() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetIds() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ids"].([]string)
+	value, ok := P.P["ids"].([]string)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetIntervaltype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetIntervaltype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["intervaltype"] = v
+	P.P["intervaltype"] = v
 }
 
-func (p *ListSnapshotsParams) GetIntervaltype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetIntervaltype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["intervaltype"].(string)
+	value, ok := P.P["intervaltype"].(string)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListSnapshotsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListSnapshotsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListSnapshotsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListSnapshotsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListSnapshotsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListSnapshotsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListSnapshotsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetSnapshottype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetSnapshottype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["snapshottype"] = v
+	P.P["snapshottype"] = v
 }
 
-func (p *ListSnapshotsParams) GetSnapshottype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetSnapshottype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["snapshottype"].(string)
+	value, ok := P.P["snapshottype"].(string)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListSnapshotsParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetVolumeid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetVolumeid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["volumeid"] = v
+	P.P["volumeid"] = v
 }
 
-func (p *ListSnapshotsParams) GetVolumeid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetVolumeid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["volumeid"].(string)
+	value, ok := P.P["volumeid"].(string)
 	return value, ok
 }
 
-func (p *ListSnapshotsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListSnapshotsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSnapshotsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListSnapshotsParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewListSnapshotsParams() *ListSnapshotsParams {
-	p := &ListSnapshotsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListSnapshotsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *SnapshotService) GetSnapshotID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListSnapshotsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListSnapshotsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListSnapshots(p)
+	l, err := s.ListSnapshots(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1524,18 +1524,18 @@ func (s *SnapshotService) GetSnapshotByName(name string, opts ...OptionFunc) (*S
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *SnapshotService) GetSnapshotByID(id string, opts ...OptionFunc) (*Snapshot, int, error) {
-	p := &ListSnapshotsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListSnapshotsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListSnapshots(p)
+	l, err := s.ListSnapshots(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1631,300 +1631,300 @@ func (r *Snapshot) UnmarshalJSON(b []byte) error {
 }
 
 type ListVMSnapshotParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListVMSnapshotParams) toURLValues() url.Values {
+func (P *ListVMSnapshotParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
-	if v, found := p.p["vmsnapshotid"]; found {
+	if v, found := P.P["vmsnapshotid"]; found {
 		u.Set("vmsnapshotid", v.(string))
 	}
-	if v, found := p.p["vmsnapshotids"]; found {
+	if v, found := P.P["vmsnapshotids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("vmsnapshotids", vv)
 	}
 	return u
 }
 
-func (p *ListVMSnapshotParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListVMSnapshotParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListVMSnapshotParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListVMSnapshotParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListVMSnapshotParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListVMSnapshotParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListVMSnapshotParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListVMSnapshotParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListVMSnapshotParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListVMSnapshotParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListVMSnapshotParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListVMSnapshotParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *ListVMSnapshotParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetVmsnapshotid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetVmsnapshotid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vmsnapshotid"] = v
+	P.P["vmsnapshotid"] = v
 }
 
-func (p *ListVMSnapshotParams) GetVmsnapshotid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetVmsnapshotid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vmsnapshotid"].(string)
+	value, ok := P.P["vmsnapshotid"].(string)
 	return value, ok
 }
 
-func (p *ListVMSnapshotParams) SetVmsnapshotids(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) SetVmsnapshotids(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vmsnapshotids"] = v
+	P.P["vmsnapshotids"] = v
 }
 
-func (p *ListVMSnapshotParams) GetVmsnapshotids() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVMSnapshotParams) GetVmsnapshotids() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vmsnapshotids"].([]string)
+	value, ok := P.P["vmsnapshotids"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListVMSnapshotParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewListVMSnapshotParams() *ListVMSnapshotParams {
-	p := &ListVMSnapshotParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListVMSnapshotParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *SnapshotService) GetVMSnapshotID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListVMSnapshotParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVMSnapshotParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListVMSnapshot(p)
+	l, err := s.ListVMSnapshot(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1995,42 +1995,42 @@ type VMSnapshot struct {
 }
 
 type RevertSnapshotParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RevertSnapshotParams) toURLValues() url.Values {
+func (P *RevertSnapshotParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *RevertSnapshotParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RevertSnapshotParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *RevertSnapshotParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RevertSnapshotParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new RevertSnapshotParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewRevertSnapshotParams(id string) *RevertSnapshotParams {
-	p := &RevertSnapshotParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &RevertSnapshotParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // This is supposed to revert a volume snapshot. This command is only supported with KVM so far
@@ -2124,42 +2124,42 @@ func (r *RevertSnapshotResponse) UnmarshalJSON(b []byte) error {
 }
 
 type RevertToVMSnapshotParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RevertToVMSnapshotParams) toURLValues() url.Values {
+func (P *RevertToVMSnapshotParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["vmsnapshotid"]; found {
+	if v, found := P.P["vmsnapshotid"]; found {
 		u.Set("vmsnapshotid", v.(string))
 	}
 	return u
 }
 
-func (p *RevertToVMSnapshotParams) SetVmsnapshotid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RevertToVMSnapshotParams) SetVmsnapshotid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vmsnapshotid"] = v
+	P.P["vmsnapshotid"] = v
 }
 
-func (p *RevertToVMSnapshotParams) GetVmsnapshotid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RevertToVMSnapshotParams) GetVmsnapshotid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vmsnapshotid"].(string)
+	value, ok := P.P["vmsnapshotid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new RevertToVMSnapshotParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewRevertToVMSnapshotParams(vmsnapshotid string) *RevertToVMSnapshotParams {
-	p := &RevertToVMSnapshotParams{}
-	p.p = make(map[string]interface{})
-	p.p["vmsnapshotid"] = vmsnapshotid
-	return p
+	P := &RevertToVMSnapshotParams{}
+	P.P = make(map[string]interface{})
+	P.P["vmsnapshotid"] = vmsnapshotid
+	return P
 }
 
 // Revert VM from a vmsnapshot.
@@ -2347,78 +2347,78 @@ func (r *RevertToVMSnapshotResponse) UnmarshalJSON(b []byte) error {
 }
 
 type UpdateSnapshotPolicyParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateSnapshotPolicyParams) toURLValues() url.Values {
+func (P *UpdateSnapshotPolicyParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateSnapshotPolicyParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateSnapshotPolicyParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateSnapshotPolicyParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateSnapshotPolicyParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateSnapshotPolicyParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateSnapshotPolicyParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateSnapshotPolicyParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateSnapshotPolicyParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateSnapshotPolicyParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateSnapshotPolicyParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateSnapshotPolicyParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateSnapshotPolicyParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateSnapshotPolicyParams instance,
 // as then you are sure you have configured all required params
 func (s *SnapshotService) NewUpdateSnapshotPolicyParams() *UpdateSnapshotPolicyParams {
-	p := &UpdateSnapshotPolicyParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &UpdateSnapshotPolicyParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Updates the snapshot policy.

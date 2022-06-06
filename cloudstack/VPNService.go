@@ -28,165 +28,165 @@ import (
 )
 
 type VPNServiceIface interface {
-	AddVpnUser(p *AddVpnUserParams) (*AddVpnUserResponse, error)
+	AddVpnUser(P *AddVpnUserParams) (*AddVpnUserResponse, error)
 	NewAddVpnUserParams(password string, username string) *AddVpnUserParams
-	CreateRemoteAccessVpn(p *CreateRemoteAccessVpnParams) (*CreateRemoteAccessVpnResponse, error)
+	CreateRemoteAccessVpn(P *CreateRemoteAccessVpnParams) (*CreateRemoteAccessVpnResponse, error)
 	NewCreateRemoteAccessVpnParams(publicipid string) *CreateRemoteAccessVpnParams
-	CreateVpnConnection(p *CreateVpnConnectionParams) (*CreateVpnConnectionResponse, error)
+	CreateVpnConnection(P *CreateVpnConnectionParams) (*CreateVpnConnectionResponse, error)
 	NewCreateVpnConnectionParams(s2scustomergatewayid string, s2svpngatewayid string) *CreateVpnConnectionParams
-	CreateVpnCustomerGateway(p *CreateVpnCustomerGatewayParams) (*CreateVpnCustomerGatewayResponse, error)
+	CreateVpnCustomerGateway(P *CreateVpnCustomerGatewayParams) (*CreateVpnCustomerGatewayResponse, error)
 	NewCreateVpnCustomerGatewayParams(cidrlist string, esppolicy string, gateway string, ikepolicy string, ipsecpsk string) *CreateVpnCustomerGatewayParams
-	CreateVpnGateway(p *CreateVpnGatewayParams) (*CreateVpnGatewayResponse, error)
+	CreateVpnGateway(P *CreateVpnGatewayParams) (*CreateVpnGatewayResponse, error)
 	NewCreateVpnGatewayParams(vpcid string) *CreateVpnGatewayParams
-	DeleteRemoteAccessVpn(p *DeleteRemoteAccessVpnParams) (*DeleteRemoteAccessVpnResponse, error)
+	DeleteRemoteAccessVpn(P *DeleteRemoteAccessVpnParams) (*DeleteRemoteAccessVpnResponse, error)
 	NewDeleteRemoteAccessVpnParams(publicipid string) *DeleteRemoteAccessVpnParams
-	DeleteVpnConnection(p *DeleteVpnConnectionParams) (*DeleteVpnConnectionResponse, error)
+	DeleteVpnConnection(P *DeleteVpnConnectionParams) (*DeleteVpnConnectionResponse, error)
 	NewDeleteVpnConnectionParams(id string) *DeleteVpnConnectionParams
-	DeleteVpnCustomerGateway(p *DeleteVpnCustomerGatewayParams) (*DeleteVpnCustomerGatewayResponse, error)
+	DeleteVpnCustomerGateway(P *DeleteVpnCustomerGatewayParams) (*DeleteVpnCustomerGatewayResponse, error)
 	NewDeleteVpnCustomerGatewayParams(id string) *DeleteVpnCustomerGatewayParams
-	DeleteVpnGateway(p *DeleteVpnGatewayParams) (*DeleteVpnGatewayResponse, error)
+	DeleteVpnGateway(P *DeleteVpnGatewayParams) (*DeleteVpnGatewayResponse, error)
 	NewDeleteVpnGatewayParams(id string) *DeleteVpnGatewayParams
-	ListRemoteAccessVpns(p *ListRemoteAccessVpnsParams) (*ListRemoteAccessVpnsResponse, error)
+	ListRemoteAccessVpns(P *ListRemoteAccessVpnsParams) (*ListRemoteAccessVpnsResponse, error)
 	NewListRemoteAccessVpnsParams() *ListRemoteAccessVpnsParams
 	GetRemoteAccessVpnByID(id string, opts ...OptionFunc) (*RemoteAccessVpn, int, error)
-	ListVpnConnections(p *ListVpnConnectionsParams) (*ListVpnConnectionsResponse, error)
+	ListVpnConnections(P *ListVpnConnectionsParams) (*ListVpnConnectionsResponse, error)
 	NewListVpnConnectionsParams() *ListVpnConnectionsParams
 	GetVpnConnectionByID(id string, opts ...OptionFunc) (*VpnConnection, int, error)
-	ListVpnCustomerGateways(p *ListVpnCustomerGatewaysParams) (*ListVpnCustomerGatewaysResponse, error)
+	ListVpnCustomerGateways(P *ListVpnCustomerGatewaysParams) (*ListVpnCustomerGatewaysResponse, error)
 	NewListVpnCustomerGatewaysParams() *ListVpnCustomerGatewaysParams
 	GetVpnCustomerGatewayID(keyword string, opts ...OptionFunc) (string, int, error)
 	GetVpnCustomerGatewayByName(name string, opts ...OptionFunc) (*VpnCustomerGateway, int, error)
 	GetVpnCustomerGatewayByID(id string, opts ...OptionFunc) (*VpnCustomerGateway, int, error)
-	ListVpnGateways(p *ListVpnGatewaysParams) (*ListVpnGatewaysResponse, error)
+	ListVpnGateways(P *ListVpnGatewaysParams) (*ListVpnGatewaysResponse, error)
 	NewListVpnGatewaysParams() *ListVpnGatewaysParams
 	GetVpnGatewayByID(id string, opts ...OptionFunc) (*VpnGateway, int, error)
-	ListVpnUsers(p *ListVpnUsersParams) (*ListVpnUsersResponse, error)
+	ListVpnUsers(P *ListVpnUsersParams) (*ListVpnUsersResponse, error)
 	NewListVpnUsersParams() *ListVpnUsersParams
 	GetVpnUserByID(id string, opts ...OptionFunc) (*VpnUser, int, error)
-	RemoveVpnUser(p *RemoveVpnUserParams) (*RemoveVpnUserResponse, error)
+	RemoveVpnUser(P *RemoveVpnUserParams) (*RemoveVpnUserResponse, error)
 	NewRemoveVpnUserParams(username string) *RemoveVpnUserParams
-	ResetVpnConnection(p *ResetVpnConnectionParams) (*ResetVpnConnectionResponse, error)
+	ResetVpnConnection(P *ResetVpnConnectionParams) (*ResetVpnConnectionResponse, error)
 	NewResetVpnConnectionParams(id string) *ResetVpnConnectionParams
-	UpdateRemoteAccessVpn(p *UpdateRemoteAccessVpnParams) (*UpdateRemoteAccessVpnResponse, error)
+	UpdateRemoteAccessVpn(P *UpdateRemoteAccessVpnParams) (*UpdateRemoteAccessVpnResponse, error)
 	NewUpdateRemoteAccessVpnParams(id string) *UpdateRemoteAccessVpnParams
-	UpdateVpnConnection(p *UpdateVpnConnectionParams) (*UpdateVpnConnectionResponse, error)
+	UpdateVpnConnection(P *UpdateVpnConnectionParams) (*UpdateVpnConnectionResponse, error)
 	NewUpdateVpnConnectionParams(id string) *UpdateVpnConnectionParams
-	UpdateVpnCustomerGateway(p *UpdateVpnCustomerGatewayParams) (*UpdateVpnCustomerGatewayResponse, error)
+	UpdateVpnCustomerGateway(P *UpdateVpnCustomerGatewayParams) (*UpdateVpnCustomerGatewayResponse, error)
 	NewUpdateVpnCustomerGatewayParams(cidrlist string, esppolicy string, gateway string, id string, ikepolicy string, ipsecpsk string) *UpdateVpnCustomerGatewayParams
-	UpdateVpnGateway(p *UpdateVpnGatewayParams) (*UpdateVpnGatewayResponse, error)
+	UpdateVpnGateway(P *UpdateVpnGatewayParams) (*UpdateVpnGatewayResponse, error)
 	NewUpdateVpnGatewayParams(id string) *UpdateVpnGatewayParams
 }
 
 type AddVpnUserParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddVpnUserParams) toURLValues() url.Values {
+func (P *AddVpnUserParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *AddVpnUserParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddVpnUserParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *AddVpnUserParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddVpnUserParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *AddVpnUserParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddVpnUserParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *AddVpnUserParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddVpnUserParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *AddVpnUserParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddVpnUserParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *AddVpnUserParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddVpnUserParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *AddVpnUserParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddVpnUserParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *AddVpnUserParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddVpnUserParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *AddVpnUserParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddVpnUserParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddVpnUserParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddVpnUserParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddVpnUserParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewAddVpnUserParams(password string, username string) *AddVpnUserParams {
-	p := &AddVpnUserParams{}
-	p.p = make(map[string]interface{})
-	p.p["password"] = password
-	p.p["username"] = username
-	return p
+	P := &AddVpnUserParams{}
+	P.P = make(map[string]interface{})
+	P.P["password"] = password
+	P.P["username"] = username
+	return P
 }
 
 // Adds vpn users
@@ -238,134 +238,134 @@ type AddVpnUserResponse struct {
 }
 
 type CreateRemoteAccessVpnParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateRemoteAccessVpnParams) toURLValues() url.Values {
+func (P *CreateRemoteAccessVpnParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["iprange"]; found {
+	if v, found := P.P["iprange"]; found {
 		u.Set("iprange", v.(string))
 	}
-	if v, found := p.p["openfirewall"]; found {
+	if v, found := P.P["openfirewall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("openfirewall", vv)
 	}
-	if v, found := p.p["publicipid"]; found {
+	if v, found := P.P["publicipid"]; found {
 		u.Set("publicipid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateRemoteAccessVpnParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *CreateRemoteAccessVpnParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *CreateRemoteAccessVpnParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateRemoteAccessVpnParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateRemoteAccessVpnParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateRemoteAccessVpnParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateRemoteAccessVpnParams) SetIprange(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) SetIprange(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["iprange"] = v
+	P.P["iprange"] = v
 }
 
-func (p *CreateRemoteAccessVpnParams) GetIprange() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) GetIprange() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["iprange"].(string)
+	value, ok := P.P["iprange"].(string)
 	return value, ok
 }
 
-func (p *CreateRemoteAccessVpnParams) SetOpenfirewall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) SetOpenfirewall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["openfirewall"] = v
+	P.P["openfirewall"] = v
 }
 
-func (p *CreateRemoteAccessVpnParams) GetOpenfirewall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) GetOpenfirewall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["openfirewall"].(bool)
+	value, ok := P.P["openfirewall"].(bool)
 	return value, ok
 }
 
-func (p *CreateRemoteAccessVpnParams) SetPublicipid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) SetPublicipid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["publicipid"] = v
+	P.P["publicipid"] = v
 }
 
-func (p *CreateRemoteAccessVpnParams) GetPublicipid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateRemoteAccessVpnParams) GetPublicipid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["publicipid"].(string)
+	value, ok := P.P["publicipid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateRemoteAccessVpnParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewCreateRemoteAccessVpnParams(publicipid string) *CreateRemoteAccessVpnParams {
-	p := &CreateRemoteAccessVpnParams{}
-	p.p = make(map[string]interface{})
-	p.p["publicipid"] = publicipid
-	return p
+	P := &CreateRemoteAccessVpnParams{}
+	P.P = make(map[string]interface{})
+	P.P["publicipid"] = publicipid
+	return P
 }
 
 // Creates a l2tp/ipsec remote access vpn
@@ -421,99 +421,99 @@ type CreateRemoteAccessVpnResponse struct {
 }
 
 type CreateVpnConnectionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateVpnConnectionParams) toURLValues() url.Values {
+func (P *CreateVpnConnectionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["passive"]; found {
+	if v, found := P.P["passive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("passive", vv)
 	}
-	if v, found := p.p["s2scustomergatewayid"]; found {
+	if v, found := P.P["s2scustomergatewayid"]; found {
 		u.Set("s2scustomergatewayid", v.(string))
 	}
-	if v, found := p.p["s2svpngatewayid"]; found {
+	if v, found := P.P["s2svpngatewayid"]; found {
 		u.Set("s2svpngatewayid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateVpnConnectionParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnConnectionParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateVpnConnectionParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnConnectionParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateVpnConnectionParams) SetPassive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnConnectionParams) SetPassive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["passive"] = v
+	P.P["passive"] = v
 }
 
-func (p *CreateVpnConnectionParams) GetPassive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnConnectionParams) GetPassive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["passive"].(bool)
+	value, ok := P.P["passive"].(bool)
 	return value, ok
 }
 
-func (p *CreateVpnConnectionParams) SetS2scustomergatewayid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnConnectionParams) SetS2scustomergatewayid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["s2scustomergatewayid"] = v
+	P.P["s2scustomergatewayid"] = v
 }
 
-func (p *CreateVpnConnectionParams) GetS2scustomergatewayid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnConnectionParams) GetS2scustomergatewayid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["s2scustomergatewayid"].(string)
+	value, ok := P.P["s2scustomergatewayid"].(string)
 	return value, ok
 }
 
-func (p *CreateVpnConnectionParams) SetS2svpngatewayid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnConnectionParams) SetS2svpngatewayid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["s2svpngatewayid"] = v
+	P.P["s2svpngatewayid"] = v
 }
 
-func (p *CreateVpnConnectionParams) GetS2svpngatewayid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnConnectionParams) GetS2svpngatewayid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["s2svpngatewayid"].(string)
+	value, ok := P.P["s2svpngatewayid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateVpnConnectionParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewCreateVpnConnectionParams(s2scustomergatewayid string, s2svpngatewayid string) *CreateVpnConnectionParams {
-	p := &CreateVpnConnectionParams{}
-	p.p = make(map[string]interface{})
-	p.p["s2scustomergatewayid"] = s2scustomergatewayid
-	p.p["s2svpngatewayid"] = s2svpngatewayid
-	return p
+	P := &CreateVpnConnectionParams{}
+	P.P = make(map[string]interface{})
+	P.P["s2scustomergatewayid"] = s2scustomergatewayid
+	P.P["s2svpngatewayid"] = s2svpngatewayid
+	return P
 }
 
 // Create site to site vpn connection
@@ -582,303 +582,303 @@ type CreateVpnConnectionResponse struct {
 }
 
 type CreateVpnCustomerGatewayParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateVpnCustomerGatewayParams) toURLValues() url.Values {
+func (P *CreateVpnCustomerGatewayParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["cidrlist"]; found {
+	if v, found := P.P["cidrlist"]; found {
 		u.Set("cidrlist", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["dpd"]; found {
+	if v, found := P.P["dpd"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("dpd", vv)
 	}
-	if v, found := p.p["esplifetime"]; found {
+	if v, found := P.P["esplifetime"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("esplifetime", vv)
 	}
-	if v, found := p.p["esppolicy"]; found {
+	if v, found := P.P["esppolicy"]; found {
 		u.Set("esppolicy", v.(string))
 	}
-	if v, found := p.p["forceencap"]; found {
+	if v, found := P.P["forceencap"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forceencap", vv)
 	}
-	if v, found := p.p["gateway"]; found {
+	if v, found := P.P["gateway"]; found {
 		u.Set("gateway", v.(string))
 	}
-	if v, found := p.p["ikelifetime"]; found {
+	if v, found := P.P["ikelifetime"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("ikelifetime", vv)
 	}
-	if v, found := p.p["ikepolicy"]; found {
+	if v, found := P.P["ikepolicy"]; found {
 		u.Set("ikepolicy", v.(string))
 	}
-	if v, found := p.p["ikeversion"]; found {
+	if v, found := P.P["ikeversion"]; found {
 		u.Set("ikeversion", v.(string))
 	}
-	if v, found := p.p["ipsecpsk"]; found {
+	if v, found := P.P["ipsecpsk"]; found {
 		u.Set("ipsecpsk", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["splitconnections"]; found {
+	if v, found := P.P["splitconnections"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("splitconnections", vv)
 	}
 	return u
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetCidrlist(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetCidrlist(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cidrlist"] = v
+	P.P["cidrlist"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetCidrlist() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetCidrlist() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cidrlist"].(string)
+	value, ok := P.P["cidrlist"].(string)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetDpd(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetDpd(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["dpd"] = v
+	P.P["dpd"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetDpd() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetDpd() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["dpd"].(bool)
+	value, ok := P.P["dpd"].(bool)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetEsplifetime(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetEsplifetime(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["esplifetime"] = v
+	P.P["esplifetime"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetEsplifetime() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetEsplifetime() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["esplifetime"].(int64)
+	value, ok := P.P["esplifetime"].(int64)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetEsppolicy(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetEsppolicy(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["esppolicy"] = v
+	P.P["esppolicy"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetEsppolicy() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetEsppolicy() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["esppolicy"].(string)
+	value, ok := P.P["esppolicy"].(string)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetForceencap(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetForceencap(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forceencap"] = v
+	P.P["forceencap"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetForceencap() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetForceencap() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forceencap"].(bool)
+	value, ok := P.P["forceencap"].(bool)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetGateway(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetGateway(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gateway"] = v
+	P.P["gateway"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetGateway() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetGateway() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gateway"].(string)
+	value, ok := P.P["gateway"].(string)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetIkelifetime(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetIkelifetime(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ikelifetime"] = v
+	P.P["ikelifetime"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetIkelifetime() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetIkelifetime() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ikelifetime"].(int64)
+	value, ok := P.P["ikelifetime"].(int64)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetIkepolicy(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetIkepolicy(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ikepolicy"] = v
+	P.P["ikepolicy"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetIkepolicy() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetIkepolicy() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ikepolicy"].(string)
+	value, ok := P.P["ikepolicy"].(string)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetIkeversion(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetIkeversion(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ikeversion"] = v
+	P.P["ikeversion"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetIkeversion() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetIkeversion() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ikeversion"].(string)
+	value, ok := P.P["ikeversion"].(string)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetIpsecpsk(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetIpsecpsk(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipsecpsk"] = v
+	P.P["ipsecpsk"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetIpsecpsk() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetIpsecpsk() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipsecpsk"].(string)
+	value, ok := P.P["ipsecpsk"].(string)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *CreateVpnCustomerGatewayParams) SetSplitconnections(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) SetSplitconnections(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["splitconnections"] = v
+	P.P["splitconnections"] = v
 }
 
-func (p *CreateVpnCustomerGatewayParams) GetSplitconnections() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnCustomerGatewayParams) GetSplitconnections() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["splitconnections"].(bool)
+	value, ok := P.P["splitconnections"].(bool)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateVpnCustomerGatewayParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewCreateVpnCustomerGatewayParams(cidrlist string, esppolicy string, gateway string, ikepolicy string, ipsecpsk string) *CreateVpnCustomerGatewayParams {
-	p := &CreateVpnCustomerGatewayParams{}
-	p.p = make(map[string]interface{})
-	p.p["cidrlist"] = cidrlist
-	p.p["esppolicy"] = esppolicy
-	p.p["gateway"] = gateway
-	p.p["ikepolicy"] = ikepolicy
-	p.p["ipsecpsk"] = ipsecpsk
-	return p
+	P := &CreateVpnCustomerGatewayParams{}
+	P.P = make(map[string]interface{})
+	P.P["cidrlist"] = cidrlist
+	P.P["esppolicy"] = esppolicy
+	P.P["gateway"] = gateway
+	P.P["ikepolicy"] = ikepolicy
+	P.P["ipsecpsk"] = ipsecpsk
+	return P
 }
 
 // Creates site to site vpn customer gateway
@@ -943,61 +943,61 @@ type CreateVpnCustomerGatewayResponse struct {
 }
 
 type CreateVpnGatewayParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateVpnGatewayParams) toURLValues() url.Values {
+func (P *CreateVpnGatewayParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateVpnGatewayParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnGatewayParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateVpnGatewayParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnGatewayParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateVpnGatewayParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnGatewayParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *CreateVpnGatewayParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateVpnGatewayParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateVpnGatewayParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewCreateVpnGatewayParams(vpcid string) *CreateVpnGatewayParams {
-	p := &CreateVpnGatewayParams{}
-	p.p = make(map[string]interface{})
-	p.p["vpcid"] = vpcid
-	return p
+	P := &CreateVpnGatewayParams{}
+	P.P = make(map[string]interface{})
+	P.P["vpcid"] = vpcid
+	return P
 }
 
 // Creates site to site vpn local gateway
@@ -1052,42 +1052,42 @@ type CreateVpnGatewayResponse struct {
 }
 
 type DeleteRemoteAccessVpnParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteRemoteAccessVpnParams) toURLValues() url.Values {
+func (P *DeleteRemoteAccessVpnParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["publicipid"]; found {
+	if v, found := P.P["publicipid"]; found {
 		u.Set("publicipid", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteRemoteAccessVpnParams) SetPublicipid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteRemoteAccessVpnParams) SetPublicipid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["publicipid"] = v
+	P.P["publicipid"] = v
 }
 
-func (p *DeleteRemoteAccessVpnParams) GetPublicipid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteRemoteAccessVpnParams) GetPublicipid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["publicipid"].(string)
+	value, ok := P.P["publicipid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteRemoteAccessVpnParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewDeleteRemoteAccessVpnParams(publicipid string) *DeleteRemoteAccessVpnParams {
-	p := &DeleteRemoteAccessVpnParams{}
-	p.p = make(map[string]interface{})
-	p.p["publicipid"] = publicipid
-	return p
+	P := &DeleteRemoteAccessVpnParams{}
+	P.P = make(map[string]interface{})
+	P.P["publicipid"] = publicipid
+	return P
 }
 
 // Destroys a l2tp/ipsec remote access vpn
@@ -1128,42 +1128,42 @@ type DeleteRemoteAccessVpnResponse struct {
 }
 
 type DeleteVpnConnectionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteVpnConnectionParams) toURLValues() url.Values {
+func (P *DeleteVpnConnectionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteVpnConnectionParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVpnConnectionParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteVpnConnectionParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVpnConnectionParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteVpnConnectionParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewDeleteVpnConnectionParams(id string) *DeleteVpnConnectionParams {
-	p := &DeleteVpnConnectionParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteVpnConnectionParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Delete site to site vpn connection
@@ -1204,42 +1204,42 @@ type DeleteVpnConnectionResponse struct {
 }
 
 type DeleteVpnCustomerGatewayParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteVpnCustomerGatewayParams) toURLValues() url.Values {
+func (P *DeleteVpnCustomerGatewayParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteVpnCustomerGatewayParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVpnCustomerGatewayParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteVpnCustomerGatewayParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVpnCustomerGatewayParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteVpnCustomerGatewayParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewDeleteVpnCustomerGatewayParams(id string) *DeleteVpnCustomerGatewayParams {
-	p := &DeleteVpnCustomerGatewayParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteVpnCustomerGatewayParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Delete site to site vpn customer gateway
@@ -1280,42 +1280,42 @@ type DeleteVpnCustomerGatewayResponse struct {
 }
 
 type DeleteVpnGatewayParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteVpnGatewayParams) toURLValues() url.Values {
+func (P *DeleteVpnGatewayParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteVpnGatewayParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVpnGatewayParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteVpnGatewayParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteVpnGatewayParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteVpnGatewayParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewDeleteVpnGatewayParams(id string) *DeleteVpnGatewayParams {
-	p := &DeleteVpnGatewayParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteVpnGatewayParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Delete site to site vpn gateway
@@ -1356,260 +1356,260 @@ type DeleteVpnGatewayResponse struct {
 }
 
 type ListRemoteAccessVpnsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListRemoteAccessVpnsParams) toURLValues() url.Values {
+func (P *ListRemoteAccessVpnsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["publicipid"]; found {
+	if v, found := P.P["publicipid"]; found {
 		u.Set("publicipid", v.(string))
 	}
 	return u
 }
 
-func (p *ListRemoteAccessVpnsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListRemoteAccessVpnsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListRemoteAccessVpnsParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListRemoteAccessVpnsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListRemoteAccessVpnsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListRemoteAccessVpnsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListRemoteAccessVpnsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListRemoteAccessVpnsParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListRemoteAccessVpnsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListRemoteAccessVpnsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListRemoteAccessVpnsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListRemoteAccessVpnsParams) SetPublicipid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) SetPublicipid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["publicipid"] = v
+	P.P["publicipid"] = v
 }
 
-func (p *ListRemoteAccessVpnsParams) GetPublicipid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListRemoteAccessVpnsParams) GetPublicipid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["publicipid"].(string)
+	value, ok := P.P["publicipid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListRemoteAccessVpnsParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewListRemoteAccessVpnsParams() *ListRemoteAccessVpnsParams {
-	p := &ListRemoteAccessVpnsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListRemoteAccessVpnsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPNService) GetRemoteAccessVpnByID(id string, opts ...OptionFunc) (*RemoteAccessVpn, int, error) {
-	p := &ListRemoteAccessVpnsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListRemoteAccessVpnsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListRemoteAccessVpns(p)
+	l, err := s.ListRemoteAccessVpns(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1667,242 +1667,242 @@ type RemoteAccessVpn struct {
 }
 
 type ListVpnConnectionsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListVpnConnectionsParams) toURLValues() url.Values {
+func (P *ListVpnConnectionsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
 	return u
 }
 
-func (p *ListVpnConnectionsParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListVpnConnectionsParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListVpnConnectionsParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListVpnConnectionsParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListVpnConnectionsParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListVpnConnectionsParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListVpnConnectionsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListVpnConnectionsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListVpnConnectionsParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListVpnConnectionsParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListVpnConnectionsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListVpnConnectionsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListVpnConnectionsParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListVpnConnectionsParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListVpnConnectionsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListVpnConnectionsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListVpnConnectionsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListVpnConnectionsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListVpnConnectionsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListVpnConnectionsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListVpnConnectionsParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *ListVpnConnectionsParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnConnectionsParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListVpnConnectionsParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewListVpnConnectionsParams() *ListVpnConnectionsParams {
-	p := &ListVpnConnectionsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListVpnConnectionsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPNService) GetVpnConnectionByID(id string, opts ...OptionFunc) (*VpnConnection, int, error) {
-	p := &ListVpnConnectionsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVpnConnectionsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListVpnConnections(p)
+	l, err := s.ListVpnConnections(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1973,205 +1973,205 @@ type VpnConnection struct {
 }
 
 type ListVpnCustomerGatewaysParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListVpnCustomerGatewaysParams) toURLValues() url.Values {
+func (P *ListVpnCustomerGatewaysParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
 	return u
 }
 
-func (p *ListVpnCustomerGatewaysParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListVpnCustomerGatewaysParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListVpnCustomerGatewaysParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListVpnCustomerGatewaysParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListVpnCustomerGatewaysParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListVpnCustomerGatewaysParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListVpnCustomerGatewaysParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListVpnCustomerGatewaysParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListVpnCustomerGatewaysParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListVpnCustomerGatewaysParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListVpnCustomerGatewaysParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListVpnCustomerGatewaysParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListVpnCustomerGatewaysParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListVpnCustomerGatewaysParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListVpnCustomerGatewaysParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListVpnCustomerGatewaysParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListVpnCustomerGatewaysParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListVpnCustomerGatewaysParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnCustomerGatewaysParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListVpnCustomerGatewaysParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewListVpnCustomerGatewaysParams() *ListVpnCustomerGatewaysParams {
-	p := &ListVpnCustomerGatewaysParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListVpnCustomerGatewaysParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPNService) GetVpnCustomerGatewayID(keyword string, opts ...OptionFunc) (string, int, error) {
-	p := &ListVpnCustomerGatewaysParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVpnCustomerGatewaysParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["keyword"] = keyword
+	P.P["keyword"] = keyword
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListVpnCustomerGateways(p)
+	l, err := s.ListVpnCustomerGateways(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -2210,18 +2210,18 @@ func (s *VPNService) GetVpnCustomerGatewayByName(name string, opts ...OptionFunc
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPNService) GetVpnCustomerGatewayByID(id string, opts ...OptionFunc) (*VpnCustomerGateway, int, error) {
-	p := &ListVpnCustomerGatewaysParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVpnCustomerGatewaysParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListVpnCustomerGateways(p)
+	l, err := s.ListVpnCustomerGateways(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -2288,242 +2288,242 @@ type VpnCustomerGateway struct {
 }
 
 type ListVpnGatewaysParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListVpnGatewaysParams) toURLValues() url.Values {
+func (P *ListVpnGatewaysParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["vpcid"]; found {
+	if v, found := P.P["vpcid"]; found {
 		u.Set("vpcid", v.(string))
 	}
 	return u
 }
 
-func (p *ListVpnGatewaysParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListVpnGatewaysParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListVpnGatewaysParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListVpnGatewaysParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListVpnGatewaysParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListVpnGatewaysParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListVpnGatewaysParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListVpnGatewaysParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListVpnGatewaysParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListVpnGatewaysParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListVpnGatewaysParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListVpnGatewaysParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListVpnGatewaysParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListVpnGatewaysParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListVpnGatewaysParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListVpnGatewaysParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListVpnGatewaysParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListVpnGatewaysParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListVpnGatewaysParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListVpnGatewaysParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListVpnGatewaysParams) SetVpcid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) SetVpcid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vpcid"] = v
+	P.P["vpcid"] = v
 }
 
-func (p *ListVpnGatewaysParams) GetVpcid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnGatewaysParams) GetVpcid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vpcid"].(string)
+	value, ok := P.P["vpcid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListVpnGatewaysParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewListVpnGatewaysParams() *ListVpnGatewaysParams {
-	p := &ListVpnGatewaysParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListVpnGatewaysParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPNService) GetVpnGatewayByID(id string, opts ...OptionFunc) (*VpnGateway, int, error) {
-	p := &ListVpnGatewaysParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVpnGatewaysParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListVpnGateways(p)
+	l, err := s.ListVpnGateways(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -2580,223 +2580,223 @@ type VpnGateway struct {
 }
 
 type ListVpnUsersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListVpnUsersParams) toURLValues() url.Values {
+func (P *ListVpnUsersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *ListVpnUsersParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListVpnUsersParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListVpnUsersParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListVpnUsersParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListVpnUsersParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListVpnUsersParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListVpnUsersParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListVpnUsersParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListVpnUsersParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListVpnUsersParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListVpnUsersParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListVpnUsersParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListVpnUsersParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListVpnUsersParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListVpnUsersParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListVpnUsersParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListVpnUsersParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListVpnUsersParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListVpnUsersParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *ListVpnUsersParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListVpnUsersParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListVpnUsersParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewListVpnUsersParams() *ListVpnUsersParams {
-	p := &ListVpnUsersParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListVpnUsersParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *VPNService) GetVpnUserByID(id string, opts ...OptionFunc) (*VpnUser, int, error) {
-	p := &ListVpnUsersParams{}
-	p.p = make(map[string]interface{})
+	P := &ListVpnUsersParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListVpnUsers(p)
+	l, err := s.ListVpnUsers(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -2850,96 +2850,96 @@ type VpnUser struct {
 }
 
 type RemoveVpnUserParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RemoveVpnUserParams) toURLValues() url.Values {
+func (P *RemoveVpnUserParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *RemoveVpnUserParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveVpnUserParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *RemoveVpnUserParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveVpnUserParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *RemoveVpnUserParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveVpnUserParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *RemoveVpnUserParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveVpnUserParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *RemoveVpnUserParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveVpnUserParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *RemoveVpnUserParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveVpnUserParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *RemoveVpnUserParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveVpnUserParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *RemoveVpnUserParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveVpnUserParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new RemoveVpnUserParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewRemoveVpnUserParams(username string) *RemoveVpnUserParams {
-	p := &RemoveVpnUserParams{}
-	p.p = make(map[string]interface{})
-	p.p["username"] = username
-	return p
+	P := &RemoveVpnUserParams{}
+	P.P = make(map[string]interface{})
+	P.P["username"] = username
+	return P
 }
 
 // Removes vpn user
@@ -2980,78 +2980,78 @@ type RemoveVpnUserResponse struct {
 }
 
 type ResetVpnConnectionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ResetVpnConnectionParams) toURLValues() url.Values {
+func (P *ResetVpnConnectionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *ResetVpnConnectionParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResetVpnConnectionParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ResetVpnConnectionParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResetVpnConnectionParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ResetVpnConnectionParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResetVpnConnectionParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ResetVpnConnectionParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResetVpnConnectionParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ResetVpnConnectionParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResetVpnConnectionParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ResetVpnConnectionParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ResetVpnConnectionParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ResetVpnConnectionParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewResetVpnConnectionParams(id string) *ResetVpnConnectionParams {
-	p := &ResetVpnConnectionParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &ResetVpnConnectionParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Reset site to site vpn connection
@@ -3120,79 +3120,79 @@ type ResetVpnConnectionResponse struct {
 }
 
 type UpdateRemoteAccessVpnParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateRemoteAccessVpnParams) toURLValues() url.Values {
+func (P *UpdateRemoteAccessVpnParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateRemoteAccessVpnParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRemoteAccessVpnParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateRemoteAccessVpnParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRemoteAccessVpnParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateRemoteAccessVpnParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRemoteAccessVpnParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateRemoteAccessVpnParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRemoteAccessVpnParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateRemoteAccessVpnParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRemoteAccessVpnParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateRemoteAccessVpnParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateRemoteAccessVpnParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateRemoteAccessVpnParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewUpdateRemoteAccessVpnParams(id string) *UpdateRemoteAccessVpnParams {
-	p := &UpdateRemoteAccessVpnParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateRemoteAccessVpnParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates remote access vpn
@@ -3248,79 +3248,79 @@ type UpdateRemoteAccessVpnResponse struct {
 }
 
 type UpdateVpnConnectionParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateVpnConnectionParams) toURLValues() url.Values {
+func (P *UpdateVpnConnectionParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateVpnConnectionParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnConnectionParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateVpnConnectionParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnConnectionParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnConnectionParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnConnectionParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateVpnConnectionParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnConnectionParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateVpnConnectionParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnConnectionParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateVpnConnectionParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnConnectionParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateVpnConnectionParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewUpdateVpnConnectionParams(id string) *UpdateVpnConnectionParams {
-	p := &UpdateVpnConnectionParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateVpnConnectionParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates site to site vpn connection
@@ -3389,304 +3389,304 @@ type UpdateVpnConnectionResponse struct {
 }
 
 type UpdateVpnCustomerGatewayParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateVpnCustomerGatewayParams) toURLValues() url.Values {
+func (P *UpdateVpnCustomerGatewayParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["cidrlist"]; found {
+	if v, found := P.P["cidrlist"]; found {
 		u.Set("cidrlist", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["dpd"]; found {
+	if v, found := P.P["dpd"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("dpd", vv)
 	}
-	if v, found := p.p["esplifetime"]; found {
+	if v, found := P.P["esplifetime"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("esplifetime", vv)
 	}
-	if v, found := p.p["esppolicy"]; found {
+	if v, found := P.P["esppolicy"]; found {
 		u.Set("esppolicy", v.(string))
 	}
-	if v, found := p.p["forceencap"]; found {
+	if v, found := P.P["forceencap"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forceencap", vv)
 	}
-	if v, found := p.p["gateway"]; found {
+	if v, found := P.P["gateway"]; found {
 		u.Set("gateway", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["ikelifetime"]; found {
+	if v, found := P.P["ikelifetime"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("ikelifetime", vv)
 	}
-	if v, found := p.p["ikepolicy"]; found {
+	if v, found := P.P["ikepolicy"]; found {
 		u.Set("ikepolicy", v.(string))
 	}
-	if v, found := p.p["ikeversion"]; found {
+	if v, found := P.P["ikeversion"]; found {
 		u.Set("ikeversion", v.(string))
 	}
-	if v, found := p.p["ipsecpsk"]; found {
+	if v, found := P.P["ipsecpsk"]; found {
 		u.Set("ipsecpsk", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["splitconnections"]; found {
+	if v, found := P.P["splitconnections"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("splitconnections", vv)
 	}
 	return u
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetCidrlist(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetCidrlist(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cidrlist"] = v
+	P.P["cidrlist"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetCidrlist() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetCidrlist() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cidrlist"].(string)
+	value, ok := P.P["cidrlist"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetDpd(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetDpd(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["dpd"] = v
+	P.P["dpd"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetDpd() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetDpd() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["dpd"].(bool)
+	value, ok := P.P["dpd"].(bool)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetEsplifetime(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetEsplifetime(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["esplifetime"] = v
+	P.P["esplifetime"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetEsplifetime() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetEsplifetime() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["esplifetime"].(int64)
+	value, ok := P.P["esplifetime"].(int64)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetEsppolicy(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetEsppolicy(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["esppolicy"] = v
+	P.P["esppolicy"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetEsppolicy() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetEsppolicy() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["esppolicy"].(string)
+	value, ok := P.P["esppolicy"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetForceencap(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetForceencap(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forceencap"] = v
+	P.P["forceencap"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetForceencap() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetForceencap() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forceencap"].(bool)
+	value, ok := P.P["forceencap"].(bool)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetGateway(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetGateway(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gateway"] = v
+	P.P["gateway"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetGateway() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetGateway() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gateway"].(string)
+	value, ok := P.P["gateway"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetIkelifetime(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetIkelifetime(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ikelifetime"] = v
+	P.P["ikelifetime"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetIkelifetime() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetIkelifetime() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ikelifetime"].(int64)
+	value, ok := P.P["ikelifetime"].(int64)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetIkepolicy(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetIkepolicy(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ikepolicy"] = v
+	P.P["ikepolicy"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetIkepolicy() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetIkepolicy() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ikepolicy"].(string)
+	value, ok := P.P["ikepolicy"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetIkeversion(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetIkeversion(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ikeversion"] = v
+	P.P["ikeversion"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetIkeversion() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetIkeversion() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ikeversion"].(string)
+	value, ok := P.P["ikeversion"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetIpsecpsk(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetIpsecpsk(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ipsecpsk"] = v
+	P.P["ipsecpsk"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetIpsecpsk() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetIpsecpsk() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ipsecpsk"].(string)
+	value, ok := P.P["ipsecpsk"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnCustomerGatewayParams) SetSplitconnections(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) SetSplitconnections(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["splitconnections"] = v
+	P.P["splitconnections"] = v
 }
 
-func (p *UpdateVpnCustomerGatewayParams) GetSplitconnections() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnCustomerGatewayParams) GetSplitconnections() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["splitconnections"].(bool)
+	value, ok := P.P["splitconnections"].(bool)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateVpnCustomerGatewayParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewUpdateVpnCustomerGatewayParams(cidrlist string, esppolicy string, gateway string, id string, ikepolicy string, ipsecpsk string) *UpdateVpnCustomerGatewayParams {
-	p := &UpdateVpnCustomerGatewayParams{}
-	p.p = make(map[string]interface{})
-	p.p["cidrlist"] = cidrlist
-	p.p["esppolicy"] = esppolicy
-	p.p["gateway"] = gateway
-	p.p["id"] = id
-	p.p["ikepolicy"] = ikepolicy
-	p.p["ipsecpsk"] = ipsecpsk
-	return p
+	P := &UpdateVpnCustomerGatewayParams{}
+	P.P = make(map[string]interface{})
+	P.P["cidrlist"] = cidrlist
+	P.P["esppolicy"] = esppolicy
+	P.P["gateway"] = gateway
+	P.P["id"] = id
+	P.P["ikepolicy"] = ikepolicy
+	P.P["ipsecpsk"] = ipsecpsk
+	return P
 }
 
 // Update site to site vpn customer gateway
@@ -3751,79 +3751,79 @@ type UpdateVpnCustomerGatewayResponse struct {
 }
 
 type UpdateVpnGatewayParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateVpnGatewayParams) toURLValues() url.Values {
+func (P *UpdateVpnGatewayParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateVpnGatewayParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnGatewayParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateVpnGatewayParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnGatewayParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateVpnGatewayParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnGatewayParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateVpnGatewayParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnGatewayParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateVpnGatewayParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnGatewayParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateVpnGatewayParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateVpnGatewayParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateVpnGatewayParams instance,
 // as then you are sure you have configured all required params
 func (s *VPNService) NewUpdateVpnGatewayParams(id string) *UpdateVpnGatewayParams {
-	p := &UpdateVpnGatewayParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateVpnGatewayParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates site to site vpn local gateway

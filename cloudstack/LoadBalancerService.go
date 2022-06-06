@@ -28,275 +28,275 @@ import (
 )
 
 type LoadBalancerServiceIface interface {
-	AddNetscalerLoadBalancer(p *AddNetscalerLoadBalancerParams) (*AddNetscalerLoadBalancerResponse, error)
+	AddNetscalerLoadBalancer(P *AddNetscalerLoadBalancerParams) (*AddNetscalerLoadBalancerResponse, error)
 	NewAddNetscalerLoadBalancerParams(networkdevicetype string, password string, physicalnetworkid string, url string, username string) *AddNetscalerLoadBalancerParams
-	AssignCertToLoadBalancer(p *AssignCertToLoadBalancerParams) (*AssignCertToLoadBalancerResponse, error)
+	AssignCertToLoadBalancer(P *AssignCertToLoadBalancerParams) (*AssignCertToLoadBalancerResponse, error)
 	NewAssignCertToLoadBalancerParams(certid string, lbruleid string) *AssignCertToLoadBalancerParams
-	AssignToGlobalLoadBalancerRule(p *AssignToGlobalLoadBalancerRuleParams) (*AssignToGlobalLoadBalancerRuleResponse, error)
+	AssignToGlobalLoadBalancerRule(P *AssignToGlobalLoadBalancerRuleParams) (*AssignToGlobalLoadBalancerRuleResponse, error)
 	NewAssignToGlobalLoadBalancerRuleParams(id string, loadbalancerrulelist []string) *AssignToGlobalLoadBalancerRuleParams
-	AssignToLoadBalancerRule(p *AssignToLoadBalancerRuleParams) (*AssignToLoadBalancerRuleResponse, error)
+	AssignToLoadBalancerRule(P *AssignToLoadBalancerRuleParams) (*AssignToLoadBalancerRuleResponse, error)
 	NewAssignToLoadBalancerRuleParams(id string) *AssignToLoadBalancerRuleParams
-	ConfigureNetscalerLoadBalancer(p *ConfigureNetscalerLoadBalancerParams) (*NetscalerLoadBalancerResponse, error)
+	ConfigureNetscalerLoadBalancer(P *ConfigureNetscalerLoadBalancerParams) (*NetscalerLoadBalancerResponse, error)
 	NewConfigureNetscalerLoadBalancerParams(lbdeviceid string) *ConfigureNetscalerLoadBalancerParams
-	CreateGlobalLoadBalancerRule(p *CreateGlobalLoadBalancerRuleParams) (*CreateGlobalLoadBalancerRuleResponse, error)
+	CreateGlobalLoadBalancerRule(P *CreateGlobalLoadBalancerRuleParams) (*CreateGlobalLoadBalancerRuleResponse, error)
 	NewCreateGlobalLoadBalancerRuleParams(gslbdomainname string, gslbservicetype string, name string, regionid int) *CreateGlobalLoadBalancerRuleParams
-	CreateLBHealthCheckPolicy(p *CreateLBHealthCheckPolicyParams) (*CreateLBHealthCheckPolicyResponse, error)
+	CreateLBHealthCheckPolicy(P *CreateLBHealthCheckPolicyParams) (*CreateLBHealthCheckPolicyResponse, error)
 	NewCreateLBHealthCheckPolicyParams(lbruleid string) *CreateLBHealthCheckPolicyParams
-	CreateLBStickinessPolicy(p *CreateLBStickinessPolicyParams) (*CreateLBStickinessPolicyResponse, error)
+	CreateLBStickinessPolicy(P *CreateLBStickinessPolicyParams) (*CreateLBStickinessPolicyResponse, error)
 	NewCreateLBStickinessPolicyParams(lbruleid string, methodname string, name string) *CreateLBStickinessPolicyParams
-	CreateLoadBalancer(p *CreateLoadBalancerParams) (*CreateLoadBalancerResponse, error)
+	CreateLoadBalancer(P *CreateLoadBalancerParams) (*CreateLoadBalancerResponse, error)
 	NewCreateLoadBalancerParams(algorithm string, instanceport int, name string, networkid string, scheme string, sourceipaddressnetworkid string, sourceport int) *CreateLoadBalancerParams
-	CreateLoadBalancerRule(p *CreateLoadBalancerRuleParams) (*CreateLoadBalancerRuleResponse, error)
+	CreateLoadBalancerRule(P *CreateLoadBalancerRuleParams) (*CreateLoadBalancerRuleResponse, error)
 	NewCreateLoadBalancerRuleParams(algorithm string, name string, privateport int, publicport int) *CreateLoadBalancerRuleParams
-	DeleteGlobalLoadBalancerRule(p *DeleteGlobalLoadBalancerRuleParams) (*DeleteGlobalLoadBalancerRuleResponse, error)
+	DeleteGlobalLoadBalancerRule(P *DeleteGlobalLoadBalancerRuleParams) (*DeleteGlobalLoadBalancerRuleResponse, error)
 	NewDeleteGlobalLoadBalancerRuleParams(id string) *DeleteGlobalLoadBalancerRuleParams
-	DeleteLBHealthCheckPolicy(p *DeleteLBHealthCheckPolicyParams) (*DeleteLBHealthCheckPolicyResponse, error)
+	DeleteLBHealthCheckPolicy(P *DeleteLBHealthCheckPolicyParams) (*DeleteLBHealthCheckPolicyResponse, error)
 	NewDeleteLBHealthCheckPolicyParams(id string) *DeleteLBHealthCheckPolicyParams
-	DeleteLBStickinessPolicy(p *DeleteLBStickinessPolicyParams) (*DeleteLBStickinessPolicyResponse, error)
+	DeleteLBStickinessPolicy(P *DeleteLBStickinessPolicyParams) (*DeleteLBStickinessPolicyResponse, error)
 	NewDeleteLBStickinessPolicyParams(id string) *DeleteLBStickinessPolicyParams
-	DeleteLoadBalancer(p *DeleteLoadBalancerParams) (*DeleteLoadBalancerResponse, error)
+	DeleteLoadBalancer(P *DeleteLoadBalancerParams) (*DeleteLoadBalancerResponse, error)
 	NewDeleteLoadBalancerParams(id string) *DeleteLoadBalancerParams
-	DeleteLoadBalancerRule(p *DeleteLoadBalancerRuleParams) (*DeleteLoadBalancerRuleResponse, error)
+	DeleteLoadBalancerRule(P *DeleteLoadBalancerRuleParams) (*DeleteLoadBalancerRuleResponse, error)
 	NewDeleteLoadBalancerRuleParams(id string) *DeleteLoadBalancerRuleParams
-	DeleteNetscalerLoadBalancer(p *DeleteNetscalerLoadBalancerParams) (*DeleteNetscalerLoadBalancerResponse, error)
+	DeleteNetscalerLoadBalancer(P *DeleteNetscalerLoadBalancerParams) (*DeleteNetscalerLoadBalancerResponse, error)
 	NewDeleteNetscalerLoadBalancerParams(lbdeviceid string) *DeleteNetscalerLoadBalancerParams
-	DeleteSslCert(p *DeleteSslCertParams) (*DeleteSslCertResponse, error)
+	DeleteSslCert(P *DeleteSslCertParams) (*DeleteSslCertResponse, error)
 	NewDeleteSslCertParams(id string) *DeleteSslCertParams
-	ListGlobalLoadBalancerRules(p *ListGlobalLoadBalancerRulesParams) (*ListGlobalLoadBalancerRulesResponse, error)
+	ListGlobalLoadBalancerRules(P *ListGlobalLoadBalancerRulesParams) (*ListGlobalLoadBalancerRulesResponse, error)
 	NewListGlobalLoadBalancerRulesParams() *ListGlobalLoadBalancerRulesParams
 	GetGlobalLoadBalancerRuleID(keyword string, opts ...OptionFunc) (string, int, error)
 	GetGlobalLoadBalancerRuleByName(name string, opts ...OptionFunc) (*GlobalLoadBalancerRule, int, error)
 	GetGlobalLoadBalancerRuleByID(id string, opts ...OptionFunc) (*GlobalLoadBalancerRule, int, error)
-	ListLBHealthCheckPolicies(p *ListLBHealthCheckPoliciesParams) (*ListLBHealthCheckPoliciesResponse, error)
+	ListLBHealthCheckPolicies(P *ListLBHealthCheckPoliciesParams) (*ListLBHealthCheckPoliciesResponse, error)
 	NewListLBHealthCheckPoliciesParams() *ListLBHealthCheckPoliciesParams
 	GetLBHealthCheckPolicyByID(id string, opts ...OptionFunc) (*LBHealthCheckPolicy, int, error)
-	ListLBStickinessPolicies(p *ListLBStickinessPoliciesParams) (*ListLBStickinessPoliciesResponse, error)
+	ListLBStickinessPolicies(P *ListLBStickinessPoliciesParams) (*ListLBStickinessPoliciesResponse, error)
 	NewListLBStickinessPoliciesParams() *ListLBStickinessPoliciesParams
 	GetLBStickinessPolicyByID(id string, opts ...OptionFunc) (*LBStickinessPolicy, int, error)
-	ListLoadBalancerRuleInstances(p *ListLoadBalancerRuleInstancesParams) (*ListLoadBalancerRuleInstancesResponse, error)
+	ListLoadBalancerRuleInstances(P *ListLoadBalancerRuleInstancesParams) (*ListLoadBalancerRuleInstancesResponse, error)
 	NewListLoadBalancerRuleInstancesParams(id string) *ListLoadBalancerRuleInstancesParams
 	GetLoadBalancerRuleInstanceByID(id string, opts ...OptionFunc) (*VirtualMachine, int, error)
-	ListLoadBalancerRules(p *ListLoadBalancerRulesParams) (*ListLoadBalancerRulesResponse, error)
+	ListLoadBalancerRules(P *ListLoadBalancerRulesParams) (*ListLoadBalancerRulesResponse, error)
 	NewListLoadBalancerRulesParams() *ListLoadBalancerRulesParams
 	GetLoadBalancerRuleID(name string, opts ...OptionFunc) (string, int, error)
 	GetLoadBalancerRuleByName(name string, opts ...OptionFunc) (*LoadBalancerRule, int, error)
 	GetLoadBalancerRuleByID(id string, opts ...OptionFunc) (*LoadBalancerRule, int, error)
-	ListLoadBalancers(p *ListLoadBalancersParams) (*ListLoadBalancersResponse, error)
+	ListLoadBalancers(P *ListLoadBalancersParams) (*ListLoadBalancersResponse, error)
 	NewListLoadBalancersParams() *ListLoadBalancersParams
 	GetLoadBalancerID(name string, opts ...OptionFunc) (string, int, error)
 	GetLoadBalancerByName(name string, opts ...OptionFunc) (*LoadBalancer, int, error)
 	GetLoadBalancerByID(id string, opts ...OptionFunc) (*LoadBalancer, int, error)
-	ListNetscalerLoadBalancers(p *ListNetscalerLoadBalancersParams) (*ListNetscalerLoadBalancersResponse, error)
+	ListNetscalerLoadBalancers(P *ListNetscalerLoadBalancersParams) (*ListNetscalerLoadBalancersResponse, error)
 	NewListNetscalerLoadBalancersParams() *ListNetscalerLoadBalancersParams
-	ListSslCerts(p *ListSslCertsParams) (*ListSslCertsResponse, error)
+	ListSslCerts(P *ListSslCertsParams) (*ListSslCertsResponse, error)
 	NewListSslCertsParams() *ListSslCertsParams
-	RemoveCertFromLoadBalancer(p *RemoveCertFromLoadBalancerParams) (*RemoveCertFromLoadBalancerResponse, error)
+	RemoveCertFromLoadBalancer(P *RemoveCertFromLoadBalancerParams) (*RemoveCertFromLoadBalancerResponse, error)
 	NewRemoveCertFromLoadBalancerParams(lbruleid string) *RemoveCertFromLoadBalancerParams
-	RemoveFromGlobalLoadBalancerRule(p *RemoveFromGlobalLoadBalancerRuleParams) (*RemoveFromGlobalLoadBalancerRuleResponse, error)
+	RemoveFromGlobalLoadBalancerRule(P *RemoveFromGlobalLoadBalancerRuleParams) (*RemoveFromGlobalLoadBalancerRuleResponse, error)
 	NewRemoveFromGlobalLoadBalancerRuleParams(id string, loadbalancerrulelist []string) *RemoveFromGlobalLoadBalancerRuleParams
-	RemoveFromLoadBalancerRule(p *RemoveFromLoadBalancerRuleParams) (*RemoveFromLoadBalancerRuleResponse, error)
+	RemoveFromLoadBalancerRule(P *RemoveFromLoadBalancerRuleParams) (*RemoveFromLoadBalancerRuleResponse, error)
 	NewRemoveFromLoadBalancerRuleParams(id string) *RemoveFromLoadBalancerRuleParams
-	UpdateGlobalLoadBalancerRule(p *UpdateGlobalLoadBalancerRuleParams) (*UpdateGlobalLoadBalancerRuleResponse, error)
+	UpdateGlobalLoadBalancerRule(P *UpdateGlobalLoadBalancerRuleParams) (*UpdateGlobalLoadBalancerRuleResponse, error)
 	NewUpdateGlobalLoadBalancerRuleParams(id string) *UpdateGlobalLoadBalancerRuleParams
-	UpdateLBHealthCheckPolicy(p *UpdateLBHealthCheckPolicyParams) (*UpdateLBHealthCheckPolicyResponse, error)
+	UpdateLBHealthCheckPolicy(P *UpdateLBHealthCheckPolicyParams) (*UpdateLBHealthCheckPolicyResponse, error)
 	NewUpdateLBHealthCheckPolicyParams(id string) *UpdateLBHealthCheckPolicyParams
-	UpdateLBStickinessPolicy(p *UpdateLBStickinessPolicyParams) (*UpdateLBStickinessPolicyResponse, error)
+	UpdateLBStickinessPolicy(P *UpdateLBStickinessPolicyParams) (*UpdateLBStickinessPolicyResponse, error)
 	NewUpdateLBStickinessPolicyParams(id string) *UpdateLBStickinessPolicyParams
-	UpdateLoadBalancer(p *UpdateLoadBalancerParams) (*UpdateLoadBalancerResponse, error)
+	UpdateLoadBalancer(P *UpdateLoadBalancerParams) (*UpdateLoadBalancerResponse, error)
 	NewUpdateLoadBalancerParams(id string) *UpdateLoadBalancerParams
-	UpdateLoadBalancerRule(p *UpdateLoadBalancerRuleParams) (*UpdateLoadBalancerRuleResponse, error)
+	UpdateLoadBalancerRule(P *UpdateLoadBalancerRuleParams) (*UpdateLoadBalancerRuleResponse, error)
 	NewUpdateLoadBalancerRuleParams(id string) *UpdateLoadBalancerRuleParams
-	UploadSslCert(p *UploadSslCertParams) (*UploadSslCertResponse, error)
+	UploadSslCert(P *UploadSslCertParams) (*UploadSslCertResponse, error)
 	NewUploadSslCertParams(certificate string, name string, privatekey string) *UploadSslCertParams
 }
 
 type AddNetscalerLoadBalancerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AddNetscalerLoadBalancerParams) toURLValues() url.Values {
+func (P *AddNetscalerLoadBalancerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["gslbprovider"]; found {
+	if v, found := P.P["gslbprovider"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("gslbprovider", vv)
 	}
-	if v, found := p.p["gslbproviderprivateip"]; found {
+	if v, found := P.P["gslbproviderprivateip"]; found {
 		u.Set("gslbproviderprivateip", v.(string))
 	}
-	if v, found := p.p["gslbproviderpublicip"]; found {
+	if v, found := P.P["gslbproviderpublicip"]; found {
 		u.Set("gslbproviderpublicip", v.(string))
 	}
-	if v, found := p.p["isexclusivegslbprovider"]; found {
+	if v, found := P.P["isexclusivegslbprovider"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isexclusivegslbprovider", vv)
 	}
-	if v, found := p.p["networkdevicetype"]; found {
+	if v, found := P.P["networkdevicetype"]; found {
 		u.Set("networkdevicetype", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
-	if v, found := p.p["url"]; found {
+	if v, found := P.P["url"]; found {
 		u.Set("url", v.(string))
 	}
-	if v, found := p.p["username"]; found {
+	if v, found := P.P["username"]; found {
 		u.Set("username", v.(string))
 	}
 	return u
 }
 
-func (p *AddNetscalerLoadBalancerParams) SetGslbprovider(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) SetGslbprovider(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gslbprovider"] = v
+	P.P["gslbprovider"] = v
 }
 
-func (p *AddNetscalerLoadBalancerParams) GetGslbprovider() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) GetGslbprovider() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gslbprovider"].(bool)
+	value, ok := P.P["gslbprovider"].(bool)
 	return value, ok
 }
 
-func (p *AddNetscalerLoadBalancerParams) SetGslbproviderprivateip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) SetGslbproviderprivateip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gslbproviderprivateip"] = v
+	P.P["gslbproviderprivateip"] = v
 }
 
-func (p *AddNetscalerLoadBalancerParams) GetGslbproviderprivateip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) GetGslbproviderprivateip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gslbproviderprivateip"].(string)
+	value, ok := P.P["gslbproviderprivateip"].(string)
 	return value, ok
 }
 
-func (p *AddNetscalerLoadBalancerParams) SetGslbproviderpublicip(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) SetGslbproviderpublicip(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gslbproviderpublicip"] = v
+	P.P["gslbproviderpublicip"] = v
 }
 
-func (p *AddNetscalerLoadBalancerParams) GetGslbproviderpublicip() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) GetGslbproviderpublicip() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gslbproviderpublicip"].(string)
+	value, ok := P.P["gslbproviderpublicip"].(string)
 	return value, ok
 }
 
-func (p *AddNetscalerLoadBalancerParams) SetIsexclusivegslbprovider(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) SetIsexclusivegslbprovider(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isexclusivegslbprovider"] = v
+	P.P["isexclusivegslbprovider"] = v
 }
 
-func (p *AddNetscalerLoadBalancerParams) GetIsexclusivegslbprovider() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) GetIsexclusivegslbprovider() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isexclusivegslbprovider"].(bool)
+	value, ok := P.P["isexclusivegslbprovider"].(bool)
 	return value, ok
 }
 
-func (p *AddNetscalerLoadBalancerParams) SetNetworkdevicetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) SetNetworkdevicetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkdevicetype"] = v
+	P.P["networkdevicetype"] = v
 }
 
-func (p *AddNetscalerLoadBalancerParams) GetNetworkdevicetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) GetNetworkdevicetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkdevicetype"].(string)
+	value, ok := P.P["networkdevicetype"].(string)
 	return value, ok
 }
 
-func (p *AddNetscalerLoadBalancerParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *AddNetscalerLoadBalancerParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *AddNetscalerLoadBalancerParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *AddNetscalerLoadBalancerParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
-func (p *AddNetscalerLoadBalancerParams) SetUrl(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) SetUrl(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["url"] = v
+	P.P["url"] = v
 }
 
-func (p *AddNetscalerLoadBalancerParams) GetUrl() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) GetUrl() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["url"].(string)
+	value, ok := P.P["url"].(string)
 	return value, ok
 }
 
-func (p *AddNetscalerLoadBalancerParams) SetUsername(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["username"] = v
+	P.P["username"] = v
 }
 
-func (p *AddNetscalerLoadBalancerParams) GetUsername() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AddNetscalerLoadBalancerParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["username"].(string)
+	value, ok := P.P["username"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AddNetscalerLoadBalancerParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewAddNetscalerLoadBalancerParams(networkdevicetype string, password string, physicalnetworkid string, url string, username string) *AddNetscalerLoadBalancerParams {
-	p := &AddNetscalerLoadBalancerParams{}
-	p.p = make(map[string]interface{})
-	p.p["networkdevicetype"] = networkdevicetype
-	p.p["password"] = password
-	p.p["physicalnetworkid"] = physicalnetworkid
-	p.p["url"] = url
-	p.p["username"] = username
-	return p
+	P := &AddNetscalerLoadBalancerParams{}
+	P.P = make(map[string]interface{})
+	P.P["networkdevicetype"] = networkdevicetype
+	P.P["password"] = password
+	P.P["physicalnetworkid"] = physicalnetworkid
+	P.P["url"] = url
+	P.P["username"] = username
+	return P
 }
 
 // Adds a netscaler load balancer device
@@ -355,61 +355,61 @@ type AddNetscalerLoadBalancerResponse struct {
 }
 
 type AssignCertToLoadBalancerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AssignCertToLoadBalancerParams) toURLValues() url.Values {
+func (P *AssignCertToLoadBalancerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["certid"]; found {
+	if v, found := P.P["certid"]; found {
 		u.Set("certid", v.(string))
 	}
-	if v, found := p.p["lbruleid"]; found {
+	if v, found := P.P["lbruleid"]; found {
 		u.Set("lbruleid", v.(string))
 	}
 	return u
 }
 
-func (p *AssignCertToLoadBalancerParams) SetCertid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignCertToLoadBalancerParams) SetCertid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["certid"] = v
+	P.P["certid"] = v
 }
 
-func (p *AssignCertToLoadBalancerParams) GetCertid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignCertToLoadBalancerParams) GetCertid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["certid"].(string)
+	value, ok := P.P["certid"].(string)
 	return value, ok
 }
 
-func (p *AssignCertToLoadBalancerParams) SetLbruleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignCertToLoadBalancerParams) SetLbruleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbruleid"] = v
+	P.P["lbruleid"] = v
 }
 
-func (p *AssignCertToLoadBalancerParams) GetLbruleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignCertToLoadBalancerParams) GetLbruleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbruleid"].(string)
+	value, ok := P.P["lbruleid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new AssignCertToLoadBalancerParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewAssignCertToLoadBalancerParams(certid string, lbruleid string) *AssignCertToLoadBalancerParams {
-	p := &AssignCertToLoadBalancerParams{}
-	p.p = make(map[string]interface{})
-	p.p["certid"] = certid
-	p.p["lbruleid"] = lbruleid
-	return p
+	P := &AssignCertToLoadBalancerParams{}
+	P.P = make(map[string]interface{})
+	P.P["certid"] = certid
+	P.P["lbruleid"] = lbruleid
+	return P
 }
 
 // Assigns a certificate to a load balancer rule
@@ -450,84 +450,84 @@ type AssignCertToLoadBalancerResponse struct {
 }
 
 type AssignToGlobalLoadBalancerRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AssignToGlobalLoadBalancerRuleParams) toURLValues() url.Values {
+func (P *AssignToGlobalLoadBalancerRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["gslblbruleweightsmap"]; found {
+	if v, found := P.P["gslblbruleweightsmap"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("gslblbruleweightsmap[%d].key", i), k)
 			u.Set(fmt.Sprintf("gslblbruleweightsmap[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["loadbalancerrulelist"]; found {
+	if v, found := P.P["loadbalancerrulelist"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("loadbalancerrulelist", vv)
 	}
 	return u
 }
 
-func (p *AssignToGlobalLoadBalancerRuleParams) SetGslblbruleweightsmap(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToGlobalLoadBalancerRuleParams) SetGslblbruleweightsmap(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gslblbruleweightsmap"] = v
+	P.P["gslblbruleweightsmap"] = v
 }
 
-func (p *AssignToGlobalLoadBalancerRuleParams) GetGslblbruleweightsmap() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToGlobalLoadBalancerRuleParams) GetGslblbruleweightsmap() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gslblbruleweightsmap"].(map[string]string)
+	value, ok := P.P["gslblbruleweightsmap"].(map[string]string)
 	return value, ok
 }
 
-func (p *AssignToGlobalLoadBalancerRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToGlobalLoadBalancerRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *AssignToGlobalLoadBalancerRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToGlobalLoadBalancerRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *AssignToGlobalLoadBalancerRuleParams) SetLoadbalancerrulelist(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToGlobalLoadBalancerRuleParams) SetLoadbalancerrulelist(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["loadbalancerrulelist"] = v
+	P.P["loadbalancerrulelist"] = v
 }
 
-func (p *AssignToGlobalLoadBalancerRuleParams) GetLoadbalancerrulelist() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToGlobalLoadBalancerRuleParams) GetLoadbalancerrulelist() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["loadbalancerrulelist"].([]string)
+	value, ok := P.P["loadbalancerrulelist"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new AssignToGlobalLoadBalancerRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewAssignToGlobalLoadBalancerRuleParams(id string, loadbalancerrulelist []string) *AssignToGlobalLoadBalancerRuleParams {
-	p := &AssignToGlobalLoadBalancerRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["loadbalancerrulelist"] = loadbalancerrulelist
-	return p
+	P := &AssignToGlobalLoadBalancerRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["loadbalancerrulelist"] = loadbalancerrulelist
+	return P
 }
 
 // Assign load balancer rule or list of load balancer rules to a global load balancer rules.
@@ -568,22 +568,22 @@ type AssignToGlobalLoadBalancerRuleResponse struct {
 }
 
 type AssignToLoadBalancerRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *AssignToLoadBalancerRuleParams) toURLValues() url.Values {
+func (P *AssignToLoadBalancerRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["virtualmachineids"]; found {
+	if v, found := P.P["virtualmachineids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("virtualmachineids", vv)
 	}
-	if v, found := p.p["vmidipmap"]; found {
+	if v, found := P.P["vmidipmap"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("vmidipmap[%d].key", i), k)
@@ -593,58 +593,58 @@ func (p *AssignToLoadBalancerRuleParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *AssignToLoadBalancerRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToLoadBalancerRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *AssignToLoadBalancerRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToLoadBalancerRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *AssignToLoadBalancerRuleParams) SetVirtualmachineids(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToLoadBalancerRuleParams) SetVirtualmachineids(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineids"] = v
+	P.P["virtualmachineids"] = v
 }
 
-func (p *AssignToLoadBalancerRuleParams) GetVirtualmachineids() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToLoadBalancerRuleParams) GetVirtualmachineids() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineids"].([]string)
+	value, ok := P.P["virtualmachineids"].([]string)
 	return value, ok
 }
 
-func (p *AssignToLoadBalancerRuleParams) SetVmidipmap(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToLoadBalancerRuleParams) SetVmidipmap(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vmidipmap"] = v
+	P.P["vmidipmap"] = v
 }
 
-func (p *AssignToLoadBalancerRuleParams) GetVmidipmap() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *AssignToLoadBalancerRuleParams) GetVmidipmap() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vmidipmap"].(map[string]string)
+	value, ok := P.P["vmidipmap"].(map[string]string)
 	return value, ok
 }
 
 // You should always use this function to get a new AssignToLoadBalancerRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewAssignToLoadBalancerRuleParams(id string) *AssignToLoadBalancerRuleParams {
-	p := &AssignToLoadBalancerRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &AssignToLoadBalancerRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Assigns virtual machine or a list of virtual machines to a load balancer rule.
@@ -685,118 +685,118 @@ type AssignToLoadBalancerRuleResponse struct {
 }
 
 type ConfigureNetscalerLoadBalancerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ConfigureNetscalerLoadBalancerParams) toURLValues() url.Values {
+func (P *ConfigureNetscalerLoadBalancerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["inline"]; found {
+	if v, found := P.P["inline"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("inline", vv)
 	}
-	if v, found := p.p["lbdevicecapacity"]; found {
+	if v, found := P.P["lbdevicecapacity"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("lbdevicecapacity", vv)
 	}
-	if v, found := p.p["lbdevicededicated"]; found {
+	if v, found := P.P["lbdevicededicated"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("lbdevicededicated", vv)
 	}
-	if v, found := p.p["lbdeviceid"]; found {
+	if v, found := P.P["lbdeviceid"]; found {
 		u.Set("lbdeviceid", v.(string))
 	}
-	if v, found := p.p["podids"]; found {
+	if v, found := P.P["podids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("podids", vv)
 	}
 	return u
 }
 
-func (p *ConfigureNetscalerLoadBalancerParams) SetInline(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureNetscalerLoadBalancerParams) SetInline(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["inline"] = v
+	P.P["inline"] = v
 }
 
-func (p *ConfigureNetscalerLoadBalancerParams) GetInline() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureNetscalerLoadBalancerParams) GetInline() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["inline"].(bool)
+	value, ok := P.P["inline"].(bool)
 	return value, ok
 }
 
-func (p *ConfigureNetscalerLoadBalancerParams) SetLbdevicecapacity(v int64) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureNetscalerLoadBalancerParams) SetLbdevicecapacity(v int64) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbdevicecapacity"] = v
+	P.P["lbdevicecapacity"] = v
 }
 
-func (p *ConfigureNetscalerLoadBalancerParams) GetLbdevicecapacity() (int64, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureNetscalerLoadBalancerParams) GetLbdevicecapacity() (int64, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbdevicecapacity"].(int64)
+	value, ok := P.P["lbdevicecapacity"].(int64)
 	return value, ok
 }
 
-func (p *ConfigureNetscalerLoadBalancerParams) SetLbdevicededicated(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureNetscalerLoadBalancerParams) SetLbdevicededicated(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbdevicededicated"] = v
+	P.P["lbdevicededicated"] = v
 }
 
-func (p *ConfigureNetscalerLoadBalancerParams) GetLbdevicededicated() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureNetscalerLoadBalancerParams) GetLbdevicededicated() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbdevicededicated"].(bool)
+	value, ok := P.P["lbdevicededicated"].(bool)
 	return value, ok
 }
 
-func (p *ConfigureNetscalerLoadBalancerParams) SetLbdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureNetscalerLoadBalancerParams) SetLbdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbdeviceid"] = v
+	P.P["lbdeviceid"] = v
 }
 
-func (p *ConfigureNetscalerLoadBalancerParams) GetLbdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureNetscalerLoadBalancerParams) GetLbdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbdeviceid"].(string)
+	value, ok := P.P["lbdeviceid"].(string)
 	return value, ok
 }
 
-func (p *ConfigureNetscalerLoadBalancerParams) SetPodids(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureNetscalerLoadBalancerParams) SetPodids(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podids"] = v
+	P.P["podids"] = v
 }
 
-func (p *ConfigureNetscalerLoadBalancerParams) GetPodids() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ConfigureNetscalerLoadBalancerParams) GetPodids() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podids"].([]string)
+	value, ok := P.P["podids"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new ConfigureNetscalerLoadBalancerParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewConfigureNetscalerLoadBalancerParams(lbdeviceid string) *ConfigureNetscalerLoadBalancerParams {
-	p := &ConfigureNetscalerLoadBalancerParams{}
-	p.p = make(map[string]interface{})
-	p.p["lbdeviceid"] = lbdeviceid
-	return p
+	P := &ConfigureNetscalerLoadBalancerParams{}
+	P.P = make(map[string]interface{})
+	P.P["lbdeviceid"] = lbdeviceid
+	return P
 }
 
 // configures a netscaler load balancer device
@@ -855,190 +855,190 @@ type NetscalerLoadBalancerResponse struct {
 }
 
 type CreateGlobalLoadBalancerRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) toURLValues() url.Values {
+func (P *CreateGlobalLoadBalancerRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["gslbdomainname"]; found {
+	if v, found := P.P["gslbdomainname"]; found {
 		u.Set("gslbdomainname", v.(string))
 	}
-	if v, found := p.p["gslblbmethod"]; found {
+	if v, found := P.P["gslblbmethod"]; found {
 		u.Set("gslblbmethod", v.(string))
 	}
-	if v, found := p.p["gslbservicetype"]; found {
+	if v, found := P.P["gslbservicetype"]; found {
 		u.Set("gslbservicetype", v.(string))
 	}
-	if v, found := p.p["gslbstickysessionmethodname"]; found {
+	if v, found := P.P["gslbstickysessionmethodname"]; found {
 		u.Set("gslbstickysessionmethodname", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["regionid"]; found {
+	if v, found := P.P["regionid"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("regionid", vv)
 	}
 	return u
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) SetGslbdomainname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) SetGslbdomainname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gslbdomainname"] = v
+	P.P["gslbdomainname"] = v
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) GetGslbdomainname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) GetGslbdomainname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gslbdomainname"].(string)
+	value, ok := P.P["gslbdomainname"].(string)
 	return value, ok
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) SetGslblbmethod(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) SetGslblbmethod(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gslblbmethod"] = v
+	P.P["gslblbmethod"] = v
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) GetGslblbmethod() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) GetGslblbmethod() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gslblbmethod"].(string)
+	value, ok := P.P["gslblbmethod"].(string)
 	return value, ok
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) SetGslbservicetype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) SetGslbservicetype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gslbservicetype"] = v
+	P.P["gslbservicetype"] = v
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) GetGslbservicetype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) GetGslbservicetype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gslbservicetype"].(string)
+	value, ok := P.P["gslbservicetype"].(string)
 	return value, ok
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) SetGslbstickysessionmethodname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) SetGslbstickysessionmethodname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gslbstickysessionmethodname"] = v
+	P.P["gslbstickysessionmethodname"] = v
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) GetGslbstickysessionmethodname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) GetGslbstickysessionmethodname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gslbstickysessionmethodname"].(string)
+	value, ok := P.P["gslbstickysessionmethodname"].(string)
 	return value, ok
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) SetRegionid(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) SetRegionid(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["regionid"] = v
+	P.P["regionid"] = v
 }
 
-func (p *CreateGlobalLoadBalancerRuleParams) GetRegionid() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateGlobalLoadBalancerRuleParams) GetRegionid() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["regionid"].(int)
+	value, ok := P.P["regionid"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateGlobalLoadBalancerRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewCreateGlobalLoadBalancerRuleParams(gslbdomainname string, gslbservicetype string, name string, regionid int) *CreateGlobalLoadBalancerRuleParams {
-	p := &CreateGlobalLoadBalancerRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["gslbdomainname"] = gslbdomainname
-	p.p["gslbservicetype"] = gslbservicetype
-	p.p["name"] = name
-	p.p["regionid"] = regionid
-	return p
+	P := &CreateGlobalLoadBalancerRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["gslbdomainname"] = gslbdomainname
+	P.P["gslbservicetype"] = gslbservicetype
+	P.P["name"] = name
+	P.P["regionid"] = regionid
+	return P
 }
 
 // Creates a global load balancer rule
@@ -1120,173 +1120,173 @@ type CreateGlobalLoadBalancerRuleResponseLoadbalancerrule struct {
 }
 
 type CreateLBHealthCheckPolicyParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateLBHealthCheckPolicyParams) toURLValues() url.Values {
+func (P *CreateLBHealthCheckPolicyParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["healthythreshold"]; found {
+	if v, found := P.P["healthythreshold"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("healthythreshold", vv)
 	}
-	if v, found := p.p["intervaltime"]; found {
+	if v, found := P.P["intervaltime"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("intervaltime", vv)
 	}
-	if v, found := p.p["lbruleid"]; found {
+	if v, found := P.P["lbruleid"]; found {
 		u.Set("lbruleid", v.(string))
 	}
-	if v, found := p.p["pingpath"]; found {
+	if v, found := P.P["pingpath"]; found {
 		u.Set("pingpath", v.(string))
 	}
-	if v, found := p.p["responsetimeout"]; found {
+	if v, found := P.P["responsetimeout"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("responsetimeout", vv)
 	}
-	if v, found := p.p["unhealthythreshold"]; found {
+	if v, found := P.P["unhealthythreshold"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("unhealthythreshold", vv)
 	}
 	return u
 }
 
-func (p *CreateLBHealthCheckPolicyParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *CreateLBHealthCheckPolicyParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *CreateLBHealthCheckPolicyParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateLBHealthCheckPolicyParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateLBHealthCheckPolicyParams) SetHealthythreshold(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) SetHealthythreshold(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["healthythreshold"] = v
+	P.P["healthythreshold"] = v
 }
 
-func (p *CreateLBHealthCheckPolicyParams) GetHealthythreshold() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) GetHealthythreshold() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["healthythreshold"].(int)
+	value, ok := P.P["healthythreshold"].(int)
 	return value, ok
 }
 
-func (p *CreateLBHealthCheckPolicyParams) SetIntervaltime(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) SetIntervaltime(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["intervaltime"] = v
+	P.P["intervaltime"] = v
 }
 
-func (p *CreateLBHealthCheckPolicyParams) GetIntervaltime() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) GetIntervaltime() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["intervaltime"].(int)
+	value, ok := P.P["intervaltime"].(int)
 	return value, ok
 }
 
-func (p *CreateLBHealthCheckPolicyParams) SetLbruleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) SetLbruleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbruleid"] = v
+	P.P["lbruleid"] = v
 }
 
-func (p *CreateLBHealthCheckPolicyParams) GetLbruleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) GetLbruleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbruleid"].(string)
+	value, ok := P.P["lbruleid"].(string)
 	return value, ok
 }
 
-func (p *CreateLBHealthCheckPolicyParams) SetPingpath(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) SetPingpath(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pingpath"] = v
+	P.P["pingpath"] = v
 }
 
-func (p *CreateLBHealthCheckPolicyParams) GetPingpath() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) GetPingpath() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pingpath"].(string)
+	value, ok := P.P["pingpath"].(string)
 	return value, ok
 }
 
-func (p *CreateLBHealthCheckPolicyParams) SetResponsetimeout(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) SetResponsetimeout(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["responsetimeout"] = v
+	P.P["responsetimeout"] = v
 }
 
-func (p *CreateLBHealthCheckPolicyParams) GetResponsetimeout() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) GetResponsetimeout() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["responsetimeout"].(int)
+	value, ok := P.P["responsetimeout"].(int)
 	return value, ok
 }
 
-func (p *CreateLBHealthCheckPolicyParams) SetUnhealthythreshold(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) SetUnhealthythreshold(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["unhealthythreshold"] = v
+	P.P["unhealthythreshold"] = v
 }
 
-func (p *CreateLBHealthCheckPolicyParams) GetUnhealthythreshold() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBHealthCheckPolicyParams) GetUnhealthythreshold() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["unhealthythreshold"].(int)
+	value, ok := P.P["unhealthythreshold"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateLBHealthCheckPolicyParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewCreateLBHealthCheckPolicyParams(lbruleid string) *CreateLBHealthCheckPolicyParams {
-	p := &CreateLBHealthCheckPolicyParams{}
-	p.p = make(map[string]interface{})
-	p.p["lbruleid"] = lbruleid
-	return p
+	P := &CreateLBHealthCheckPolicyParams{}
+	P.P = make(map[string]interface{})
+	P.P["lbruleid"] = lbruleid
+	return P
 }
 
 // Creates a load balancer health check policy
@@ -1348,31 +1348,31 @@ type CreateLBHealthCheckPolicyResponseHealthcheckpolicy struct {
 }
 
 type CreateLBStickinessPolicyParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateLBStickinessPolicyParams) toURLValues() url.Values {
+func (P *CreateLBStickinessPolicyParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["lbruleid"]; found {
+	if v, found := P.P["lbruleid"]; found {
 		u.Set("lbruleid", v.(string))
 	}
-	if v, found := p.p["methodname"]; found {
+	if v, found := P.P["methodname"]; found {
 		u.Set("methodname", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["param"]; found {
+	if v, found := P.P["param"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("param[%d].key", i), k)
@@ -1382,105 +1382,105 @@ func (p *CreateLBStickinessPolicyParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *CreateLBStickinessPolicyParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *CreateLBStickinessPolicyParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *CreateLBStickinessPolicyParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateLBStickinessPolicyParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateLBStickinessPolicyParams) SetLbruleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) SetLbruleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbruleid"] = v
+	P.P["lbruleid"] = v
 }
 
-func (p *CreateLBStickinessPolicyParams) GetLbruleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) GetLbruleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbruleid"].(string)
+	value, ok := P.P["lbruleid"].(string)
 	return value, ok
 }
 
-func (p *CreateLBStickinessPolicyParams) SetMethodname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) SetMethodname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["methodname"] = v
+	P.P["methodname"] = v
 }
 
-func (p *CreateLBStickinessPolicyParams) GetMethodname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) GetMethodname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["methodname"].(string)
+	value, ok := P.P["methodname"].(string)
 	return value, ok
 }
 
-func (p *CreateLBStickinessPolicyParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateLBStickinessPolicyParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateLBStickinessPolicyParams) SetParam(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) SetParam(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["param"] = v
+	P.P["param"] = v
 }
 
-func (p *CreateLBStickinessPolicyParams) GetParam() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLBStickinessPolicyParams) GetParam() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["param"].(map[string]string)
+	value, ok := P.P["param"].(map[string]string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateLBStickinessPolicyParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewCreateLBStickinessPolicyParams(lbruleid string, methodname string, name string) *CreateLBStickinessPolicyParams {
-	p := &CreateLBStickinessPolicyParams{}
-	p.p = make(map[string]interface{})
-	p.p["lbruleid"] = lbruleid
-	p.p["methodname"] = methodname
-	p.p["name"] = name
-	return p
+	P := &CreateLBStickinessPolicyParams{}
+	P.P = make(map[string]interface{})
+	P.P["lbruleid"] = lbruleid
+	P.P["methodname"] = methodname
+	P.P["name"] = name
+	return P
 }
 
 // Creates a load balancer stickiness policy
@@ -1543,213 +1543,213 @@ type CreateLBStickinessPolicyResponseStickinesspolicy struct {
 }
 
 type CreateLoadBalancerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateLoadBalancerParams) toURLValues() url.Values {
+func (P *CreateLoadBalancerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["algorithm"]; found {
+	if v, found := P.P["algorithm"]; found {
 		u.Set("algorithm", v.(string))
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["instanceport"]; found {
+	if v, found := P.P["instanceport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("instanceport", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["scheme"]; found {
+	if v, found := P.P["scheme"]; found {
 		u.Set("scheme", v.(string))
 	}
-	if v, found := p.p["sourceipaddress"]; found {
+	if v, found := P.P["sourceipaddress"]; found {
 		u.Set("sourceipaddress", v.(string))
 	}
-	if v, found := p.p["sourceipaddressnetworkid"]; found {
+	if v, found := P.P["sourceipaddressnetworkid"]; found {
 		u.Set("sourceipaddressnetworkid", v.(string))
 	}
-	if v, found := p.p["sourceport"]; found {
+	if v, found := P.P["sourceport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("sourceport", vv)
 	}
 	return u
 }
 
-func (p *CreateLoadBalancerParams) SetAlgorithm(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) SetAlgorithm(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["algorithm"] = v
+	P.P["algorithm"] = v
 }
 
-func (p *CreateLoadBalancerParams) GetAlgorithm() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) GetAlgorithm() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["algorithm"].(string)
+	value, ok := P.P["algorithm"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *CreateLoadBalancerParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateLoadBalancerParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerParams) SetInstanceport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) SetInstanceport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["instanceport"] = v
+	P.P["instanceport"] = v
 }
 
-func (p *CreateLoadBalancerParams) GetInstanceport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) GetInstanceport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["instanceport"].(int)
+	value, ok := P.P["instanceport"].(int)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateLoadBalancerParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *CreateLoadBalancerParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerParams) SetScheme(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) SetScheme(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["scheme"] = v
+	P.P["scheme"] = v
 }
 
-func (p *CreateLoadBalancerParams) GetScheme() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) GetScheme() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["scheme"].(string)
+	value, ok := P.P["scheme"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerParams) SetSourceipaddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) SetSourceipaddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sourceipaddress"] = v
+	P.P["sourceipaddress"] = v
 }
 
-func (p *CreateLoadBalancerParams) GetSourceipaddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) GetSourceipaddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sourceipaddress"].(string)
+	value, ok := P.P["sourceipaddress"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerParams) SetSourceipaddressnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) SetSourceipaddressnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sourceipaddressnetworkid"] = v
+	P.P["sourceipaddressnetworkid"] = v
 }
 
-func (p *CreateLoadBalancerParams) GetSourceipaddressnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) GetSourceipaddressnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sourceipaddressnetworkid"].(string)
+	value, ok := P.P["sourceipaddressnetworkid"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerParams) SetSourceport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) SetSourceport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sourceport"] = v
+	P.P["sourceport"] = v
 }
 
-func (p *CreateLoadBalancerParams) GetSourceport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerParams) GetSourceport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sourceport"].(int)
+	value, ok := P.P["sourceport"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateLoadBalancerParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewCreateLoadBalancerParams(algorithm string, instanceport int, name string, networkid string, scheme string, sourceipaddressnetworkid string, sourceport int) *CreateLoadBalancerParams {
-	p := &CreateLoadBalancerParams{}
-	p.p = make(map[string]interface{})
-	p.p["algorithm"] = algorithm
-	p.p["instanceport"] = instanceport
-	p.p["name"] = name
-	p.p["networkid"] = networkid
-	p.p["scheme"] = scheme
-	p.p["sourceipaddressnetworkid"] = sourceipaddressnetworkid
-	p.p["sourceport"] = sourceport
-	return p
+	P := &CreateLoadBalancerParams{}
+	P.P = make(map[string]interface{})
+	P.P["algorithm"] = algorithm
+	P.P["instanceport"] = instanceport
+	P.P["name"] = name
+	P.P["networkid"] = networkid
+	P.P["scheme"] = scheme
+	P.P["sourceipaddressnetworkid"] = sourceipaddressnetworkid
+	P.P["sourceport"] = sourceport
+	return P
 }
 
 // Creates a load balancer
@@ -1822,284 +1822,284 @@ type CreateLoadBalancerResponseLoadbalancerinstance struct {
 }
 
 type CreateLoadBalancerRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateLoadBalancerRuleParams) toURLValues() url.Values {
+func (P *CreateLoadBalancerRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["algorithm"]; found {
+	if v, found := P.P["algorithm"]; found {
 		u.Set("algorithm", v.(string))
 	}
-	if v, found := p.p["cidrlist"]; found {
+	if v, found := P.P["cidrlist"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("cidrlist", vv)
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["openfirewall"]; found {
+	if v, found := P.P["openfirewall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("openfirewall", vv)
 	}
-	if v, found := p.p["privateport"]; found {
+	if v, found := P.P["privateport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("privateport", vv)
 	}
-	if v, found := p.p["protocol"]; found {
+	if v, found := P.P["protocol"]; found {
 		u.Set("protocol", v.(string))
 	}
-	if v, found := p.p["publicipid"]; found {
+	if v, found := P.P["publicipid"]; found {
 		u.Set("publicipid", v.(string))
 	}
-	if v, found := p.p["publicport"]; found {
+	if v, found := P.P["publicport"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("publicport", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *CreateLoadBalancerRuleParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetAlgorithm(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetAlgorithm(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["algorithm"] = v
+	P.P["algorithm"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetAlgorithm() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetAlgorithm() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["algorithm"].(string)
+	value, ok := P.P["algorithm"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetCidrlist(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetCidrlist(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["cidrlist"] = v
+	P.P["cidrlist"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetCidrlist() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetCidrlist() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["cidrlist"].([]string)
+	value, ok := P.P["cidrlist"].([]string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetOpenfirewall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetOpenfirewall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["openfirewall"] = v
+	P.P["openfirewall"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetOpenfirewall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetOpenfirewall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["openfirewall"].(bool)
+	value, ok := P.P["openfirewall"].(bool)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetPrivateport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetPrivateport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["privateport"] = v
+	P.P["privateport"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetPrivateport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetPrivateport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["privateport"].(int)
+	value, ok := P.P["privateport"].(int)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetProtocol(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetProtocol(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["protocol"] = v
+	P.P["protocol"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetProtocol() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetProtocol() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["protocol"].(string)
+	value, ok := P.P["protocol"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetPublicipid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetPublicipid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["publicipid"] = v
+	P.P["publicipid"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetPublicipid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetPublicipid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["publicipid"].(string)
+	value, ok := P.P["publicipid"].(string)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetPublicport(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetPublicport(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["publicport"] = v
+	P.P["publicport"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetPublicport() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetPublicport() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["publicport"].(int)
+	value, ok := P.P["publicport"].(int)
 	return value, ok
 }
 
-func (p *CreateLoadBalancerRuleParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *CreateLoadBalancerRuleParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateLoadBalancerRuleParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateLoadBalancerRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewCreateLoadBalancerRuleParams(algorithm string, name string, privateport int, publicport int) *CreateLoadBalancerRuleParams {
-	p := &CreateLoadBalancerRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["algorithm"] = algorithm
-	p.p["name"] = name
-	p.p["privateport"] = privateport
-	p.p["publicport"] = publicport
-	return p
+	P := &CreateLoadBalancerRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["algorithm"] = algorithm
+	P.P["name"] = name
+	P.P["privateport"] = privateport
+	P.P["publicport"] = publicport
+	return P
 }
 
 // Creates a load balancer rule
@@ -2164,42 +2164,42 @@ type CreateLoadBalancerRuleResponse struct {
 }
 
 type DeleteGlobalLoadBalancerRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteGlobalLoadBalancerRuleParams) toURLValues() url.Values {
+func (P *DeleteGlobalLoadBalancerRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteGlobalLoadBalancerRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteGlobalLoadBalancerRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteGlobalLoadBalancerRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteGlobalLoadBalancerRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteGlobalLoadBalancerRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewDeleteGlobalLoadBalancerRuleParams(id string) *DeleteGlobalLoadBalancerRuleParams {
-	p := &DeleteGlobalLoadBalancerRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteGlobalLoadBalancerRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a global load balancer rule.
@@ -2240,42 +2240,42 @@ type DeleteGlobalLoadBalancerRuleResponse struct {
 }
 
 type DeleteLBHealthCheckPolicyParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteLBHealthCheckPolicyParams) toURLValues() url.Values {
+func (P *DeleteLBHealthCheckPolicyParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteLBHealthCheckPolicyParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLBHealthCheckPolicyParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteLBHealthCheckPolicyParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLBHealthCheckPolicyParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteLBHealthCheckPolicyParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewDeleteLBHealthCheckPolicyParams(id string) *DeleteLBHealthCheckPolicyParams {
-	p := &DeleteLBHealthCheckPolicyParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteLBHealthCheckPolicyParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a load balancer health check policy.
@@ -2316,42 +2316,42 @@ type DeleteLBHealthCheckPolicyResponse struct {
 }
 
 type DeleteLBStickinessPolicyParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteLBStickinessPolicyParams) toURLValues() url.Values {
+func (P *DeleteLBStickinessPolicyParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteLBStickinessPolicyParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLBStickinessPolicyParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteLBStickinessPolicyParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLBStickinessPolicyParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteLBStickinessPolicyParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewDeleteLBStickinessPolicyParams(id string) *DeleteLBStickinessPolicyParams {
-	p := &DeleteLBStickinessPolicyParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteLBStickinessPolicyParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a load balancer stickiness policy.
@@ -2392,42 +2392,42 @@ type DeleteLBStickinessPolicyResponse struct {
 }
 
 type DeleteLoadBalancerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteLoadBalancerParams) toURLValues() url.Values {
+func (P *DeleteLoadBalancerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteLoadBalancerParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLoadBalancerParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteLoadBalancerParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLoadBalancerParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteLoadBalancerParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewDeleteLoadBalancerParams(id string) *DeleteLoadBalancerParams {
-	p := &DeleteLoadBalancerParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteLoadBalancerParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a load balancer
@@ -2468,42 +2468,42 @@ type DeleteLoadBalancerResponse struct {
 }
 
 type DeleteLoadBalancerRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteLoadBalancerRuleParams) toURLValues() url.Values {
+func (P *DeleteLoadBalancerRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteLoadBalancerRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLoadBalancerRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteLoadBalancerRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteLoadBalancerRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteLoadBalancerRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewDeleteLoadBalancerRuleParams(id string) *DeleteLoadBalancerRuleParams {
-	p := &DeleteLoadBalancerRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteLoadBalancerRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a load balancer rule.
@@ -2544,42 +2544,42 @@ type DeleteLoadBalancerRuleResponse struct {
 }
 
 type DeleteNetscalerLoadBalancerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteNetscalerLoadBalancerParams) toURLValues() url.Values {
+func (P *DeleteNetscalerLoadBalancerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["lbdeviceid"]; found {
+	if v, found := P.P["lbdeviceid"]; found {
 		u.Set("lbdeviceid", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteNetscalerLoadBalancerParams) SetLbdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetscalerLoadBalancerParams) SetLbdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbdeviceid"] = v
+	P.P["lbdeviceid"] = v
 }
 
-func (p *DeleteNetscalerLoadBalancerParams) GetLbdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteNetscalerLoadBalancerParams) GetLbdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbdeviceid"].(string)
+	value, ok := P.P["lbdeviceid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteNetscalerLoadBalancerParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewDeleteNetscalerLoadBalancerParams(lbdeviceid string) *DeleteNetscalerLoadBalancerParams {
-	p := &DeleteNetscalerLoadBalancerParams{}
-	p.p = make(map[string]interface{})
-	p.p["lbdeviceid"] = lbdeviceid
-	return p
+	P := &DeleteNetscalerLoadBalancerParams{}
+	P.P = make(map[string]interface{})
+	P.P["lbdeviceid"] = lbdeviceid
+	return P
 }
 
 //  delete a netscaler load balancer device
@@ -2620,42 +2620,42 @@ type DeleteNetscalerLoadBalancerResponse struct {
 }
 
 type DeleteSslCertParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteSslCertParams) toURLValues() url.Values {
+func (P *DeleteSslCertParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteSslCertParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteSslCertParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteSslCertParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteSslCertParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteSslCertParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewDeleteSslCertParams(id string) *DeleteSslCertParams {
-	p := &DeleteSslCertParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteSslCertParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Delete a certificate to CloudStack
@@ -2708,50 +2708,50 @@ func (r *DeleteSslCertResponse) UnmarshalJSON(b []byte) error {
 }
 
 type ListGlobalLoadBalancerRulesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) toURLValues() url.Values {
+func (P *ListGlobalLoadBalancerRulesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["regionid"]; found {
+	if v, found := P.P["regionid"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("regionid", vv)
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
@@ -2761,193 +2761,193 @@ func (p *ListGlobalLoadBalancerRulesParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) SetRegionid(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) SetRegionid(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["regionid"] = v
+	P.P["regionid"] = v
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) GetRegionid() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) GetRegionid() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["regionid"].(int)
+	value, ok := P.P["regionid"].(int)
 	return value, ok
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListGlobalLoadBalancerRulesParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListGlobalLoadBalancerRulesParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListGlobalLoadBalancerRulesParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewListGlobalLoadBalancerRulesParams() *ListGlobalLoadBalancerRulesParams {
-	p := &ListGlobalLoadBalancerRulesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListGlobalLoadBalancerRulesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *LoadBalancerService) GetGlobalLoadBalancerRuleID(keyword string, opts ...OptionFunc) (string, int, error) {
-	p := &ListGlobalLoadBalancerRulesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListGlobalLoadBalancerRulesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["keyword"] = keyword
+	P.P["keyword"] = keyword
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListGlobalLoadBalancerRules(p)
+	l, err := s.ListGlobalLoadBalancerRules(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -2986,18 +2986,18 @@ func (s *LoadBalancerService) GetGlobalLoadBalancerRuleByName(name string, opts 
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *LoadBalancerService) GetGlobalLoadBalancerRuleByID(id string, opts ...OptionFunc) (*GlobalLoadBalancerRule, int, error) {
-	p := &ListGlobalLoadBalancerRulesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListGlobalLoadBalancerRulesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListGlobalLoadBalancerRules(p)
+	l, err := s.ListGlobalLoadBalancerRules(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -3081,150 +3081,150 @@ type GlobalLoadBalancerRuleLoadbalancerrule struct {
 }
 
 type ListLBHealthCheckPoliciesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListLBHealthCheckPoliciesParams) toURLValues() url.Values {
+func (P *ListLBHealthCheckPoliciesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["lbruleid"]; found {
+	if v, found := P.P["lbruleid"]; found {
 		u.Set("lbruleid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListLBHealthCheckPoliciesParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListLBHealthCheckPoliciesParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListLBHealthCheckPoliciesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListLBHealthCheckPoliciesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListLBHealthCheckPoliciesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListLBHealthCheckPoliciesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListLBHealthCheckPoliciesParams) SetLbruleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) SetLbruleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbruleid"] = v
+	P.P["lbruleid"] = v
 }
 
-func (p *ListLBHealthCheckPoliciesParams) GetLbruleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) GetLbruleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbruleid"].(string)
+	value, ok := P.P["lbruleid"].(string)
 	return value, ok
 }
 
-func (p *ListLBHealthCheckPoliciesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListLBHealthCheckPoliciesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListLBHealthCheckPoliciesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListLBHealthCheckPoliciesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBHealthCheckPoliciesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListLBHealthCheckPoliciesParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewListLBHealthCheckPoliciesParams() *ListLBHealthCheckPoliciesParams {
-	p := &ListLBHealthCheckPoliciesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListLBHealthCheckPoliciesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *LoadBalancerService) GetLBHealthCheckPolicyByID(id string, opts ...OptionFunc) (*LBHealthCheckPolicy, int, error) {
-	p := &ListLBHealthCheckPoliciesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListLBHealthCheckPoliciesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListLBHealthCheckPolicies(p)
+	l, err := s.ListLBHealthCheckPolicies(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -3288,150 +3288,150 @@ type LBHealthCheckPolicyHealthcheckpolicy struct {
 }
 
 type ListLBStickinessPoliciesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListLBStickinessPoliciesParams) toURLValues() url.Values {
+func (P *ListLBStickinessPoliciesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["lbruleid"]; found {
+	if v, found := P.P["lbruleid"]; found {
 		u.Set("lbruleid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListLBStickinessPoliciesParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListLBStickinessPoliciesParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListLBStickinessPoliciesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListLBStickinessPoliciesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListLBStickinessPoliciesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListLBStickinessPoliciesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListLBStickinessPoliciesParams) SetLbruleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) SetLbruleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbruleid"] = v
+	P.P["lbruleid"] = v
 }
 
-func (p *ListLBStickinessPoliciesParams) GetLbruleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) GetLbruleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbruleid"].(string)
+	value, ok := P.P["lbruleid"].(string)
 	return value, ok
 }
 
-func (p *ListLBStickinessPoliciesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListLBStickinessPoliciesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListLBStickinessPoliciesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListLBStickinessPoliciesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLBStickinessPoliciesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListLBStickinessPoliciesParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewListLBStickinessPoliciesParams() *ListLBStickinessPoliciesParams {
-	p := &ListLBStickinessPoliciesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListLBStickinessPoliciesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *LoadBalancerService) GetLBStickinessPolicyByID(id string, opts ...OptionFunc) (*LBStickinessPolicy, int, error) {
-	p := &ListLBStickinessPoliciesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListLBStickinessPoliciesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListLBStickinessPolicies(p)
+	l, err := s.ListLBStickinessPolicies(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -3496,152 +3496,152 @@ type LBStickinessPolicyStickinesspolicy struct {
 }
 
 type ListLoadBalancerRuleInstancesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) toURLValues() url.Values {
+func (P *ListLoadBalancerRuleInstancesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["applied"]; found {
+	if v, found := P.P["applied"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("applied", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["lbvmips"]; found {
+	if v, found := P.P["lbvmips"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("lbvmips", vv)
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
 	return u
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) SetApplied(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) SetApplied(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["applied"] = v
+	P.P["applied"] = v
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) GetApplied() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) GetApplied() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["applied"].(bool)
+	value, ok := P.P["applied"].(bool)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) SetLbvmips(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) SetLbvmips(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbvmips"] = v
+	P.P["lbvmips"] = v
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) GetLbvmips() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) GetLbvmips() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbvmips"].(bool)
+	value, ok := P.P["lbvmips"].(bool)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListLoadBalancerRuleInstancesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRuleInstancesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new ListLoadBalancerRuleInstancesParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewListLoadBalancerRuleInstancesParams(id string) *ListLoadBalancerRuleInstancesParams {
-	p := &ListLoadBalancerRuleInstancesParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &ListLoadBalancerRuleInstancesParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *LoadBalancerService) GetLoadBalancerRuleInstanceByID(id string, opts ...OptionFunc) (*VirtualMachine, int, error) {
-	p := &ListLoadBalancerRuleInstancesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListLoadBalancerRuleInstancesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListLoadBalancerRuleInstances(p)
+	l, err := s.ListLoadBalancerRuleInstances(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -3690,336 +3690,336 @@ type LoadBalancerRuleInstance struct {
 }
 
 type ListLoadBalancerRulesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListLoadBalancerRulesParams) toURLValues() url.Values {
+func (P *ListLoadBalancerRulesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["publicipid"]; found {
+	if v, found := P.P["publicipid"]; found {
 		u.Set("publicipid", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
 			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListLoadBalancerRulesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetPublicipid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetPublicipid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["publicipid"] = v
+	P.P["publicipid"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetPublicipid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetPublicipid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["publicipid"].(string)
+	value, ok := P.P["publicipid"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancerRulesParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListLoadBalancerRulesParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancerRulesParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListLoadBalancerRulesParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewListLoadBalancerRulesParams() *ListLoadBalancerRulesParams {
-	p := &ListLoadBalancerRulesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListLoadBalancerRulesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *LoadBalancerService) GetLoadBalancerRuleID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListLoadBalancerRulesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListLoadBalancerRulesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListLoadBalancerRules(p)
+	l, err := s.ListLoadBalancerRules(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -4058,18 +4058,18 @@ func (s *LoadBalancerService) GetLoadBalancerRuleByName(name string, opts ...Opt
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *LoadBalancerService) GetLoadBalancerRuleByID(id string, opts ...OptionFunc) (*LoadBalancerRule, int, error) {
-	p := &ListLoadBalancerRulesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListLoadBalancerRulesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListLoadBalancerRules(p)
+	l, err := s.ListLoadBalancerRules(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -4136,65 +4136,65 @@ type LoadBalancerRule struct {
 }
 
 type ListLoadBalancersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListLoadBalancersParams) toURLValues() url.Values {
+func (P *ListLoadBalancersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["isrecursive"]; found {
+	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["listall"]; found {
+	if v, found := P.P["listall"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("listall", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networkid"]; found {
+	if v, found := P.P["networkid"]; found {
 		u.Set("networkid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
-	if v, found := p.p["scheme"]; found {
+	if v, found := P.P["scheme"]; found {
 		u.Set("scheme", v.(string))
 	}
-	if v, found := p.p["sourceipaddress"]; found {
+	if v, found := P.P["sourceipaddress"]; found {
 		u.Set("sourceipaddress", v.(string))
 	}
-	if v, found := p.p["sourceipaddressnetworkid"]; found {
+	if v, found := P.P["sourceipaddressnetworkid"]; found {
 		u.Set("sourceipaddressnetworkid", v.(string))
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
@@ -4204,268 +4204,268 @@ func (p *ListLoadBalancersParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *ListLoadBalancersParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListLoadBalancersParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListLoadBalancersParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *ListLoadBalancersParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListLoadBalancersParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetIsrecursive(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetIsrecursive(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["isrecursive"] = v
+	P.P["isrecursive"] = v
 }
 
-func (p *ListLoadBalancersParams) GetIsrecursive() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetIsrecursive() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["isrecursive"].(bool)
+	value, ok := P.P["isrecursive"].(bool)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListLoadBalancersParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetListall(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetListall(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["listall"] = v
+	P.P["listall"] = v
 }
 
-func (p *ListLoadBalancersParams) GetListall() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetListall() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["listall"].(bool)
+	value, ok := P.P["listall"].(bool)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListLoadBalancersParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetNetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetNetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networkid"] = v
+	P.P["networkid"] = v
 }
 
-func (p *ListLoadBalancersParams) GetNetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetNetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networkid"].(string)
+	value, ok := P.P["networkid"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListLoadBalancersParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListLoadBalancersParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListLoadBalancersParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetScheme(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetScheme(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["scheme"] = v
+	P.P["scheme"] = v
 }
 
-func (p *ListLoadBalancersParams) GetScheme() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetScheme() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["scheme"].(string)
+	value, ok := P.P["scheme"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetSourceipaddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetSourceipaddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sourceipaddress"] = v
+	P.P["sourceipaddress"] = v
 }
 
-func (p *ListLoadBalancersParams) GetSourceipaddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetSourceipaddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sourceipaddress"].(string)
+	value, ok := P.P["sourceipaddress"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetSourceipaddressnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetSourceipaddressnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sourceipaddressnetworkid"] = v
+	P.P["sourceipaddressnetworkid"] = v
 }
 
-func (p *ListLoadBalancersParams) GetSourceipaddressnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetSourceipaddressnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sourceipaddressnetworkid"].(string)
+	value, ok := P.P["sourceipaddressnetworkid"].(string)
 	return value, ok
 }
 
-func (p *ListLoadBalancersParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListLoadBalancersParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListLoadBalancersParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListLoadBalancersParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewListLoadBalancersParams() *ListLoadBalancersParams {
-	p := &ListLoadBalancersParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListLoadBalancersParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *LoadBalancerService) GetLoadBalancerID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListLoadBalancersParams{}
-	p.p = make(map[string]interface{})
+	P := &ListLoadBalancersParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListLoadBalancers(p)
+	l, err := s.ListLoadBalancers(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -4504,18 +4504,18 @@ func (s *LoadBalancerService) GetLoadBalancerByName(name string, opts ...OptionF
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *LoadBalancerService) GetLoadBalancerByID(id string, opts ...OptionFunc) (*LoadBalancer, int, error) {
-	p := &ListLoadBalancersParams{}
-	p.p = make(map[string]interface{})
+	P := &ListLoadBalancersParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListLoadBalancers(p)
+	l, err := s.ListLoadBalancers(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -4590,115 +4590,115 @@ type LoadBalancerLoadbalancerinstance struct {
 }
 
 type ListNetscalerLoadBalancersParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListNetscalerLoadBalancersParams) toURLValues() url.Values {
+func (P *ListNetscalerLoadBalancersParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["lbdeviceid"]; found {
+	if v, found := P.P["lbdeviceid"]; found {
 		u.Set("lbdeviceid", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["physicalnetworkid"]; found {
+	if v, found := P.P["physicalnetworkid"]; found {
 		u.Set("physicalnetworkid", v.(string))
 	}
 	return u
 }
 
-func (p *ListNetscalerLoadBalancersParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancersParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListNetscalerLoadBalancersParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancersParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListNetscalerLoadBalancersParams) SetLbdeviceid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancersParams) SetLbdeviceid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbdeviceid"] = v
+	P.P["lbdeviceid"] = v
 }
 
-func (p *ListNetscalerLoadBalancersParams) GetLbdeviceid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancersParams) GetLbdeviceid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbdeviceid"].(string)
+	value, ok := P.P["lbdeviceid"].(string)
 	return value, ok
 }
 
-func (p *ListNetscalerLoadBalancersParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancersParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListNetscalerLoadBalancersParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancersParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListNetscalerLoadBalancersParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancersParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListNetscalerLoadBalancersParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancersParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListNetscalerLoadBalancersParams) SetPhysicalnetworkid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancersParams) SetPhysicalnetworkid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["physicalnetworkid"] = v
+	P.P["physicalnetworkid"] = v
 }
 
-func (p *ListNetscalerLoadBalancersParams) GetPhysicalnetworkid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListNetscalerLoadBalancersParams) GetPhysicalnetworkid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["physicalnetworkid"].(string)
+	value, ok := P.P["physicalnetworkid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListNetscalerLoadBalancersParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewListNetscalerLoadBalancersParams() *ListNetscalerLoadBalancersParams {
-	p := &ListNetscalerLoadBalancersParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListNetscalerLoadBalancersParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // lists netscaler load balancer devices
@@ -4742,95 +4742,95 @@ type NetscalerLoadBalancer struct {
 }
 
 type ListSslCertsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListSslCertsParams) toURLValues() url.Values {
+func (P *ListSslCertsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["accountid"]; found {
+	if v, found := P.P["accountid"]; found {
 		u.Set("accountid", v.(string))
 	}
-	if v, found := p.p["certid"]; found {
+	if v, found := P.P["certid"]; found {
 		u.Set("certid", v.(string))
 	}
-	if v, found := p.p["lbruleid"]; found {
+	if v, found := P.P["lbruleid"]; found {
 		u.Set("lbruleid", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
 	return u
 }
 
-func (p *ListSslCertsParams) SetAccountid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSslCertsParams) SetAccountid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["accountid"] = v
+	P.P["accountid"] = v
 }
 
-func (p *ListSslCertsParams) GetAccountid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSslCertsParams) GetAccountid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["accountid"].(string)
+	value, ok := P.P["accountid"].(string)
 	return value, ok
 }
 
-func (p *ListSslCertsParams) SetCertid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSslCertsParams) SetCertid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["certid"] = v
+	P.P["certid"] = v
 }
 
-func (p *ListSslCertsParams) GetCertid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSslCertsParams) GetCertid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["certid"].(string)
+	value, ok := P.P["certid"].(string)
 	return value, ok
 }
 
-func (p *ListSslCertsParams) SetLbruleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSslCertsParams) SetLbruleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbruleid"] = v
+	P.P["lbruleid"] = v
 }
 
-func (p *ListSslCertsParams) GetLbruleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSslCertsParams) GetLbruleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbruleid"].(string)
+	value, ok := P.P["lbruleid"].(string)
 	return value, ok
 }
 
-func (p *ListSslCertsParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSslCertsParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *ListSslCertsParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSslCertsParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListSslCertsParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewListSslCertsParams() *ListSslCertsParams {
-	p := &ListSslCertsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListSslCertsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // Lists SSL certificates
@@ -4870,42 +4870,42 @@ type SslCert struct {
 }
 
 type RemoveCertFromLoadBalancerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RemoveCertFromLoadBalancerParams) toURLValues() url.Values {
+func (P *RemoveCertFromLoadBalancerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["lbruleid"]; found {
+	if v, found := P.P["lbruleid"]; found {
 		u.Set("lbruleid", v.(string))
 	}
 	return u
 }
 
-func (p *RemoveCertFromLoadBalancerParams) SetLbruleid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveCertFromLoadBalancerParams) SetLbruleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["lbruleid"] = v
+	P.P["lbruleid"] = v
 }
 
-func (p *RemoveCertFromLoadBalancerParams) GetLbruleid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveCertFromLoadBalancerParams) GetLbruleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["lbruleid"].(string)
+	value, ok := P.P["lbruleid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new RemoveCertFromLoadBalancerParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewRemoveCertFromLoadBalancerParams(lbruleid string) *RemoveCertFromLoadBalancerParams {
-	p := &RemoveCertFromLoadBalancerParams{}
-	p.p = make(map[string]interface{})
-	p.p["lbruleid"] = lbruleid
-	return p
+	P := &RemoveCertFromLoadBalancerParams{}
+	P.P = make(map[string]interface{})
+	P.P["lbruleid"] = lbruleid
+	return P
 }
 
 // Removes a certificate from a load balancer rule
@@ -4946,62 +4946,62 @@ type RemoveCertFromLoadBalancerResponse struct {
 }
 
 type RemoveFromGlobalLoadBalancerRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RemoveFromGlobalLoadBalancerRuleParams) toURLValues() url.Values {
+func (P *RemoveFromGlobalLoadBalancerRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["loadbalancerrulelist"]; found {
+	if v, found := P.P["loadbalancerrulelist"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("loadbalancerrulelist", vv)
 	}
 	return u
 }
 
-func (p *RemoveFromGlobalLoadBalancerRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveFromGlobalLoadBalancerRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *RemoveFromGlobalLoadBalancerRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveFromGlobalLoadBalancerRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *RemoveFromGlobalLoadBalancerRuleParams) SetLoadbalancerrulelist(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveFromGlobalLoadBalancerRuleParams) SetLoadbalancerrulelist(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["loadbalancerrulelist"] = v
+	P.P["loadbalancerrulelist"] = v
 }
 
-func (p *RemoveFromGlobalLoadBalancerRuleParams) GetLoadbalancerrulelist() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveFromGlobalLoadBalancerRuleParams) GetLoadbalancerrulelist() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["loadbalancerrulelist"].([]string)
+	value, ok := P.P["loadbalancerrulelist"].([]string)
 	return value, ok
 }
 
 // You should always use this function to get a new RemoveFromGlobalLoadBalancerRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewRemoveFromGlobalLoadBalancerRuleParams(id string, loadbalancerrulelist []string) *RemoveFromGlobalLoadBalancerRuleParams {
-	p := &RemoveFromGlobalLoadBalancerRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["loadbalancerrulelist"] = loadbalancerrulelist
-	return p
+	P := &RemoveFromGlobalLoadBalancerRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["loadbalancerrulelist"] = loadbalancerrulelist
+	return P
 }
 
 // Removes a load balancer rule association with global load balancer rule
@@ -5042,22 +5042,22 @@ type RemoveFromGlobalLoadBalancerRuleResponse struct {
 }
 
 type RemoveFromLoadBalancerRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RemoveFromLoadBalancerRuleParams) toURLValues() url.Values {
+func (P *RemoveFromLoadBalancerRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["virtualmachineids"]; found {
+	if v, found := P.P["virtualmachineids"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("virtualmachineids", vv)
 	}
-	if v, found := p.p["vmidipmap"]; found {
+	if v, found := P.P["vmidipmap"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("vmidipmap[%d].key", i), k)
@@ -5067,58 +5067,58 @@ func (p *RemoveFromLoadBalancerRuleParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *RemoveFromLoadBalancerRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveFromLoadBalancerRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *RemoveFromLoadBalancerRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveFromLoadBalancerRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *RemoveFromLoadBalancerRuleParams) SetVirtualmachineids(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveFromLoadBalancerRuleParams) SetVirtualmachineids(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineids"] = v
+	P.P["virtualmachineids"] = v
 }
 
-func (p *RemoveFromLoadBalancerRuleParams) GetVirtualmachineids() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveFromLoadBalancerRuleParams) GetVirtualmachineids() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineids"].([]string)
+	value, ok := P.P["virtualmachineids"].([]string)
 	return value, ok
 }
 
-func (p *RemoveFromLoadBalancerRuleParams) SetVmidipmap(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveFromLoadBalancerRuleParams) SetVmidipmap(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["vmidipmap"] = v
+	P.P["vmidipmap"] = v
 }
 
-func (p *RemoveFromLoadBalancerRuleParams) GetVmidipmap() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RemoveFromLoadBalancerRuleParams) GetVmidipmap() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["vmidipmap"].(map[string]string)
+	value, ok := P.P["vmidipmap"].(map[string]string)
 	return value, ok
 }
 
 // You should always use this function to get a new RemoveFromLoadBalancerRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewRemoveFromLoadBalancerRuleParams(id string) *RemoveFromLoadBalancerRuleParams {
-	p := &RemoveFromLoadBalancerRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &RemoveFromLoadBalancerRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Removes a virtual machine or a list of virtual machines from a load balancer rule.
@@ -5159,96 +5159,96 @@ type RemoveFromLoadBalancerRuleResponse struct {
 }
 
 type UpdateGlobalLoadBalancerRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateGlobalLoadBalancerRuleParams) toURLValues() url.Values {
+func (P *UpdateGlobalLoadBalancerRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["gslblbmethod"]; found {
+	if v, found := P.P["gslblbmethod"]; found {
 		u.Set("gslblbmethod", v.(string))
 	}
-	if v, found := p.p["gslbstickysessionmethodname"]; found {
+	if v, found := P.P["gslbstickysessionmethodname"]; found {
 		u.Set("gslbstickysessionmethodname", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateGlobalLoadBalancerRuleParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGlobalLoadBalancerRuleParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *UpdateGlobalLoadBalancerRuleParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGlobalLoadBalancerRuleParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *UpdateGlobalLoadBalancerRuleParams) SetGslblbmethod(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGlobalLoadBalancerRuleParams) SetGslblbmethod(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gslblbmethod"] = v
+	P.P["gslblbmethod"] = v
 }
 
-func (p *UpdateGlobalLoadBalancerRuleParams) GetGslblbmethod() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGlobalLoadBalancerRuleParams) GetGslblbmethod() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gslblbmethod"].(string)
+	value, ok := P.P["gslblbmethod"].(string)
 	return value, ok
 }
 
-func (p *UpdateGlobalLoadBalancerRuleParams) SetGslbstickysessionmethodname(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGlobalLoadBalancerRuleParams) SetGslbstickysessionmethodname(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["gslbstickysessionmethodname"] = v
+	P.P["gslbstickysessionmethodname"] = v
 }
 
-func (p *UpdateGlobalLoadBalancerRuleParams) GetGslbstickysessionmethodname() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGlobalLoadBalancerRuleParams) GetGslbstickysessionmethodname() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["gslbstickysessionmethodname"].(string)
+	value, ok := P.P["gslbstickysessionmethodname"].(string)
 	return value, ok
 }
 
-func (p *UpdateGlobalLoadBalancerRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGlobalLoadBalancerRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateGlobalLoadBalancerRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateGlobalLoadBalancerRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateGlobalLoadBalancerRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewUpdateGlobalLoadBalancerRuleParams(id string) *UpdateGlobalLoadBalancerRuleParams {
-	p := &UpdateGlobalLoadBalancerRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateGlobalLoadBalancerRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // update global load balancer rules.
@@ -5330,79 +5330,79 @@ type UpdateGlobalLoadBalancerRuleResponseLoadbalancerrule struct {
 }
 
 type UpdateLBHealthCheckPolicyParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateLBHealthCheckPolicyParams) toURLValues() url.Values {
+func (P *UpdateLBHealthCheckPolicyParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateLBHealthCheckPolicyParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBHealthCheckPolicyParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateLBHealthCheckPolicyParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBHealthCheckPolicyParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateLBHealthCheckPolicyParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBHealthCheckPolicyParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateLBHealthCheckPolicyParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBHealthCheckPolicyParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateLBHealthCheckPolicyParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBHealthCheckPolicyParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateLBHealthCheckPolicyParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBHealthCheckPolicyParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateLBHealthCheckPolicyParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewUpdateLBHealthCheckPolicyParams(id string) *UpdateLBHealthCheckPolicyParams {
-	p := &UpdateLBHealthCheckPolicyParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateLBHealthCheckPolicyParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates load balancer health check policy
@@ -5464,79 +5464,79 @@ type UpdateLBHealthCheckPolicyResponseHealthcheckpolicy struct {
 }
 
 type UpdateLBStickinessPolicyParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateLBStickinessPolicyParams) toURLValues() url.Values {
+func (P *UpdateLBStickinessPolicyParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateLBStickinessPolicyParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBStickinessPolicyParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateLBStickinessPolicyParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBStickinessPolicyParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateLBStickinessPolicyParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBStickinessPolicyParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateLBStickinessPolicyParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBStickinessPolicyParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateLBStickinessPolicyParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBStickinessPolicyParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateLBStickinessPolicyParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLBStickinessPolicyParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateLBStickinessPolicyParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewUpdateLBStickinessPolicyParams(id string) *UpdateLBStickinessPolicyParams {
-	p := &UpdateLBStickinessPolicyParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateLBStickinessPolicyParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates load balancer stickiness policy
@@ -5599,79 +5599,79 @@ type UpdateLBStickinessPolicyResponseStickinesspolicy struct {
 }
 
 type UpdateLoadBalancerParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateLoadBalancerParams) toURLValues() url.Values {
+func (P *UpdateLoadBalancerParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateLoadBalancerParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateLoadBalancerParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateLoadBalancerParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateLoadBalancerParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateLoadBalancerParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateLoadBalancerParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateLoadBalancerParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewUpdateLoadBalancerParams(id string) *UpdateLoadBalancerParams {
-	p := &UpdateLoadBalancerParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateLoadBalancerParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a load balancer
@@ -5744,151 +5744,151 @@ type UpdateLoadBalancerResponseLoadbalancerinstance struct {
 }
 
 type UpdateLoadBalancerRuleParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateLoadBalancerRuleParams) toURLValues() url.Values {
+func (P *UpdateLoadBalancerRuleParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["algorithm"]; found {
+	if v, found := P.P["algorithm"]; found {
 		u.Set("algorithm", v.(string))
 	}
-	if v, found := p.p["customid"]; found {
+	if v, found := P.P["customid"]; found {
 		u.Set("customid", v.(string))
 	}
-	if v, found := p.p["description"]; found {
+	if v, found := P.P["description"]; found {
 		u.Set("description", v.(string))
 	}
-	if v, found := p.p["fordisplay"]; found {
+	if v, found := P.P["fordisplay"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("fordisplay", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["protocol"]; found {
+	if v, found := P.P["protocol"]; found {
 		u.Set("protocol", v.(string))
 	}
 	return u
 }
 
-func (p *UpdateLoadBalancerRuleParams) SetAlgorithm(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) SetAlgorithm(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["algorithm"] = v
+	P.P["algorithm"] = v
 }
 
-func (p *UpdateLoadBalancerRuleParams) GetAlgorithm() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) GetAlgorithm() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["algorithm"].(string)
+	value, ok := P.P["algorithm"].(string)
 	return value, ok
 }
 
-func (p *UpdateLoadBalancerRuleParams) SetCustomid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) SetCustomid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["customid"] = v
+	P.P["customid"] = v
 }
 
-func (p *UpdateLoadBalancerRuleParams) GetCustomid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) GetCustomid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["customid"].(string)
+	value, ok := P.P["customid"].(string)
 	return value, ok
 }
 
-func (p *UpdateLoadBalancerRuleParams) SetDescription(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["description"] = v
+	P.P["description"] = v
 }
 
-func (p *UpdateLoadBalancerRuleParams) GetDescription() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["description"].(string)
+	value, ok := P.P["description"].(string)
 	return value, ok
 }
 
-func (p *UpdateLoadBalancerRuleParams) SetFordisplay(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) SetFordisplay(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["fordisplay"] = v
+	P.P["fordisplay"] = v
 }
 
-func (p *UpdateLoadBalancerRuleParams) GetFordisplay() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) GetFordisplay() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["fordisplay"].(bool)
+	value, ok := P.P["fordisplay"].(bool)
 	return value, ok
 }
 
-func (p *UpdateLoadBalancerRuleParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateLoadBalancerRuleParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateLoadBalancerRuleParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateLoadBalancerRuleParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateLoadBalancerRuleParams) SetProtocol(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) SetProtocol(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["protocol"] = v
+	P.P["protocol"] = v
 }
 
-func (p *UpdateLoadBalancerRuleParams) GetProtocol() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateLoadBalancerRuleParams) GetProtocol() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["protocol"].(string)
+	value, ok := P.P["protocol"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateLoadBalancerRuleParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewUpdateLoadBalancerRuleParams(id string) *UpdateLoadBalancerRuleParams {
-	p := &UpdateLoadBalancerRuleParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateLoadBalancerRuleParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates load balancer
@@ -5953,189 +5953,189 @@ type UpdateLoadBalancerRuleResponse struct {
 }
 
 type UploadSslCertParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UploadSslCertParams) toURLValues() url.Values {
+func (P *UploadSslCertParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["certchain"]; found {
+	if v, found := P.P["certchain"]; found {
 		u.Set("certchain", v.(string))
 	}
-	if v, found := p.p["certificate"]; found {
+	if v, found := P.P["certificate"]; found {
 		u.Set("certificate", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["enabledrevocationcheck"]; found {
+	if v, found := P.P["enabledrevocationcheck"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("enabledrevocationcheck", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["password"]; found {
+	if v, found := P.P["password"]; found {
 		u.Set("password", v.(string))
 	}
-	if v, found := p.p["privatekey"]; found {
+	if v, found := P.P["privatekey"]; found {
 		u.Set("privatekey", v.(string))
 	}
-	if v, found := p.p["projectid"]; found {
+	if v, found := P.P["projectid"]; found {
 		u.Set("projectid", v.(string))
 	}
 	return u
 }
 
-func (p *UploadSslCertParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *UploadSslCertParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *UploadSslCertParams) SetCertchain(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) SetCertchain(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["certchain"] = v
+	P.P["certchain"] = v
 }
 
-func (p *UploadSslCertParams) GetCertchain() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) GetCertchain() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["certchain"].(string)
+	value, ok := P.P["certchain"].(string)
 	return value, ok
 }
 
-func (p *UploadSslCertParams) SetCertificate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) SetCertificate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["certificate"] = v
+	P.P["certificate"] = v
 }
 
-func (p *UploadSslCertParams) GetCertificate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) GetCertificate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["certificate"].(string)
+	value, ok := P.P["certificate"].(string)
 	return value, ok
 }
 
-func (p *UploadSslCertParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *UploadSslCertParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *UploadSslCertParams) SetEnabledrevocationcheck(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) SetEnabledrevocationcheck(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["enabledrevocationcheck"] = v
+	P.P["enabledrevocationcheck"] = v
 }
 
-func (p *UploadSslCertParams) GetEnabledrevocationcheck() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) GetEnabledrevocationcheck() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["enabledrevocationcheck"].(bool)
+	value, ok := P.P["enabledrevocationcheck"].(bool)
 	return value, ok
 }
 
-func (p *UploadSslCertParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UploadSslCertParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UploadSslCertParams) SetPassword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) SetPassword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["password"] = v
+	P.P["password"] = v
 }
 
-func (p *UploadSslCertParams) GetPassword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) GetPassword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["password"].(string)
+	value, ok := P.P["password"].(string)
 	return value, ok
 }
 
-func (p *UploadSslCertParams) SetPrivatekey(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) SetPrivatekey(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["privatekey"] = v
+	P.P["privatekey"] = v
 }
 
-func (p *UploadSslCertParams) GetPrivatekey() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) GetPrivatekey() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["privatekey"].(string)
+	value, ok := P.P["privatekey"].(string)
 	return value, ok
 }
 
-func (p *UploadSslCertParams) SetProjectid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["projectid"] = v
+	P.P["projectid"] = v
 }
 
-func (p *UploadSslCertParams) GetProjectid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UploadSslCertParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["projectid"].(string)
+	value, ok := P.P["projectid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new UploadSslCertParams instance,
 // as then you are sure you have configured all required params
 func (s *LoadBalancerService) NewUploadSslCertParams(certificate string, name string, privatekey string) *UploadSslCertParams {
-	p := &UploadSslCertParams{}
-	p.p = make(map[string]interface{})
-	p.p["certificate"] = certificate
-	p.p["name"] = name
-	p.p["privatekey"] = privatekey
-	return p
+	P := &UploadSslCertParams{}
+	P.P = make(map[string]interface{})
+	P.P["certificate"] = certificate
+	P.P["name"] = name
+	P.P["privatekey"] = privatekey
+	return P
 }
 
 // Upload a certificate to CloudStack

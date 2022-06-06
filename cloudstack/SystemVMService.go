@@ -28,104 +28,104 @@ import (
 )
 
 type SystemVMServiceIface interface {
-	ChangeServiceForSystemVm(p *ChangeServiceForSystemVmParams) (*ChangeServiceForSystemVmResponse, error)
+	ChangeServiceForSystemVm(P *ChangeServiceForSystemVmParams) (*ChangeServiceForSystemVmResponse, error)
 	NewChangeServiceForSystemVmParams(id string, serviceofferingid string) *ChangeServiceForSystemVmParams
-	DestroySystemVm(p *DestroySystemVmParams) (*DestroySystemVmResponse, error)
+	DestroySystemVm(P *DestroySystemVmParams) (*DestroySystemVmResponse, error)
 	NewDestroySystemVmParams(id string) *DestroySystemVmParams
-	ListSystemVms(p *ListSystemVmsParams) (*ListSystemVmsResponse, error)
+	ListSystemVms(P *ListSystemVmsParams) (*ListSystemVmsResponse, error)
 	NewListSystemVmsParams() *ListSystemVmsParams
 	GetSystemVmID(name string, opts ...OptionFunc) (string, int, error)
 	GetSystemVmByName(name string, opts ...OptionFunc) (*SystemVm, int, error)
 	GetSystemVmByID(id string, opts ...OptionFunc) (*SystemVm, int, error)
-	MigrateSystemVm(p *MigrateSystemVmParams) (*MigrateSystemVmResponse, error)
+	MigrateSystemVm(P *MigrateSystemVmParams) (*MigrateSystemVmResponse, error)
 	NewMigrateSystemVmParams(virtualmachineid string) *MigrateSystemVmParams
-	RebootSystemVm(p *RebootSystemVmParams) (*RebootSystemVmResponse, error)
+	RebootSystemVm(P *RebootSystemVmParams) (*RebootSystemVmResponse, error)
 	NewRebootSystemVmParams(id string) *RebootSystemVmParams
-	ScaleSystemVm(p *ScaleSystemVmParams) (*ScaleSystemVmResponse, error)
+	ScaleSystemVm(P *ScaleSystemVmParams) (*ScaleSystemVmResponse, error)
 	NewScaleSystemVmParams(id string, serviceofferingid string) *ScaleSystemVmParams
-	StartSystemVm(p *StartSystemVmParams) (*StartSystemVmResponse, error)
+	StartSystemVm(P *StartSystemVmParams) (*StartSystemVmResponse, error)
 	NewStartSystemVmParams(id string) *StartSystemVmParams
-	StopSystemVm(p *StopSystemVmParams) (*StopSystemVmResponse, error)
+	StopSystemVm(P *StopSystemVmParams) (*StopSystemVmResponse, error)
 	NewStopSystemVmParams(id string) *StopSystemVmParams
 }
 
 type ChangeServiceForSystemVmParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ChangeServiceForSystemVmParams) toURLValues() url.Values {
+func (P *ChangeServiceForSystemVmParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].%s", i, k), m[k])
 		}
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["serviceofferingid"]; found {
+	if v, found := P.P["serviceofferingid"]; found {
 		u.Set("serviceofferingid", v.(string))
 	}
 	return u
 }
 
-func (p *ChangeServiceForSystemVmParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeServiceForSystemVmParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *ChangeServiceForSystemVmParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeServiceForSystemVmParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *ChangeServiceForSystemVmParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeServiceForSystemVmParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ChangeServiceForSystemVmParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeServiceForSystemVmParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ChangeServiceForSystemVmParams) SetServiceofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeServiceForSystemVmParams) SetServiceofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["serviceofferingid"] = v
+	P.P["serviceofferingid"] = v
 }
 
-func (p *ChangeServiceForSystemVmParams) GetServiceofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ChangeServiceForSystemVmParams) GetServiceofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["serviceofferingid"].(string)
+	value, ok := P.P["serviceofferingid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ChangeServiceForSystemVmParams instance,
 // as then you are sure you have configured all required params
 func (s *SystemVMService) NewChangeServiceForSystemVmParams(id string, serviceofferingid string) *ChangeServiceForSystemVmParams {
-	p := &ChangeServiceForSystemVmParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["serviceofferingid"] = serviceofferingid
-	return p
+	P := &ChangeServiceForSystemVmParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["serviceofferingid"] = serviceofferingid
+	return P
 }
 
 // Changes the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
@@ -184,42 +184,42 @@ type ChangeServiceForSystemVmResponse struct {
 }
 
 type DestroySystemVmParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DestroySystemVmParams) toURLValues() url.Values {
+func (P *DestroySystemVmParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DestroySystemVmParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DestroySystemVmParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DestroySystemVmParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DestroySystemVmParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DestroySystemVmParams instance,
 // as then you are sure you have configured all required params
 func (s *SystemVMService) NewDestroySystemVmParams(id string) *DestroySystemVmParams {
-	p := &DestroySystemVmParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DestroySystemVmParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Destroyes a system virtual machine.
@@ -298,239 +298,239 @@ type DestroySystemVmResponse struct {
 }
 
 type ListSystemVmsParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListSystemVmsParams) toURLValues() url.Values {
+func (P *ListSystemVmsParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["podid"]; found {
+	if v, found := P.P["podid"]; found {
 		u.Set("podid", v.(string))
 	}
-	if v, found := p.p["state"]; found {
+	if v, found := P.P["state"]; found {
 		u.Set("state", v.(string))
 	}
-	if v, found := p.p["storageid"]; found {
+	if v, found := P.P["storageid"]; found {
 		u.Set("storageid", v.(string))
 	}
-	if v, found := p.p["systemvmtype"]; found {
+	if v, found := P.P["systemvmtype"]; found {
 		u.Set("systemvmtype", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListSystemVmsParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *ListSystemVmsParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
-func (p *ListSystemVmsParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListSystemVmsParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListSystemVmsParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListSystemVmsParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListSystemVmsParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListSystemVmsParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListSystemVmsParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListSystemVmsParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListSystemVmsParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListSystemVmsParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListSystemVmsParams) SetPodid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) SetPodid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["podid"] = v
+	P.P["podid"] = v
 }
 
-func (p *ListSystemVmsParams) GetPodid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) GetPodid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["podid"].(string)
+	value, ok := P.P["podid"].(string)
 	return value, ok
 }
 
-func (p *ListSystemVmsParams) SetState(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) SetState(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["state"] = v
+	P.P["state"] = v
 }
 
-func (p *ListSystemVmsParams) GetState() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) GetState() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["state"].(string)
+	value, ok := P.P["state"].(string)
 	return value, ok
 }
 
-func (p *ListSystemVmsParams) SetStorageid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) SetStorageid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["storageid"] = v
+	P.P["storageid"] = v
 }
 
-func (p *ListSystemVmsParams) GetStorageid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) GetStorageid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["storageid"].(string)
+	value, ok := P.P["storageid"].(string)
 	return value, ok
 }
 
-func (p *ListSystemVmsParams) SetSystemvmtype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) SetSystemvmtype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["systemvmtype"] = v
+	P.P["systemvmtype"] = v
 }
 
-func (p *ListSystemVmsParams) GetSystemvmtype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) GetSystemvmtype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["systemvmtype"].(string)
+	value, ok := P.P["systemvmtype"].(string)
 	return value, ok
 }
 
-func (p *ListSystemVmsParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListSystemVmsParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListSystemVmsParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListSystemVmsParams instance,
 // as then you are sure you have configured all required params
 func (s *SystemVMService) NewListSystemVmsParams() *ListSystemVmsParams {
-	p := &ListSystemVmsParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListSystemVmsParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *SystemVMService) GetSystemVmID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListSystemVmsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListSystemVmsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListSystemVms(p)
+	l, err := s.ListSystemVms(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -569,18 +569,18 @@ func (s *SystemVMService) GetSystemVmByName(name string, opts ...OptionFunc) (*S
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *SystemVMService) GetSystemVmByID(id string, opts ...OptionFunc) (*SystemVm, int, error) {
-	p := &ListSystemVmsParams{}
-	p.p = make(map[string]interface{})
+	P := &ListSystemVmsParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListSystemVms(p)
+	l, err := s.ListSystemVms(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -661,97 +661,97 @@ type SystemVm struct {
 }
 
 type MigrateSystemVmParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *MigrateSystemVmParams) toURLValues() url.Values {
+func (P *MigrateSystemVmParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["autoselect"]; found {
+	if v, found := P.P["autoselect"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("autoselect", vv)
 	}
-	if v, found := p.p["hostid"]; found {
+	if v, found := P.P["hostid"]; found {
 		u.Set("hostid", v.(string))
 	}
-	if v, found := p.p["storageid"]; found {
+	if v, found := P.P["storageid"]; found {
 		u.Set("storageid", v.(string))
 	}
-	if v, found := p.p["virtualmachineid"]; found {
+	if v, found := P.P["virtualmachineid"]; found {
 		u.Set("virtualmachineid", v.(string))
 	}
 	return u
 }
 
-func (p *MigrateSystemVmParams) SetAutoselect(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateSystemVmParams) SetAutoselect(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["autoselect"] = v
+	P.P["autoselect"] = v
 }
 
-func (p *MigrateSystemVmParams) GetAutoselect() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateSystemVmParams) GetAutoselect() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["autoselect"].(bool)
+	value, ok := P.P["autoselect"].(bool)
 	return value, ok
 }
 
-func (p *MigrateSystemVmParams) SetHostid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateSystemVmParams) SetHostid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["hostid"] = v
+	P.P["hostid"] = v
 }
 
-func (p *MigrateSystemVmParams) GetHostid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateSystemVmParams) GetHostid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["hostid"].(string)
+	value, ok := P.P["hostid"].(string)
 	return value, ok
 }
 
-func (p *MigrateSystemVmParams) SetStorageid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateSystemVmParams) SetStorageid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["storageid"] = v
+	P.P["storageid"] = v
 }
 
-func (p *MigrateSystemVmParams) GetStorageid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateSystemVmParams) GetStorageid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["storageid"].(string)
+	value, ok := P.P["storageid"].(string)
 	return value, ok
 }
 
-func (p *MigrateSystemVmParams) SetVirtualmachineid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateSystemVmParams) SetVirtualmachineid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["virtualmachineid"] = v
+	P.P["virtualmachineid"] = v
 }
 
-func (p *MigrateSystemVmParams) GetVirtualmachineid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *MigrateSystemVmParams) GetVirtualmachineid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["virtualmachineid"].(string)
+	value, ok := P.P["virtualmachineid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new MigrateSystemVmParams instance,
 // as then you are sure you have configured all required params
 func (s *SystemVMService) NewMigrateSystemVmParams(virtualmachineid string) *MigrateSystemVmParams {
-	p := &MigrateSystemVmParams{}
-	p.p = make(map[string]interface{})
-	p.p["virtualmachineid"] = virtualmachineid
-	return p
+	P := &MigrateSystemVmParams{}
+	P.P = make(map[string]interface{})
+	P.P["virtualmachineid"] = virtualmachineid
+	return P
 }
 
 // Attempts Migration of a system virtual machine to the host specified.
@@ -830,61 +830,61 @@ type MigrateSystemVmResponse struct {
 }
 
 type RebootSystemVmParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *RebootSystemVmParams) toURLValues() url.Values {
+func (P *RebootSystemVmParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["forced"]; found {
+	if v, found := P.P["forced"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forced", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *RebootSystemVmParams) SetForced(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RebootSystemVmParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forced"] = v
+	P.P["forced"] = v
 }
 
-func (p *RebootSystemVmParams) GetForced() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RebootSystemVmParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forced"].(bool)
+	value, ok := P.P["forced"].(bool)
 	return value, ok
 }
 
-func (p *RebootSystemVmParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RebootSystemVmParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *RebootSystemVmParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *RebootSystemVmParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new RebootSystemVmParams instance,
 // as then you are sure you have configured all required params
 func (s *SystemVMService) NewRebootSystemVmParams(id string) *RebootSystemVmParams {
-	p := &RebootSystemVmParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &RebootSystemVmParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Reboots a system VM.
@@ -963,82 +963,82 @@ type RebootSystemVmResponse struct {
 }
 
 type ScaleSystemVmParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ScaleSystemVmParams) toURLValues() url.Values {
+func (P *ScaleSystemVmParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].%s", i, k), m[k])
 		}
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["serviceofferingid"]; found {
+	if v, found := P.P["serviceofferingid"]; found {
 		u.Set("serviceofferingid", v.(string))
 	}
 	return u
 }
 
-func (p *ScaleSystemVmParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ScaleSystemVmParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *ScaleSystemVmParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ScaleSystemVmParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *ScaleSystemVmParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ScaleSystemVmParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ScaleSystemVmParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ScaleSystemVmParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ScaleSystemVmParams) SetServiceofferingid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ScaleSystemVmParams) SetServiceofferingid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["serviceofferingid"] = v
+	P.P["serviceofferingid"] = v
 }
 
-func (p *ScaleSystemVmParams) GetServiceofferingid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ScaleSystemVmParams) GetServiceofferingid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["serviceofferingid"].(string)
+	value, ok := P.P["serviceofferingid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ScaleSystemVmParams instance,
 // as then you are sure you have configured all required params
 func (s *SystemVMService) NewScaleSystemVmParams(id string, serviceofferingid string) *ScaleSystemVmParams {
-	p := &ScaleSystemVmParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	p.p["serviceofferingid"] = serviceofferingid
-	return p
+	P := &ScaleSystemVmParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	P.P["serviceofferingid"] = serviceofferingid
+	return P
 }
 
 // Scale the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect.
@@ -1117,42 +1117,42 @@ type ScaleSystemVmResponse struct {
 }
 
 type StartSystemVmParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *StartSystemVmParams) toURLValues() url.Values {
+func (P *StartSystemVmParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *StartSystemVmParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StartSystemVmParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *StartSystemVmParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StartSystemVmParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new StartSystemVmParams instance,
 // as then you are sure you have configured all required params
 func (s *SystemVMService) NewStartSystemVmParams(id string) *StartSystemVmParams {
-	p := &StartSystemVmParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &StartSystemVmParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Starts a system virtual machine.
@@ -1231,61 +1231,61 @@ type StartSystemVmResponse struct {
 }
 
 type StopSystemVmParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *StopSystemVmParams) toURLValues() url.Values {
+func (P *StopSystemVmParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["forced"]; found {
+	if v, found := P.P["forced"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("forced", vv)
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *StopSystemVmParams) SetForced(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopSystemVmParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["forced"] = v
+	P.P["forced"] = v
 }
 
-func (p *StopSystemVmParams) GetForced() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopSystemVmParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["forced"].(bool)
+	value, ok := P.P["forced"].(bool)
 	return value, ok
 }
 
-func (p *StopSystemVmParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopSystemVmParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *StopSystemVmParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *StopSystemVmParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new StopSystemVmParams instance,
 // as then you are sure you have configured all required params
 func (s *SystemVMService) NewStopSystemVmParams(id string) *StopSystemVmParams {
-	p := &StopSystemVmParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &StopSystemVmParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Stops a system VM.

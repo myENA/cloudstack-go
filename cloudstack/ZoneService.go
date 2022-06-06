@@ -28,309 +28,309 @@ import (
 )
 
 type ZoneServiceIface interface {
-	CreateZone(p *CreateZoneParams) (*CreateZoneResponse, error)
+	CreateZone(P *CreateZoneParams) (*CreateZoneResponse, error)
 	NewCreateZoneParams(dns1 string, internaldns1 string, name string, networktype string) *CreateZoneParams
-	DedicateZone(p *DedicateZoneParams) (*DedicateZoneResponse, error)
+	DedicateZone(P *DedicateZoneParams) (*DedicateZoneResponse, error)
 	NewDedicateZoneParams(domainid string, zoneid string) *DedicateZoneParams
-	DeleteZone(p *DeleteZoneParams) (*DeleteZoneResponse, error)
+	DeleteZone(P *DeleteZoneParams) (*DeleteZoneResponse, error)
 	NewDeleteZoneParams(id string) *DeleteZoneParams
-	DisableOutOfBandManagementForZone(p *DisableOutOfBandManagementForZoneParams) (*DisableOutOfBandManagementForZoneResponse, error)
+	DisableOutOfBandManagementForZone(P *DisableOutOfBandManagementForZoneParams) (*DisableOutOfBandManagementForZoneResponse, error)
 	NewDisableOutOfBandManagementForZoneParams(zoneid string) *DisableOutOfBandManagementForZoneParams
-	EnableOutOfBandManagementForZone(p *EnableOutOfBandManagementForZoneParams) (*EnableOutOfBandManagementForZoneResponse, error)
+	EnableOutOfBandManagementForZone(P *EnableOutOfBandManagementForZoneParams) (*EnableOutOfBandManagementForZoneResponse, error)
 	NewEnableOutOfBandManagementForZoneParams(zoneid string) *EnableOutOfBandManagementForZoneParams
-	DisableHAForZone(p *DisableHAForZoneParams) (*DisableHAForZoneResponse, error)
+	DisableHAForZone(P *DisableHAForZoneParams) (*DisableHAForZoneResponse, error)
 	NewDisableHAForZoneParams(zoneid string) *DisableHAForZoneParams
-	EnableHAForZone(p *EnableHAForZoneParams) (*EnableHAForZoneResponse, error)
+	EnableHAForZone(P *EnableHAForZoneParams) (*EnableHAForZoneResponse, error)
 	NewEnableHAForZoneParams(zoneid string) *EnableHAForZoneParams
-	ListDedicatedZones(p *ListDedicatedZonesParams) (*ListDedicatedZonesResponse, error)
+	ListDedicatedZones(P *ListDedicatedZonesParams) (*ListDedicatedZonesResponse, error)
 	NewListDedicatedZonesParams() *ListDedicatedZonesParams
-	ListZones(p *ListZonesParams) (*ListZonesResponse, error)
+	ListZones(P *ListZonesParams) (*ListZonesResponse, error)
 	NewListZonesParams() *ListZonesParams
 	GetZoneID(name string, opts ...OptionFunc) (string, int, error)
 	GetZoneByName(name string, opts ...OptionFunc) (*Zone, int, error)
 	GetZoneByID(id string, opts ...OptionFunc) (*Zone, int, error)
-	ReleaseDedicatedZone(p *ReleaseDedicatedZoneParams) (*ReleaseDedicatedZoneResponse, error)
+	ReleaseDedicatedZone(P *ReleaseDedicatedZoneParams) (*ReleaseDedicatedZoneResponse, error)
 	NewReleaseDedicatedZoneParams(zoneid string) *ReleaseDedicatedZoneParams
-	UpdateZone(p *UpdateZoneParams) (*UpdateZoneResponse, error)
+	UpdateZone(P *UpdateZoneParams) (*UpdateZoneResponse, error)
 	NewUpdateZoneParams(id string) *UpdateZoneParams
 }
 
 type CreateZoneParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CreateZoneParams) toURLValues() url.Values {
+func (P *CreateZoneParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["dns1"]; found {
+	if v, found := P.P["dns1"]; found {
 		u.Set("dns1", v.(string))
 	}
-	if v, found := p.p["dns2"]; found {
+	if v, found := P.P["dns2"]; found {
 		u.Set("dns2", v.(string))
 	}
-	if v, found := p.p["domain"]; found {
+	if v, found := P.P["domain"]; found {
 		u.Set("domain", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["guestcidraddress"]; found {
+	if v, found := P.P["guestcidraddress"]; found {
 		u.Set("guestcidraddress", v.(string))
 	}
-	if v, found := p.p["internaldns1"]; found {
+	if v, found := P.P["internaldns1"]; found {
 		u.Set("internaldns1", v.(string))
 	}
-	if v, found := p.p["internaldns2"]; found {
+	if v, found := P.P["internaldns2"]; found {
 		u.Set("internaldns2", v.(string))
 	}
-	if v, found := p.p["ip6dns1"]; found {
+	if v, found := P.P["ip6dns1"]; found {
 		u.Set("ip6dns1", v.(string))
 	}
-	if v, found := p.p["ip6dns2"]; found {
+	if v, found := P.P["ip6dns2"]; found {
 		u.Set("ip6dns2", v.(string))
 	}
-	if v, found := p.p["localstorageenabled"]; found {
+	if v, found := P.P["localstorageenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("localstorageenabled", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networktype"]; found {
+	if v, found := P.P["networktype"]; found {
 		u.Set("networktype", v.(string))
 	}
-	if v, found := p.p["securitygroupenabled"]; found {
+	if v, found := P.P["securitygroupenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("securitygroupenabled", vv)
 	}
 	return u
 }
 
-func (p *CreateZoneParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *CreateZoneParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetDns1(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetDns1(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["dns1"] = v
+	P.P["dns1"] = v
 }
 
-func (p *CreateZoneParams) GetDns1() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetDns1() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["dns1"].(string)
+	value, ok := P.P["dns1"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetDns2(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetDns2(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["dns2"] = v
+	P.P["dns2"] = v
 }
 
-func (p *CreateZoneParams) GetDns2() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetDns2() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["dns2"].(string)
+	value, ok := P.P["dns2"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetDomain(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetDomain(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domain"] = v
+	P.P["domain"] = v
 }
 
-func (p *CreateZoneParams) GetDomain() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetDomain() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domain"].(string)
+	value, ok := P.P["domain"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *CreateZoneParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetGuestcidraddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetGuestcidraddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["guestcidraddress"] = v
+	P.P["guestcidraddress"] = v
 }
 
-func (p *CreateZoneParams) GetGuestcidraddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetGuestcidraddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["guestcidraddress"].(string)
+	value, ok := P.P["guestcidraddress"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetInternaldns1(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetInternaldns1(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["internaldns1"] = v
+	P.P["internaldns1"] = v
 }
 
-func (p *CreateZoneParams) GetInternaldns1() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetInternaldns1() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["internaldns1"].(string)
+	value, ok := P.P["internaldns1"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetInternaldns2(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetInternaldns2(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["internaldns2"] = v
+	P.P["internaldns2"] = v
 }
 
-func (p *CreateZoneParams) GetInternaldns2() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetInternaldns2() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["internaldns2"].(string)
+	value, ok := P.P["internaldns2"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetIp6dns1(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetIp6dns1(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ip6dns1"] = v
+	P.P["ip6dns1"] = v
 }
 
-func (p *CreateZoneParams) GetIp6dns1() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetIp6dns1() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ip6dns1"].(string)
+	value, ok := P.P["ip6dns1"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetIp6dns2(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetIp6dns2(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ip6dns2"] = v
+	P.P["ip6dns2"] = v
 }
 
-func (p *CreateZoneParams) GetIp6dns2() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetIp6dns2() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ip6dns2"].(string)
+	value, ok := P.P["ip6dns2"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetLocalstorageenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetLocalstorageenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["localstorageenabled"] = v
+	P.P["localstorageenabled"] = v
 }
 
-func (p *CreateZoneParams) GetLocalstorageenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetLocalstorageenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["localstorageenabled"].(bool)
+	value, ok := P.P["localstorageenabled"].(bool)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *CreateZoneParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetNetworktype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetNetworktype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networktype"] = v
+	P.P["networktype"] = v
 }
 
-func (p *CreateZoneParams) GetNetworktype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetNetworktype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networktype"].(string)
+	value, ok := P.P["networktype"].(string)
 	return value, ok
 }
 
-func (p *CreateZoneParams) SetSecuritygroupenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) SetSecuritygroupenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["securitygroupenabled"] = v
+	P.P["securitygroupenabled"] = v
 }
 
-func (p *CreateZoneParams) GetSecuritygroupenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CreateZoneParams) GetSecuritygroupenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["securitygroupenabled"].(bool)
+	value, ok := P.P["securitygroupenabled"].(bool)
 	return value, ok
 }
 
 // You should always use this function to get a new CreateZoneParams instance,
 // as then you are sure you have configured all required params
 func (s *ZoneService) NewCreateZoneParams(dns1 string, internaldns1 string, name string, networktype string) *CreateZoneParams {
-	p := &CreateZoneParams{}
-	p.p = make(map[string]interface{})
-	p.p["dns1"] = dns1
-	p.p["internaldns1"] = internaldns1
-	p.p["name"] = name
-	p.p["networktype"] = networktype
-	return p
+	P := &CreateZoneParams{}
+	P.P = make(map[string]interface{})
+	P.P["dns1"] = dns1
+	P.P["internaldns1"] = internaldns1
+	P.P["name"] = name
+	P.P["networktype"] = networktype
+	return P
 }
 
 // Creates a Zone.
@@ -394,79 +394,79 @@ type CreateZoneResponseCapacity struct {
 }
 
 type DedicateZoneParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DedicateZoneParams) toURLValues() url.Values {
+func (P *DedicateZoneParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *DedicateZoneParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateZoneParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *DedicateZoneParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateZoneParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *DedicateZoneParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateZoneParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *DedicateZoneParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateZoneParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *DedicateZoneParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateZoneParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *DedicateZoneParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DedicateZoneParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DedicateZoneParams instance,
 // as then you are sure you have configured all required params
 func (s *ZoneService) NewDedicateZoneParams(domainid string, zoneid string) *DedicateZoneParams {
-	p := &DedicateZoneParams{}
-	p.p = make(map[string]interface{})
-	p.p["domainid"] = domainid
-	p.p["zoneid"] = zoneid
-	return p
+	P := &DedicateZoneParams{}
+	P.P = make(map[string]interface{})
+	P.P["domainid"] = domainid
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Dedicates a zones.
@@ -516,42 +516,42 @@ type DedicateZoneResponse struct {
 }
 
 type DeleteZoneParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DeleteZoneParams) toURLValues() url.Values {
+func (P *DeleteZoneParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
 	return u
 }
 
-func (p *DeleteZoneParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteZoneParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *DeleteZoneParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DeleteZoneParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DeleteZoneParams instance,
 // as then you are sure you have configured all required params
 func (s *ZoneService) NewDeleteZoneParams(id string) *DeleteZoneParams {
-	p := &DeleteZoneParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &DeleteZoneParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Deletes a Zone.
@@ -604,42 +604,42 @@ func (r *DeleteZoneResponse) UnmarshalJSON(b []byte) error {
 }
 
 type DisableOutOfBandManagementForZoneParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DisableOutOfBandManagementForZoneParams) toURLValues() url.Values {
+func (P *DisableOutOfBandManagementForZoneParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *DisableOutOfBandManagementForZoneParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisableOutOfBandManagementForZoneParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *DisableOutOfBandManagementForZoneParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisableOutOfBandManagementForZoneParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DisableOutOfBandManagementForZoneParams instance,
 // as then you are sure you have configured all required params
 func (s *ZoneService) NewDisableOutOfBandManagementForZoneParams(zoneid string) *DisableOutOfBandManagementForZoneParams {
-	p := &DisableOutOfBandManagementForZoneParams{}
-	p.p = make(map[string]interface{})
-	p.p["zoneid"] = zoneid
-	return p
+	P := &DisableOutOfBandManagementForZoneParams{}
+	P.P = make(map[string]interface{})
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Disables out-of-band management for a zone
@@ -694,42 +694,42 @@ type DisableOutOfBandManagementForZoneResponse struct {
 }
 
 type EnableOutOfBandManagementForZoneParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *EnableOutOfBandManagementForZoneParams) toURLValues() url.Values {
+func (P *EnableOutOfBandManagementForZoneParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *EnableOutOfBandManagementForZoneParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableOutOfBandManagementForZoneParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *EnableOutOfBandManagementForZoneParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableOutOfBandManagementForZoneParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new EnableOutOfBandManagementForZoneParams instance,
 // as then you are sure you have configured all required params
 func (s *ZoneService) NewEnableOutOfBandManagementForZoneParams(zoneid string) *EnableOutOfBandManagementForZoneParams {
-	p := &EnableOutOfBandManagementForZoneParams{}
-	p.p = make(map[string]interface{})
-	p.p["zoneid"] = zoneid
-	return p
+	P := &EnableOutOfBandManagementForZoneParams{}
+	P.P = make(map[string]interface{})
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Enables out-of-band management for a zone
@@ -784,42 +784,42 @@ type EnableOutOfBandManagementForZoneResponse struct {
 }
 
 type DisableHAForZoneParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *DisableHAForZoneParams) toURLValues() url.Values {
+func (P *DisableHAForZoneParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *DisableHAForZoneParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisableHAForZoneParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *DisableHAForZoneParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *DisableHAForZoneParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new DisableHAForZoneParams instance,
 // as then you are sure you have configured all required params
 func (s *ZoneService) NewDisableHAForZoneParams(zoneid string) *DisableHAForZoneParams {
-	p := &DisableHAForZoneParams{}
-	p.p = make(map[string]interface{})
-	p.p["zoneid"] = zoneid
-	return p
+	P := &DisableHAForZoneParams{}
+	P.P = make(map[string]interface{})
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Disables HA for a zone
@@ -860,42 +860,42 @@ type DisableHAForZoneResponse struct {
 }
 
 type EnableHAForZoneParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *EnableHAForZoneParams) toURLValues() url.Values {
+func (P *EnableHAForZoneParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *EnableHAForZoneParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableHAForZoneParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *EnableHAForZoneParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *EnableHAForZoneParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new EnableHAForZoneParams instance,
 // as then you are sure you have configured all required params
 func (s *ZoneService) NewEnableHAForZoneParams(zoneid string) *EnableHAForZoneParams {
-	p := &EnableHAForZoneParams{}
-	p.p = make(map[string]interface{})
-	p.p["zoneid"] = zoneid
-	return p
+	P := &EnableHAForZoneParams{}
+	P.P = make(map[string]interface{})
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Enables HA for a zone
@@ -936,151 +936,151 @@ type EnableHAForZoneResponse struct {
 }
 
 type ListDedicatedZonesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListDedicatedZonesParams) toURLValues() url.Values {
+func (P *ListDedicatedZonesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["account"]; found {
+	if v, found := P.P["account"]; found {
 		u.Set("account", v.(string))
 	}
-	if v, found := p.p["affinitygroupid"]; found {
+	if v, found := P.P["affinitygroupid"]; found {
 		u.Set("affinitygroupid", v.(string))
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ListDedicatedZonesParams) SetAccount(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["account"] = v
+	P.P["account"] = v
 }
 
-func (p *ListDedicatedZonesParams) GetAccount() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["account"].(string)
+	value, ok := P.P["account"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedZonesParams) SetAffinitygroupid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) SetAffinitygroupid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["affinitygroupid"] = v
+	P.P["affinitygroupid"] = v
 }
 
-func (p *ListDedicatedZonesParams) GetAffinitygroupid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) GetAffinitygroupid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["affinitygroupid"].(string)
+	value, ok := P.P["affinitygroupid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedZonesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListDedicatedZonesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedZonesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListDedicatedZonesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListDedicatedZonesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListDedicatedZonesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListDedicatedZonesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListDedicatedZonesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListDedicatedZonesParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ListDedicatedZonesParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListDedicatedZonesParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListDedicatedZonesParams instance,
 // as then you are sure you have configured all required params
 func (s *ZoneService) NewListDedicatedZonesParams() *ListDedicatedZonesParams {
-	p := &ListDedicatedZonesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListDedicatedZonesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // List dedicated zones.
@@ -1115,50 +1115,50 @@ type DedicatedZone struct {
 }
 
 type ListZonesParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ListZonesParams) toURLValues() url.Values {
+func (P *ListZonesParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["available"]; found {
+	if v, found := P.P["available"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("available", vv)
 	}
-	if v, found := p.p["domainid"]; found {
+	if v, found := P.P["domainid"]; found {
 		u.Set("domainid", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["keyword"]; found {
+	if v, found := P.P["keyword"]; found {
 		u.Set("keyword", v.(string))
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["networktype"]; found {
+	if v, found := P.P["networktype"]; found {
 		u.Set("networktype", v.(string))
 	}
-	if v, found := p.p["page"]; found {
+	if v, found := P.P["page"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("page", vv)
 	}
-	if v, found := p.p["pagesize"]; found {
+	if v, found := P.P["pagesize"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("pagesize", vv)
 	}
-	if v, found := p.p["showcapacities"]; found {
+	if v, found := P.P["showcapacities"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showcapacities", vv)
 	}
-	if v, found := p.p["showicon"]; found {
+	if v, found := P.P["showicon"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("showicon", vv)
 	}
-	if v, found := p.p["tags"]; found {
+	if v, found := P.P["tags"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
@@ -1168,193 +1168,193 @@ func (p *ListZonesParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *ListZonesParams) SetAvailable(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) SetAvailable(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["available"] = v
+	P.P["available"] = v
 }
 
-func (p *ListZonesParams) GetAvailable() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) GetAvailable() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["available"].(bool)
+	value, ok := P.P["available"].(bool)
 	return value, ok
 }
 
-func (p *ListZonesParams) SetDomainid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) SetDomainid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domainid"] = v
+	P.P["domainid"] = v
 }
 
-func (p *ListZonesParams) GetDomainid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) GetDomainid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domainid"].(string)
+	value, ok := P.P["domainid"].(string)
 	return value, ok
 }
 
-func (p *ListZonesParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *ListZonesParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *ListZonesParams) SetKeyword(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) SetKeyword(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["keyword"] = v
+	P.P["keyword"] = v
 }
 
-func (p *ListZonesParams) GetKeyword() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) GetKeyword() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["keyword"].(string)
+	value, ok := P.P["keyword"].(string)
 	return value, ok
 }
 
-func (p *ListZonesParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *ListZonesParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *ListZonesParams) SetNetworktype(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) SetNetworktype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["networktype"] = v
+	P.P["networktype"] = v
 }
 
-func (p *ListZonesParams) GetNetworktype() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) GetNetworktype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["networktype"].(string)
+	value, ok := P.P["networktype"].(string)
 	return value, ok
 }
 
-func (p *ListZonesParams) SetPage(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) SetPage(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["page"] = v
+	P.P["page"] = v
 }
 
-func (p *ListZonesParams) GetPage() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) GetPage() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["page"].(int)
+	value, ok := P.P["page"].(int)
 	return value, ok
 }
 
-func (p *ListZonesParams) SetPagesize(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) SetPagesize(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["pagesize"] = v
+	P.P["pagesize"] = v
 }
 
-func (p *ListZonesParams) GetPagesize() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) GetPagesize() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["pagesize"].(int)
+	value, ok := P.P["pagesize"].(int)
 	return value, ok
 }
 
-func (p *ListZonesParams) SetShowcapacities(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) SetShowcapacities(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showcapacities"] = v
+	P.P["showcapacities"] = v
 }
 
-func (p *ListZonesParams) GetShowcapacities() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) GetShowcapacities() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showcapacities"].(bool)
+	value, ok := P.P["showcapacities"].(bool)
 	return value, ok
 }
 
-func (p *ListZonesParams) SetShowicon(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) SetShowicon(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["showicon"] = v
+	P.P["showicon"] = v
 }
 
-func (p *ListZonesParams) GetShowicon() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) GetShowicon() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["showicon"].(bool)
+	value, ok := P.P["showicon"].(bool)
 	return value, ok
 }
 
-func (p *ListZonesParams) SetTags(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) SetTags(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["tags"] = v
+	P.P["tags"] = v
 }
 
-func (p *ListZonesParams) GetTags() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ListZonesParams) GetTags() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["tags"].(map[string]string)
+	value, ok := P.P["tags"].(map[string]string)
 	return value, ok
 }
 
 // You should always use this function to get a new ListZonesParams instance,
 // as then you are sure you have configured all required params
 func (s *ZoneService) NewListZonesParams() *ListZonesParams {
-	p := &ListZonesParams{}
-	p.p = make(map[string]interface{})
-	return p
+	P := &ListZonesParams{}
+	P.P = make(map[string]interface{})
+	return P
 }
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ZoneService) GetZoneID(name string, opts ...OptionFunc) (string, int, error) {
-	p := &ListZonesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListZonesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["name"] = name
+	P.P["name"] = name
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return "", -1, err
 		}
 	}
 
-	l, err := s.ListZones(p)
+	l, err := s.ListZones(P)
 	if err != nil {
 		return "", -1, err
 	}
@@ -1393,18 +1393,18 @@ func (s *ZoneService) GetZoneByName(name string, opts ...OptionFunc) (*Zone, int
 
 // This is a courtesy helper function, which in some cases may not work as expected!
 func (s *ZoneService) GetZoneByID(id string, opts ...OptionFunc) (*Zone, int, error) {
-	p := &ListZonesParams{}
-	p.p = make(map[string]interface{})
+	P := &ListZonesParams{}
+	P.P = make(map[string]interface{})
 
-	p.p["id"] = id
+	P.P["id"] = id
 
 	for _, fn := range append(s.cs.options, opts...) {
-		if err := fn(s.cs, p); err != nil {
+		if err := fn(s.cs, P); err != nil {
 			return nil, -1, err
 		}
 	}
 
-	l, err := s.ListZones(p)
+	l, err := s.ListZones(P)
 	if err != nil {
 		if strings.Contains(err.Error(), fmt.Sprintf(
 			"Invalid parameter id value=%s due to incorrect long value format, "+
@@ -1490,42 +1490,42 @@ type ZoneCapacity struct {
 }
 
 type ReleaseDedicatedZoneParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *ReleaseDedicatedZoneParams) toURLValues() url.Values {
+func (P *ReleaseDedicatedZoneParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["zoneid"]; found {
+	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
 	return u
 }
 
-func (p *ReleaseDedicatedZoneParams) SetZoneid(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseDedicatedZoneParams) SetZoneid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["zoneid"] = v
+	P.P["zoneid"] = v
 }
 
-func (p *ReleaseDedicatedZoneParams) GetZoneid() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *ReleaseDedicatedZoneParams) GetZoneid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["zoneid"].(string)
+	value, ok := P.P["zoneid"].(string)
 	return value, ok
 }
 
 // You should always use this function to get a new ReleaseDedicatedZoneParams instance,
 // as then you are sure you have configured all required params
 func (s *ZoneService) NewReleaseDedicatedZoneParams(zoneid string) *ReleaseDedicatedZoneParams {
-	p := &ReleaseDedicatedZoneParams{}
-	p.p = make(map[string]interface{})
-	p.p["zoneid"] = zoneid
-	return p
+	P := &ReleaseDedicatedZoneParams{}
+	P.P = make(map[string]interface{})
+	P.P["zoneid"] = zoneid
+	return P
 }
 
 // Release dedication of zone
@@ -1566,338 +1566,338 @@ type ReleaseDedicatedZoneResponse struct {
 }
 
 type UpdateZoneParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *UpdateZoneParams) toURLValues() url.Values {
+func (P *UpdateZoneParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
-	if v, found := p.p["allocationstate"]; found {
+	if v, found := P.P["allocationstate"]; found {
 		u.Set("allocationstate", v.(string))
 	}
-	if v, found := p.p["details"]; found {
+	if v, found := P.P["details"]; found {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("details[%d].key", i), k)
 			u.Set(fmt.Sprintf("details[%d].value", i), m[k])
 		}
 	}
-	if v, found := p.p["dhcpprovider"]; found {
+	if v, found := P.P["dhcpprovider"]; found {
 		u.Set("dhcpprovider", v.(string))
 	}
-	if v, found := p.p["dns1"]; found {
+	if v, found := P.P["dns1"]; found {
 		u.Set("dns1", v.(string))
 	}
-	if v, found := p.p["dns2"]; found {
+	if v, found := P.P["dns2"]; found {
 		u.Set("dns2", v.(string))
 	}
-	if v, found := p.p["dnssearchorder"]; found {
+	if v, found := P.P["dnssearchorder"]; found {
 		vv := strings.Join(v.([]string), ",")
 		u.Set("dnssearchorder", vv)
 	}
-	if v, found := p.p["domain"]; found {
+	if v, found := P.P["domain"]; found {
 		u.Set("domain", v.(string))
 	}
-	if v, found := p.p["guestcidraddress"]; found {
+	if v, found := P.P["guestcidraddress"]; found {
 		u.Set("guestcidraddress", v.(string))
 	}
-	if v, found := p.p["id"]; found {
+	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
-	if v, found := p.p["internaldns1"]; found {
+	if v, found := P.P["internaldns1"]; found {
 		u.Set("internaldns1", v.(string))
 	}
-	if v, found := p.p["internaldns2"]; found {
+	if v, found := P.P["internaldns2"]; found {
 		u.Set("internaldns2", v.(string))
 	}
-	if v, found := p.p["ip6dns1"]; found {
+	if v, found := P.P["ip6dns1"]; found {
 		u.Set("ip6dns1", v.(string))
 	}
-	if v, found := p.p["ip6dns2"]; found {
+	if v, found := P.P["ip6dns2"]; found {
 		u.Set("ip6dns2", v.(string))
 	}
-	if v, found := p.p["ispublic"]; found {
+	if v, found := P.P["ispublic"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("ispublic", vv)
 	}
-	if v, found := p.p["localstorageenabled"]; found {
+	if v, found := P.P["localstorageenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("localstorageenabled", vv)
 	}
-	if v, found := p.p["name"]; found {
+	if v, found := P.P["name"]; found {
 		u.Set("name", v.(string))
 	}
-	if v, found := p.p["sortkey"]; found {
+	if v, found := P.P["sortkey"]; found {
 		vv := strconv.Itoa(v.(int))
 		u.Set("sortkey", vv)
 	}
 	return u
 }
 
-func (p *UpdateZoneParams) SetAllocationstate(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetAllocationstate(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["allocationstate"] = v
+	P.P["allocationstate"] = v
 }
 
-func (p *UpdateZoneParams) GetAllocationstate() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetAllocationstate() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["allocationstate"].(string)
+	value, ok := P.P["allocationstate"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetDetails(v map[string]string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetDetails(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["details"] = v
+	P.P["details"] = v
 }
 
-func (p *UpdateZoneParams) GetDetails() (map[string]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetDetails() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["details"].(map[string]string)
+	value, ok := P.P["details"].(map[string]string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetDhcpprovider(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetDhcpprovider(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["dhcpprovider"] = v
+	P.P["dhcpprovider"] = v
 }
 
-func (p *UpdateZoneParams) GetDhcpprovider() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetDhcpprovider() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["dhcpprovider"].(string)
+	value, ok := P.P["dhcpprovider"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetDns1(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetDns1(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["dns1"] = v
+	P.P["dns1"] = v
 }
 
-func (p *UpdateZoneParams) GetDns1() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetDns1() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["dns1"].(string)
+	value, ok := P.P["dns1"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetDns2(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetDns2(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["dns2"] = v
+	P.P["dns2"] = v
 }
 
-func (p *UpdateZoneParams) GetDns2() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetDns2() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["dns2"].(string)
+	value, ok := P.P["dns2"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetDnssearchorder(v []string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetDnssearchorder(v []string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["dnssearchorder"] = v
+	P.P["dnssearchorder"] = v
 }
 
-func (p *UpdateZoneParams) GetDnssearchorder() ([]string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetDnssearchorder() ([]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["dnssearchorder"].([]string)
+	value, ok := P.P["dnssearchorder"].([]string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetDomain(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetDomain(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["domain"] = v
+	P.P["domain"] = v
 }
 
-func (p *UpdateZoneParams) GetDomain() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetDomain() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["domain"].(string)
+	value, ok := P.P["domain"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetGuestcidraddress(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetGuestcidraddress(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["guestcidraddress"] = v
+	P.P["guestcidraddress"] = v
 }
 
-func (p *UpdateZoneParams) GetGuestcidraddress() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetGuestcidraddress() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["guestcidraddress"].(string)
+	value, ok := P.P["guestcidraddress"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetId(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["id"] = v
+	P.P["id"] = v
 }
 
-func (p *UpdateZoneParams) GetId() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["id"].(string)
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetInternaldns1(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetInternaldns1(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["internaldns1"] = v
+	P.P["internaldns1"] = v
 }
 
-func (p *UpdateZoneParams) GetInternaldns1() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetInternaldns1() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["internaldns1"].(string)
+	value, ok := P.P["internaldns1"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetInternaldns2(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetInternaldns2(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["internaldns2"] = v
+	P.P["internaldns2"] = v
 }
 
-func (p *UpdateZoneParams) GetInternaldns2() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetInternaldns2() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["internaldns2"].(string)
+	value, ok := P.P["internaldns2"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetIp6dns1(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetIp6dns1(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ip6dns1"] = v
+	P.P["ip6dns1"] = v
 }
 
-func (p *UpdateZoneParams) GetIp6dns1() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetIp6dns1() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ip6dns1"].(string)
+	value, ok := P.P["ip6dns1"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetIp6dns2(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetIp6dns2(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ip6dns2"] = v
+	P.P["ip6dns2"] = v
 }
 
-func (p *UpdateZoneParams) GetIp6dns2() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetIp6dns2() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ip6dns2"].(string)
+	value, ok := P.P["ip6dns2"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetIspublic(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetIspublic(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["ispublic"] = v
+	P.P["ispublic"] = v
 }
 
-func (p *UpdateZoneParams) GetIspublic() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetIspublic() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["ispublic"].(bool)
+	value, ok := P.P["ispublic"].(bool)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetLocalstorageenabled(v bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetLocalstorageenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["localstorageenabled"] = v
+	P.P["localstorageenabled"] = v
 }
 
-func (p *UpdateZoneParams) GetLocalstorageenabled() (bool, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetLocalstorageenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["localstorageenabled"].(bool)
+	value, ok := P.P["localstorageenabled"].(bool)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetName(v string) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["name"] = v
+	P.P["name"] = v
 }
 
-func (p *UpdateZoneParams) GetName() (string, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["name"].(string)
+	value, ok := P.P["name"].(string)
 	return value, ok
 }
 
-func (p *UpdateZoneParams) SetSortkey(v int) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) SetSortkey(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p["sortkey"] = v
+	P.P["sortkey"] = v
 }
 
-func (p *UpdateZoneParams) GetSortkey() (int, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *UpdateZoneParams) GetSortkey() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p["sortkey"].(int)
+	value, ok := P.P["sortkey"].(int)
 	return value, ok
 }
 
 // You should always use this function to get a new UpdateZoneParams instance,
 // as then you are sure you have configured all required params
 func (s *ZoneService) NewUpdateZoneParams(id string) *UpdateZoneParams {
-	p := &UpdateZoneParams{}
-	p.p = make(map[string]interface{})
-	p.p["id"] = id
-	return p
+	P := &UpdateZoneParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
 }
 
 // Updates a Zone.
