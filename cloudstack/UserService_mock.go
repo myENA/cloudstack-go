@@ -35,6 +35,10 @@ type MockUserServiceIface struct {
 	recorder *MockUserServiceIfaceMockRecorder
 }
 
+func (m *MockUserServiceIface) GetUserByUsernameAndDomain(username string, domainid string, opts ...OptionFunc) (*User, int, error) {
+	panic("implement me")
+}
+
 // MockUserServiceIfaceMockRecorder is the mock recorder for MockUserServiceIface.
 type MockUserServiceIfaceMockRecorder struct {
 	mock *MockUserServiceIface
