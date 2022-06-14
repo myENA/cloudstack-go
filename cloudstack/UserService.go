@@ -38,6 +38,8 @@ type UserServiceIface interface {
 	NewEnableUserParams(id string) *EnableUserParams
 	GetUser(P *GetUserParams) (*GetUserResponse, error)
 	NewGetUserParams(userapikey string) *GetUserParams
+	GetUserKeys(P *GetUserKeysParams) (*GetUserKeysResponse, error)
+	NewGetUserKeysParams(id string) *GetUserKeysParams
 	GetVirtualMachineUserData(P *GetVirtualMachineUserDataParams) (*GetVirtualMachineUserDataResponse, error)
 	NewGetVirtualMachineUserDataParams(virtualmachineid string) *GetVirtualMachineUserDataParams
 	ListUsers(P *ListUsersParams) (*ListUsersResponse, error)
@@ -639,6 +641,65 @@ type GetUserResponse struct {
 	Timezone            string `json:"timezone"`
 	Username            string `json:"username"`
 	Usersource          string `json:"usersource"`
+}
+
+type GetUserKeysParams struct {
+	P map[string]interface{}
+}
+
+func (P *GetUserKeysParams) toURLValues() url.Values {
+	u := url.Values{}
+	if P.P == nil {
+		return u
+	}
+	if v, found := P.P["id"]; found {
+		u.Set("id", v.(string))
+	}
+	return u
+}
+
+func (P *GetUserKeysParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["id"] = v
+}
+
+func (P *GetUserKeysParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["id"].(string)
+	return value, ok
+}
+
+// You should always use this function to get a new NewGetUserKeysParams instance,
+// as then you are sure you have configured all required params
+func (s *UserService) NewGetUserKeysParams(id string) *GetUserKeysParams {
+	P := &GetUserKeysParams{}
+	P.P = make(map[string]interface{})
+	P.P["id"] = id
+	return P
+}
+
+// Find user keys
+func (s *UserService) GetUserKeys(p *GetUserKeysParams) (*GetUserKeysResponse, error) {
+	resp, err := s.cs.newRequest("getUserKeys", p.toURLValues())
+	if err != nil {
+		return nil, err
+	}
+
+	var r GetUserKeysResponse
+	if err := json.Unmarshal(resp, &r); err != nil {
+		return nil, err
+	}
+
+	return &r, nil
+}
+
+type GetUserKeysResponse struct {
+	Apikey    string `json:"apikey"`
+	Secretkey string `json:"secretkey"`
 }
 
 type GetVirtualMachineUserDataParams struct {

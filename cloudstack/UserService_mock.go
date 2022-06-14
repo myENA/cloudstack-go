@@ -35,7 +35,15 @@ type MockUserServiceIface struct {
 	recorder *MockUserServiceIfaceMockRecorder
 }
 
+func (m *MockUserServiceIface) NewGetUserKeysParams(id string) *GetUserKeysParams {
+	panic("implement me")
+}
+
 func (m *MockUserServiceIface) GetUserByUsernameAndDomain(username string, domainid string, opts ...OptionFunc) (*User, int, error) {
+	panic("implement me")
+}
+
+func (m *MockUserServiceIface) GetUserKeys(p *GetUserKeysParams) (*GetUserKeysResponse, error) {
 	panic("implement me")
 }
 
