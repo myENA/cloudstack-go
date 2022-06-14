@@ -689,12 +689,16 @@ func (s *UserService) GetUserKeys(p *GetUserKeysParams) (*GetUserKeysResponse, e
 		return nil, err
 	}
 
-	var r GetUserKeysResponse
+	var r UserKeysResponse
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
 
-	return &r, nil
+	return &r.UserKeys, nil
+}
+
+type UserKeysResponse struct {
+	UserKeys GetUserKeysResponse `json:"userkeys"`
 }
 
 type GetUserKeysResponse struct {
