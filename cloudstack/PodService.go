@@ -28,22 +28,22 @@ import (
 )
 
 type PodServiceIface interface {
-	CreatePod(P *CreatePodParams) (*CreatePodResponse, error)
+	CreatePod(p *CreatePodParams) (*CreatePodResponse, error)
 	NewCreatePodParams(gateway string, name string, netmask string, startip string, zoneid string) *CreatePodParams
-	DedicatePod(P *DedicatePodParams) (*DedicatePodResponse, error)
+	DedicatePod(p *DedicatePodParams) (*DedicatePodResponse, error)
 	NewDedicatePodParams(domainid string, podid string) *DedicatePodParams
-	DeletePod(P *DeletePodParams) (*DeletePodResponse, error)
+	DeletePod(p *DeletePodParams) (*DeletePodResponse, error)
 	NewDeletePodParams(id string) *DeletePodParams
-	ListDedicatedPods(P *ListDedicatedPodsParams) (*ListDedicatedPodsResponse, error)
+	ListDedicatedPods(p *ListDedicatedPodsParams) (*ListDedicatedPodsResponse, error)
 	NewListDedicatedPodsParams() *ListDedicatedPodsParams
-	ListPods(P *ListPodsParams) (*ListPodsResponse, error)
+	ListPods(p *ListPodsParams) (*ListPodsResponse, error)
 	NewListPodsParams() *ListPodsParams
 	GetPodID(name string, opts ...OptionFunc) (string, int, error)
 	GetPodByName(name string, opts ...OptionFunc) (*Pod, int, error)
 	GetPodByID(id string, opts ...OptionFunc) (*Pod, int, error)
-	ReleaseDedicatedPod(P *ReleaseDedicatedPodParams) (*ReleaseDedicatedPodResponse, error)
+	ReleaseDedicatedPod(p *ReleaseDedicatedPodParams) (*ReleaseDedicatedPodResponse, error)
 	NewReleaseDedicatedPodParams(podid string) *ReleaseDedicatedPodParams
-	UpdatePod(P *UpdatePodParams) (*UpdatePodResponse, error)
+	UpdatePod(p *UpdatePodParams) (*UpdatePodResponse, error)
 	NewUpdatePodParams(id string) *UpdatePodParams
 }
 

@@ -28,15 +28,15 @@ import (
 )
 
 type NATServiceIface interface {
-	CreateIpForwardingRule(P *CreateIpForwardingRuleParams) (*CreateIpForwardingRuleResponse, error)
+	CreateIpForwardingRule(p *CreateIpForwardingRuleParams) (*CreateIpForwardingRuleResponse, error)
 	NewCreateIpForwardingRuleParams(ipaddressid string, protocol string, startport int) *CreateIpForwardingRuleParams
-	DeleteIpForwardingRule(P *DeleteIpForwardingRuleParams) (*DeleteIpForwardingRuleResponse, error)
+	DeleteIpForwardingRule(p *DeleteIpForwardingRuleParams) (*DeleteIpForwardingRuleResponse, error)
 	NewDeleteIpForwardingRuleParams(id string) *DeleteIpForwardingRuleParams
-	DisableStaticNat(P *DisableStaticNatParams) (*DisableStaticNatResponse, error)
+	DisableStaticNat(p *DisableStaticNatParams) (*DisableStaticNatResponse, error)
 	NewDisableStaticNatParams(ipaddressid string) *DisableStaticNatParams
-	EnableStaticNat(P *EnableStaticNatParams) (*EnableStaticNatResponse, error)
+	EnableStaticNat(p *EnableStaticNatParams) (*EnableStaticNatResponse, error)
 	NewEnableStaticNatParams(ipaddressid string, virtualmachineid string) *EnableStaticNatParams
-	ListIpForwardingRules(P *ListIpForwardingRulesParams) (*ListIpForwardingRulesResponse, error)
+	ListIpForwardingRules(p *ListIpForwardingRulesParams) (*ListIpForwardingRulesResponse, error)
 	NewListIpForwardingRulesParams() *ListIpForwardingRulesParams
 	GetIpForwardingRuleByID(id string, opts ...OptionFunc) (*IpForwardingRule, int, error)
 }

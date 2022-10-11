@@ -28,16 +28,16 @@ import (
 )
 
 type CustomServiceParams struct {
-	p map[string]interface{}
+	P map[string]interface{}
 }
 
-func (p *CustomServiceParams) toURLValues() url.Values {
+func (P *CustomServiceParams) toURLValues() url.Values {
 	u := url.Values{}
-	if p.p == nil {
+	if P.P == nil {
 		return u
 	}
 
-	for k, v := range p.p {
+	for k, v := range P.P {
 		switch t := v.(type) {
 		case bool:
 			u.Set(k, strconv.FormatBool(t))
@@ -62,22 +62,30 @@ func (p *CustomServiceParams) toURLValues() url.Values {
 	return u
 }
 
-func (p *CustomServiceParams) SetParam(param string, v interface{}) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CustomServiceParams) SetParam(param string, v interface{}) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	p.p[param] = v
+	P.P[param] = v
 }
-func (p *CustomServiceParams) GetParam(param string) (interface{}, bool) {
-	if p.p == nil {
-		p.p = make(map[string]interface{})
+func (P *CustomServiceParams) GetParam(param string) (interface{}, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
 	}
-	value, ok := p.p[param].(interface{})
+	value, ok := P.P[param].(interface{})
 	return value, ok
 }
 
 func (s *CustomService) CustomRequest(api string, p *CustomServiceParams, result interface{}) error {
 	resp, err := s.cs.newRequest(api, p.toURLValues())
+	if err != nil {
+		return err
+	}
+
+	return json.Unmarshal(resp, result)
+}
+func (s *CustomService) CustomPostRequest(api string, p *CustomServiceParams, result interface{}) error {
+	resp, err := s.cs.newPostRequest(api, p.toURLValues())
 	if err != nil {
 		return err
 	}

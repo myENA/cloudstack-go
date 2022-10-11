@@ -26,7 +26,7 @@ import (
 )
 
 type CertificateServiceIface interface {
-	UploadCustomCertificate(P *UploadCustomCertificateParams) (*UploadCustomCertificateResponse, error)
+	UploadCustomCertificate(p *UploadCustomCertificateParams) (*UploadCustomCertificateResponse, error)
 	NewUploadCustomCertificateParams(certificate string, domainsuffix string) *UploadCustomCertificateParams
 }
 

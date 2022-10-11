@@ -27,9 +27,9 @@ import (
 )
 
 type SwiftServiceIface interface {
-	AddSwift(P *AddSwiftParams) (*AddSwiftResponse, error)
+	AddSwift(p *AddSwiftParams) (*AddSwiftResponse, error)
 	NewAddSwiftParams(url string) *AddSwiftParams
-	ListSwifts(P *ListSwiftsParams) (*ListSwiftsResponse, error)
+	ListSwifts(p *ListSwiftsParams) (*ListSwiftsResponse, error)
 	NewListSwiftsParams() *ListSwiftsParams
 	GetSwiftID(keyword string, opts ...OptionFunc) (string, int, error)
 }

@@ -26,11 +26,11 @@ import (
 )
 
 type BigSwitchBCFServiceIface interface {
-	AddBigSwitchBcfDevice(P *AddBigSwitchBcfDeviceParams) (*AddBigSwitchBcfDeviceResponse, error)
+	AddBigSwitchBcfDevice(p *AddBigSwitchBcfDeviceParams) (*AddBigSwitchBcfDeviceResponse, error)
 	NewAddBigSwitchBcfDeviceParams(hostname string, nat bool, password string, physicalnetworkid string, username string) *AddBigSwitchBcfDeviceParams
-	DeleteBigSwitchBcfDevice(P *DeleteBigSwitchBcfDeviceParams) (*DeleteBigSwitchBcfDeviceResponse, error)
+	DeleteBigSwitchBcfDevice(p *DeleteBigSwitchBcfDeviceParams) (*DeleteBigSwitchBcfDeviceResponse, error)
 	NewDeleteBigSwitchBcfDeviceParams(bcfdeviceid string) *DeleteBigSwitchBcfDeviceParams
-	ListBigSwitchBcfDevices(P *ListBigSwitchBcfDevicesParams) (*ListBigSwitchBcfDevicesResponse, error)
+	ListBigSwitchBcfDevices(p *ListBigSwitchBcfDevicesParams) (*ListBigSwitchBcfDevicesResponse, error)
 	NewListBigSwitchBcfDevicesParams() *ListBigSwitchBcfDevicesParams
 }
 
@@ -237,7 +237,7 @@ func (s *BigSwitchBCFService) NewDeleteBigSwitchBcfDeviceParams(bcfdeviceid stri
 	return P
 }
 
-//  delete a BigSwitch BCF Controller device
+// delete a BigSwitch BCF Controller device
 func (s *BigSwitchBCFService) DeleteBigSwitchBcfDevice(p *DeleteBigSwitchBcfDeviceParams) (*DeleteBigSwitchBcfDeviceResponse, error) {
 	resp, err := s.cs.newRequest("deleteBigSwitchBcfDevice", p.toURLValues())
 	if err != nil {

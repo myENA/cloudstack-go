@@ -28,29 +28,29 @@ import (
 )
 
 type ISOServiceIface interface {
-	AttachIso(P *AttachIsoParams) (*AttachIsoResponse, error)
+	AttachIso(p *AttachIsoParams) (*AttachIsoResponse, error)
 	NewAttachIsoParams(id string, virtualmachineid string) *AttachIsoParams
-	CopyIso(P *CopyIsoParams) (*CopyIsoResponse, error)
+	CopyIso(p *CopyIsoParams) (*CopyIsoResponse, error)
 	NewCopyIsoParams(id string) *CopyIsoParams
-	DeleteIso(P *DeleteIsoParams) (*DeleteIsoResponse, error)
+	DeleteIso(p *DeleteIsoParams) (*DeleteIsoResponse, error)
 	NewDeleteIsoParams(id string) *DeleteIsoParams
-	DetachIso(P *DetachIsoParams) (*DetachIsoResponse, error)
+	DetachIso(p *DetachIsoParams) (*DetachIsoResponse, error)
 	NewDetachIsoParams(virtualmachineid string) *DetachIsoParams
-	ExtractIso(P *ExtractIsoParams) (*ExtractIsoResponse, error)
+	ExtractIso(p *ExtractIsoParams) (*ExtractIsoResponse, error)
 	NewExtractIsoParams(id string, mode string) *ExtractIsoParams
-	ListIsoPermissions(P *ListIsoPermissionsParams) (*ListIsoPermissionsResponse, error)
+	ListIsoPermissions(p *ListIsoPermissionsParams) (*ListIsoPermissionsResponse, error)
 	NewListIsoPermissionsParams(id string) *ListIsoPermissionsParams
 	GetIsoPermissionByID(id string, opts ...OptionFunc) (*IsoPermission, int, error)
-	ListIsos(P *ListIsosParams) (*ListIsosResponse, error)
+	ListIsos(p *ListIsosParams) (*ListIsosResponse, error)
 	NewListIsosParams() *ListIsosParams
 	GetIsoID(name string, isofilter string, zoneid string, opts ...OptionFunc) (string, int, error)
 	GetIsoByName(name string, isofilter string, zoneid string, opts ...OptionFunc) (*Iso, int, error)
 	GetIsoByID(id string, opts ...OptionFunc) (*Iso, int, error)
-	RegisterIso(P *RegisterIsoParams) (*RegisterIsoResponse, error)
+	RegisterIso(p *RegisterIsoParams) (*RegisterIsoResponse, error)
 	NewRegisterIsoParams(displaytext string, name string, url string, zoneid string) *RegisterIsoParams
-	UpdateIso(P *UpdateIsoParams) (*UpdateIsoResponse, error)
+	UpdateIso(p *UpdateIsoParams) (*UpdateIsoResponse, error)
 	NewUpdateIsoParams(id string) *UpdateIsoParams
-	UpdateIsoPermissions(P *UpdateIsoPermissionsParams) (*UpdateIsoPermissionsResponse, error)
+	UpdateIsoPermissions(p *UpdateIsoPermissionsParams) (*UpdateIsoPermissionsResponse, error)
 	NewUpdateIsoPermissionsParams(id string) *UpdateIsoPermissionsParams
 }
 
@@ -2030,6 +2030,10 @@ func (s *ISOService) NewRegisterIsoParams(displaytext string, name string, url s
 func (s *ISOService) RegisterIso(p *RegisterIsoParams) (*RegisterIsoResponse, error) {
 	resp, err := s.cs.newRequest("registerIso", p.toURLValues())
 	if err != nil {
+		return nil, err
+	}
+
+	if resp, err = getRawValue(resp); err != nil {
 		return nil, err
 	}
 

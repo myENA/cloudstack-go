@@ -26,11 +26,11 @@ import (
 )
 
 type StoragePoolServiceIface interface {
-	CancelStorageMaintenance(P *CancelStorageMaintenanceParams) (*CancelStorageMaintenanceResponse, error)
+	CancelStorageMaintenance(p *CancelStorageMaintenanceParams) (*CancelStorageMaintenanceResponse, error)
 	NewCancelStorageMaintenanceParams(id string) *CancelStorageMaintenanceParams
-	EnableStorageMaintenance(P *EnableStorageMaintenanceParams) (*EnableStorageMaintenanceResponse, error)
+	EnableStorageMaintenance(p *EnableStorageMaintenanceParams) (*EnableStorageMaintenanceResponse, error)
 	NewEnableStorageMaintenanceParams(id string) *EnableStorageMaintenanceParams
-	ListStorageProviders(P *ListStorageProvidersParams) (*ListStorageProvidersResponse, error)
+	ListStorageProviders(p *ListStorageProvidersParams) (*ListStorageProvidersResponse, error)
 	NewListStorageProvidersParams(storagePoolType string) *ListStorageProvidersParams
 }
 

@@ -25,7 +25,7 @@ import (
 )
 
 type QuotaServiceIface interface {
-	QuotaIsEnabled(P *QuotaIsEnabledParams) (*QuotaIsEnabledResponse, error)
+	QuotaIsEnabled(p *QuotaIsEnabledParams) (*QuotaIsEnabledResponse, error)
 	NewQuotaIsEnabledParams() *QuotaIsEnabledParams
 }
 

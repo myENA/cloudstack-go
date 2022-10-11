@@ -27,14 +27,14 @@ import (
 )
 
 type BrocadeVCSServiceIface interface {
-	AddBrocadeVcsDevice(P *AddBrocadeVcsDeviceParams) (*AddBrocadeVcsDeviceResponse, error)
+	AddBrocadeVcsDevice(p *AddBrocadeVcsDeviceParams) (*AddBrocadeVcsDeviceResponse, error)
 	NewAddBrocadeVcsDeviceParams(hostname string, password string, physicalnetworkid string, username string) *AddBrocadeVcsDeviceParams
-	DeleteBrocadeVcsDevice(P *DeleteBrocadeVcsDeviceParams) (*DeleteBrocadeVcsDeviceResponse, error)
+	DeleteBrocadeVcsDevice(p *DeleteBrocadeVcsDeviceParams) (*DeleteBrocadeVcsDeviceResponse, error)
 	NewDeleteBrocadeVcsDeviceParams(vcsdeviceid string) *DeleteBrocadeVcsDeviceParams
-	ListBrocadeVcsDeviceNetworks(P *ListBrocadeVcsDeviceNetworksParams) (*ListBrocadeVcsDeviceNetworksResponse, error)
+	ListBrocadeVcsDeviceNetworks(p *ListBrocadeVcsDeviceNetworksParams) (*ListBrocadeVcsDeviceNetworksResponse, error)
 	NewListBrocadeVcsDeviceNetworksParams(vcsdeviceid string) *ListBrocadeVcsDeviceNetworksParams
 	GetBrocadeVcsDeviceNetworkID(keyword string, vcsdeviceid string, opts ...OptionFunc) (string, int, error)
-	ListBrocadeVcsDevices(P *ListBrocadeVcsDevicesParams) (*ListBrocadeVcsDevicesResponse, error)
+	ListBrocadeVcsDevices(p *ListBrocadeVcsDevicesParams) (*ListBrocadeVcsDevicesResponse, error)
 	NewListBrocadeVcsDevicesParams() *ListBrocadeVcsDevicesParams
 }
 
@@ -218,7 +218,7 @@ func (s *BrocadeVCSService) NewDeleteBrocadeVcsDeviceParams(vcsdeviceid string) 
 	return P
 }
 
-//  delete a Brocade VCS Switch
+// delete a Brocade VCS Switch
 func (s *BrocadeVCSService) DeleteBrocadeVcsDevice(p *DeleteBrocadeVcsDeviceParams) (*DeleteBrocadeVcsDeviceResponse, error) {
 	resp, err := s.cs.newRequest("deleteBrocadeVcsDevice", p.toURLValues())
 	if err != nil {

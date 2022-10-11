@@ -28,24 +28,24 @@ import (
 )
 
 type SystemVMServiceIface interface {
-	ChangeServiceForSystemVm(P *ChangeServiceForSystemVmParams) (*ChangeServiceForSystemVmResponse, error)
+	ChangeServiceForSystemVm(p *ChangeServiceForSystemVmParams) (*ChangeServiceForSystemVmResponse, error)
 	NewChangeServiceForSystemVmParams(id string, serviceofferingid string) *ChangeServiceForSystemVmParams
-	DestroySystemVm(P *DestroySystemVmParams) (*DestroySystemVmResponse, error)
+	DestroySystemVm(p *DestroySystemVmParams) (*DestroySystemVmResponse, error)
 	NewDestroySystemVmParams(id string) *DestroySystemVmParams
-	ListSystemVms(P *ListSystemVmsParams) (*ListSystemVmsResponse, error)
+	ListSystemVms(p *ListSystemVmsParams) (*ListSystemVmsResponse, error)
 	NewListSystemVmsParams() *ListSystemVmsParams
 	GetSystemVmID(name string, opts ...OptionFunc) (string, int, error)
 	GetSystemVmByName(name string, opts ...OptionFunc) (*SystemVm, int, error)
 	GetSystemVmByID(id string, opts ...OptionFunc) (*SystemVm, int, error)
-	MigrateSystemVm(P *MigrateSystemVmParams) (*MigrateSystemVmResponse, error)
+	MigrateSystemVm(p *MigrateSystemVmParams) (*MigrateSystemVmResponse, error)
 	NewMigrateSystemVmParams(virtualmachineid string) *MigrateSystemVmParams
-	RebootSystemVm(P *RebootSystemVmParams) (*RebootSystemVmResponse, error)
+	RebootSystemVm(p *RebootSystemVmParams) (*RebootSystemVmResponse, error)
 	NewRebootSystemVmParams(id string) *RebootSystemVmParams
-	ScaleSystemVm(P *ScaleSystemVmParams) (*ScaleSystemVmResponse, error)
+	ScaleSystemVm(p *ScaleSystemVmParams) (*ScaleSystemVmResponse, error)
 	NewScaleSystemVmParams(id string, serviceofferingid string) *ScaleSystemVmParams
-	StartSystemVm(P *StartSystemVmParams) (*StartSystemVmResponse, error)
+	StartSystemVm(p *StartSystemVmParams) (*StartSystemVmResponse, error)
 	NewStartSystemVmParams(id string) *StartSystemVmParams
-	StopSystemVm(P *StopSystemVmParams) (*StopSystemVmResponse, error)
+	StopSystemVm(p *StopSystemVmParams) (*StopSystemVmResponse, error)
 	NewStopSystemVmParams(id string) *StopSystemVmParams
 }
 

@@ -28,20 +28,20 @@ import (
 )
 
 type UCSServiceIface interface {
-	AddUcsManager(P *AddUcsManagerParams) (*AddUcsManagerResponse, error)
+	AddUcsManager(p *AddUcsManagerParams) (*AddUcsManagerResponse, error)
 	NewAddUcsManagerParams(password string, url string, username string, zoneid string) *AddUcsManagerParams
-	AssociateUcsProfileToBlade(P *AssociateUcsProfileToBladeParams) (*AssociateUcsProfileToBladeResponse, error)
+	AssociateUcsProfileToBlade(p *AssociateUcsProfileToBladeParams) (*AssociateUcsProfileToBladeResponse, error)
 	NewAssociateUcsProfileToBladeParams(bladeid string, profiledn string, ucsmanagerid string) *AssociateUcsProfileToBladeParams
-	DeleteUcsManager(P *DeleteUcsManagerParams) (*DeleteUcsManagerResponse, error)
+	DeleteUcsManager(p *DeleteUcsManagerParams) (*DeleteUcsManagerResponse, error)
 	NewDeleteUcsManagerParams(ucsmanagerid string) *DeleteUcsManagerParams
-	ListUcsBlades(P *ListUcsBladesParams) (*ListUcsBladesResponse, error)
+	ListUcsBlades(p *ListUcsBladesParams) (*ListUcsBladesResponse, error)
 	NewListUcsBladesParams(ucsmanagerid string) *ListUcsBladesParams
-	ListUcsManagers(P *ListUcsManagersParams) (*ListUcsManagersResponse, error)
+	ListUcsManagers(p *ListUcsManagersParams) (*ListUcsManagersResponse, error)
 	NewListUcsManagersParams() *ListUcsManagersParams
 	GetUcsManagerID(keyword string, opts ...OptionFunc) (string, int, error)
 	GetUcsManagerByName(name string, opts ...OptionFunc) (*UcsManager, int, error)
 	GetUcsManagerByID(id string, opts ...OptionFunc) (*UcsManager, int, error)
-	ListUcsProfiles(P *ListUcsProfilesParams) (*ListUcsProfilesResponse, error)
+	ListUcsProfiles(p *ListUcsProfilesParams) (*ListUcsProfilesResponse, error)
 	NewListUcsProfilesParams(ucsmanagerid string) *ListUcsProfilesParams
 }
 

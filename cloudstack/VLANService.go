@@ -28,19 +28,19 @@ import (
 )
 
 type VLANServiceIface interface {
-	CreateVlanIpRange(P *CreateVlanIpRangeParams) (*CreateVlanIpRangeResponse, error)
+	CreateVlanIpRange(p *CreateVlanIpRangeParams) (*CreateVlanIpRangeResponse, error)
 	NewCreateVlanIpRangeParams() *CreateVlanIpRangeParams
-	DedicateGuestVlanRange(P *DedicateGuestVlanRangeParams) (*DedicateGuestVlanRangeResponse, error)
+	DedicateGuestVlanRange(p *DedicateGuestVlanRangeParams) (*DedicateGuestVlanRangeResponse, error)
 	NewDedicateGuestVlanRangeParams(physicalnetworkid string, vlanrange string) *DedicateGuestVlanRangeParams
-	DeleteVlanIpRange(P *DeleteVlanIpRangeParams) (*DeleteVlanIpRangeResponse, error)
+	DeleteVlanIpRange(p *DeleteVlanIpRangeParams) (*DeleteVlanIpRangeResponse, error)
 	NewDeleteVlanIpRangeParams(id string) *DeleteVlanIpRangeParams
-	ListDedicatedGuestVlanRanges(P *ListDedicatedGuestVlanRangesParams) (*ListDedicatedGuestVlanRangesResponse, error)
+	ListDedicatedGuestVlanRanges(p *ListDedicatedGuestVlanRangesParams) (*ListDedicatedGuestVlanRangesResponse, error)
 	NewListDedicatedGuestVlanRangesParams() *ListDedicatedGuestVlanRangesParams
 	GetDedicatedGuestVlanRangeByID(id string, opts ...OptionFunc) (*DedicatedGuestVlanRange, int, error)
-	ListVlanIpRanges(P *ListVlanIpRangesParams) (*ListVlanIpRangesResponse, error)
+	ListVlanIpRanges(p *ListVlanIpRangesParams) (*ListVlanIpRangesResponse, error)
 	NewListVlanIpRangesParams() *ListVlanIpRangesParams
 	GetVlanIpRangeByID(id string, opts ...OptionFunc) (*VlanIpRange, int, error)
-	ReleaseDedicatedGuestVlanRange(P *ReleaseDedicatedGuestVlanRangeParams) (*ReleaseDedicatedGuestVlanRangeResponse, error)
+	ReleaseDedicatedGuestVlanRange(p *ReleaseDedicatedGuestVlanRangeParams) (*ReleaseDedicatedGuestVlanRangeResponse, error)
 	NewReleaseDedicatedGuestVlanRangeParams(id string) *ReleaseDedicatedGuestVlanRangeParams
 }
 

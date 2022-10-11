@@ -26,13 +26,13 @@ import (
 )
 
 type ConfigurationServiceIface interface {
-	ListCapabilities(P *ListCapabilitiesParams) (*ListCapabilitiesResponse, error)
+	ListCapabilities(p *ListCapabilitiesParams) (*ListCapabilitiesResponse, error)
 	NewListCapabilitiesParams() *ListCapabilitiesParams
-	ListConfigurations(P *ListConfigurationsParams) (*ListConfigurationsResponse, error)
+	ListConfigurations(p *ListConfigurationsParams) (*ListConfigurationsResponse, error)
 	NewListConfigurationsParams() *ListConfigurationsParams
-	ListDeploymentPlanners(P *ListDeploymentPlannersParams) (*ListDeploymentPlannersResponse, error)
+	ListDeploymentPlanners(p *ListDeploymentPlannersParams) (*ListDeploymentPlannersResponse, error)
 	NewListDeploymentPlannersParams() *ListDeploymentPlannersParams
-	UpdateConfiguration(P *UpdateConfigurationParams) (*UpdateConfigurationResponse, error)
+	UpdateConfiguration(p *UpdateConfigurationParams) (*UpdateConfigurationResponse, error)
 	NewUpdateConfigurationParams(name string) *UpdateConfigurationParams
 }
 

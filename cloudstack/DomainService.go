@@ -28,21 +28,21 @@ import (
 )
 
 type DomainServiceIface interface {
-	CreateDomain(P *CreateDomainParams) (*CreateDomainResponse, error)
+	CreateDomain(p *CreateDomainParams) (*CreateDomainResponse, error)
 	NewCreateDomainParams(name string) *CreateDomainParams
-	DeleteDomain(P *DeleteDomainParams) (*DeleteDomainResponse, error)
+	DeleteDomain(p *DeleteDomainParams) (*DeleteDomainResponse, error)
 	NewDeleteDomainParams(id string) *DeleteDomainParams
-	ListDomainChildren(P *ListDomainChildrenParams) (*ListDomainChildrenResponse, error)
+	ListDomainChildren(p *ListDomainChildrenParams) (*ListDomainChildrenResponse, error)
 	NewListDomainChildrenParams() *ListDomainChildrenParams
 	GetDomainChildrenID(name string, opts ...OptionFunc) (string, int, error)
 	GetDomainChildrenByName(name string, opts ...OptionFunc) (*DomainChildren, int, error)
 	GetDomainChildrenByID(id string, opts ...OptionFunc) (*DomainChildren, int, error)
-	ListDomains(P *ListDomainsParams) (*ListDomainsResponse, error)
+	ListDomains(p *ListDomainsParams) (*ListDomainsResponse, error)
 	NewListDomainsParams() *ListDomainsParams
 	GetDomainID(name string, opts ...OptionFunc) (string, int, error)
 	GetDomainByName(name string, opts ...OptionFunc) (*Domain, int, error)
 	GetDomainByID(id string, opts ...OptionFunc) (*Domain, int, error)
-	UpdateDomain(P *UpdateDomainParams) (*UpdateDomainResponse, error)
+	UpdateDomain(p *UpdateDomainParams) (*UpdateDomainResponse, error)
 	NewUpdateDomainParams(id string) *UpdateDomainParams
 }
 
@@ -576,7 +576,7 @@ func (s *DomainService) ListDomainChildren(p *ListDomainChildrenParams) (*ListDo
 
 type ListDomainChildrenResponse struct {
 	Count          int               `json:"count"`
-	DomainChildren []*DomainChildren `json:"domainchildren"`
+	DomainChildren []*DomainChildren `json:"domain"`
 }
 
 type DomainChildren struct {

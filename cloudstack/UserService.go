@@ -28,29 +28,29 @@ import (
 )
 
 type UserServiceIface interface {
-	CreateUser(P *CreateUserParams) (*CreateUserResponse, error)
+	CreateUser(p *CreateUserParams) (*CreateUserResponse, error)
 	NewCreateUserParams(account string, email string, firstname string, lastname string, password string, username string) *CreateUserParams
-	DeleteUser(P *DeleteUserParams) (*DeleteUserResponse, error)
+	DeleteUser(p *DeleteUserParams) (*DeleteUserResponse, error)
 	NewDeleteUserParams(id string) *DeleteUserParams
-	DisableUser(P *DisableUserParams) (*DisableUserResponse, error)
+	DisableUser(p *DisableUserParams) (*DisableUserResponse, error)
 	NewDisableUserParams(id string) *DisableUserParams
-	EnableUser(P *EnableUserParams) (*EnableUserResponse, error)
+	EnableUser(p *EnableUserParams) (*EnableUserResponse, error)
 	NewEnableUserParams(id string) *EnableUserParams
-	GetUser(P *GetUserParams) (*GetUserResponse, error)
+	GetUser(p *GetUserParams) (*GetUserResponse, error)
 	NewGetUserParams(userapikey string) *GetUserParams
-	GetUserKeys(P *GetUserKeysParams) (*GetUserKeysResponse, error)
+	GetUserKeys(p *GetUserKeysParams) (*GetUserKeysResponse, error)
 	NewGetUserKeysParams(id string) *GetUserKeysParams
-	GetVirtualMachineUserData(P *GetVirtualMachineUserDataParams) (*GetVirtualMachineUserDataResponse, error)
+	GetVirtualMachineUserData(p *GetVirtualMachineUserDataParams) (*GetVirtualMachineUserDataResponse, error)
 	NewGetVirtualMachineUserDataParams(virtualmachineid string) *GetVirtualMachineUserDataParams
-	ListUsers(P *ListUsersParams) (*ListUsersResponse, error)
+	ListUsers(p *ListUsersParams) (*ListUsersResponse, error)
 	NewListUsersParams() *ListUsersParams
 	GetUserByID(id string, opts ...OptionFunc) (*User, int, error)
-	GetUserByUsernameAndDomain(username string, domainid string, opts ...OptionFunc) (*User, int, error)
-	LockUser(P *LockUserParams) (*LockUserResponse, error)
+	GetUserByUsername(username string, domainid string, opts ...OptionFunc) (*User, int, error)
+	LockUser(p *LockUserParams) (*LockUserResponse, error)
 	NewLockUserParams(id string) *LockUserParams
-	RegisterUserKeys(P *RegisterUserKeysParams) (*RegisterUserKeysResponse, error)
+	RegisterUserKeys(p *RegisterUserKeysParams) (*RegisterUserKeysResponse, error)
 	NewRegisterUserKeysParams(id string) *RegisterUserKeysParams
-	UpdateUser(P *UpdateUserParams) (*UpdateUserResponse, error)
+	UpdateUser(p *UpdateUserParams) (*UpdateUserResponse, error)
 	NewUpdateUserParams(id string) *UpdateUserParams
 }
 
@@ -673,7 +673,7 @@ func (P *GetUserKeysParams) GetId() (string, bool) {
 	return value, ok
 }
 
-// You should always use this function to get a new NewGetUserKeysParams instance,
+// You should always use this function to get a new GetUserKeysParams instance,
 // as then you are sure you have configured all required params
 func (s *UserService) NewGetUserKeysParams(id string) *GetUserKeysParams {
 	P := &GetUserKeysParams{}
@@ -682,27 +682,29 @@ func (s *UserService) NewGetUserKeysParams(id string) *GetUserKeysParams {
 	return P
 }
 
-// Find user keys
+// This command allows the user to query the seceret and API keys for the account
 func (s *UserService) GetUserKeys(p *GetUserKeysParams) (*GetUserKeysResponse, error) {
 	resp, err := s.cs.newRequest("getUserKeys", p.toURLValues())
 	if err != nil {
 		return nil, err
 	}
 
-	var r UserKeysResponse
+	if resp, err = getRawValue(resp); err != nil {
+		return nil, err
+	}
+
+	var r GetUserKeysResponse
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
 
-	return &r.UserKeys, nil
-}
-
-type UserKeysResponse struct {
-	UserKeys GetUserKeysResponse `json:"userkeys"`
+	return &r, nil
 }
 
 type GetUserKeysResponse struct {
 	Apikey    string `json:"apikey"`
+	JobID     string `json:"jobid"`
+	Jobstatus int    `json:"jobstatus"`
 	Secretkey string `json:"secretkey"`
 }
 
@@ -1046,7 +1048,7 @@ func (s *UserService) GetUserByID(id string, opts ...OptionFunc) (*User, int, er
 	return nil, l.Count, fmt.Errorf("There is more then one result for User UUID: %s!", id)
 }
 
-func (s *UserService) GetUserByUsernameAndDomain(username string, domainid string, opts ...OptionFunc) (*User, int, error) {
+func (s *UserService) GetUserByUsername(username, domainid string, opts ...OptionFunc) (*User, int, error) {
 	P := &ListUsersParams{}
 	P.P = make(map[string]interface{})
 
@@ -1076,7 +1078,7 @@ func (s *UserService) GetUserByUsernameAndDomain(username string, domainid strin
 	if l.Count == 1 {
 		return l.Users[0], l.Count, nil
 	}
-	return nil, l.Count, fmt.Errorf("There is more then one result for Username: %s!", username)
+	return nil, l.Count, fmt.Errorf("There is more then one result for User username: %s!", username)
 }
 
 // Lists user accounts

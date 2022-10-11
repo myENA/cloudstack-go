@@ -28,43 +28,43 @@ import (
 )
 
 type VPCServiceIface interface {
-	CreatePrivateGateway(P *CreatePrivateGatewayParams) (*CreatePrivateGatewayResponse, error)
+	CreatePrivateGateway(p *CreatePrivateGatewayParams) (*CreatePrivateGatewayResponse, error)
 	NewCreatePrivateGatewayParams(gateway string, ipaddress string, netmask string, vlan string, vpcid string) *CreatePrivateGatewayParams
-	CreateStaticRoute(P *CreateStaticRouteParams) (*CreateStaticRouteResponse, error)
+	CreateStaticRoute(p *CreateStaticRouteParams) (*CreateStaticRouteResponse, error)
 	NewCreateStaticRouteParams(cidr string, gatewayid string) *CreateStaticRouteParams
-	CreateVPC(P *CreateVPCParams) (*CreateVPCResponse, error)
+	CreateVPC(p *CreateVPCParams) (*CreateVPCResponse, error)
 	NewCreateVPCParams(cidr string, displaytext string, name string, vpcofferingid string, zoneid string) *CreateVPCParams
-	CreateVPCOffering(P *CreateVPCOfferingParams) (*CreateVPCOfferingResponse, error)
+	CreateVPCOffering(p *CreateVPCOfferingParams) (*CreateVPCOfferingResponse, error)
 	NewCreateVPCOfferingParams(displaytext string, name string, supportedservices []string) *CreateVPCOfferingParams
-	DeletePrivateGateway(P *DeletePrivateGatewayParams) (*DeletePrivateGatewayResponse, error)
+	DeletePrivateGateway(p *DeletePrivateGatewayParams) (*DeletePrivateGatewayResponse, error)
 	NewDeletePrivateGatewayParams(id string) *DeletePrivateGatewayParams
-	DeleteStaticRoute(P *DeleteStaticRouteParams) (*DeleteStaticRouteResponse, error)
+	DeleteStaticRoute(p *DeleteStaticRouteParams) (*DeleteStaticRouteResponse, error)
 	NewDeleteStaticRouteParams(id string) *DeleteStaticRouteParams
-	DeleteVPC(P *DeleteVPCParams) (*DeleteVPCResponse, error)
+	DeleteVPC(p *DeleteVPCParams) (*DeleteVPCResponse, error)
 	NewDeleteVPCParams(id string) *DeleteVPCParams
-	DeleteVPCOffering(P *DeleteVPCOfferingParams) (*DeleteVPCOfferingResponse, error)
+	DeleteVPCOffering(p *DeleteVPCOfferingParams) (*DeleteVPCOfferingResponse, error)
 	NewDeleteVPCOfferingParams(id string) *DeleteVPCOfferingParams
-	ListPrivateGateways(P *ListPrivateGatewaysParams) (*ListPrivateGatewaysResponse, error)
+	ListPrivateGateways(p *ListPrivateGatewaysParams) (*ListPrivateGatewaysResponse, error)
 	NewListPrivateGatewaysParams() *ListPrivateGatewaysParams
 	GetPrivateGatewayByID(id string, opts ...OptionFunc) (*PrivateGateway, int, error)
-	ListStaticRoutes(P *ListStaticRoutesParams) (*ListStaticRoutesResponse, error)
+	ListStaticRoutes(p *ListStaticRoutesParams) (*ListStaticRoutesResponse, error)
 	NewListStaticRoutesParams() *ListStaticRoutesParams
 	GetStaticRouteByID(id string, opts ...OptionFunc) (*StaticRoute, int, error)
-	ListVPCOfferings(P *ListVPCOfferingsParams) (*ListVPCOfferingsResponse, error)
+	ListVPCOfferings(p *ListVPCOfferingsParams) (*ListVPCOfferingsResponse, error)
 	NewListVPCOfferingsParams() *ListVPCOfferingsParams
 	GetVPCOfferingID(name string, opts ...OptionFunc) (string, int, error)
 	GetVPCOfferingByName(name string, opts ...OptionFunc) (*VPCOffering, int, error)
 	GetVPCOfferingByID(id string, opts ...OptionFunc) (*VPCOffering, int, error)
-	ListVPCs(P *ListVPCsParams) (*ListVPCsResponse, error)
+	ListVPCs(p *ListVPCsParams) (*ListVPCsResponse, error)
 	NewListVPCsParams() *ListVPCsParams
 	GetVPCID(name string, opts ...OptionFunc) (string, int, error)
 	GetVPCByName(name string, opts ...OptionFunc) (*VPC, int, error)
 	GetVPCByID(id string, opts ...OptionFunc) (*VPC, int, error)
-	RestartVPC(P *RestartVPCParams) (*RestartVPCResponse, error)
+	RestartVPC(p *RestartVPCParams) (*RestartVPCResponse, error)
 	NewRestartVPCParams(id string) *RestartVPCParams
-	UpdateVPC(P *UpdateVPCParams) (*UpdateVPCResponse, error)
+	UpdateVPC(p *UpdateVPCParams) (*UpdateVPCResponse, error)
 	NewUpdateVPCParams(id string) *UpdateVPCParams
-	UpdateVPCOffering(P *UpdateVPCOfferingParams) (*UpdateVPCOfferingResponse, error)
+	UpdateVPCOffering(p *UpdateVPCOfferingParams) (*UpdateVPCOfferingResponse, error)
 	NewUpdateVPCOfferingParams(id string) *UpdateVPCOfferingParams
 }
 
@@ -718,7 +718,7 @@ type CreateVPCResponse struct {
 	JobID                string                     `json:"jobid"`
 	Jobstatus            int                        `json:"jobstatus"`
 	Name                 string                     `json:"name"`
-	Network              []string                   `json:"network"`
+	Network              []*Network                 `json:"network"`
 	Networkdomain        string                     `json:"networkdomain"`
 	Project              string                     `json:"project"`
 	Projectid            string                     `json:"projectid"`
@@ -2855,7 +2855,7 @@ type VPC struct {
 	JobID                string               `json:"jobid"`
 	Jobstatus            int                  `json:"jobstatus"`
 	Name                 string               `json:"name"`
-	Network              []string             `json:"network"`
+	Network              []*Network           `json:"network"`
 	Networkdomain        string               `json:"networkdomain"`
 	Project              string               `json:"project"`
 	Projectid            string               `json:"projectid"`
@@ -3169,7 +3169,7 @@ type UpdateVPCResponse struct {
 	JobID                string                     `json:"jobid"`
 	Jobstatus            int                        `json:"jobstatus"`
 	Name                 string                     `json:"name"`
-	Network              []string                   `json:"network"`
+	Network              []*Network                 `json:"network"`
 	Networkdomain        string                     `json:"networkdomain"`
 	Project              string                     `json:"project"`
 	Projectid            string                     `json:"projectid"`

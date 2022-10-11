@@ -27,9 +27,9 @@ import (
 )
 
 type AsyncjobServiceIface interface {
-	ListAsyncJobs(P *ListAsyncJobsParams) (*ListAsyncJobsResponse, error)
+	ListAsyncJobs(p *ListAsyncJobsParams) (*ListAsyncJobsResponse, error)
 	NewListAsyncJobsParams() *ListAsyncJobsParams
-	QueryAsyncJobResult(P *QueryAsyncJobResultParams) (*QueryAsyncJobResultResponse, error)
+	QueryAsyncJobResult(p *QueryAsyncJobResultParams) (*QueryAsyncJobResultResponse, error)
 	NewQueryAsyncJobResultParams(jobid string) *QueryAsyncJobResultParams
 }
 

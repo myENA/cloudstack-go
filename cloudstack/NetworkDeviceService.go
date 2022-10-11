@@ -27,11 +27,11 @@ import (
 )
 
 type NetworkDeviceServiceIface interface {
-	AddNetworkDevice(P *AddNetworkDeviceParams) (*AddNetworkDeviceResponse, error)
+	AddNetworkDevice(p *AddNetworkDeviceParams) (*AddNetworkDeviceResponse, error)
 	NewAddNetworkDeviceParams() *AddNetworkDeviceParams
-	DeleteNetworkDevice(P *DeleteNetworkDeviceParams) (*DeleteNetworkDeviceResponse, error)
+	DeleteNetworkDevice(p *DeleteNetworkDeviceParams) (*DeleteNetworkDeviceResponse, error)
 	NewDeleteNetworkDeviceParams(id string) *DeleteNetworkDeviceParams
-	ListNetworkDevice(P *ListNetworkDeviceParams) (*ListNetworkDeviceResponse, error)
+	ListNetworkDevice(p *ListNetworkDeviceParams) (*ListNetworkDeviceResponse, error)
 	NewListNetworkDeviceParams() *ListNetworkDeviceParams
 }
 

@@ -26,13 +26,13 @@ import (
 )
 
 type RegionServiceIface interface {
-	AddRegion(P *AddRegionParams) (*AddRegionResponse, error)
+	AddRegion(p *AddRegionParams) (*AddRegionResponse, error)
 	NewAddRegionParams(endpoint string, id int, name string) *AddRegionParams
-	ListRegions(P *ListRegionsParams) (*ListRegionsResponse, error)
+	ListRegions(p *ListRegionsParams) (*ListRegionsResponse, error)
 	NewListRegionsParams() *ListRegionsParams
-	RemoveRegion(P *RemoveRegionParams) (*RemoveRegionResponse, error)
+	RemoveRegion(p *RemoveRegionParams) (*RemoveRegionResponse, error)
 	NewRemoveRegionParams(id int) *RemoveRegionParams
-	UpdateRegion(P *UpdateRegionParams) (*UpdateRegionResponse, error)
+	UpdateRegion(p *UpdateRegionParams) (*UpdateRegionResponse, error)
 	NewUpdateRegionParams(id int) *UpdateRegionParams
 }
 

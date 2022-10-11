@@ -28,27 +28,27 @@ import (
 )
 
 type ImageStoreServiceIface interface {
-	AddImageStore(P *AddImageStoreParams) (*AddImageStoreResponse, error)
+	AddImageStore(p *AddImageStoreParams) (*AddImageStoreResponse, error)
 	NewAddImageStoreParams(provider string) *AddImageStoreParams
-	AddImageStoreS3(P *AddImageStoreS3Params) (*AddImageStoreS3Response, error)
+	AddImageStoreS3(p *AddImageStoreS3Params) (*AddImageStoreS3Response, error)
 	NewAddImageStoreS3Params(accesskey string, bucket string, endpoint string, secretkey string) *AddImageStoreS3Params
-	CreateSecondaryStagingStore(P *CreateSecondaryStagingStoreParams) (*CreateSecondaryStagingStoreResponse, error)
+	CreateSecondaryStagingStore(p *CreateSecondaryStagingStoreParams) (*CreateSecondaryStagingStoreResponse, error)
 	NewCreateSecondaryStagingStoreParams(url string) *CreateSecondaryStagingStoreParams
-	DeleteImageStore(P *DeleteImageStoreParams) (*DeleteImageStoreResponse, error)
+	DeleteImageStore(p *DeleteImageStoreParams) (*DeleteImageStoreResponse, error)
 	NewDeleteImageStoreParams(id string) *DeleteImageStoreParams
-	DeleteSecondaryStagingStore(P *DeleteSecondaryStagingStoreParams) (*DeleteSecondaryStagingStoreResponse, error)
+	DeleteSecondaryStagingStore(p *DeleteSecondaryStagingStoreParams) (*DeleteSecondaryStagingStoreResponse, error)
 	NewDeleteSecondaryStagingStoreParams(id string) *DeleteSecondaryStagingStoreParams
-	ListImageStores(P *ListImageStoresParams) (*ListImageStoresResponse, error)
+	ListImageStores(p *ListImageStoresParams) (*ListImageStoresResponse, error)
 	NewListImageStoresParams() *ListImageStoresParams
 	GetImageStoreID(name string, opts ...OptionFunc) (string, int, error)
 	GetImageStoreByName(name string, opts ...OptionFunc) (*ImageStore, int, error)
 	GetImageStoreByID(id string, opts ...OptionFunc) (*ImageStore, int, error)
-	ListSecondaryStagingStores(P *ListSecondaryStagingStoresParams) (*ListSecondaryStagingStoresResponse, error)
+	ListSecondaryStagingStores(p *ListSecondaryStagingStoresParams) (*ListSecondaryStagingStoresResponse, error)
 	NewListSecondaryStagingStoresParams() *ListSecondaryStagingStoresParams
 	GetSecondaryStagingStoreID(name string, opts ...OptionFunc) (string, int, error)
 	GetSecondaryStagingStoreByName(name string, opts ...OptionFunc) (*SecondaryStagingStore, int, error)
 	GetSecondaryStagingStoreByID(id string, opts ...OptionFunc) (*SecondaryStagingStore, int, error)
-	UpdateCloudToUseObjectStore(P *UpdateCloudToUseObjectStoreParams) (*UpdateCloudToUseObjectStoreResponse, error)
+	UpdateCloudToUseObjectStore(p *UpdateCloudToUseObjectStoreParams) (*UpdateCloudToUseObjectStoreResponse, error)
 	NewUpdateCloudToUseObjectStoreParams(provider string) *UpdateCloudToUseObjectStoreParams
 }
 

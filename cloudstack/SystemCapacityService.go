@@ -26,7 +26,7 @@ import (
 )
 
 type SystemCapacityServiceIface interface {
-	ListCapacity(P *ListCapacityParams) (*ListCapacityResponse, error)
+	ListCapacity(p *ListCapacityParams) (*ListCapacityResponse, error)
 	NewListCapacityParams() *ListCapacityParams
 }
 

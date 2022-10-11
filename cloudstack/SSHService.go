@@ -24,19 +24,22 @@ import (
 	"fmt"
 	"net/url"
 	"strconv"
+	"strings"
 )
 
 type SSHServiceIface interface {
-	CreateSSHKeyPair(P *CreateSSHKeyPairParams) (*CreateSSHKeyPairResponse, error)
+	CreateSSHKeyPair(p *CreateSSHKeyPairParams) (*CreateSSHKeyPairResponse, error)
 	NewCreateSSHKeyPairParams(name string) *CreateSSHKeyPairParams
-	DeleteSSHKeyPair(P *DeleteSSHKeyPairParams) (*DeleteSSHKeyPairResponse, error)
+	DeleteSSHKeyPair(p *DeleteSSHKeyPairParams) (*DeleteSSHKeyPairResponse, error)
 	NewDeleteSSHKeyPairParams(name string) *DeleteSSHKeyPairParams
-	ListSSHKeyPairs(P *ListSSHKeyPairsParams) (*ListSSHKeyPairsResponse, error)
+	ListSSHKeyPairs(p *ListSSHKeyPairsParams) (*ListSSHKeyPairsResponse, error)
 	NewListSSHKeyPairsParams() *ListSSHKeyPairsParams
 	GetSSHKeyPairID(name string, opts ...OptionFunc) (string, int, error)
-	RegisterSSHKeyPair(P *RegisterSSHKeyPairParams) (*RegisterSSHKeyPairResponse, error)
+	GetSSHKeyPairByName(name string, opts ...OptionFunc) (*SSHKeyPair, int, error)
+	GetSSHKeyPairByID(id string, opts ...OptionFunc) (*SSHKeyPair, int, error)
+	RegisterSSHKeyPair(p *RegisterSSHKeyPairParams) (*RegisterSSHKeyPairResponse, error)
 	NewRegisterSSHKeyPairParams(name string, publickey string) *RegisterSSHKeyPairParams
-	ResetSSHKeyForVirtualMachine(P *ResetSSHKeyForVirtualMachineParams) (*ResetSSHKeyForVirtualMachineResponse, error)
+	ResetSSHKeyForVirtualMachine(p *ResetSSHKeyForVirtualMachineParams) (*ResetSSHKeyForVirtualMachineResponse, error)
 	NewResetSSHKeyForVirtualMachineParams(id string, keypair string) *ResetSSHKeyForVirtualMachineParams
 }
 
@@ -325,6 +328,9 @@ func (P *ListSSHKeyPairsParams) toURLValues() url.Values {
 	if v, found := P.P["fingerprint"]; found {
 		u.Set("fingerprint", v.(string))
 	}
+	if v, found := P.P["id"]; found {
+		u.Set("id", v.(string))
+	}
 	if v, found := P.P["isrecursive"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("isrecursive", vv)
@@ -395,6 +401,21 @@ func (P *ListSSHKeyPairsParams) GetFingerprint() (string, bool) {
 		P.P = make(map[string]interface{})
 	}
 	value, ok := P.P["fingerprint"].(string)
+	return value, ok
+}
+
+func (P *ListSSHKeyPairsParams) SetId(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["id"] = v
+}
+
+func (P *ListSSHKeyPairsParams) GetId() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["id"].(string)
 	return value, ok
 }
 
@@ -545,6 +566,53 @@ func (s *SSHService) GetSSHKeyPairID(name string, opts ...OptionFunc) (string, i
 		}
 	}
 	return "", l.Count, fmt.Errorf("Could not find an exact match for %s: %+v", name, l)
+}
+
+// This is a courtesy helper function, which in some cases may not work as expected!
+func (s *SSHService) GetSSHKeyPairByName(name string, opts ...OptionFunc) (*SSHKeyPair, int, error) {
+	id, count, err := s.GetSSHKeyPairID(name, opts...)
+	if err != nil {
+		return nil, count, err
+	}
+
+	r, count, err := s.GetSSHKeyPairByID(id, opts...)
+	if err != nil {
+		return nil, count, err
+	}
+	return r, count, nil
+}
+
+// This is a courtesy helper function, which in some cases may not work as expected!
+func (s *SSHService) GetSSHKeyPairByID(id string, opts ...OptionFunc) (*SSHKeyPair, int, error) {
+	P := &ListSSHKeyPairsParams{}
+	P.P = make(map[string]interface{})
+
+	P.P["id"] = id
+
+	for _, fn := range append(s.cs.options, opts...) {
+		if err := fn(s.cs, P); err != nil {
+			return nil, -1, err
+		}
+	}
+
+	l, err := s.ListSSHKeyPairs(P)
+	if err != nil {
+		if strings.Contains(err.Error(), fmt.Sprintf(
+			"Invalid parameter id value=%s due to incorrect long value format, "+
+				"or entity does not exist", id)) {
+			return nil, 0, fmt.Errorf("No match found for %s: %+v", id, l)
+		}
+		return nil, -1, err
+	}
+
+	if l.Count == 0 {
+		return nil, l.Count, fmt.Errorf("No match found for %s: %+v", id, l)
+	}
+
+	if l.Count == 1 {
+		return l.SSHKeyPairs[0], l.Count, nil
+	}
+	return nil, l.Count, fmt.Errorf("There is more then one result for SSHKeyPair UUID: %s!", id)
 }
 
 // List registered keypairs

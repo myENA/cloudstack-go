@@ -28,16 +28,16 @@ import (
 )
 
 type VMGroupServiceIface interface {
-	CreateInstanceGroup(P *CreateInstanceGroupParams) (*CreateInstanceGroupResponse, error)
+	CreateInstanceGroup(p *CreateInstanceGroupParams) (*CreateInstanceGroupResponse, error)
 	NewCreateInstanceGroupParams(name string) *CreateInstanceGroupParams
-	DeleteInstanceGroup(P *DeleteInstanceGroupParams) (*DeleteInstanceGroupResponse, error)
+	DeleteInstanceGroup(p *DeleteInstanceGroupParams) (*DeleteInstanceGroupResponse, error)
 	NewDeleteInstanceGroupParams(id string) *DeleteInstanceGroupParams
-	ListInstanceGroups(P *ListInstanceGroupsParams) (*ListInstanceGroupsResponse, error)
+	ListInstanceGroups(p *ListInstanceGroupsParams) (*ListInstanceGroupsResponse, error)
 	NewListInstanceGroupsParams() *ListInstanceGroupsParams
 	GetInstanceGroupID(name string, opts ...OptionFunc) (string, int, error)
 	GetInstanceGroupByName(name string, opts ...OptionFunc) (*InstanceGroup, int, error)
 	GetInstanceGroupByID(id string, opts ...OptionFunc) (*InstanceGroup, int, error)
-	UpdateInstanceGroup(P *UpdateInstanceGroupParams) (*UpdateInstanceGroupResponse, error)
+	UpdateInstanceGroup(p *UpdateInstanceGroupParams) (*UpdateInstanceGroupResponse, error)
 	NewUpdateInstanceGroupParams(id string) *UpdateInstanceGroupParams
 }
 

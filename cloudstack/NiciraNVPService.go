@@ -26,11 +26,11 @@ import (
 )
 
 type NiciraNVPServiceIface interface {
-	AddNiciraNvpDevice(P *AddNiciraNvpDeviceParams) (*AddNiciraNvpDeviceResponse, error)
+	AddNiciraNvpDevice(p *AddNiciraNvpDeviceParams) (*AddNiciraNvpDeviceResponse, error)
 	NewAddNiciraNvpDeviceParams(hostname string, password string, physicalnetworkid string, transportzoneuuid string, username string) *AddNiciraNvpDeviceParams
-	DeleteNiciraNvpDevice(P *DeleteNiciraNvpDeviceParams) (*DeleteNiciraNvpDeviceResponse, error)
+	DeleteNiciraNvpDevice(p *DeleteNiciraNvpDeviceParams) (*DeleteNiciraNvpDeviceResponse, error)
 	NewDeleteNiciraNvpDeviceParams(nvpdeviceid string) *DeleteNiciraNvpDeviceParams
-	ListNiciraNvpDevices(P *ListNiciraNvpDevicesParams) (*ListNiciraNvpDevicesResponse, error)
+	ListNiciraNvpDevices(p *ListNiciraNvpDevicesParams) (*ListNiciraNvpDevicesResponse, error)
 	NewListNiciraNvpDevicesParams() *ListNiciraNvpDevicesParams
 }
 
@@ -272,7 +272,7 @@ func (s *NiciraNVPService) NewDeleteNiciraNvpDeviceParams(nvpdeviceid string) *D
 	return P
 }
 
-//  delete a nicira nvp device
+// delete a nicira nvp device
 func (s *NiciraNVPService) DeleteNiciraNvpDevice(p *DeleteNiciraNvpDeviceParams) (*DeleteNiciraNvpDeviceResponse, error) {
 	resp, err := s.cs.newRequest("deleteNiciraNvpDevice", p.toURLValues())
 	if err != nil {

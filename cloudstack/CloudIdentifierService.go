@@ -25,7 +25,7 @@ import (
 )
 
 type CloudIdentifierServiceIface interface {
-	GetCloudIdentifier(P *GetCloudIdentifierParams) (*GetCloudIdentifierResponse, error)
+	GetCloudIdentifier(p *GetCloudIdentifierParams) (*GetCloudIdentifierResponse, error)
 	NewGetCloudIdentifierParams(userid string) *GetCloudIdentifierParams
 }
 

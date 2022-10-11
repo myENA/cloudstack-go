@@ -28,24 +28,26 @@ import (
 )
 
 type RoleServiceIface interface {
-	CreateRole(P *CreateRoleParams) (*CreateRoleResponse, error)
+	CreateRole(p *CreateRoleParams) (*CreateRoleResponse, error)
 	NewCreateRoleParams(name string) *CreateRoleParams
-	CreateRolePermission(P *CreateRolePermissionParams) (*CreateRolePermissionResponse, error)
+	CreateRolePermission(p *CreateRolePermissionParams) (*CreateRolePermissionResponse, error)
 	NewCreateRolePermissionParams(permission string, roleid string, rule string) *CreateRolePermissionParams
-	DeleteRole(P *DeleteRoleParams) (*DeleteRoleResponse, error)
+	DeleteRole(p *DeleteRoleParams) (*DeleteRoleResponse, error)
 	NewDeleteRoleParams(id string) *DeleteRoleParams
-	DeleteRolePermission(P *DeleteRolePermissionParams) (*DeleteRolePermissionResponse, error)
+	DeleteRolePermission(p *DeleteRolePermissionParams) (*DeleteRolePermissionResponse, error)
 	NewDeleteRolePermissionParams(id string) *DeleteRolePermissionParams
-	ListRolePermissions(P *ListRolePermissionsParams) (*ListRolePermissionsResponse, error)
+	ImportRole(p *ImportRoleParams) (*ImportRoleResponse, error)
+	NewImportRoleParams(name string, rules map[string]string) *ImportRoleParams
+	ListRolePermissions(p *ListRolePermissionsParams) (*ListRolePermissionsResponse, error)
 	NewListRolePermissionsParams() *ListRolePermissionsParams
-	ListRoles(P *ListRolesParams) (*ListRolesResponse, error)
+	ListRoles(p *ListRolesParams) (*ListRolesResponse, error)
 	NewListRolesParams() *ListRolesParams
 	GetRoleID(name string, opts ...OptionFunc) (string, int, error)
 	GetRoleByName(name string, opts ...OptionFunc) (*Role, int, error)
 	GetRoleByID(id string, opts ...OptionFunc) (*Role, int, error)
-	UpdateRole(P *UpdateRoleParams) (*UpdateRoleResponse, error)
+	UpdateRole(p *UpdateRoleParams) (*UpdateRoleResponse, error)
 	NewUpdateRoleParams(id string) *UpdateRoleParams
-	UpdateRolePermission(P *UpdateRolePermissionParams) (*UpdateRolePermissionResponse, error)
+	UpdateRolePermission(p *UpdateRolePermissionParams) (*UpdateRolePermissionResponse, error)
 	NewUpdateRolePermissionParams(roleid string) *UpdateRolePermissionParams
 }
 
@@ -462,6 +464,148 @@ func (r *DeleteRolePermissionResponse) UnmarshalJSON(b []byte) error {
 
 	type alias DeleteRolePermissionResponse
 	return json.Unmarshal(b, (*alias)(r))
+}
+
+type ImportRoleParams struct {
+	P map[string]interface{}
+}
+
+func (P *ImportRoleParams) toURLValues() url.Values {
+	u := url.Values{}
+	if P.P == nil {
+		return u
+	}
+	if v, found := P.P["description"]; found {
+		u.Set("description", v.(string))
+	}
+	if v, found := P.P["forced"]; found {
+		vv := strconv.FormatBool(v.(bool))
+		u.Set("forced", vv)
+	}
+	if v, found := P.P["name"]; found {
+		u.Set("name", v.(string))
+	}
+	if v, found := P.P["rules"]; found {
+		m := v.(map[string]string)
+		for i, k := range getSortedKeysFromMap(m) {
+			u.Set(fmt.Sprintf("rules[%d].key", i), k)
+			u.Set(fmt.Sprintf("rules[%d].value", i), m[k])
+		}
+	}
+	if v, found := P.P["type"]; found {
+		u.Set("type", v.(string))
+	}
+	return u
+}
+
+func (P *ImportRoleParams) SetDescription(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["description"] = v
+}
+
+func (P *ImportRoleParams) GetDescription() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["description"].(string)
+	return value, ok
+}
+
+func (P *ImportRoleParams) SetForced(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["forced"] = v
+}
+
+func (P *ImportRoleParams) GetForced() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["forced"].(bool)
+	return value, ok
+}
+
+func (P *ImportRoleParams) SetName(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["name"] = v
+}
+
+func (P *ImportRoleParams) GetName() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["name"].(string)
+	return value, ok
+}
+
+func (P *ImportRoleParams) SetRules(v map[string]string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["rules"] = v
+}
+
+func (P *ImportRoleParams) GetRules() (map[string]string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["rules"].(map[string]string)
+	return value, ok
+}
+
+func (P *ImportRoleParams) SetType(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["type"] = v
+}
+
+func (P *ImportRoleParams) GetType() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["type"].(string)
+	return value, ok
+}
+
+// You should always use this function to get a new ImportRoleParams instance,
+// as then you are sure you have configured all required params
+func (s *RoleService) NewImportRoleParams(name string, rules map[string]string) *ImportRoleParams {
+	P := &ImportRoleParams{}
+	P.P = make(map[string]interface{})
+	P.P["name"] = name
+	P.P["rules"] = rules
+	return P
+}
+
+// Imports a role based on provided map of rule permissions
+func (s *RoleService) ImportRole(p *ImportRoleParams) (*ImportRoleResponse, error) {
+	resp, err := s.cs.newRequest("importRole", p.toURLValues())
+	if err != nil {
+		return nil, err
+	}
+
+	var r ImportRoleResponse
+	if err := json.Unmarshal(resp, &r); err != nil {
+		return nil, err
+	}
+
+	return &r, nil
+}
+
+type ImportRoleResponse struct {
+	Description string `json:"description"`
+	Id          string `json:"id"`
+	Isdefault   bool   `json:"isdefault"`
+	JobID       string `json:"jobid"`
+	Jobstatus   int    `json:"jobstatus"`
+	Name        string `json:"name"`
+	Type        string `json:"type"`
 }
 
 type ListRolePermissionsParams struct {

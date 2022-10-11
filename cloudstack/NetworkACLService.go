@@ -28,27 +28,27 @@ import (
 )
 
 type NetworkACLServiceIface interface {
-	CreateNetworkACL(P *CreateNetworkACLParams) (*CreateNetworkACLResponse, error)
+	CreateNetworkACL(p *CreateNetworkACLParams) (*CreateNetworkACLResponse, error)
 	NewCreateNetworkACLParams(protocol string) *CreateNetworkACLParams
-	CreateNetworkACLList(P *CreateNetworkACLListParams) (*CreateNetworkACLListResponse, error)
+	CreateNetworkACLList(p *CreateNetworkACLListParams) (*CreateNetworkACLListResponse, error)
 	NewCreateNetworkACLListParams(name string, vpcid string) *CreateNetworkACLListParams
-	DeleteNetworkACL(P *DeleteNetworkACLParams) (*DeleteNetworkACLResponse, error)
+	DeleteNetworkACL(p *DeleteNetworkACLParams) (*DeleteNetworkACLResponse, error)
 	NewDeleteNetworkACLParams(id string) *DeleteNetworkACLParams
-	DeleteNetworkACLList(P *DeleteNetworkACLListParams) (*DeleteNetworkACLListResponse, error)
+	DeleteNetworkACLList(p *DeleteNetworkACLListParams) (*DeleteNetworkACLListResponse, error)
 	NewDeleteNetworkACLListParams(id string) *DeleteNetworkACLListParams
-	ListNetworkACLLists(P *ListNetworkACLListsParams) (*ListNetworkACLListsResponse, error)
+	ListNetworkACLLists(p *ListNetworkACLListsParams) (*ListNetworkACLListsResponse, error)
 	NewListNetworkACLListsParams() *ListNetworkACLListsParams
 	GetNetworkACLListID(name string, opts ...OptionFunc) (string, int, error)
 	GetNetworkACLListByName(name string, opts ...OptionFunc) (*NetworkACLList, int, error)
 	GetNetworkACLListByID(id string, opts ...OptionFunc) (*NetworkACLList, int, error)
-	ListNetworkACLs(P *ListNetworkACLsParams) (*ListNetworkACLsResponse, error)
+	ListNetworkACLs(p *ListNetworkACLsParams) (*ListNetworkACLsResponse, error)
 	NewListNetworkACLsParams() *ListNetworkACLsParams
 	GetNetworkACLByID(id string, opts ...OptionFunc) (*NetworkACL, int, error)
-	ReplaceNetworkACLList(P *ReplaceNetworkACLListParams) (*ReplaceNetworkACLListResponse, error)
+	ReplaceNetworkACLList(p *ReplaceNetworkACLListParams) (*ReplaceNetworkACLListResponse, error)
 	NewReplaceNetworkACLListParams(aclid string) *ReplaceNetworkACLListParams
-	UpdateNetworkACLItem(P *UpdateNetworkACLItemParams) (*UpdateNetworkACLItemResponse, error)
+	UpdateNetworkACLItem(p *UpdateNetworkACLItemParams) (*UpdateNetworkACLItemResponse, error)
 	NewUpdateNetworkACLItemParams(id string) *UpdateNetworkACLItemParams
-	UpdateNetworkACLList(P *UpdateNetworkACLListParams) (*UpdateNetworkACLListResponse, error)
+	UpdateNetworkACLList(p *UpdateNetworkACLListParams) (*UpdateNetworkACLListResponse, error)
 	NewUpdateNetworkACLListParams(id string) *UpdateNetworkACLListParams
 }
 

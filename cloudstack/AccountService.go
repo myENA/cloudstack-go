@@ -28,182 +28,30 @@ import (
 )
 
 type AccountServiceIface interface {
-	AddAccountToProject(P *AddAccountToProjectParams) (*AddAccountToProjectResponse, error)
-	NewAddAccountToProjectParams(projectid string) *AddAccountToProjectParams
-	CreateAccount(P *CreateAccountParams) (*CreateAccountResponse, error)
+	CreateAccount(p *CreateAccountParams) (*CreateAccountResponse, error)
 	NewCreateAccountParams(email string, firstname string, lastname string, password string, username string) *CreateAccountParams
-	DeleteAccount(P *DeleteAccountParams) (*DeleteAccountResponse, error)
+	DeleteAccount(p *DeleteAccountParams) (*DeleteAccountResponse, error)
 	NewDeleteAccountParams(id string) *DeleteAccountParams
-	DeleteAccountFromProject(P *DeleteAccountFromProjectParams) (*DeleteAccountFromProjectResponse, error)
-	NewDeleteAccountFromProjectParams(account string, projectid string) *DeleteAccountFromProjectParams
-	DisableAccount(P *DisableAccountParams) (*DisableAccountResponse, error)
+	DisableAccount(p *DisableAccountParams) (*DisableAccountResponse, error)
 	NewDisableAccountParams(lock bool) *DisableAccountParams
-	EnableAccount(P *EnableAccountParams) (*EnableAccountResponse, error)
+	EnableAccount(p *EnableAccountParams) (*EnableAccountResponse, error)
 	NewEnableAccountParams() *EnableAccountParams
-	GetSolidFireAccountId(P *GetSolidFireAccountIdParams) (*GetSolidFireAccountIdResponse, error)
+	GetSolidFireAccountId(p *GetSolidFireAccountIdParams) (*GetSolidFireAccountIdResponse, error)
 	NewGetSolidFireAccountIdParams(accountid string, storageid string) *GetSolidFireAccountIdParams
-	ListAccounts(P *ListAccountsParams) (*ListAccountsResponse, error)
+	ListAccounts(p *ListAccountsParams) (*ListAccountsResponse, error)
 	NewListAccountsParams() *ListAccountsParams
 	GetAccountID(name string, opts ...OptionFunc) (string, int, error)
 	GetAccountByName(name string, opts ...OptionFunc) (*Account, int, error)
 	GetAccountByID(id string, opts ...OptionFunc) (*Account, int, error)
-	ListProjectAccounts(P *ListProjectAccountsParams) (*ListProjectAccountsResponse, error)
+	ListProjectAccounts(p *ListProjectAccountsParams) (*ListProjectAccountsResponse, error)
 	NewListProjectAccountsParams(projectid string) *ListProjectAccountsParams
 	GetProjectAccountID(keyword string, projectid string, opts ...OptionFunc) (string, int, error)
-	LockAccount(P *LockAccountParams) (*LockAccountResponse, error)
+	LockAccount(p *LockAccountParams) (*LockAccountResponse, error)
 	NewLockAccountParams(account string, domainid string) *LockAccountParams
-	MarkDefaultZoneForAccount(P *MarkDefaultZoneForAccountParams) (*MarkDefaultZoneForAccountResponse, error)
+	MarkDefaultZoneForAccount(p *MarkDefaultZoneForAccountParams) (*MarkDefaultZoneForAccountResponse, error)
 	NewMarkDefaultZoneForAccountParams(account string, domainid string, zoneid string) *MarkDefaultZoneForAccountParams
-	UpdateAccount(P *UpdateAccountParams) (*UpdateAccountResponse, error)
+	UpdateAccount(p *UpdateAccountParams) (*UpdateAccountResponse, error)
 	NewUpdateAccountParams() *UpdateAccountParams
-}
-
-type AddAccountToProjectParams struct {
-	P map[string]interface{}
-}
-
-func (P *AddAccountToProjectParams) toURLValues() url.Values {
-	u := url.Values{}
-	if P.P == nil {
-		return u
-	}
-	if v, found := P.P["account"]; found {
-		u.Set("account", v.(string))
-	}
-	if v, found := P.P["email"]; found {
-		u.Set("email", v.(string))
-	}
-	if v, found := P.P["projectid"]; found {
-		u.Set("projectid", v.(string))
-	}
-	if v, found := P.P["projectroleid"]; found {
-		u.Set("projectroleid", v.(string))
-	}
-	if v, found := P.P["roletype"]; found {
-		u.Set("roletype", v.(string))
-	}
-	return u
-}
-
-func (P *AddAccountToProjectParams) SetAccount(v string) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["account"] = v
-}
-
-func (P *AddAccountToProjectParams) GetAccount() (string, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["account"].(string)
-	return value, ok
-}
-
-func (P *AddAccountToProjectParams) SetEmail(v string) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["email"] = v
-}
-
-func (P *AddAccountToProjectParams) GetEmail() (string, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["email"].(string)
-	return value, ok
-}
-
-func (P *AddAccountToProjectParams) SetProjectid(v string) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["projectid"] = v
-}
-
-func (P *AddAccountToProjectParams) GetProjectid() (string, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["projectid"].(string)
-	return value, ok
-}
-
-func (P *AddAccountToProjectParams) SetProjectroleid(v string) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["projectroleid"] = v
-}
-
-func (P *AddAccountToProjectParams) GetProjectroleid() (string, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["projectroleid"].(string)
-	return value, ok
-}
-
-func (P *AddAccountToProjectParams) SetRoletype(v string) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["roletype"] = v
-}
-
-func (P *AddAccountToProjectParams) GetRoletype() (string, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["roletype"].(string)
-	return value, ok
-}
-
-// You should always use this function to get a new AddAccountToProjectParams instance,
-// as then you are sure you have configured all required params
-func (s *AccountService) NewAddAccountToProjectParams(projectid string) *AddAccountToProjectParams {
-	P := &AddAccountToProjectParams{}
-	P.P = make(map[string]interface{})
-	P.P["projectid"] = projectid
-	return P
-}
-
-// Adds account to a project
-func (s *AccountService) AddAccountToProject(p *AddAccountToProjectParams) (*AddAccountToProjectResponse, error) {
-	resp, err := s.cs.newRequest("addAccountToProject", p.toURLValues())
-	if err != nil {
-		return nil, err
-	}
-
-	var r AddAccountToProjectResponse
-	if err := json.Unmarshal(resp, &r); err != nil {
-		return nil, err
-	}
-
-	// If we have a async client, we need to wait for the async result
-	if s.cs.async {
-		b, err := s.cs.GetAsyncJobResult(r.JobID, s.cs.timeout)
-		if err != nil {
-			if err == AsyncTimeoutErr {
-				return &r, err
-			}
-			return nil, err
-		}
-
-		if err := json.Unmarshal(b, &r); err != nil {
-			return nil, err
-		}
-	}
-
-	return &r, nil
-}
-
-type AddAccountToProjectResponse struct {
-	Displaytext string `json:"displaytext"`
-	JobID       string `json:"jobid"`
-	Jobstatus   int    `json:"jobstatus"`
-	Success     bool   `json:"success"`
 }
 
 type CreateAccountParams struct {
@@ -666,101 +514,6 @@ func (s *AccountService) DeleteAccount(p *DeleteAccountParams) (*DeleteAccountRe
 }
 
 type DeleteAccountResponse struct {
-	Displaytext string `json:"displaytext"`
-	JobID       string `json:"jobid"`
-	Jobstatus   int    `json:"jobstatus"`
-	Success     bool   `json:"success"`
-}
-
-type DeleteAccountFromProjectParams struct {
-	P map[string]interface{}
-}
-
-func (P *DeleteAccountFromProjectParams) toURLValues() url.Values {
-	u := url.Values{}
-	if P.P == nil {
-		return u
-	}
-	if v, found := P.P["account"]; found {
-		u.Set("account", v.(string))
-	}
-	if v, found := P.P["projectid"]; found {
-		u.Set("projectid", v.(string))
-	}
-	return u
-}
-
-func (P *DeleteAccountFromProjectParams) SetAccount(v string) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["account"] = v
-}
-
-func (P *DeleteAccountFromProjectParams) GetAccount() (string, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["account"].(string)
-	return value, ok
-}
-
-func (P *DeleteAccountFromProjectParams) SetProjectid(v string) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["projectid"] = v
-}
-
-func (P *DeleteAccountFromProjectParams) GetProjectid() (string, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["projectid"].(string)
-	return value, ok
-}
-
-// You should always use this function to get a new DeleteAccountFromProjectParams instance,
-// as then you are sure you have configured all required params
-func (s *AccountService) NewDeleteAccountFromProjectParams(account string, projectid string) *DeleteAccountFromProjectParams {
-	P := &DeleteAccountFromProjectParams{}
-	P.P = make(map[string]interface{})
-	P.P["account"] = account
-	P.P["projectid"] = projectid
-	return P
-}
-
-// Deletes account from the project
-func (s *AccountService) DeleteAccountFromProject(p *DeleteAccountFromProjectParams) (*DeleteAccountFromProjectResponse, error) {
-	resp, err := s.cs.newRequest("deleteAccountFromProject", p.toURLValues())
-	if err != nil {
-		return nil, err
-	}
-
-	var r DeleteAccountFromProjectResponse
-	if err := json.Unmarshal(resp, &r); err != nil {
-		return nil, err
-	}
-
-	// If we have a async client, we need to wait for the async result
-	if s.cs.async {
-		b, err := s.cs.GetAsyncJobResult(r.JobID, s.cs.timeout)
-		if err != nil {
-			if err == AsyncTimeoutErr {
-				return &r, err
-			}
-			return nil, err
-		}
-
-		if err := json.Unmarshal(b, &r); err != nil {
-			return nil, err
-		}
-	}
-
-	return &r, nil
-}
-
-type DeleteAccountFromProjectResponse struct {
 	Displaytext string `json:"displaytext"`
 	JobID       string `json:"jobid"`
 	Jobstatus   int    `json:"jobstatus"`

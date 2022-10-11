@@ -28,18 +28,18 @@ import (
 )
 
 type AffinityGroupServiceIface interface {
-	CreateAffinityGroup(P *CreateAffinityGroupParams) (*CreateAffinityGroupResponse, error)
+	CreateAffinityGroup(p *CreateAffinityGroupParams) (*CreateAffinityGroupResponse, error)
 	NewCreateAffinityGroupParams(name string, affinityGroupType string) *CreateAffinityGroupParams
-	DeleteAffinityGroup(P *DeleteAffinityGroupParams) (*DeleteAffinityGroupResponse, error)
+	DeleteAffinityGroup(p *DeleteAffinityGroupParams) (*DeleteAffinityGroupResponse, error)
 	NewDeleteAffinityGroupParams() *DeleteAffinityGroupParams
-	ListAffinityGroupTypes(P *ListAffinityGroupTypesParams) (*ListAffinityGroupTypesResponse, error)
+	ListAffinityGroupTypes(p *ListAffinityGroupTypesParams) (*ListAffinityGroupTypesResponse, error)
 	NewListAffinityGroupTypesParams() *ListAffinityGroupTypesParams
-	ListAffinityGroups(P *ListAffinityGroupsParams) (*ListAffinityGroupsResponse, error)
+	ListAffinityGroups(p *ListAffinityGroupsParams) (*ListAffinityGroupsResponse, error)
 	NewListAffinityGroupsParams() *ListAffinityGroupsParams
 	GetAffinityGroupID(name string, opts ...OptionFunc) (string, int, error)
 	GetAffinityGroupByName(name string, opts ...OptionFunc) (*AffinityGroup, int, error)
 	GetAffinityGroupByID(id string, opts ...OptionFunc) (*AffinityGroup, int, error)
-	UpdateVMAffinityGroup(P *UpdateVMAffinityGroupParams) (*UpdateVMAffinityGroupResponse, error)
+	UpdateVMAffinityGroup(p *UpdateVMAffinityGroupParams) (*UpdateVMAffinityGroupResponse, error)
 	NewUpdateVMAffinityGroupParams(id string) *UpdateVMAffinityGroupParams
 }
 

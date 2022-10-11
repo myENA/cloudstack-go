@@ -28,14 +28,14 @@ import (
 )
 
 type ResourcetagsServiceIface interface {
-	CreateTags(P *CreateTagsParams) (*CreateTagsResponse, error)
+	CreateTags(p *CreateTagsParams) (*CreateTagsResponse, error)
 	NewCreateTagsParams(resourceids []string, resourcetype string, tags map[string]string) *CreateTagsParams
-	DeleteTags(P *DeleteTagsParams) (*DeleteTagsResponse, error)
+	DeleteTags(p *DeleteTagsParams) (*DeleteTagsResponse, error)
 	NewDeleteTagsParams(resourceids []string, resourcetype string) *DeleteTagsParams
-	ListStorageTags(P *ListStorageTagsParams) (*ListStorageTagsResponse, error)
+	ListStorageTags(p *ListStorageTagsParams) (*ListStorageTagsResponse, error)
 	NewListStorageTagsParams() *ListStorageTagsParams
 	GetStorageTagID(keyword string, opts ...OptionFunc) (string, int, error)
-	ListTags(P *ListTagsParams) (*ListTagsResponse, error)
+	ListTags(p *ListTagsParams) (*ListTagsResponse, error)
 	NewListTagsParams() *ListTagsParams
 }
 
@@ -196,7 +196,9 @@ func (P *DeleteTagsParams) toURLValues() url.Values {
 		m := v.(map[string]string)
 		for i, k := range getSortedKeysFromMap(m) {
 			u.Set(fmt.Sprintf("tags[%d].key", i), k)
-			u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
+			if m[k] != "" {
+				u.Set(fmt.Sprintf("tags[%d].value", i), m[k])
+			}
 		}
 	}
 	return u

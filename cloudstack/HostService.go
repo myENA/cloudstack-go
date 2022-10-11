@@ -28,56 +28,56 @@ import (
 )
 
 type HostServiceIface interface {
-	AddBaremetalHost(P *AddBaremetalHostParams) (*AddBaremetalHostResponse, error)
+	AddBaremetalHost(p *AddBaremetalHostParams) (*AddBaremetalHostResponse, error)
 	NewAddBaremetalHostParams(hypervisor string, podid string, url string, zoneid string) *AddBaremetalHostParams
-	AddGloboDnsHost(P *AddGloboDnsHostParams) (*AddGloboDnsHostResponse, error)
+	AddGloboDnsHost(p *AddGloboDnsHostParams) (*AddGloboDnsHostResponse, error)
 	NewAddGloboDnsHostParams(password string, physicalnetworkid string, url string, username string) *AddGloboDnsHostParams
-	AddHost(P *AddHostParams) (*AddHostResponse, error)
+	AddHost(p *AddHostParams) (*AddHostResponse, error)
 	NewAddHostParams(hypervisor string, podid string, url string, zoneid string) *AddHostParams
-	AddSecondaryStorage(P *AddSecondaryStorageParams) (*AddSecondaryStorageResponse, error)
+	AddSecondaryStorage(p *AddSecondaryStorageParams) (*AddSecondaryStorageResponse, error)
 	NewAddSecondaryStorageParams(url string) *AddSecondaryStorageParams
-	CancelHostMaintenance(P *CancelHostMaintenanceParams) (*CancelHostMaintenanceResponse, error)
+	CancelHostMaintenance(p *CancelHostMaintenanceParams) (*CancelHostMaintenanceResponse, error)
 	NewCancelHostMaintenanceParams(id string) *CancelHostMaintenanceParams
-	ConfigureHAForHost(P *ConfigureHAForHostParams) (*HAForHostResponse, error)
+	ConfigureHAForHost(p *ConfigureHAForHostParams) (*HAForHostResponse, error)
 	NewConfigureHAForHostParams(hostid string, provider string) *ConfigureHAForHostParams
-	EnableHAForHost(P *EnableHAForHostParams) (*EnableHAForHostResponse, error)
+	EnableHAForHost(p *EnableHAForHostParams) (*EnableHAForHostResponse, error)
 	NewEnableHAForHostParams(hostid string) *EnableHAForHostParams
-	DedicateHost(P *DedicateHostParams) (*DedicateHostResponse, error)
+	DedicateHost(p *DedicateHostParams) (*DedicateHostResponse, error)
 	NewDedicateHostParams(domainid string, hostid string) *DedicateHostParams
-	DeleteHost(P *DeleteHostParams) (*DeleteHostResponse, error)
+	DeleteHost(p *DeleteHostParams) (*DeleteHostResponse, error)
 	NewDeleteHostParams(id string) *DeleteHostParams
-	DisableOutOfBandManagementForHost(P *DisableOutOfBandManagementForHostParams) (*DisableOutOfBandManagementForHostResponse, error)
+	DisableOutOfBandManagementForHost(p *DisableOutOfBandManagementForHostParams) (*DisableOutOfBandManagementForHostResponse, error)
 	NewDisableOutOfBandManagementForHostParams(hostid string) *DisableOutOfBandManagementForHostParams
-	EnableOutOfBandManagementForHost(P *EnableOutOfBandManagementForHostParams) (*EnableOutOfBandManagementForHostResponse, error)
+	EnableOutOfBandManagementForHost(p *EnableOutOfBandManagementForHostParams) (*EnableOutOfBandManagementForHostResponse, error)
 	NewEnableOutOfBandManagementForHostParams(hostid string) *EnableOutOfBandManagementForHostParams
-	FindHostsForMigration(P *FindHostsForMigrationParams) (*FindHostsForMigrationResponse, error)
+	FindHostsForMigration(p *FindHostsForMigrationParams) (*FindHostsForMigrationResponse, error)
 	NewFindHostsForMigrationParams(virtualmachineid string) *FindHostsForMigrationParams
-	ListDedicatedHosts(P *ListDedicatedHostsParams) (*ListDedicatedHostsResponse, error)
+	ListDedicatedHosts(p *ListDedicatedHostsParams) (*ListDedicatedHostsResponse, error)
 	NewListDedicatedHostsParams() *ListDedicatedHostsParams
-	ListHostTags(P *ListHostTagsParams) (*ListHostTagsResponse, error)
+	ListHostTags(p *ListHostTagsParams) (*ListHostTagsResponse, error)
 	NewListHostTagsParams() *ListHostTagsParams
 	GetHostTagID(keyword string, opts ...OptionFunc) (string, int, error)
-	ListHosts(P *ListHostsParams) (*ListHostsResponse, error)
+	ListHosts(p *ListHostsParams) (*ListHostsResponse, error)
 	NewListHostsParams() *ListHostsParams
 	GetHostID(name string, opts ...OptionFunc) (string, int, error)
 	GetHostByName(name string, opts ...OptionFunc) (*Host, int, error)
 	GetHostByID(id string, opts ...OptionFunc) (*Host, int, error)
-	ListHostsMetrics(P *ListHostsMetricsParams) (*ListHostsMetricsResponse, error)
+	ListHostsMetrics(p *ListHostsMetricsParams) (*ListHostsMetricsResponse, error)
 	NewListHostsMetricsParams() *ListHostsMetricsParams
 	GetHostsMetricID(name string, opts ...OptionFunc) (string, int, error)
 	GetHostsMetricByName(name string, opts ...OptionFunc) (*HostsMetric, int, error)
 	GetHostsMetricByID(id string, opts ...OptionFunc) (*HostsMetric, int, error)
-	PrepareHostForMaintenance(P *PrepareHostForMaintenanceParams) (*PrepareHostForMaintenanceResponse, error)
+	PrepareHostForMaintenance(p *PrepareHostForMaintenanceParams) (*PrepareHostForMaintenanceResponse, error)
 	NewPrepareHostForMaintenanceParams(id string) *PrepareHostForMaintenanceParams
-	ReconnectHost(P *ReconnectHostParams) (*ReconnectHostResponse, error)
+	ReconnectHost(p *ReconnectHostParams) (*ReconnectHostResponse, error)
 	NewReconnectHostParams(id string) *ReconnectHostParams
-	ReleaseDedicatedHost(P *ReleaseDedicatedHostParams) (*ReleaseDedicatedHostResponse, error)
+	ReleaseDedicatedHost(p *ReleaseDedicatedHostParams) (*ReleaseDedicatedHostResponse, error)
 	NewReleaseDedicatedHostParams(hostid string) *ReleaseDedicatedHostParams
-	ReleaseHostReservation(P *ReleaseHostReservationParams) (*ReleaseHostReservationResponse, error)
+	ReleaseHostReservation(p *ReleaseHostReservationParams) (*ReleaseHostReservationResponse, error)
 	NewReleaseHostReservationParams(id string) *ReleaseHostReservationParams
-	UpdateHost(P *UpdateHostParams) (*UpdateHostResponse, error)
+	UpdateHost(p *UpdateHostParams) (*UpdateHostResponse, error)
 	NewUpdateHostParams(id string) *UpdateHostParams
-	UpdateHostPassword(P *UpdateHostPasswordParams) (*UpdateHostPasswordResponse, error)
+	UpdateHostPassword(p *UpdateHostPasswordParams) (*UpdateHostPasswordResponse, error)
 	NewUpdateHostPasswordParams(password string, username string) *UpdateHostPasswordParams
 }
 
@@ -741,6 +741,10 @@ func (s *HostService) NewAddHostParams(hypervisor string, podid string, url stri
 func (s *HostService) AddHost(p *AddHostParams) (*AddHostResponse, error) {
 	resp, err := s.cs.newRequest("addHost", p.toURLValues())
 	if err != nil {
+		return nil, err
+	}
+
+	if resp, err = getRawValue(resp); err != nil {
 		return nil, err
 	}
 
@@ -1801,6 +1805,11 @@ func (s *HostService) FindHostsForMigration(p *FindHostsForMigrationParams) (*Fi
 }
 
 type FindHostsForMigrationResponse struct {
+	Count int                 `json:"count"`
+	Host  []*HostForMigration `json:"host"`
+}
+
+type HostForMigration struct {
 	Averageload                      int64  `json:"averageload"`
 	Capabilities                     string `json:"capabilities"`
 	Clusterid                        string `json:"clusterid"`

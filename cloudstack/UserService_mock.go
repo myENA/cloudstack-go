@@ -35,18 +35,6 @@ type MockUserServiceIface struct {
 	recorder *MockUserServiceIfaceMockRecorder
 }
 
-func (m *MockUserServiceIface) NewGetUserKeysParams(id string) *GetUserKeysParams {
-	panic("implement me")
-}
-
-func (m *MockUserServiceIface) GetUserByUsernameAndDomain(username string, domainid string, opts ...OptionFunc) (*User, int, error) {
-	panic("implement me")
-}
-
-func (m *MockUserServiceIface) GetUserKeys(p *GetUserKeysParams) (*GetUserKeysResponse, error) {
-	panic("implement me")
-}
-
 // MockUserServiceIfaceMockRecorder is the mock recorder for MockUserServiceIface.
 type MockUserServiceIfaceMockRecorder struct {
 	mock *MockUserServiceIface
@@ -160,10 +148,25 @@ func (mr *MockUserServiceIfaceMockRecorder) GetUserByID(id interface{}, opts ...
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserByID", reflect.TypeOf((*MockUserServiceIface)(nil).GetUserByID), varargs...)
 }
 
-// GetUserByUsername mocks base method.
-func (m *MockUserServiceIface) GetUserByUsername(username string, domainid string, opts ...OptionFunc) (*User, int, error) {
+// GetUserKeys mocks base method.
+func (m *MockUserServiceIface) GetUserKeys(p *GetUserKeysParams) (*GetUserKeysResponse, error) {
 	m.ctrl.T.Helper()
-	varargs := []interface{}{username}
+	ret := m.ctrl.Call(m, "GetUserKeys", p)
+	ret0, _ := ret[0].(*GetUserKeysResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetUserKeys indicates an expected call of GetUserKeys.
+func (mr *MockUserServiceIfaceMockRecorder) GetUserKeys(p interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserKeys", reflect.TypeOf((*MockUserServiceIface)(nil).GetUserKeys), p)
+}
+
+// GetUserByID mocks base method.
+func (m *MockUserServiceIface) GetUserByUsername(username, domainid string, opts ...OptionFunc) (*User, int, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{username, domainid}
 	for _, a := range opts {
 		varargs = append(varargs, a)
 	}
@@ -174,10 +177,10 @@ func (m *MockUserServiceIface) GetUserByUsername(username string, domainid strin
 	return ret0, ret1, ret2
 }
 
-// GetUserByUsername indicates an expected call of GetUserByUsername.
-func (mr *MockUserServiceIfaceMockRecorder) GetUserByUsername(username interface{}, domainid interface{}, opts ...interface{}) *gomock.Call {
+// GetUserByID indicates an expected call of GetUserByID.
+func (mr *MockUserServiceIfaceMockRecorder) GetUserByUsername(id interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{username}, opts...)
+	varargs := append([]interface{}{id}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserByUsername", reflect.TypeOf((*MockUserServiceIface)(nil).GetUserByUsername), varargs...)
 }
 
@@ -280,6 +283,20 @@ func (m *MockUserServiceIface) NewEnableUserParams(id string) *EnableUserParams 
 func (mr *MockUserServiceIfaceMockRecorder) NewEnableUserParams(id interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "NewEnableUserParams", reflect.TypeOf((*MockUserServiceIface)(nil).NewEnableUserParams), id)
+}
+
+// NewGetUserKeysParams mocks base method.
+func (m *MockUserServiceIface) NewGetUserKeysParams(id string) *GetUserKeysParams {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "NewGetUserKeysParams", id)
+	ret0, _ := ret[0].(*GetUserKeysParams)
+	return ret0
+}
+
+// NewGetUserKeysParams indicates an expected call of NewGetUserKeysParams.
+func (mr *MockUserServiceIfaceMockRecorder) NewGetUserKeysParams(id interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "NewGetUserKeysParams", reflect.TypeOf((*MockUserServiceIface)(nil).NewGetUserKeysParams), id)
 }
 
 // NewGetUserParams mocks base method.

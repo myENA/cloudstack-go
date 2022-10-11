@@ -28,13 +28,13 @@ import (
 )
 
 type AlertServiceIface interface {
-	ArchiveAlerts(P *ArchiveAlertsParams) (*ArchiveAlertsResponse, error)
+	ArchiveAlerts(p *ArchiveAlertsParams) (*ArchiveAlertsResponse, error)
 	NewArchiveAlertsParams() *ArchiveAlertsParams
-	DeleteAlerts(P *DeleteAlertsParams) (*DeleteAlertsResponse, error)
+	DeleteAlerts(p *DeleteAlertsParams) (*DeleteAlertsResponse, error)
 	NewDeleteAlertsParams() *DeleteAlertsParams
-	GenerateAlert(P *GenerateAlertParams) (*GenerateAlertResponse, error)
+	GenerateAlert(p *GenerateAlertParams) (*GenerateAlertResponse, error)
 	NewGenerateAlertParams(description string, name string, alertType int) *GenerateAlertParams
-	ListAlerts(P *ListAlertsParams) (*ListAlertsResponse, error)
+	ListAlerts(p *ListAlertsParams) (*ListAlertsResponse, error)
 	NewListAlertsParams() *ListAlertsParams
 	GetAlertID(name string, opts ...OptionFunc) (string, int, error)
 	GetAlertByName(name string, opts ...OptionFunc) (*Alert, int, error)

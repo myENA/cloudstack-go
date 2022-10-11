@@ -28,35 +28,43 @@ import (
 )
 
 type ProjectServiceIface interface {
-	ActivateProject(P *ActivateProjectParams) (*ActivateProjectResponse, error)
+	ActivateProject(p *ActivateProjectParams) (*ActivateProjectResponse, error)
 	NewActivateProjectParams(id string) *ActivateProjectParams
-	CreateProject(P *CreateProjectParams) (*CreateProjectResponse, error)
+	AddAccountToProject(p *AddAccountToProjectParams) (*AddAccountToProjectResponse, error)
+	NewAddAccountToProjectParams(projectid string) *AddAccountToProjectParams
+	AddUserToProject(p *AddUserToProjectParams) (*AddUserToProjectResponse, error)
+	NewAddUserToProjectParams(projectid string, username string) *AddUserToProjectParams
+	CreateProject(p *CreateProjectParams) (*CreateProjectResponse, error)
 	NewCreateProjectParams(displaytext string, name string) *CreateProjectParams
-	DeleteProject(P *DeleteProjectParams) (*DeleteProjectResponse, error)
+	DeleteAccountFromProject(p *DeleteAccountFromProjectParams) (*DeleteAccountFromProjectResponse, error)
+	NewDeleteAccountFromProjectParams(account string, projectid string) *DeleteAccountFromProjectParams
+	DeleteUserFromProject(p *DeleteUserFromProjectParams) (*DeleteUserFromProjectResponse, error)
+	NewDeleteUserFromProjectParams(projectid string, userid string) *DeleteUserFromProjectParams
+	DeleteProject(p *DeleteProjectParams) (*DeleteProjectResponse, error)
 	NewDeleteProjectParams(id string) *DeleteProjectParams
-	DeleteProjectInvitation(P *DeleteProjectInvitationParams) (*DeleteProjectInvitationResponse, error)
+	DeleteProjectInvitation(p *DeleteProjectInvitationParams) (*DeleteProjectInvitationResponse, error)
 	NewDeleteProjectInvitationParams(id string) *DeleteProjectInvitationParams
-	ListProjectInvitations(P *ListProjectInvitationsParams) (*ListProjectInvitationsResponse, error)
+	ListProjectInvitations(p *ListProjectInvitationsParams) (*ListProjectInvitationsResponse, error)
 	NewListProjectInvitationsParams() *ListProjectInvitationsParams
 	GetProjectInvitationByID(id string, opts ...OptionFunc) (*ProjectInvitation, int, error)
-	ListProjects(P *ListProjectsParams) (*ListProjectsResponse, error)
+	ListProjects(p *ListProjectsParams) (*ListProjectsResponse, error)
 	NewListProjectsParams() *ListProjectsParams
 	GetProjectID(name string, opts ...OptionFunc) (string, int, error)
 	GetProjectByName(name string, opts ...OptionFunc) (*Project, int, error)
 	GetProjectByID(id string, opts ...OptionFunc) (*Project, int, error)
-	SuspendProject(P *SuspendProjectParams) (*SuspendProjectResponse, error)
+	SuspendProject(p *SuspendProjectParams) (*SuspendProjectResponse, error)
 	NewSuspendProjectParams(id string) *SuspendProjectParams
-	UpdateProject(P *UpdateProjectParams) (*UpdateProjectResponse, error)
+	UpdateProject(p *UpdateProjectParams) (*UpdateProjectResponse, error)
 	NewUpdateProjectParams(id string) *UpdateProjectParams
-	UpdateProjectInvitation(P *UpdateProjectInvitationParams) (*UpdateProjectInvitationResponse, error)
+	UpdateProjectInvitation(p *UpdateProjectInvitationParams) (*UpdateProjectInvitationResponse, error)
 	NewUpdateProjectInvitationParams(projectid string) *UpdateProjectInvitationParams
-	ListProjectRolePermissions(P *ListProjectRolePermissionsParams) (*ListProjectRolePermissionsResponse, error)
+	ListProjectRolePermissions(p *ListProjectRolePermissionsParams) (*ListProjectRolePermissionsResponse, error)
 	NewListProjectRolePermissionsParams(projectid string) *ListProjectRolePermissionsParams
-	CreateProjectRolePermission(P *CreateProjectRolePermissionParams) (*CreateProjectRolePermissionResponse, error)
+	CreateProjectRolePermission(p *CreateProjectRolePermissionParams) (*CreateProjectRolePermissionResponse, error)
 	NewCreateProjectRolePermissionParams(permission string, projectid string, projectroleid string, rule string) *CreateProjectRolePermissionParams
-	UpdateProjectRolePermission(P *UpdateProjectRolePermissionParams) (*UpdateProjectRolePermissionResponse, error)
+	UpdateProjectRolePermission(p *UpdateProjectRolePermissionParams) (*UpdateProjectRolePermissionResponse, error)
 	NewUpdateProjectRolePermissionParams(projectid string, projectroleid string) *UpdateProjectRolePermissionParams
-	DeleteProjectRolePermission(P *DeleteProjectRolePermissionParams) (*DeleteProjectRolePermissionResponse, error)
+	DeleteProjectRolePermission(p *DeleteProjectRolePermissionParams) (*DeleteProjectRolePermissionResponse, error)
 	NewDeleteProjectRolePermissionParams(id string, projectid string) *DeleteProjectRolePermissionParams
 }
 
@@ -183,6 +191,303 @@ type ActivateProjectResponse struct {
 	Vpcavailable              string              `json:"vpcavailable"`
 	Vpclimit                  string              `json:"vpclimit"`
 	Vpctotal                  int64               `json:"vpctotal"`
+}
+
+type AddAccountToProjectParams struct {
+	P map[string]interface{}
+}
+
+func (P *AddAccountToProjectParams) toURLValues() url.Values {
+	u := url.Values{}
+	if P.P == nil {
+		return u
+	}
+	if v, found := P.P["account"]; found {
+		u.Set("account", v.(string))
+	}
+	if v, found := P.P["email"]; found {
+		u.Set("email", v.(string))
+	}
+	if v, found := P.P["projectid"]; found {
+		u.Set("projectid", v.(string))
+	}
+	if v, found := P.P["projectroleid"]; found {
+		u.Set("projectroleid", v.(string))
+	}
+	if v, found := P.P["roletype"]; found {
+		u.Set("roletype", v.(string))
+	}
+	return u
+}
+
+func (P *AddAccountToProjectParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["account"] = v
+}
+
+func (P *AddAccountToProjectParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["account"].(string)
+	return value, ok
+}
+
+func (P *AddAccountToProjectParams) SetEmail(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["email"] = v
+}
+
+func (P *AddAccountToProjectParams) GetEmail() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["email"].(string)
+	return value, ok
+}
+
+func (P *AddAccountToProjectParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["projectid"] = v
+}
+
+func (P *AddAccountToProjectParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["projectid"].(string)
+	return value, ok
+}
+
+func (P *AddAccountToProjectParams) SetProjectroleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["projectroleid"] = v
+}
+
+func (P *AddAccountToProjectParams) GetProjectroleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["projectroleid"].(string)
+	return value, ok
+}
+
+func (P *AddAccountToProjectParams) SetRoletype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["roletype"] = v
+}
+
+func (P *AddAccountToProjectParams) GetRoletype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["roletype"].(string)
+	return value, ok
+}
+
+// You should always use this function to get a new AddAccountToProjectParams instance,
+// as then you are sure you have configured all required params
+func (s *ProjectService) NewAddAccountToProjectParams(projectid string) *AddAccountToProjectParams {
+	P := &AddAccountToProjectParams{}
+	P.P = make(map[string]interface{})
+	P.P["projectid"] = projectid
+	return P
+}
+
+// Adds account to a project
+func (s *ProjectService) AddAccountToProject(p *AddAccountToProjectParams) (*AddAccountToProjectResponse, error) {
+	resp, err := s.cs.newRequest("addAccountToProject", p.toURLValues())
+	if err != nil {
+		return nil, err
+	}
+
+	var r AddAccountToProjectResponse
+	if err := json.Unmarshal(resp, &r); err != nil {
+		return nil, err
+	}
+
+	// If we have a async client, we need to wait for the async result
+	if s.cs.async {
+		b, err := s.cs.GetAsyncJobResult(r.JobID, s.cs.timeout)
+		if err != nil {
+			if err == AsyncTimeoutErr {
+				return &r, err
+			}
+			return nil, err
+		}
+
+		if err := json.Unmarshal(b, &r); err != nil {
+			return nil, err
+		}
+	}
+
+	return &r, nil
+}
+
+type AddAccountToProjectResponse struct {
+	Displaytext string `json:"displaytext"`
+	JobID       string `json:"jobid"`
+	Jobstatus   int    `json:"jobstatus"`
+	Success     bool   `json:"success"`
+}
+
+type AddUserToProjectParams struct {
+	P map[string]interface{}
+}
+
+func (P *AddUserToProjectParams) toURLValues() url.Values {
+	u := url.Values{}
+	if P.P == nil {
+		return u
+	}
+	if v, found := P.P["email"]; found {
+		u.Set("email", v.(string))
+	}
+	if v, found := P.P["projectid"]; found {
+		u.Set("projectid", v.(string))
+	}
+	if v, found := P.P["projectroleid"]; found {
+		u.Set("projectroleid", v.(string))
+	}
+	if v, found := P.P["roletype"]; found {
+		u.Set("roletype", v.(string))
+	}
+	if v, found := P.P["username"]; found {
+		u.Set("username", v.(string))
+	}
+	return u
+}
+
+func (P *AddUserToProjectParams) SetEmail(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["email"] = v
+}
+
+func (P *AddUserToProjectParams) GetEmail() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["email"].(string)
+	return value, ok
+}
+
+func (P *AddUserToProjectParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["projectid"] = v
+}
+
+func (P *AddUserToProjectParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["projectid"].(string)
+	return value, ok
+}
+
+func (P *AddUserToProjectParams) SetProjectroleid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["projectroleid"] = v
+}
+
+func (P *AddUserToProjectParams) GetProjectroleid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["projectroleid"].(string)
+	return value, ok
+}
+
+func (P *AddUserToProjectParams) SetRoletype(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["roletype"] = v
+}
+
+func (P *AddUserToProjectParams) GetRoletype() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["roletype"].(string)
+	return value, ok
+}
+
+func (P *AddUserToProjectParams) SetUsername(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["username"] = v
+}
+
+func (P *AddUserToProjectParams) GetUsername() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["username"].(string)
+	return value, ok
+}
+
+// You should always use this function to get a new AddUserToProjectParams instance,
+// as then you are sure you have configured all required params
+func (s *ProjectService) NewAddUserToProjectParams(projectid string, username string) *AddUserToProjectParams {
+	P := &AddUserToProjectParams{}
+	P.P = make(map[string]interface{})
+	P.P["projectid"] = projectid
+	P.P["username"] = username
+	return P
+}
+
+// Adds user to a project
+func (s *ProjectService) AddUserToProject(p *AddUserToProjectParams) (*AddUserToProjectResponse, error) {
+	resp, err := s.cs.newRequest("addUserToProject", p.toURLValues())
+	if err != nil {
+		return nil, err
+	}
+
+	var r AddUserToProjectResponse
+	if err := json.Unmarshal(resp, &r); err != nil {
+		return nil, err
+	}
+
+	// If we have a async client, we need to wait for the async result
+	if s.cs.async {
+		b, err := s.cs.GetAsyncJobResult(r.JobID, s.cs.timeout)
+		if err != nil {
+			if err == AsyncTimeoutErr {
+				return &r, err
+			}
+			return nil, err
+		}
+
+		if err := json.Unmarshal(b, &r); err != nil {
+			return nil, err
+		}
+	}
+
+	return &r, nil
+}
+
+type AddUserToProjectResponse struct {
+	Displaytext string `json:"displaytext"`
+	JobID       string `json:"jobid"`
+	Jobstatus   int    `json:"jobstatus"`
+	Success     bool   `json:"success"`
 }
 
 type CreateProjectParams struct {
@@ -399,6 +704,196 @@ type CreateProjectResponse struct {
 	Vpcavailable              string              `json:"vpcavailable"`
 	Vpclimit                  string              `json:"vpclimit"`
 	Vpctotal                  int64               `json:"vpctotal"`
+}
+
+type DeleteAccountFromProjectParams struct {
+	P map[string]interface{}
+}
+
+func (P *DeleteAccountFromProjectParams) toURLValues() url.Values {
+	u := url.Values{}
+	if P.P == nil {
+		return u
+	}
+	if v, found := P.P["account"]; found {
+		u.Set("account", v.(string))
+	}
+	if v, found := P.P["projectid"]; found {
+		u.Set("projectid", v.(string))
+	}
+	return u
+}
+
+func (P *DeleteAccountFromProjectParams) SetAccount(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["account"] = v
+}
+
+func (P *DeleteAccountFromProjectParams) GetAccount() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["account"].(string)
+	return value, ok
+}
+
+func (P *DeleteAccountFromProjectParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["projectid"] = v
+}
+
+func (P *DeleteAccountFromProjectParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["projectid"].(string)
+	return value, ok
+}
+
+// You should always use this function to get a new DeleteAccountFromProjectParams instance,
+// as then you are sure you have configured all required params
+func (s *ProjectService) NewDeleteAccountFromProjectParams(account string, projectid string) *DeleteAccountFromProjectParams {
+	P := &DeleteAccountFromProjectParams{}
+	P.P = make(map[string]interface{})
+	P.P["account"] = account
+	P.P["projectid"] = projectid
+	return P
+}
+
+// Deletes account from the project
+func (s *ProjectService) DeleteAccountFromProject(p *DeleteAccountFromProjectParams) (*DeleteAccountFromProjectResponse, error) {
+	resp, err := s.cs.newRequest("deleteAccountFromProject", p.toURLValues())
+	if err != nil {
+		return nil, err
+	}
+
+	var r DeleteAccountFromProjectResponse
+	if err := json.Unmarshal(resp, &r); err != nil {
+		return nil, err
+	}
+
+	// If we have a async client, we need to wait for the async result
+	if s.cs.async {
+		b, err := s.cs.GetAsyncJobResult(r.JobID, s.cs.timeout)
+		if err != nil {
+			if err == AsyncTimeoutErr {
+				return &r, err
+			}
+			return nil, err
+		}
+
+		if err := json.Unmarshal(b, &r); err != nil {
+			return nil, err
+		}
+	}
+
+	return &r, nil
+}
+
+type DeleteAccountFromProjectResponse struct {
+	Displaytext string `json:"displaytext"`
+	JobID       string `json:"jobid"`
+	Jobstatus   int    `json:"jobstatus"`
+	Success     bool   `json:"success"`
+}
+
+type DeleteUserFromProjectParams struct {
+	P map[string]interface{}
+}
+
+func (P *DeleteUserFromProjectParams) toURLValues() url.Values {
+	u := url.Values{}
+	if P.P == nil {
+		return u
+	}
+	if v, found := P.P["projectid"]; found {
+		u.Set("projectid", v.(string))
+	}
+	if v, found := P.P["userid"]; found {
+		u.Set("userid", v.(string))
+	}
+	return u
+}
+
+func (P *DeleteUserFromProjectParams) SetProjectid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["projectid"] = v
+}
+
+func (P *DeleteUserFromProjectParams) GetProjectid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["projectid"].(string)
+	return value, ok
+}
+
+func (P *DeleteUserFromProjectParams) SetUserid(v string) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["userid"] = v
+}
+
+func (P *DeleteUserFromProjectParams) GetUserid() (string, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["userid"].(string)
+	return value, ok
+}
+
+// You should always use this function to get a new DeleteUserFromProjectParams instance,
+// as then you are sure you have configured all required params
+func (s *ProjectService) NewDeleteUserFromProjectParams(projectid string, userid string) *DeleteUserFromProjectParams {
+	P := &DeleteUserFromProjectParams{}
+	P.P = make(map[string]interface{})
+	P.P["projectid"] = projectid
+	P.P["userid"] = userid
+	return P
+}
+
+// Deletes user from the project
+func (s *ProjectService) DeleteUserFromProject(p *DeleteUserFromProjectParams) (*DeleteUserFromProjectResponse, error) {
+	resp, err := s.cs.newRequest("deleteUserFromProject", p.toURLValues())
+	if err != nil {
+		return nil, err
+	}
+
+	var r DeleteUserFromProjectResponse
+	if err := json.Unmarshal(resp, &r); err != nil {
+		return nil, err
+	}
+
+	// If we have a async client, we need to wait for the async result
+	if s.cs.async {
+		b, err := s.cs.GetAsyncJobResult(r.JobID, s.cs.timeout)
+		if err != nil {
+			if err == AsyncTimeoutErr {
+				return &r, err
+			}
+			return nil, err
+		}
+
+		if err := json.Unmarshal(b, &r); err != nil {
+			return nil, err
+		}
+	}
+
+	return &r, nil
+}
+
+type DeleteUserFromProjectResponse struct {
+	Displaytext string `json:"displaytext"`
+	JobID       string `json:"jobid"`
+	Jobstatus   int    `json:"jobstatus"`
+	Success     bool   `json:"success"`
 }
 
 type DeleteProjectParams struct {

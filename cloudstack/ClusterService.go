@@ -28,35 +28,35 @@ import (
 )
 
 type ClusterServiceIface interface {
-	AddCluster(P *AddClusterParams) (*AddClusterResponse, error)
+	AddCluster(p *AddClusterParams) (*AddClusterResponse, error)
 	NewAddClusterParams(clustername string, clustertype string, hypervisor string, podid string, zoneid string) *AddClusterParams
-	DedicateCluster(P *DedicateClusterParams) (*DedicateClusterResponse, error)
+	DedicateCluster(p *DedicateClusterParams) (*DedicateClusterResponse, error)
 	NewDedicateClusterParams(clusterid string, domainid string) *DedicateClusterParams
-	DeleteCluster(P *DeleteClusterParams) (*DeleteClusterResponse, error)
+	DeleteCluster(p *DeleteClusterParams) (*DeleteClusterResponse, error)
 	NewDeleteClusterParams(id string) *DeleteClusterParams
-	DisableOutOfBandManagementForCluster(P *DisableOutOfBandManagementForClusterParams) (*DisableOutOfBandManagementForClusterResponse, error)
+	DisableOutOfBandManagementForCluster(p *DisableOutOfBandManagementForClusterParams) (*DisableOutOfBandManagementForClusterResponse, error)
 	NewDisableOutOfBandManagementForClusterParams(clusterid string) *DisableOutOfBandManagementForClusterParams
-	EnableOutOfBandManagementForCluster(P *EnableOutOfBandManagementForClusterParams) (*EnableOutOfBandManagementForClusterResponse, error)
+	EnableOutOfBandManagementForCluster(p *EnableOutOfBandManagementForClusterParams) (*EnableOutOfBandManagementForClusterResponse, error)
 	NewEnableOutOfBandManagementForClusterParams(clusterid string) *EnableOutOfBandManagementForClusterParams
-	EnableHAForCluster(P *EnableHAForClusterParams) (*EnableHAForClusterResponse, error)
+	EnableHAForCluster(p *EnableHAForClusterParams) (*EnableHAForClusterResponse, error)
 	NewEnableHAForClusterParams(clusterid string) *EnableHAForClusterParams
-	DisableHAForCluster(P *DisableHAForClusterParams) (*DisableHAForClusterResponse, error)
+	DisableHAForCluster(p *DisableHAForClusterParams) (*DisableHAForClusterResponse, error)
 	NewDisableHAForClusterParams(clusterid string) *DisableHAForClusterParams
-	ListClusters(P *ListClustersParams) (*ListClustersResponse, error)
+	ListClusters(p *ListClustersParams) (*ListClustersResponse, error)
 	NewListClustersParams() *ListClustersParams
 	GetClusterID(name string, opts ...OptionFunc) (string, int, error)
 	GetClusterByName(name string, opts ...OptionFunc) (*Cluster, int, error)
 	GetClusterByID(id string, opts ...OptionFunc) (*Cluster, int, error)
-	ListClustersMetrics(P *ListClustersMetricsParams) (*ListClustersMetricsResponse, error)
+	ListClustersMetrics(p *ListClustersMetricsParams) (*ListClustersMetricsResponse, error)
 	NewListClustersMetricsParams() *ListClustersMetricsParams
 	GetClustersMetricID(name string, opts ...OptionFunc) (string, int, error)
 	GetClustersMetricByName(name string, opts ...OptionFunc) (*ClustersMetric, int, error)
 	GetClustersMetricByID(id string, opts ...OptionFunc) (*ClustersMetric, int, error)
-	ListDedicatedClusters(P *ListDedicatedClustersParams) (*ListDedicatedClustersResponse, error)
+	ListDedicatedClusters(p *ListDedicatedClustersParams) (*ListDedicatedClustersResponse, error)
 	NewListDedicatedClustersParams() *ListDedicatedClustersParams
-	ReleaseDedicatedCluster(P *ReleaseDedicatedClusterParams) (*ReleaseDedicatedClusterResponse, error)
+	ReleaseDedicatedCluster(p *ReleaseDedicatedClusterParams) (*ReleaseDedicatedClusterResponse, error)
 	NewReleaseDedicatedClusterParams(clusterid string) *ReleaseDedicatedClusterParams
-	UpdateCluster(P *UpdateClusterParams) (*UpdateClusterResponse, error)
+	UpdateCluster(p *UpdateClusterParams) (*UpdateClusterResponse, error)
 	NewUpdateClusterParams(id string) *UpdateClusterParams
 }
 

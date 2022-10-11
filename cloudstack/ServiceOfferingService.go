@@ -28,16 +28,16 @@ import (
 )
 
 type ServiceOfferingServiceIface interface {
-	CreateServiceOffering(P *CreateServiceOfferingParams) (*CreateServiceOfferingResponse, error)
+	CreateServiceOffering(p *CreateServiceOfferingParams) (*CreateServiceOfferingResponse, error)
 	NewCreateServiceOfferingParams(displaytext string, name string) *CreateServiceOfferingParams
-	DeleteServiceOffering(P *DeleteServiceOfferingParams) (*DeleteServiceOfferingResponse, error)
+	DeleteServiceOffering(p *DeleteServiceOfferingParams) (*DeleteServiceOfferingResponse, error)
 	NewDeleteServiceOfferingParams(id string) *DeleteServiceOfferingParams
-	ListServiceOfferings(P *ListServiceOfferingsParams) (*ListServiceOfferingsResponse, error)
+	ListServiceOfferings(p *ListServiceOfferingsParams) (*ListServiceOfferingsResponse, error)
 	NewListServiceOfferingsParams() *ListServiceOfferingsParams
 	GetServiceOfferingID(name string, opts ...OptionFunc) (string, int, error)
 	GetServiceOfferingByName(name string, opts ...OptionFunc) (*ServiceOffering, int, error)
 	GetServiceOfferingByID(id string, opts ...OptionFunc) (*ServiceOffering, int, error)
-	UpdateServiceOffering(P *UpdateServiceOfferingParams) (*UpdateServiceOfferingResponse, error)
+	UpdateServiceOffering(p *UpdateServiceOfferingParams) (*UpdateServiceOfferingResponse, error)
 	NewUpdateServiceOfferingParams(id string) *UpdateServiceOfferingParams
 }
 
@@ -1536,54 +1536,6 @@ func (P *UpdateServiceOfferingParams) toURLValues() url.Values {
 	if v, found := P.P["zoneid"]; found {
 		u.Set("zoneid", v.(string))
 	}
-	if v, found := P.P["bytesreadrate"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("bytesreadrate", vv)
-	}
-	if v, found := P.P["bytesreadratemax"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("bytesreadratemax", vv)
-	}
-	if v, found := P.P["bytesreadratemaxlength"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("bytesreadratemaxlength", vv)
-	}
-	if v, found := P.P["byteswriterate"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("byteswriterate", vv)
-	}
-	if v, found := P.P["byteswriteratemax"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("byteswriteratemax", vv)
-	}
-	if v, found := P.P["byteswriteratemaxlength"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("byteswriteratemaxlength", vv)
-	}
-	if v, found := P.P["iopsreadrate"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("iopsreadrate", vv)
-	}
-	if v, found := P.P["iopsreadratemax"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("iopsreadratemax", vv)
-	}
-	if v, found := P.P["iopsreadratemaxlength"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("iopsreadratemaxlength", vv)
-	}
-	if v, found := P.P["iopswriterate"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("iopswriterate", vv)
-	}
-	if v, found := P.P["iopswriteratemax"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("iopswriteratemax", vv)
-	}
-	if v, found := P.P["iopswriteratemaxlength"]; found {
-		vv := strconv.FormatInt(v.(int64), 10)
-		u.Set("iopswriteratemaxlength", vv)
-	}
 	return u
 }
 
@@ -1704,186 +1656,6 @@ func (P *UpdateServiceOfferingParams) GetZoneid() (string, bool) {
 		P.P = make(map[string]interface{})
 	}
 	value, ok := P.P["zoneid"].(string)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetBytesreadrate(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["bytesreadrate"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetBytesreadrate() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["bytesreadrate"].(int64)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetBytesreadratemax(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["bytesreadratemax"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetBytesreadratemax() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["bytesreadratemax"].(int64)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetBytesreadratemaxlength(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["bytesreadratemaxlength"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetBytesreadratemaxlength() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["bytesreadratemaxlength"].(int64)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetByteswriterate(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["byteswriterate"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetByteswriterate() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["byteswriterate"].(int64)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetByteswriteratemax(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["byteswriteratemax"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetByteswriteratemax() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["byteswriteratemax"].(int64)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetByteswriteratemaxlength(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["byteswriteratemaxlength"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetByteswriteratemaxlength() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["byteswriteratemaxlength"].(int64)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetIopsreadrate(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["iopsreadrate"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetIopsreadrate() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["iopsreadrate"].(int64)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetIopsreadratemax(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["iopsreadratemax"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetIopsreadratemax() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["iopsreadratemax"].(int64)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetIopsreadratemaxlength(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["iopsreadratemaxlength"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetIopsreadratemaxlength() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["iopsreadratemaxlength"].(int64)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetIopswriterate(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["iopswriterate"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetIopswriterate() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["iopswriterate"].(int64)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetIopswriteratemax(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["iopswriteratemax"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetIopswriteratemax() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["iopswriteratemax"].(int64)
-	return value, ok
-}
-
-func (P *UpdateServiceOfferingParams) SetIopswriteratemaxlength(v int64) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	P.P["iopswriteratemaxlength"] = v
-}
-
-func (P *UpdateServiceOfferingParams) GetIopswriteratemaxlength() (int64, bool) {
-	if P.P == nil {
-		P.P = make(map[string]interface{})
-	}
-	value, ok := P.P["iopswriteratemaxlength"].(int64)
 	return value, ok
 }
 

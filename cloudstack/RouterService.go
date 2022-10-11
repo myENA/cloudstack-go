@@ -28,27 +28,27 @@ import (
 )
 
 type RouterServiceIface interface {
-	ChangeServiceForRouter(P *ChangeServiceForRouterParams) (*ChangeServiceForRouterResponse, error)
+	ChangeServiceForRouter(p *ChangeServiceForRouterParams) (*ChangeServiceForRouterResponse, error)
 	NewChangeServiceForRouterParams(id string, serviceofferingid string) *ChangeServiceForRouterParams
-	ConfigureVirtualRouterElement(P *ConfigureVirtualRouterElementParams) (*VirtualRouterElementResponse, error)
+	ConfigureVirtualRouterElement(p *ConfigureVirtualRouterElementParams) (*VirtualRouterElementResponse, error)
 	NewConfigureVirtualRouterElementParams(enabled bool, id string) *ConfigureVirtualRouterElementParams
-	CreateVirtualRouterElement(P *CreateVirtualRouterElementParams) (*CreateVirtualRouterElementResponse, error)
+	CreateVirtualRouterElement(p *CreateVirtualRouterElementParams) (*CreateVirtualRouterElementResponse, error)
 	NewCreateVirtualRouterElementParams(nspid string) *CreateVirtualRouterElementParams
-	DestroyRouter(P *DestroyRouterParams) (*DestroyRouterResponse, error)
+	DestroyRouter(p *DestroyRouterParams) (*DestroyRouterResponse, error)
 	NewDestroyRouterParams(id string) *DestroyRouterParams
-	ListRouters(P *ListRoutersParams) (*ListRoutersResponse, error)
+	ListRouters(p *ListRoutersParams) (*ListRoutersResponse, error)
 	NewListRoutersParams() *ListRoutersParams
 	GetRouterID(name string, opts ...OptionFunc) (string, int, error)
 	GetRouterByName(name string, opts ...OptionFunc) (*Router, int, error)
 	GetRouterByID(id string, opts ...OptionFunc) (*Router, int, error)
-	ListVirtualRouterElements(P *ListVirtualRouterElementsParams) (*ListVirtualRouterElementsResponse, error)
+	ListVirtualRouterElements(p *ListVirtualRouterElementsParams) (*ListVirtualRouterElementsResponse, error)
 	NewListVirtualRouterElementsParams() *ListVirtualRouterElementsParams
 	GetVirtualRouterElementByID(id string, opts ...OptionFunc) (*VirtualRouterElement, int, error)
-	RebootRouter(P *RebootRouterParams) (*RebootRouterResponse, error)
+	RebootRouter(p *RebootRouterParams) (*RebootRouterResponse, error)
 	NewRebootRouterParams(id string) *RebootRouterParams
-	StartRouter(P *StartRouterParams) (*StartRouterResponse, error)
+	StartRouter(p *StartRouterParams) (*StartRouterResponse, error)
 	NewStartRouterParams(id string) *StartRouterParams
-	StopRouter(P *StopRouterParams) (*StopRouterResponse, error)
+	StopRouter(p *StopRouterParams) (*StopRouterResponse, error)
 	NewStopRouterParams(id string) *StopRouterParams
 }
 

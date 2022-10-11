@@ -26,9 +26,9 @@ import (
 )
 
 type StratosphereSSPServiceIface interface {
-	AddStratosphereSsp(P *AddStratosphereSspParams) (*AddStratosphereSspResponse, error)
+	AddStratosphereSsp(p *AddStratosphereSspParams) (*AddStratosphereSspResponse, error)
 	NewAddStratosphereSspParams(name string, url string, zoneid string) *AddStratosphereSspParams
-	DeleteStratosphereSsp(P *DeleteStratosphereSspParams) (*DeleteStratosphereSspResponse, error)
+	DeleteStratosphereSsp(p *DeleteStratosphereSspParams) (*DeleteStratosphereSspResponse, error)
 	NewDeleteStratosphereSspParams(hostid string) *DeleteStratosphereSspParams
 }
 

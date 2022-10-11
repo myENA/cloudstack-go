@@ -28,9 +28,9 @@ import (
 )
 
 type OvsElementServiceIface interface {
-	ConfigureOvsElement(P *ConfigureOvsElementParams) (*OvsElementResponse, error)
+	ConfigureOvsElement(p *ConfigureOvsElementParams) (*OvsElementResponse, error)
 	NewConfigureOvsElementParams(enabled bool, id string) *ConfigureOvsElementParams
-	ListOvsElements(P *ListOvsElementsParams) (*ListOvsElementsResponse, error)
+	ListOvsElements(p *ListOvsElementsParams) (*ListOvsElementsResponse, error)
 	NewListOvsElementsParams() *ListOvsElementsParams
 	GetOvsElementByID(id string, opts ...OptionFunc) (*OvsElement, int, error)
 }

@@ -78,40 +78,40 @@ func convertFirewallServiceListResponse(b []byte) ([]byte, error) {
 }
 
 type FirewallServiceIface interface {
-	AddPaloAltoFirewall(P *AddPaloAltoFirewallParams) (*AddPaloAltoFirewallResponse, error)
+	AddPaloAltoFirewall(p *AddPaloAltoFirewallParams) (*AddPaloAltoFirewallResponse, error)
 	NewAddPaloAltoFirewallParams(networkdevicetype string, password string, physicalnetworkid string, url string, username string) *AddPaloAltoFirewallParams
-	ConfigurePaloAltoFirewall(P *ConfigurePaloAltoFirewallParams) (*PaloAltoFirewallResponse, error)
+	ConfigurePaloAltoFirewall(p *ConfigurePaloAltoFirewallParams) (*PaloAltoFirewallResponse, error)
 	NewConfigurePaloAltoFirewallParams(fwdeviceid string) *ConfigurePaloAltoFirewallParams
-	CreateEgressFirewallRule(P *CreateEgressFirewallRuleParams) (*CreateEgressFirewallRuleResponse, error)
+	CreateEgressFirewallRule(p *CreateEgressFirewallRuleParams) (*CreateEgressFirewallRuleResponse, error)
 	NewCreateEgressFirewallRuleParams(networkid string, protocol string) *CreateEgressFirewallRuleParams
-	CreateFirewallRule(P *CreateFirewallRuleParams) (*CreateFirewallRuleResponse, error)
+	CreateFirewallRule(p *CreateFirewallRuleParams) (*CreateFirewallRuleResponse, error)
 	NewCreateFirewallRuleParams(ipaddressid string, protocol string) *CreateFirewallRuleParams
-	CreatePortForwardingRule(P *CreatePortForwardingRuleParams) (*CreatePortForwardingRuleResponse, error)
+	CreatePortForwardingRule(p *CreatePortForwardingRuleParams) (*CreatePortForwardingRuleResponse, error)
 	NewCreatePortForwardingRuleParams(ipaddressid string, privateport int, protocol string, publicport int, virtualmachineid string) *CreatePortForwardingRuleParams
-	DeleteEgressFirewallRule(P *DeleteEgressFirewallRuleParams) (*DeleteEgressFirewallRuleResponse, error)
+	DeleteEgressFirewallRule(p *DeleteEgressFirewallRuleParams) (*DeleteEgressFirewallRuleResponse, error)
 	NewDeleteEgressFirewallRuleParams(id string) *DeleteEgressFirewallRuleParams
-	DeleteFirewallRule(P *DeleteFirewallRuleParams) (*DeleteFirewallRuleResponse, error)
+	DeleteFirewallRule(p *DeleteFirewallRuleParams) (*DeleteFirewallRuleResponse, error)
 	NewDeleteFirewallRuleParams(id string) *DeleteFirewallRuleParams
-	DeletePaloAltoFirewall(P *DeletePaloAltoFirewallParams) (*DeletePaloAltoFirewallResponse, error)
+	DeletePaloAltoFirewall(p *DeletePaloAltoFirewallParams) (*DeletePaloAltoFirewallResponse, error)
 	NewDeletePaloAltoFirewallParams(fwdeviceid string) *DeletePaloAltoFirewallParams
-	DeletePortForwardingRule(P *DeletePortForwardingRuleParams) (*DeletePortForwardingRuleResponse, error)
+	DeletePortForwardingRule(p *DeletePortForwardingRuleParams) (*DeletePortForwardingRuleResponse, error)
 	NewDeletePortForwardingRuleParams(id string) *DeletePortForwardingRuleParams
-	ListEgressFirewallRules(P *ListEgressFirewallRulesParams) (*ListEgressFirewallRulesResponse, error)
+	ListEgressFirewallRules(p *ListEgressFirewallRulesParams) (*ListEgressFirewallRulesResponse, error)
 	NewListEgressFirewallRulesParams() *ListEgressFirewallRulesParams
 	GetEgressFirewallRuleByID(id string, opts ...OptionFunc) (*EgressFirewallRule, int, error)
-	ListFirewallRules(P *ListFirewallRulesParams) (*ListFirewallRulesResponse, error)
+	ListFirewallRules(p *ListFirewallRulesParams) (*ListFirewallRulesResponse, error)
 	NewListFirewallRulesParams() *ListFirewallRulesParams
 	GetFirewallRuleByID(id string, opts ...OptionFunc) (*FirewallRule, int, error)
-	ListPaloAltoFirewalls(P *ListPaloAltoFirewallsParams) (*ListPaloAltoFirewallsResponse, error)
+	ListPaloAltoFirewalls(p *ListPaloAltoFirewallsParams) (*ListPaloAltoFirewallsResponse, error)
 	NewListPaloAltoFirewallsParams() *ListPaloAltoFirewallsParams
-	ListPortForwardingRules(P *ListPortForwardingRulesParams) (*ListPortForwardingRulesResponse, error)
+	ListPortForwardingRules(p *ListPortForwardingRulesParams) (*ListPortForwardingRulesResponse, error)
 	NewListPortForwardingRulesParams() *ListPortForwardingRulesParams
 	GetPortForwardingRuleByID(id string, opts ...OptionFunc) (*PortForwardingRule, int, error)
-	UpdateEgressFirewallRule(P *UpdateEgressFirewallRuleParams) (*UpdateEgressFirewallRuleResponse, error)
+	UpdateEgressFirewallRule(p *UpdateEgressFirewallRuleParams) (*UpdateEgressFirewallRuleResponse, error)
 	NewUpdateEgressFirewallRuleParams(id string) *UpdateEgressFirewallRuleParams
-	UpdateFirewallRule(P *UpdateFirewallRuleParams) (*UpdateFirewallRuleResponse, error)
+	UpdateFirewallRule(p *UpdateFirewallRuleParams) (*UpdateFirewallRuleResponse, error)
 	NewUpdateFirewallRuleParams(id string) *UpdateFirewallRuleParams
-	UpdatePortForwardingRule(P *UpdatePortForwardingRuleParams) (*UpdatePortForwardingRuleResponse, error)
+	UpdatePortForwardingRule(p *UpdatePortForwardingRuleParams) (*UpdatePortForwardingRuleResponse, error)
 	NewUpdatePortForwardingRuleParams(id string) *UpdatePortForwardingRuleParams
 }
 
@@ -1438,7 +1438,7 @@ func (s *FirewallService) NewDeletePaloAltoFirewallParams(fwdeviceid string) *De
 	return P
 }
 
-//  delete a Palo Alto firewall device
+// delete a Palo Alto firewall device
 func (s *FirewallService) DeletePaloAltoFirewall(p *DeletePaloAltoFirewallParams) (*DeletePaloAltoFirewallResponse, error) {
 	resp, err := s.cs.newRequest("deletePaloAltoFirewall", p.toURLValues())
 	if err != nil {

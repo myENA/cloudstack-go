@@ -28,13 +28,13 @@ import (
 )
 
 type EventServiceIface interface {
-	ArchiveEvents(P *ArchiveEventsParams) (*ArchiveEventsResponse, error)
+	ArchiveEvents(p *ArchiveEventsParams) (*ArchiveEventsResponse, error)
 	NewArchiveEventsParams() *ArchiveEventsParams
-	DeleteEvents(P *DeleteEventsParams) (*DeleteEventsResponse, error)
+	DeleteEvents(p *DeleteEventsParams) (*DeleteEventsResponse, error)
 	NewDeleteEventsParams() *DeleteEventsParams
-	ListEventTypes(P *ListEventTypesParams) (*ListEventTypesResponse, error)
+	ListEventTypes(p *ListEventTypesParams) (*ListEventTypesResponse, error)
 	NewListEventTypesParams() *ListEventTypesParams
-	ListEvents(P *ListEventsParams) (*ListEventsResponse, error)
+	ListEvents(p *ListEventsParams) (*ListEventsResponse, error)
 	NewListEventsParams() *ListEventsParams
 	GetEventByID(id string, opts ...OptionFunc) (*Event, int, error)
 }

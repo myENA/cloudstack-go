@@ -27,25 +27,25 @@ import (
 )
 
 type LDAPServiceIface interface {
-	AddLdapConfiguration(P *AddLdapConfigurationParams) (*AddLdapConfigurationResponse, error)
+	AddLdapConfiguration(p *AddLdapConfigurationParams) (*AddLdapConfigurationResponse, error)
 	NewAddLdapConfigurationParams(hostname string, port int) *AddLdapConfigurationParams
-	DeleteLdapConfiguration(P *DeleteLdapConfigurationParams) (*DeleteLdapConfigurationResponse, error)
+	DeleteLdapConfiguration(p *DeleteLdapConfigurationParams) (*DeleteLdapConfigurationResponse, error)
 	NewDeleteLdapConfigurationParams(hostname string) *DeleteLdapConfigurationParams
-	ImportLdapUsers(P *ImportLdapUsersParams) (*ImportLdapUsersResponse, error)
+	ImportLdapUsers(p *ImportLdapUsersParams) (*ImportLdapUsersResponse, error)
 	NewImportLdapUsersParams() *ImportLdapUsersParams
-	LdapConfig(P *LdapConfigParams) (*LdapConfigResponse, error)
+	LdapConfig(p *LdapConfigParams) (*LdapConfigResponse, error)
 	NewLdapConfigParams() *LdapConfigParams
-	LdapCreateAccount(P *LdapCreateAccountParams) (*LdapCreateAccountResponse, error)
+	LdapCreateAccount(p *LdapCreateAccountParams) (*LdapCreateAccountResponse, error)
 	NewLdapCreateAccountParams(username string) *LdapCreateAccountParams
-	LdapRemove(P *LdapRemoveParams) (*LdapRemoveResponse, error)
+	LdapRemove(p *LdapRemoveParams) (*LdapRemoveResponse, error)
 	NewLdapRemoveParams() *LdapRemoveParams
-	LinkDomainToLdap(P *LinkDomainToLdapParams) (*LinkDomainToLdapResponse, error)
+	LinkDomainToLdap(p *LinkDomainToLdapParams) (*LinkDomainToLdapResponse, error)
 	NewLinkDomainToLdapParams(accounttype int, domainid string, lDAPType string) *LinkDomainToLdapParams
-	ListLdapConfigurations(P *ListLdapConfigurationsParams) (*ListLdapConfigurationsResponse, error)
+	ListLdapConfigurations(p *ListLdapConfigurationsParams) (*ListLdapConfigurationsResponse, error)
 	NewListLdapConfigurationsParams() *ListLdapConfigurationsParams
-	ListLdapUsers(P *ListLdapUsersParams) (*ListLdapUsersResponse, error)
+	ListLdapUsers(p *ListLdapUsersParams) (*ListLdapUsersResponse, error)
 	NewListLdapUsersParams() *ListLdapUsersParams
-	SearchLdap(P *SearchLdapParams) (*SearchLdapResponse, error)
+	SearchLdap(p *SearchLdapParams) (*SearchLdapResponse, error)
 	NewSearchLdapParams(query string) *SearchLdapParams
 }
 

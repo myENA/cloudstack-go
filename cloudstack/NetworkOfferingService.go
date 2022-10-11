@@ -28,16 +28,16 @@ import (
 )
 
 type NetworkOfferingServiceIface interface {
-	CreateNetworkOffering(P *CreateNetworkOfferingParams) (*CreateNetworkOfferingResponse, error)
+	CreateNetworkOffering(p *CreateNetworkOfferingParams) (*CreateNetworkOfferingResponse, error)
 	NewCreateNetworkOfferingParams(displaytext string, guestiptype string, name string, traffictype string) *CreateNetworkOfferingParams
-	DeleteNetworkOffering(P *DeleteNetworkOfferingParams) (*DeleteNetworkOfferingResponse, error)
+	DeleteNetworkOffering(p *DeleteNetworkOfferingParams) (*DeleteNetworkOfferingResponse, error)
 	NewDeleteNetworkOfferingParams(id string) *DeleteNetworkOfferingParams
-	ListNetworkOfferings(P *ListNetworkOfferingsParams) (*ListNetworkOfferingsResponse, error)
+	ListNetworkOfferings(p *ListNetworkOfferingsParams) (*ListNetworkOfferingsResponse, error)
 	NewListNetworkOfferingsParams() *ListNetworkOfferingsParams
 	GetNetworkOfferingID(name string, opts ...OptionFunc) (string, int, error)
 	GetNetworkOfferingByName(name string, opts ...OptionFunc) (*NetworkOffering, int, error)
 	GetNetworkOfferingByID(id string, opts ...OptionFunc) (*NetworkOffering, int, error)
-	UpdateNetworkOffering(P *UpdateNetworkOfferingParams) (*UpdateNetworkOfferingResponse, error)
+	UpdateNetworkOffering(p *UpdateNetworkOfferingParams) (*UpdateNetworkOfferingResponse, error)
 	NewUpdateNetworkOfferingParams() *UpdateNetworkOfferingParams
 }
 

@@ -27,30 +27,30 @@ import (
 )
 
 type UsageServiceIface interface {
-	AddTrafficMonitor(P *AddTrafficMonitorParams) (*AddTrafficMonitorResponse, error)
+	AddTrafficMonitor(p *AddTrafficMonitorParams) (*AddTrafficMonitorResponse, error)
 	NewAddTrafficMonitorParams(url string, zoneid string) *AddTrafficMonitorParams
-	AddTrafficType(P *AddTrafficTypeParams) (*AddTrafficTypeResponse, error)
+	AddTrafficType(p *AddTrafficTypeParams) (*AddTrafficTypeResponse, error)
 	NewAddTrafficTypeParams(physicalnetworkid string, traffictype string) *AddTrafficTypeParams
-	DeleteTrafficMonitor(P *DeleteTrafficMonitorParams) (*DeleteTrafficMonitorResponse, error)
+	DeleteTrafficMonitor(p *DeleteTrafficMonitorParams) (*DeleteTrafficMonitorResponse, error)
 	NewDeleteTrafficMonitorParams(id string) *DeleteTrafficMonitorParams
-	DeleteTrafficType(P *DeleteTrafficTypeParams) (*DeleteTrafficTypeResponse, error)
+	DeleteTrafficType(p *DeleteTrafficTypeParams) (*DeleteTrafficTypeResponse, error)
 	NewDeleteTrafficTypeParams(id string) *DeleteTrafficTypeParams
-	GenerateUsageRecords(P *GenerateUsageRecordsParams) (*GenerateUsageRecordsResponse, error)
+	GenerateUsageRecords(p *GenerateUsageRecordsParams) (*GenerateUsageRecordsResponse, error)
 	NewGenerateUsageRecordsParams(enddate string, startdate string) *GenerateUsageRecordsParams
-	ListTrafficMonitors(P *ListTrafficMonitorsParams) (*ListTrafficMonitorsResponse, error)
+	ListTrafficMonitors(p *ListTrafficMonitorsParams) (*ListTrafficMonitorsResponse, error)
 	NewListTrafficMonitorsParams(zoneid string) *ListTrafficMonitorsParams
-	ListTrafficTypeImplementors(P *ListTrafficTypeImplementorsParams) (*ListTrafficTypeImplementorsResponse, error)
+	ListTrafficTypeImplementors(p *ListTrafficTypeImplementorsParams) (*ListTrafficTypeImplementorsResponse, error)
 	NewListTrafficTypeImplementorsParams() *ListTrafficTypeImplementorsParams
-	ListTrafficTypes(P *ListTrafficTypesParams) (*ListTrafficTypesResponse, error)
+	ListTrafficTypes(p *ListTrafficTypesParams) (*ListTrafficTypesResponse, error)
 	NewListTrafficTypesParams(physicalnetworkid string) *ListTrafficTypesParams
 	GetTrafficTypeID(keyword string, physicalnetworkid string, opts ...OptionFunc) (string, int, error)
-	ListUsageRecords(P *ListUsageRecordsParams) (*ListUsageRecordsResponse, error)
+	ListUsageRecords(p *ListUsageRecordsParams) (*ListUsageRecordsResponse, error)
 	NewListUsageRecordsParams(enddate string, startdate string) *ListUsageRecordsParams
-	ListUsageTypes(P *ListUsageTypesParams) (*ListUsageTypesResponse, error)
+	ListUsageTypes(p *ListUsageTypesParams) (*ListUsageTypesResponse, error)
 	NewListUsageTypesParams() *ListUsageTypesParams
-	RemoveRawUsageRecords(P *RemoveRawUsageRecordsParams) (*RemoveRawUsageRecordsResponse, error)
+	RemoveRawUsageRecords(p *RemoveRawUsageRecordsParams) (*RemoveRawUsageRecordsResponse, error)
 	NewRemoveRawUsageRecordsParams(interval int) *RemoveRawUsageRecordsParams
-	UpdateTrafficType(P *UpdateTrafficTypeParams) (*UpdateTrafficTypeResponse, error)
+	UpdateTrafficType(p *UpdateTrafficTypeParams) (*UpdateTrafficTypeResponse, error)
 	NewUpdateTrafficTypeParams(id string) *UpdateTrafficTypeParams
 }
 

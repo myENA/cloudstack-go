@@ -27,13 +27,13 @@ import (
 )
 
 type ResourcemetadataServiceIface interface {
-	AddResourceDetail(P *AddResourceDetailParams) (*AddResourceDetailResponse, error)
+	AddResourceDetail(p *AddResourceDetailParams) (*AddResourceDetailResponse, error)
 	NewAddResourceDetailParams(details map[string]string, resourceid string, resourcetype string) *AddResourceDetailParams
-	GetVolumeSnapshotDetails(P *GetVolumeSnapshotDetailsParams) (*GetVolumeSnapshotDetailsResponse, error)
+	GetVolumeSnapshotDetails(p *GetVolumeSnapshotDetailsParams) (*GetVolumeSnapshotDetailsResponse, error)
 	NewGetVolumeSnapshotDetailsParams(snapshotid string) *GetVolumeSnapshotDetailsParams
-	ListResourceDetails(P *ListResourceDetailsParams) (*ListResourceDetailsResponse, error)
+	ListResourceDetails(p *ListResourceDetailsParams) (*ListResourceDetailsResponse, error)
 	NewListResourceDetailsParams(resourcetype string) *ListResourceDetailsParams
-	RemoveResourceDetail(P *RemoveResourceDetailParams) (*RemoveResourceDetailResponse, error)
+	RemoveResourceDetail(p *RemoveResourceDetailParams) (*RemoveResourceDetailResponse, error)
 	NewRemoveResourceDetailParams(resourceid string, resourcetype string) *RemoveResourceDetailParams
 }
 

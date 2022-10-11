@@ -28,16 +28,16 @@ import (
 )
 
 type DiskOfferingServiceIface interface {
-	CreateDiskOffering(P *CreateDiskOfferingParams) (*CreateDiskOfferingResponse, error)
+	CreateDiskOffering(p *CreateDiskOfferingParams) (*CreateDiskOfferingResponse, error)
 	NewCreateDiskOfferingParams(displaytext string, name string) *CreateDiskOfferingParams
-	DeleteDiskOffering(P *DeleteDiskOfferingParams) (*DeleteDiskOfferingResponse, error)
+	DeleteDiskOffering(p *DeleteDiskOfferingParams) (*DeleteDiskOfferingResponse, error)
 	NewDeleteDiskOfferingParams(id string) *DeleteDiskOfferingParams
-	ListDiskOfferings(P *ListDiskOfferingsParams) (*ListDiskOfferingsResponse, error)
+	ListDiskOfferings(p *ListDiskOfferingsParams) (*ListDiskOfferingsResponse, error)
 	NewListDiskOfferingsParams() *ListDiskOfferingsParams
 	GetDiskOfferingID(name string, opts ...OptionFunc) (string, int, error)
 	GetDiskOfferingByName(name string, opts ...OptionFunc) (*DiskOffering, int, error)
 	GetDiskOfferingByID(id string, opts ...OptionFunc) (*DiskOffering, int, error)
-	UpdateDiskOffering(P *UpdateDiskOfferingParams) (*UpdateDiskOfferingResponse, error)
+	UpdateDiskOffering(p *UpdateDiskOfferingParams) (*UpdateDiskOfferingResponse, error)
 	NewUpdateDiskOfferingParams(id string) *UpdateDiskOfferingParams
 }
 
@@ -613,6 +613,10 @@ func (s *DiskOfferingService) NewCreateDiskOfferingParams(displaytext string, na
 func (s *DiskOfferingService) CreateDiskOffering(p *CreateDiskOfferingParams) (*CreateDiskOfferingResponse, error) {
 	resp, err := s.cs.newRequest("createDiskOffering", p.toURLValues())
 	if err != nil {
+		return nil, err
+	}
+
+	if resp, err = getRawValue(resp); err != nil {
 		return nil, err
 	}
 

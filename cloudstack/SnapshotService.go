@@ -28,34 +28,34 @@ import (
 )
 
 type SnapshotServiceIface interface {
-	CreateSnapshot(P *CreateSnapshotParams) (*CreateSnapshotResponse, error)
+	CreateSnapshot(p *CreateSnapshotParams) (*CreateSnapshotResponse, error)
 	NewCreateSnapshotParams(volumeid string) *CreateSnapshotParams
-	CreateSnapshotPolicy(P *CreateSnapshotPolicyParams) (*CreateSnapshotPolicyResponse, error)
+	CreateSnapshotPolicy(p *CreateSnapshotPolicyParams) (*CreateSnapshotPolicyResponse, error)
 	NewCreateSnapshotPolicyParams(intervaltype string, maxsnaps int, schedule string, timezone string, volumeid string) *CreateSnapshotPolicyParams
-	CreateVMSnapshot(P *CreateVMSnapshotParams) (*CreateVMSnapshotResponse, error)
+	CreateVMSnapshot(p *CreateVMSnapshotParams) (*CreateVMSnapshotResponse, error)
 	NewCreateVMSnapshotParams(virtualmachineid string) *CreateVMSnapshotParams
-	DeleteSnapshot(P *DeleteSnapshotParams) (*DeleteSnapshotResponse, error)
+	DeleteSnapshot(p *DeleteSnapshotParams) (*DeleteSnapshotResponse, error)
 	NewDeleteSnapshotParams(id string) *DeleteSnapshotParams
-	DeleteSnapshotPolicies(P *DeleteSnapshotPoliciesParams) (*DeleteSnapshotPoliciesResponse, error)
+	DeleteSnapshotPolicies(p *DeleteSnapshotPoliciesParams) (*DeleteSnapshotPoliciesResponse, error)
 	NewDeleteSnapshotPoliciesParams() *DeleteSnapshotPoliciesParams
-	DeleteVMSnapshot(P *DeleteVMSnapshotParams) (*DeleteVMSnapshotResponse, error)
+	DeleteVMSnapshot(p *DeleteVMSnapshotParams) (*DeleteVMSnapshotResponse, error)
 	NewDeleteVMSnapshotParams(vmsnapshotid string) *DeleteVMSnapshotParams
-	ListSnapshotPolicies(P *ListSnapshotPoliciesParams) (*ListSnapshotPoliciesResponse, error)
+	ListSnapshotPolicies(p *ListSnapshotPoliciesParams) (*ListSnapshotPoliciesResponse, error)
 	NewListSnapshotPoliciesParams() *ListSnapshotPoliciesParams
 	GetSnapshotPolicyByID(id string, opts ...OptionFunc) (*SnapshotPolicy, int, error)
-	ListSnapshots(P *ListSnapshotsParams) (*ListSnapshotsResponse, error)
+	ListSnapshots(p *ListSnapshotsParams) (*ListSnapshotsResponse, error)
 	NewListSnapshotsParams() *ListSnapshotsParams
 	GetSnapshotID(name string, opts ...OptionFunc) (string, int, error)
 	GetSnapshotByName(name string, opts ...OptionFunc) (*Snapshot, int, error)
 	GetSnapshotByID(id string, opts ...OptionFunc) (*Snapshot, int, error)
-	ListVMSnapshot(P *ListVMSnapshotParams) (*ListVMSnapshotResponse, error)
+	ListVMSnapshot(p *ListVMSnapshotParams) (*ListVMSnapshotResponse, error)
 	NewListVMSnapshotParams() *ListVMSnapshotParams
 	GetVMSnapshotID(name string, opts ...OptionFunc) (string, int, error)
-	RevertSnapshot(P *RevertSnapshotParams) (*RevertSnapshotResponse, error)
+	RevertSnapshot(p *RevertSnapshotParams) (*RevertSnapshotResponse, error)
 	NewRevertSnapshotParams(id string) *RevertSnapshotParams
-	RevertToVMSnapshot(P *RevertToVMSnapshotParams) (*RevertToVMSnapshotResponse, error)
+	RevertToVMSnapshot(p *RevertToVMSnapshotParams) (*RevertToVMSnapshotResponse, error)
 	NewRevertToVMSnapshotParams(vmsnapshotid string) *RevertToVMSnapshotParams
-	UpdateSnapshotPolicy(P *UpdateSnapshotPolicyParams) (*UpdateSnapshotPolicyResponse, error)
+	UpdateSnapshotPolicy(p *UpdateSnapshotPolicyParams) (*UpdateSnapshotPolicyResponse, error)
 	NewUpdateSnapshotPolicyParams() *UpdateSnapshotPolicyParams
 }
 

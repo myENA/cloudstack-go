@@ -26,13 +26,13 @@ import (
 )
 
 type NicServiceIface interface {
-	AddIpToNic(P *AddIpToNicParams) (*AddIpToNicResponse, error)
+	AddIpToNic(p *AddIpToNicParams) (*AddIpToNicResponse, error)
 	NewAddIpToNicParams(nicid string) *AddIpToNicParams
-	ListNics(P *ListNicsParams) (*ListNicsResponse, error)
+	ListNics(p *ListNicsParams) (*ListNicsResponse, error)
 	NewListNicsParams(virtualmachineid string) *ListNicsParams
-	RemoveIpFromNic(P *RemoveIpFromNicParams) (*RemoveIpFromNicResponse, error)
+	RemoveIpFromNic(p *RemoveIpFromNicParams) (*RemoveIpFromNicResponse, error)
 	NewRemoveIpFromNicParams(id string) *RemoveIpFromNicParams
-	UpdateVmNicIp(P *UpdateVmNicIpParams) (*UpdateVmNicIpResponse, error)
+	UpdateVmNicIp(p *UpdateVmNicIpParams) (*UpdateVmNicIpResponse, error)
 	NewUpdateVmNicIpParams(nicid string) *UpdateVmNicIpParams
 }
 

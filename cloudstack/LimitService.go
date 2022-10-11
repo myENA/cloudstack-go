@@ -26,15 +26,15 @@ import (
 )
 
 type LimitServiceIface interface {
-	GetApiLimit(P *GetApiLimitParams) (*GetApiLimitResponse, error)
+	GetApiLimit(p *GetApiLimitParams) (*GetApiLimitResponse, error)
 	NewGetApiLimitParams() *GetApiLimitParams
-	ListResourceLimits(P *ListResourceLimitsParams) (*ListResourceLimitsResponse, error)
+	ListResourceLimits(p *ListResourceLimitsParams) (*ListResourceLimitsResponse, error)
 	NewListResourceLimitsParams() *ListResourceLimitsParams
-	ResetApiLimit(P *ResetApiLimitParams) (*ResetApiLimitResponse, error)
+	ResetApiLimit(p *ResetApiLimitParams) (*ResetApiLimitResponse, error)
 	NewResetApiLimitParams() *ResetApiLimitParams
-	UpdateResourceCount(P *UpdateResourceCountParams) (*UpdateResourceCountResponse, error)
+	UpdateResourceCount(p *UpdateResourceCountParams) (*UpdateResourceCountResponse, error)
 	NewUpdateResourceCountParams(domainid string) *UpdateResourceCountParams
-	UpdateResourceLimit(P *UpdateResourceLimitParams) (*UpdateResourceLimitResponse, error)
+	UpdateResourceLimit(p *UpdateResourceLimitParams) (*UpdateResourceLimitResponse, error)
 	NewUpdateResourceLimitParams(resourcetype int) *UpdateResourceLimitParams
 }
 

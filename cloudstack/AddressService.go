@@ -28,14 +28,14 @@ import (
 )
 
 type AddressServiceIface interface {
-	AssociateIpAddress(P *AssociateIpAddressParams) (*AssociateIpAddressResponse, error)
+	AssociateIpAddress(p *AssociateIpAddressParams) (*AssociateIpAddressResponse, error)
 	NewAssociateIpAddressParams() *AssociateIpAddressParams
-	DisassociateIpAddress(P *DisassociateIpAddressParams) (*DisassociateIpAddressResponse, error)
+	DisassociateIpAddress(p *DisassociateIpAddressParams) (*DisassociateIpAddressResponse, error)
 	NewDisassociateIpAddressParams(id string) *DisassociateIpAddressParams
-	ListPublicIpAddresses(P *ListPublicIpAddressesParams) (*ListPublicIpAddressesResponse, error)
+	ListPublicIpAddresses(p *ListPublicIpAddressesParams) (*ListPublicIpAddressesResponse, error)
 	NewListPublicIpAddressesParams() *ListPublicIpAddressesParams
 	GetPublicIpAddressByID(id string, opts ...OptionFunc) (*PublicIpAddress, int, error)
-	UpdateIpAddress(P *UpdateIpAddressParams) (*UpdateIpAddressResponse, error)
+	UpdateIpAddress(p *UpdateIpAddressParams) (*UpdateIpAddressResponse, error)
 	NewUpdateIpAddressParams(id string) *UpdateIpAddressParams
 }
 

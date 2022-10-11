@@ -26,23 +26,23 @@ import (
 )
 
 type BaremetalServiceIface interface {
-	AddBaremetalDhcp(P *AddBaremetalDhcpParams) (*AddBaremetalDhcpResponse, error)
+	AddBaremetalDhcp(p *AddBaremetalDhcpParams) (*AddBaremetalDhcpResponse, error)
 	NewAddBaremetalDhcpParams(dhcpservertype string, password string, physicalnetworkid string, url string, username string) *AddBaremetalDhcpParams
-	AddBaremetalPxeKickStartServer(P *AddBaremetalPxeKickStartServerParams) (*AddBaremetalPxeKickStartServerResponse, error)
+	AddBaremetalPxeKickStartServer(p *AddBaremetalPxeKickStartServerParams) (*AddBaremetalPxeKickStartServerResponse, error)
 	NewAddBaremetalPxeKickStartServerParams(password string, physicalnetworkid string, pxeservertype string, tftpdir string, url string, username string) *AddBaremetalPxeKickStartServerParams
-	AddBaremetalPxePingServer(P *AddBaremetalPxePingServerParams) (*AddBaremetalPxePingServerResponse, error)
+	AddBaremetalPxePingServer(p *AddBaremetalPxePingServerParams) (*AddBaremetalPxePingServerResponse, error)
 	NewAddBaremetalPxePingServerParams(password string, physicalnetworkid string, pingdir string, pingstorageserverip string, pxeservertype string, tftpdir string, url string, username string) *AddBaremetalPxePingServerParams
-	AddBaremetalRct(P *AddBaremetalRctParams) (*AddBaremetalRctResponse, error)
+	AddBaremetalRct(p *AddBaremetalRctParams) (*AddBaremetalRctResponse, error)
 	NewAddBaremetalRctParams(baremetalrcturl string) *AddBaremetalRctParams
-	DeleteBaremetalRct(P *DeleteBaremetalRctParams) (*DeleteBaremetalRctResponse, error)
+	DeleteBaremetalRct(p *DeleteBaremetalRctParams) (*DeleteBaremetalRctResponse, error)
 	NewDeleteBaremetalRctParams(id string) *DeleteBaremetalRctParams
-	ListBaremetalDhcp(P *ListBaremetalDhcpParams) (*ListBaremetalDhcpResponse, error)
+	ListBaremetalDhcp(p *ListBaremetalDhcpParams) (*ListBaremetalDhcpResponse, error)
 	NewListBaremetalDhcpParams(physicalnetworkid string) *ListBaremetalDhcpParams
-	ListBaremetalPxeServers(P *ListBaremetalPxeServersParams) (*ListBaremetalPxeServersResponse, error)
+	ListBaremetalPxeServers(p *ListBaremetalPxeServersParams) (*ListBaremetalPxeServersResponse, error)
 	NewListBaremetalPxeServersParams(physicalnetworkid string) *ListBaremetalPxeServersParams
-	ListBaremetalRct(P *ListBaremetalRctParams) (*ListBaremetalRctResponse, error)
+	ListBaremetalRct(p *ListBaremetalRctParams) (*ListBaremetalRctResponse, error)
 	NewListBaremetalRctParams() *ListBaremetalRctParams
-	NotifyBaremetalProvisionDone(P *NotifyBaremetalProvisionDoneParams) (*NotifyBaremetalProvisionDoneResponse, error)
+	NotifyBaremetalProvisionDone(p *NotifyBaremetalProvisionDoneParams) (*NotifyBaremetalProvisionDoneResponse, error)
 	NewNotifyBaremetalProvisionDoneParams(mac string) *NotifyBaremetalProvisionDoneParams
 }
 

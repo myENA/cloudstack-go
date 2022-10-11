@@ -28,28 +28,28 @@ import (
 )
 
 type GuestOSServiceIface interface {
-	AddGuestOs(P *AddGuestOsParams) (*AddGuestOsResponse, error)
+	AddGuestOs(p *AddGuestOsParams) (*AddGuestOsResponse, error)
 	NewAddGuestOsParams(details map[string]string, oscategoryid string, osdisplayname string) *AddGuestOsParams
-	AddGuestOsMapping(P *AddGuestOsMappingParams) (*AddGuestOsMappingResponse, error)
+	AddGuestOsMapping(p *AddGuestOsMappingParams) (*AddGuestOsMappingResponse, error)
 	NewAddGuestOsMappingParams(hypervisor string, hypervisorversion string, osnameforhypervisor string) *AddGuestOsMappingParams
-	ListGuestOsMapping(P *ListGuestOsMappingParams) (*ListGuestOsMappingResponse, error)
+	ListGuestOsMapping(p *ListGuestOsMappingParams) (*ListGuestOsMappingResponse, error)
 	NewListGuestOsMappingParams() *ListGuestOsMappingParams
 	GetGuestOsMappingByID(id string, opts ...OptionFunc) (*GuestOsMapping, int, error)
-	ListOsCategories(P *ListOsCategoriesParams) (*ListOsCategoriesResponse, error)
+	ListOsCategories(p *ListOsCategoriesParams) (*ListOsCategoriesResponse, error)
 	NewListOsCategoriesParams() *ListOsCategoriesParams
 	GetOsCategoryID(name string, opts ...OptionFunc) (string, int, error)
 	GetOsCategoryByName(name string, opts ...OptionFunc) (*OsCategory, int, error)
 	GetOsCategoryByID(id string, opts ...OptionFunc) (*OsCategory, int, error)
-	ListOsTypes(P *ListOsTypesParams) (*ListOsTypesResponse, error)
+	ListOsTypes(p *ListOsTypesParams) (*ListOsTypesResponse, error)
 	NewListOsTypesParams() *ListOsTypesParams
 	GetOsTypeByID(id string, opts ...OptionFunc) (*OsType, int, error)
-	RemoveGuestOs(P *RemoveGuestOsParams) (*RemoveGuestOsResponse, error)
+	RemoveGuestOs(p *RemoveGuestOsParams) (*RemoveGuestOsResponse, error)
 	NewRemoveGuestOsParams(id string) *RemoveGuestOsParams
-	RemoveGuestOsMapping(P *RemoveGuestOsMappingParams) (*RemoveGuestOsMappingResponse, error)
+	RemoveGuestOsMapping(p *RemoveGuestOsMappingParams) (*RemoveGuestOsMappingResponse, error)
 	NewRemoveGuestOsMappingParams(id string) *RemoveGuestOsMappingParams
-	UpdateGuestOs(P *UpdateGuestOsParams) (*UpdateGuestOsResponse, error)
+	UpdateGuestOs(p *UpdateGuestOsParams) (*UpdateGuestOsResponse, error)
 	NewUpdateGuestOsParams(details map[string]string, id string, osdisplayname string) *UpdateGuestOsParams
-	UpdateGuestOsMapping(P *UpdateGuestOsMappingParams) (*UpdateGuestOsMappingResponse, error)
+	UpdateGuestOsMapping(p *UpdateGuestOsMappingParams) (*UpdateGuestOsMappingResponse, error)
 	NewUpdateGuestOsMappingParams(id string, osnameforhypervisor string) *UpdateGuestOsMappingParams
 }
 

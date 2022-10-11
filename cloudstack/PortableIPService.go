@@ -28,11 +28,11 @@ import (
 )
 
 type PortableIPServiceIface interface {
-	CreatePortableIpRange(P *CreatePortableIpRangeParams) (*CreatePortableIpRangeResponse, error)
+	CreatePortableIpRange(p *CreatePortableIpRangeParams) (*CreatePortableIpRangeResponse, error)
 	NewCreatePortableIpRangeParams(endip string, gateway string, netmask string, regionid int, startip string) *CreatePortableIpRangeParams
-	DeletePortableIpRange(P *DeletePortableIpRangeParams) (*DeletePortableIpRangeResponse, error)
+	DeletePortableIpRange(p *DeletePortableIpRangeParams) (*DeletePortableIpRangeResponse, error)
 	NewDeletePortableIpRangeParams(id string) *DeletePortableIpRangeParams
-	ListPortableIpRanges(P *ListPortableIpRangesParams) (*ListPortableIpRangesResponse, error)
+	ListPortableIpRanges(p *ListPortableIpRangesParams) (*ListPortableIpRangesResponse, error)
 	NewListPortableIpRangesParams() *ListPortableIpRangesParams
 	GetPortableIpRangeByID(id string, opts ...OptionFunc) (*PortableIpRange, int, error)
 }

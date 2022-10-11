@@ -25,7 +25,7 @@ import (
 )
 
 type APIDiscoveryServiceIface interface {
-	ListApis(P *ListApisParams) (*ListApisResponse, error)
+	ListApis(p *ListApisParams) (*ListApisResponse, error)
 	NewListApisParams() *ListApisParams
 }
 

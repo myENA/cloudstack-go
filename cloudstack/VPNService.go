@@ -28,52 +28,52 @@ import (
 )
 
 type VPNServiceIface interface {
-	AddVpnUser(P *AddVpnUserParams) (*AddVpnUserResponse, error)
+	AddVpnUser(p *AddVpnUserParams) (*AddVpnUserResponse, error)
 	NewAddVpnUserParams(password string, username string) *AddVpnUserParams
-	CreateRemoteAccessVpn(P *CreateRemoteAccessVpnParams) (*CreateRemoteAccessVpnResponse, error)
+	CreateRemoteAccessVpn(p *CreateRemoteAccessVpnParams) (*CreateRemoteAccessVpnResponse, error)
 	NewCreateRemoteAccessVpnParams(publicipid string) *CreateRemoteAccessVpnParams
-	CreateVpnConnection(P *CreateVpnConnectionParams) (*CreateVpnConnectionResponse, error)
+	CreateVpnConnection(p *CreateVpnConnectionParams) (*CreateVpnConnectionResponse, error)
 	NewCreateVpnConnectionParams(s2scustomergatewayid string, s2svpngatewayid string) *CreateVpnConnectionParams
-	CreateVpnCustomerGateway(P *CreateVpnCustomerGatewayParams) (*CreateVpnCustomerGatewayResponse, error)
+	CreateVpnCustomerGateway(p *CreateVpnCustomerGatewayParams) (*CreateVpnCustomerGatewayResponse, error)
 	NewCreateVpnCustomerGatewayParams(cidrlist string, esppolicy string, gateway string, ikepolicy string, ipsecpsk string) *CreateVpnCustomerGatewayParams
-	CreateVpnGateway(P *CreateVpnGatewayParams) (*CreateVpnGatewayResponse, error)
+	CreateVpnGateway(p *CreateVpnGatewayParams) (*CreateVpnGatewayResponse, error)
 	NewCreateVpnGatewayParams(vpcid string) *CreateVpnGatewayParams
-	DeleteRemoteAccessVpn(P *DeleteRemoteAccessVpnParams) (*DeleteRemoteAccessVpnResponse, error)
+	DeleteRemoteAccessVpn(p *DeleteRemoteAccessVpnParams) (*DeleteRemoteAccessVpnResponse, error)
 	NewDeleteRemoteAccessVpnParams(publicipid string) *DeleteRemoteAccessVpnParams
-	DeleteVpnConnection(P *DeleteVpnConnectionParams) (*DeleteVpnConnectionResponse, error)
+	DeleteVpnConnection(p *DeleteVpnConnectionParams) (*DeleteVpnConnectionResponse, error)
 	NewDeleteVpnConnectionParams(id string) *DeleteVpnConnectionParams
-	DeleteVpnCustomerGateway(P *DeleteVpnCustomerGatewayParams) (*DeleteVpnCustomerGatewayResponse, error)
+	DeleteVpnCustomerGateway(p *DeleteVpnCustomerGatewayParams) (*DeleteVpnCustomerGatewayResponse, error)
 	NewDeleteVpnCustomerGatewayParams(id string) *DeleteVpnCustomerGatewayParams
-	DeleteVpnGateway(P *DeleteVpnGatewayParams) (*DeleteVpnGatewayResponse, error)
+	DeleteVpnGateway(p *DeleteVpnGatewayParams) (*DeleteVpnGatewayResponse, error)
 	NewDeleteVpnGatewayParams(id string) *DeleteVpnGatewayParams
-	ListRemoteAccessVpns(P *ListRemoteAccessVpnsParams) (*ListRemoteAccessVpnsResponse, error)
+	ListRemoteAccessVpns(p *ListRemoteAccessVpnsParams) (*ListRemoteAccessVpnsResponse, error)
 	NewListRemoteAccessVpnsParams() *ListRemoteAccessVpnsParams
 	GetRemoteAccessVpnByID(id string, opts ...OptionFunc) (*RemoteAccessVpn, int, error)
-	ListVpnConnections(P *ListVpnConnectionsParams) (*ListVpnConnectionsResponse, error)
+	ListVpnConnections(p *ListVpnConnectionsParams) (*ListVpnConnectionsResponse, error)
 	NewListVpnConnectionsParams() *ListVpnConnectionsParams
 	GetVpnConnectionByID(id string, opts ...OptionFunc) (*VpnConnection, int, error)
-	ListVpnCustomerGateways(P *ListVpnCustomerGatewaysParams) (*ListVpnCustomerGatewaysResponse, error)
+	ListVpnCustomerGateways(p *ListVpnCustomerGatewaysParams) (*ListVpnCustomerGatewaysResponse, error)
 	NewListVpnCustomerGatewaysParams() *ListVpnCustomerGatewaysParams
 	GetVpnCustomerGatewayID(keyword string, opts ...OptionFunc) (string, int, error)
 	GetVpnCustomerGatewayByName(name string, opts ...OptionFunc) (*VpnCustomerGateway, int, error)
 	GetVpnCustomerGatewayByID(id string, opts ...OptionFunc) (*VpnCustomerGateway, int, error)
-	ListVpnGateways(P *ListVpnGatewaysParams) (*ListVpnGatewaysResponse, error)
+	ListVpnGateways(p *ListVpnGatewaysParams) (*ListVpnGatewaysResponse, error)
 	NewListVpnGatewaysParams() *ListVpnGatewaysParams
 	GetVpnGatewayByID(id string, opts ...OptionFunc) (*VpnGateway, int, error)
-	ListVpnUsers(P *ListVpnUsersParams) (*ListVpnUsersResponse, error)
+	ListVpnUsers(p *ListVpnUsersParams) (*ListVpnUsersResponse, error)
 	NewListVpnUsersParams() *ListVpnUsersParams
 	GetVpnUserByID(id string, opts ...OptionFunc) (*VpnUser, int, error)
-	RemoveVpnUser(P *RemoveVpnUserParams) (*RemoveVpnUserResponse, error)
+	RemoveVpnUser(p *RemoveVpnUserParams) (*RemoveVpnUserResponse, error)
 	NewRemoveVpnUserParams(username string) *RemoveVpnUserParams
-	ResetVpnConnection(P *ResetVpnConnectionParams) (*ResetVpnConnectionResponse, error)
+	ResetVpnConnection(p *ResetVpnConnectionParams) (*ResetVpnConnectionResponse, error)
 	NewResetVpnConnectionParams(id string) *ResetVpnConnectionParams
-	UpdateRemoteAccessVpn(P *UpdateRemoteAccessVpnParams) (*UpdateRemoteAccessVpnResponse, error)
+	UpdateRemoteAccessVpn(p *UpdateRemoteAccessVpnParams) (*UpdateRemoteAccessVpnResponse, error)
 	NewUpdateRemoteAccessVpnParams(id string) *UpdateRemoteAccessVpnParams
-	UpdateVpnConnection(P *UpdateVpnConnectionParams) (*UpdateVpnConnectionResponse, error)
+	UpdateVpnConnection(p *UpdateVpnConnectionParams) (*UpdateVpnConnectionResponse, error)
 	NewUpdateVpnConnectionParams(id string) *UpdateVpnConnectionParams
-	UpdateVpnCustomerGateway(P *UpdateVpnCustomerGatewayParams) (*UpdateVpnCustomerGatewayResponse, error)
+	UpdateVpnCustomerGateway(p *UpdateVpnCustomerGatewayParams) (*UpdateVpnCustomerGatewayResponse, error)
 	NewUpdateVpnCustomerGatewayParams(cidrlist string, esppolicy string, gateway string, id string, ikepolicy string, ipsecpsk string) *UpdateVpnCustomerGatewayParams
-	UpdateVpnGateway(P *UpdateVpnGatewayParams) (*UpdateVpnGatewayResponse, error)
+	UpdateVpnGateway(p *UpdateVpnGatewayParams) (*UpdateVpnGatewayResponse, error)
 	NewUpdateVpnGatewayParams(id string) *UpdateVpnGatewayParams
 }
 

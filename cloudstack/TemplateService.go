@@ -28,33 +28,33 @@ import (
 )
 
 type TemplateServiceIface interface {
-	CopyTemplate(P *CopyTemplateParams) (*CopyTemplateResponse, error)
+	CopyTemplate(p *CopyTemplateParams) (*CopyTemplateResponse, error)
 	NewCopyTemplateParams(id string) *CopyTemplateParams
-	CreateTemplate(P *CreateTemplateParams) (*CreateTemplateResponse, error)
+	CreateTemplate(p *CreateTemplateParams) (*CreateTemplateResponse, error)
 	NewCreateTemplateParams(displaytext string, name string, ostypeid string) *CreateTemplateParams
-	DeleteTemplate(P *DeleteTemplateParams) (*DeleteTemplateResponse, error)
+	DeleteTemplate(p *DeleteTemplateParams) (*DeleteTemplateResponse, error)
 	NewDeleteTemplateParams(id string) *DeleteTemplateParams
-	ExtractTemplate(P *ExtractTemplateParams) (*ExtractTemplateResponse, error)
+	ExtractTemplate(p *ExtractTemplateParams) (*ExtractTemplateResponse, error)
 	NewExtractTemplateParams(id string, mode string) *ExtractTemplateParams
-	GetUploadParamsForTemplate(P *GetUploadParamsForTemplateParams) (*GetUploadParamsForTemplateResponse, error)
+	GetUploadParamsForTemplate(p *GetUploadParamsForTemplateParams) (*GetUploadParamsForTemplateResponse, error)
 	NewGetUploadParamsForTemplateParams(displaytext string, format string, hypervisor string, name string, zoneid string) *GetUploadParamsForTemplateParams
-	ListTemplatePermissions(P *ListTemplatePermissionsParams) (*ListTemplatePermissionsResponse, error)
+	ListTemplatePermissions(p *ListTemplatePermissionsParams) (*ListTemplatePermissionsResponse, error)
 	NewListTemplatePermissionsParams(id string) *ListTemplatePermissionsParams
 	GetTemplatePermissionByID(id string, opts ...OptionFunc) (*TemplatePermission, int, error)
-	ListTemplates(P *ListTemplatesParams) (*ListTemplatesResponse, error)
+	ListTemplates(p *ListTemplatesParams) (*ListTemplatesResponse, error)
 	NewListTemplatesParams(templatefilter string) *ListTemplatesParams
 	GetTemplateID(name string, templatefilter string, zoneid string, opts ...OptionFunc) (string, int, error)
 	GetTemplateByName(name string, templatefilter string, zoneid string, opts ...OptionFunc) (*Template, int, error)
 	GetTemplateByID(id string, templatefilter string, opts ...OptionFunc) (*Template, int, error)
-	PrepareTemplate(P *PrepareTemplateParams) (*PrepareTemplateResponse, error)
+	PrepareTemplate(p *PrepareTemplateParams) (*PrepareTemplateResponse, error)
 	NewPrepareTemplateParams(templateid string, zoneid string) *PrepareTemplateParams
-	RegisterTemplate(P *RegisterTemplateParams) (*RegisterTemplateResponse, error)
+	RegisterTemplate(p *RegisterTemplateParams) (*RegisterTemplateResponse, error)
 	NewRegisterTemplateParams(displaytext string, format string, hypervisor string, name string, url string) *RegisterTemplateParams
-	UpdateTemplate(P *UpdateTemplateParams) (*UpdateTemplateResponse, error)
+	UpdateTemplate(p *UpdateTemplateParams) (*UpdateTemplateResponse, error)
 	NewUpdateTemplateParams(id string) *UpdateTemplateParams
-	UpdateTemplatePermissions(P *UpdateTemplatePermissionsParams) (*UpdateTemplatePermissionsResponse, error)
+	UpdateTemplatePermissions(p *UpdateTemplatePermissionsParams) (*UpdateTemplatePermissionsResponse, error)
 	NewUpdateTemplatePermissionsParams(id string) *UpdateTemplatePermissionsParams
-	UpgradeRouterTemplate(P *UpgradeRouterTemplateParams) (*UpgradeRouterTemplateResponse, error)
+	UpgradeRouterTemplate(p *UpgradeRouterTemplateParams) (*UpgradeRouterTemplateResponse, error)
 	NewUpgradeRouterTemplateParams() *UpgradeRouterTemplateParams
 }
 

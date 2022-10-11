@@ -28,12 +28,12 @@ import (
 )
 
 type HypervisorServiceIface interface {
-	ListHypervisorCapabilities(P *ListHypervisorCapabilitiesParams) (*ListHypervisorCapabilitiesResponse, error)
+	ListHypervisorCapabilities(p *ListHypervisorCapabilitiesParams) (*ListHypervisorCapabilitiesResponse, error)
 	NewListHypervisorCapabilitiesParams() *ListHypervisorCapabilitiesParams
 	GetHypervisorCapabilityByID(id string, opts ...OptionFunc) (*HypervisorCapability, int, error)
-	ListHypervisors(P *ListHypervisorsParams) (*ListHypervisorsResponse, error)
+	ListHypervisors(p *ListHypervisorsParams) (*ListHypervisorsResponse, error)
 	NewListHypervisorsParams() *ListHypervisorsParams
-	UpdateHypervisorCapabilities(P *UpdateHypervisorCapabilitiesParams) (*UpdateHypervisorCapabilitiesResponse, error)
+	UpdateHypervisorCapabilities(p *UpdateHypervisorCapabilitiesParams) (*UpdateHypervisorCapabilitiesResponse, error)
 	NewUpdateHypervisorCapabilitiesParams() *UpdateHypervisorCapabilitiesParams
 }
 
@@ -213,6 +213,7 @@ type HypervisorCapability struct {
 	Maxhostspercluster   int    `json:"maxhostspercluster"`
 	Securitygroupenabled bool   `json:"securitygroupenabled"`
 	Storagemotionenabled bool   `json:"storagemotionenabled"`
+	Vmsnapshotenabled    bool   `json:"vmsnapshotenabled"`
 }
 
 type ListHypervisorsParams struct {
@@ -291,13 +292,29 @@ func (P *UpdateHypervisorCapabilitiesParams) toURLValues() url.Values {
 	if v, found := P.P["id"]; found {
 		u.Set("id", v.(string))
 	}
+	if v, found := P.P["maxdatavolumeslimit"]; found {
+		vv := strconv.Itoa(v.(int))
+		u.Set("maxdatavolumeslimit", vv)
+	}
 	if v, found := P.P["maxguestslimit"]; found {
 		vv := strconv.FormatInt(v.(int64), 10)
 		u.Set("maxguestslimit", vv)
 	}
+	if v, found := P.P["maxhostspercluster"]; found {
+		vv := strconv.Itoa(v.(int))
+		u.Set("maxhostspercluster", vv)
+	}
 	if v, found := P.P["securitygroupenabled"]; found {
 		vv := strconv.FormatBool(v.(bool))
 		u.Set("securitygroupenabled", vv)
+	}
+	if v, found := P.P["storagemotionenabled"]; found {
+		vv := strconv.FormatBool(v.(bool))
+		u.Set("storagemotionenabled", vv)
+	}
+	if v, found := P.P["vmsnapshotenabled"]; found {
+		vv := strconv.FormatBool(v.(bool))
+		u.Set("vmsnapshotenabled", vv)
 	}
 	return u
 }
@@ -317,6 +334,21 @@ func (P *UpdateHypervisorCapabilitiesParams) GetId() (string, bool) {
 	return value, ok
 }
 
+func (P *UpdateHypervisorCapabilitiesParams) SetMaxdatavolumeslimit(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["maxdatavolumeslimit"] = v
+}
+
+func (P *UpdateHypervisorCapabilitiesParams) GetMaxdatavolumeslimit() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["maxdatavolumeslimit"].(int)
+	return value, ok
+}
+
 func (P *UpdateHypervisorCapabilitiesParams) SetMaxguestslimit(v int64) {
 	if P.P == nil {
 		P.P = make(map[string]interface{})
@@ -332,6 +364,21 @@ func (P *UpdateHypervisorCapabilitiesParams) GetMaxguestslimit() (int64, bool) {
 	return value, ok
 }
 
+func (P *UpdateHypervisorCapabilitiesParams) SetMaxhostspercluster(v int) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["maxhostspercluster"] = v
+}
+
+func (P *UpdateHypervisorCapabilitiesParams) GetMaxhostspercluster() (int, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["maxhostspercluster"].(int)
+	return value, ok
+}
+
 func (P *UpdateHypervisorCapabilitiesParams) SetSecuritygroupenabled(v bool) {
 	if P.P == nil {
 		P.P = make(map[string]interface{})
@@ -344,6 +391,36 @@ func (P *UpdateHypervisorCapabilitiesParams) GetSecuritygroupenabled() (bool, bo
 		P.P = make(map[string]interface{})
 	}
 	value, ok := P.P["securitygroupenabled"].(bool)
+	return value, ok
+}
+
+func (P *UpdateHypervisorCapabilitiesParams) SetStoragemotionenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["storagemotionenabled"] = v
+}
+
+func (P *UpdateHypervisorCapabilitiesParams) GetStoragemotionenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["storagemotionenabled"].(bool)
+	return value, ok
+}
+
+func (P *UpdateHypervisorCapabilitiesParams) SetVmsnapshotenabled(v bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	P.P["vmsnapshotenabled"] = v
+}
+
+func (P *UpdateHypervisorCapabilitiesParams) GetVmsnapshotenabled() (bool, bool) {
+	if P.P == nil {
+		P.P = make(map[string]interface{})
+	}
+	value, ok := P.P["vmsnapshotenabled"].(bool)
 	return value, ok
 }
 
@@ -381,4 +458,5 @@ type UpdateHypervisorCapabilitiesResponse struct {
 	Maxhostspercluster   int    `json:"maxhostspercluster"`
 	Securitygroupenabled bool   `json:"securitygroupenabled"`
 	Storagemotionenabled bool   `json:"storagemotionenabled"`
+	Vmsnapshotenabled    bool   `json:"vmsnapshotenabled"`
 }
