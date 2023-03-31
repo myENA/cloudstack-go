@@ -49,3 +49,7 @@ func NewMockCustomServiceIface(ctrl *gomock.Controller) *MockCustomServiceIface 
 func (m *MockCustomServiceIface) EXPECT() *MockCustomServiceIfaceMockRecorder {
 	return m.recorder
 }
+
+func (m *MockCustomServiceIface) CustomRequest(api string, p *CustomServiceParams, result interface{}) error {
+	return nil
+}
