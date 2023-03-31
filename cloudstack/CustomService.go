@@ -94,4 +94,5 @@ func (s *CustomService) CustomPostRequest(api string, p *CustomServiceParams, re
 }
 
 type CustomServiceIface interface {
+	CustomRequest(api string, p *CustomServiceParams, result interface{}) error
 }
