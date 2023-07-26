@@ -397,12 +397,15 @@ func (s *VLANService) CreateVlanIpRange(p *CreateVlanIpRangeParams) (*CreateVlan
 		return nil, err
 	}
 
-	var r CreateVlanIpRangeResponse
+	//var r CreateVlanIpRangeResponse
+	var r struct {
+		Vlan CreateVlanIpRangeResponse `json:"vlan"`
+	}
 	if err := json.Unmarshal(resp, &r); err != nil {
 		return nil, err
 	}
 
-	return &r, nil
+	return &r.Vlan, nil
 }
 
 type CreateVlanIpRangeResponse struct {
